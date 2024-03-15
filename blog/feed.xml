@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>List of blog posts</title>
+	<subtitle>the blog</subtitle>
+	<link href="https://mikansoro.org/blog/feed.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://mikansoro.org/blog/"/>
+	<updated>2024-02-18T00:00:00+00:00</updated>
+	<id>https://mikansoro.org/blog/feed.xml</id>
+	<entry xml:lang="en">
+		<title>Tax-Free Shopping and the Japan Trusted Travel Program (TTP)</title>
+		<published>2024-02-18T00:00:00+00:00</published>
+		<updated>2024-02-18T00:00:00+00:00</updated>
+        <summary>&lt;p&gt;Japan lets foreigners shop tax free at lots of stores, using the QR-code entry visa stamp in their passport. What most stores don&#x27;t know how to handle however, is a Japan Trusted Traveler Program card. &lt;&#x2F;p&gt;
+</summary>
+		<link href="https://mikansoro.org/blog/japan-taxfree-ttp/" type="text/html"/>
+		<id>https://mikansoro.org/blog/japan-taxfree-ttp/</id>
+		<content type="html">&lt;p&gt;Japan lets foreigners shop tax free at lots of stores, using the QR-code entry visa stamp in their passport. What most stores don&#x27;t know how to handle however, is a Japan Trusted Traveler Program card. &lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;blockquote class=&quot;callout note&quot;&gt;
+    
+    &lt;div class=&quot;icon&quot;&gt;
+        &lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+    &lt;&#x2F;div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+        
+        &lt;p&gt;Last Updated: 2024-03-15&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;blockquote&gt;&lt;blockquote class=&quot;callout important&quot;&gt;
+    
+    &lt;div class=&quot;icon&quot;&gt;
+        &lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+    &lt;&#x2F;div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+        
+        &lt;p&gt;&lt;strong&gt;Please Note:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+        
+        &lt;p&gt;This post details my own personal testing with using Japan TTP cards for Tax-Free purchasing, as well as the most up-to-date information that I&#x27;m aware of from the Japan Ministry of Justice (MOJ). This post will continue to be updated over time as I test more stores and refine my testing methodology.&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;blockquote&gt;&lt;h1 id=&quot;about-the-ttp&quot;&gt;About the TTP&lt;a class=&quot;zola-anchor&quot; href=&quot;#about-the-ttp&quot; aria-label=&quot;Anchor link for: about-the-ttp&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h1&gt;
+&lt;p&gt;Japan Trusted Traveler Program (TTP) cards are similar to Global Entry cards in the US, they allow cardholders to use automated customs and immigration gates instead of having to interact with a passport control agent. Instead of a Landing Permission stamp (which is actually a sticker), the back of the card is printed with a line indicating the entry&#x2F;exit status of the cardholder. The card becomes your landing permission instead.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;japan-ttp-card-sample.png&quot; alt=&quot;A sample of the Japan TTP card from the MOJ.&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s a handy thing to have for frequent travelers as the line for immigration can get quite long depending on the time of day. Because the card is your legal entry document into Japan, you&#x27;re not required to carry your passport with you at all times (&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;www.moj.go.jp&#x2F;isa&#x2F;publications&#x2F;materials&#x2F;ttp2_q_a_faq_a_ja.html#qkiso-37-a&quot;&gt;MOJ FAQ&lt;&#x2F;a&gt;). Carrying your passport is still a good idea regardless, however when the TTP card is used for entry it is not required. If you enter Japan without using your TTP card at the automated kiosk, you are required to carry your passport at all times to prove your lawful status in the country.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;how-to-get-one-for-yourself&quot;&gt;How to Get One for Yourself&lt;a class=&quot;zola-anchor&quot; href=&quot;#how-to-get-one-for-yourself&quot; aria-label=&quot;Anchor link for: how-to-get-one-for-yourself&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;If you&#x27;re interested in getting a TTP card, user @flammenkrieg_au in the r&#x2F;LoveLive discord wrote a &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;docs.google.com&#x2F;document&#x2F;d&#x2F;1yvdlbKxcGKdFyPHoJCcs9ZvfMdD037TzL_f0A6WKbCM&#x2F;edit?usp=sharing&quot;&gt;comprehensive guide to the application process&lt;&#x2F;a&gt;. &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;purchasing-tax-free-with-a-ttp-card&quot;&gt;Purchasing Tax-Free with a TTP Card&lt;a class=&quot;zola-anchor&quot; href=&quot;#purchasing-tax-free-with-a-ttp-card&quot; aria-label=&quot;Anchor link for: purchasing-tax-free-with-a-ttp-card&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;As noted at the bottom of flammenkrieg&#x27;s guide, Tax Free purchases normally require a Landing Permission stamp. Most stores use an iPad-based app to submit Tax-Free paperwork, which prompts the employee to scan the photo page of the passport and the QR code of the currently valid Landing Permission stamp. Most staff are unaware that the TTP card even exists, let alone the fact that it&#x27;s valid as a temporary visitor authorization record instead of the normal passport stamp.&lt;&#x2F;p&gt;
+&lt;p&gt;Per the MOJ&#x27;s documentation on &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;www.nta.go.jp&#x2F;publication&#x2F;pamph&#x2F;shohi&#x2F;menzei&#x2F;201805&#x2F;pdf&#x2F;0023004-052_03.pdf&quot;&gt;Persons eligible for Duty-Free Sales&lt;&#x2F;a&gt;, holders of the TTP card who have used it to enter Japan are considered eligible, however without the stamp you may be ineligible to prove your short-term status at the Tax-Free store. It&#x27;s stated that you can inform an immigration officer before after passing through the automated gate &lt;em&gt;and&lt;&#x2F;em&gt; before customs inspection that you need a stamp for Tax-Free purposes (&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;www.nta.go.jp&#x2F;publication&#x2F;pamph&#x2F;shohi&#x2F;menzei&#x2F;201805&#x2F;pdf&#x2F;0021009-040_13.pdf&quot;&gt;JP&lt;&#x2F;a&gt;), (&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;www.nta.go.jp&#x2F;publication&#x2F;pamph&#x2F;shohi&#x2F;menzei&#x2F;201805&#x2F;pdf&#x2F;0021009-040_13.pdf&quot;&gt;EN&lt;&#x2F;a&gt;). More testing is required to understand if this is viable.&lt;&#x2F;p&gt;
+&lt;p&gt;If this sounds confusing, that&#x27;s because it is. The TTP program is not well known both inside and outside Japan. It&#x27;s so poorly known and advertised that staff inside the immigration hall will likely direct you to the incorrect line if you show them the card and ask where to go. &lt;&#x2F;p&gt;
+&lt;h1 id=&quot;store-testing&quot;&gt;Store Testing&lt;a class=&quot;zola-anchor&quot; href=&quot;#store-testing&quot; aria-label=&quot;Anchor link for: store-testing&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h1&gt;
+&lt;p&gt;When attempting Tax-Free purchases with my TTP card, I hand the staff member both my passport and the card simultaneously. I open my passport to the picture page, and place the TTP card rear-side up (where the landing permission is printed) inside the passport. This ensures some amount of consistency when interacting with staff regardless of their prior training. &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bic-camera&quot;&gt;Bic Camera&lt;a class=&quot;zola-anchor&quot; href=&quot;#bic-camera&quot; aria-label=&quot;Anchor link for: bic-camera&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;As the name might suggest, Bic Camera is a major electronics store chain in Japan, similar to Yodobashi Camera. They sell far more than just camera equipment; including TVs, computers, home appliances, and more.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;record&quot;&gt;Record&lt;a class=&quot;zola-anchor&quot; href=&quot;#record&quot; aria-label=&quot;Anchor link for: record&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;maps.app.goo.gl&#x2F;Q2g6J9aZPepHSNS3A&quot;&gt;Bic Camera Akihabara&lt;&#x2F;a&gt;
+&lt;ul&gt;
+&lt;li&gt;Success: 2&#x2F;9&#x2F;2024
+&lt;ul&gt;
+&lt;li&gt;I was able to successfully purchase an item Tax-Free using my TTP card (for transparency, on the 5th floor at the cashier near the escalator). Bic does not use the newer iPad app system to process Tax-Free transactions, they have a bespoke system built into their register. The staff member did double-take at my card, however once he read the &amp;quot;Temporary Visitor&amp;quot; print line on the rear of the card (aka, what serves as my &amp;quot;stamp&amp;quot;), he entered that information into the register along with a scan of my passport to complete the transaction. The process was largely seamless, and no questions were asked.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;lashinbang&quot;&gt;Lashinbang&lt;a class=&quot;zola-anchor&quot; href=&quot;#lashinbang&quot; aria-label=&quot;Anchor link for: lashinbang&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;Lashinbang is a second-hand hobbyist store that largely focuses on anime merchandise, music, and doujinshi. &lt;&#x2F;p&gt;
+&lt;h3 id=&quot;record-1&quot;&gt;Record&lt;a class=&quot;zola-anchor&quot; href=&quot;#record-1&quot; aria-label=&quot;Anchor link for: record-1&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;maps.app.goo.gl&#x2F;56Dy5iB9o14Lf1NU6&quot;&gt;Lashinbang Akihabara Culture Zone 1st Floor&lt;&#x2F;a&gt;
+&lt;ul&gt;
+&lt;li&gt;Failure: 2&#x2F;13&#x2F;2024
+&lt;ul&gt;
+&lt;li&gt;Upon handing the cashier my passport and TTP card, I saw them reach for the iPad on the back shelf and knew this one might be trouble. The staff immediately moved my TTP card out of the way and disregarded it, and despite my limited attempts to explain that the card would be necessary (with limited Japanese speaking ability and no preparation), he proceeded to try and scan my passport regardless. Eventually I was able to draw his attention to the landing permission on the back of the card. He then tried to scan it with the app (instead of the normal landing permission stamp&#x27;s QR code), however this failed. I&#x27;m not sure if it failed due to the angle at which he tried to photograph it (there was quite a bit of glare from the store lighting from what I could see on screen) or if the app failed to recognize the card, more testing is required on that. The staff then found a Landing Permission stamp from a previous trip, scanned that, and it was considered valid to complete the transaction. &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;pokemon-center&quot;&gt;Pokemon Center&lt;a class=&quot;zola-anchor&quot; href=&quot;#pokemon-center&quot; aria-label=&quot;Anchor link for: pokemon-center&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;record-2&quot;&gt;Record&lt;a class=&quot;zola-anchor&quot; href=&quot;#record-2&quot; aria-label=&quot;Anchor link for: record-2&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;maps.app.goo.gl&#x2F;GxyVih6hCTbr6qCQ9&quot;&gt;Pokemon Center DX Tokyo&lt;&#x2F;a&gt;
+&lt;ul&gt;
+&lt;li&gt;Success: 3&#x2F;10&#x2F;24
+&lt;ul&gt;
+&lt;li&gt;Not all Pokemon Centers in Japan will do tax-free purchases (like the Mega Tokyo location in Ikebukero), but the DX Tokyo one does. DX Tokyo does not use the newer iPad app system, they use a system built into their register that requires scanning the photo page with a barcode reader and manually entering th epassport holder&#x27;s arrival date in Japan. I passed the staff my passport and TTP card, showing the staff member both the front and back of the card, and pointing to the arrival log on the back of the card. She read the card, and after a moment asked if I could wait a moment and took my card and passport into a back room behind the registers. After about 5 minutes, the staff member returned with a manager, and the staff member input my passport information into the register and returned my passport and TTP card to me. The manager then called over another staff, and asked for my TTP card back, explaining the process to the other register staff. The manager was definitley familiar with the TTP card and knew what it was, explaining the card and the process to the rest of the available register staff. The manager then returned my card, and the transaction was complete. &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;yodobashi-camera&quot;&gt;Yodobashi Camera&lt;a class=&quot;zola-anchor&quot; href=&quot;#yodobashi-camera&quot; aria-label=&quot;Anchor link for: yodobashi-camera&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;record-3&quot;&gt;Record&lt;a class=&quot;zola-anchor&quot; href=&quot;#record-3&quot; aria-label=&quot;Anchor link for: record-3&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;maps.app.goo.gl&#x2F;AtfnivUgVHmUG6we7&quot;&gt;Yodobashi Akihabara&lt;&#x2F;a&gt;
+&lt;ul&gt;
+&lt;li&gt;Success: 3&#x2F;11&#x2F;24
+&lt;ul&gt;
+&lt;li&gt;This purchase was completed at the video game register on the 6th floor of Yodobashi. Yodobashi does not use the newer iPad app system, they use a system built into their register that requires scanning the photo page with a barcode reader and manually entering the passport holder&#x27;s arrival date in Japan. I passed the staff my passport, and handed him my TTP card facing backwards and alerted him that the record on the back was my most recent entry. After some visible confusion, flipping through all my stamps, and reading the front of the TTP card, he consulted their internal rules binder for tax-free purchases. Not finding sufficient info, he made several phone calls in the back of the register area. Finally, the staff seemed satisfied that the tax-free purchase could proceed, and pulled over another staff member to show them how to process a TTP tax-free purchase. &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Flying the new Delta Airlines A330-900</title>
+		<published>2024-01-18T00:00:00+00:00</published>
+		<updated>2024-01-18T00:00:00+00:00</updated>
+        <summary>&lt;p&gt;A few things I noticed while flying one of the newest Delta A330-900s. &lt;&#x2F;p&gt;
+</summary>
+		<link href="https://mikansoro.org/blog/flying-delta-a339-neo/" type="text/html"/>
+		<id>https://mikansoro.org/blog/flying-delta-a339-neo/</id>
+		<content type="html">&lt;p&gt;A few things I noticed while flying one of the newest Delta A330-900s. &lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;I recently flew on one of the newest Delta Airlines A330-900s in their fleet at the time of writing, tail number &lt;code&gt;N427DX&lt;&#x2F;code&gt;. This aircraft was delivered to Delta in December 2023, making it approximately one month old. While I don&#x27;t intend this to be a review by any means, I wanted to document a few of the things I found interesting about the aircraft and the service aboard. It may read like a review to some, but this is as much for my own future reference as yours, dear reader. I&#x27;m not going to offer any conclusions here. &lt;&#x2F;p&gt;
+&lt;p&gt;As a disclosure, this is my first time flying Delta since before the pandemic; I don&#x27;t have allegiance to any airline in particular, but my most-often traveled airlines include United, American, ANA, and Alaskan Airlines. I tend to fly whoever has the lowest price with the right departure time. I&#x27;m currently considering deepening my relationship with Star Alliance carriers via United&#x27;s MileagePlus program, but I&#x27;m currently undecided and will likely post an update if&#x2F;when I reach a conclusion detailing my rationale.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;a-decent-place-to-sit&quot;&gt;A Decent Place to Sit&lt;a class=&quot;zola-anchor&quot; href=&quot;#a-decent-place-to-sit&quot; aria-label=&quot;Anchor link for: a-decent-place-to-sit&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;Delta&#x27;s Economy cabin on the A330-900 is a 2-4-2 configuration, a rare sight for me as I normally travel on the 787 and its 3-3-3 layout. The seats are plush and reasonably comfortable with a soft, supple head rest. I do wish the side adjustment of the head rest held its shape a bit more, it would reset to being flat without much pressure. The padding though was excellent, probably the best I&#x27;ve ever felt sitting in economy.&lt;&#x2F;p&gt;
+&lt;p&gt;The seat doesn&#x27;t recline particularly far, but the bottom cushion slides forward a bit which helps support my longer legs. I&#x27;m 6&#x27;4&amp;quot;, and there&#x27;s about two inches of space between my knees and the seat in front of me. That&#x27;s at least one inch more than American offers on their 787-8, and is on par with ANA and JAL&#x27;s superior leg room on their international 787-9&#x27;s. The tray table is a bit small, but is perfectly capable of supporting a 13&amp;quot; laptop. Power outlets are positioned on the pillars between the seats on the row in front, instead of under the seat cushion (a welcome sight). However, frustratingly there is only one outlet for every two seats. This includes the center four seats, where there is only 2 outlets (one between each pair of aisle and middle seats). Be prepared to share with your neighbor, or have a small power strip with you to let both seats charge simultaneously.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;food&quot;&gt;Food!&lt;a class=&quot;zola-anchor&quot; href=&quot;#food&quot; aria-label=&quot;Anchor link for: food&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;Economy passengers were offered a choice between a pasta, butter chicken, and ginger pork on this route between Los Angeles (LAX) and Tokyo Haneda (HND). Although the entree and potato salad were delivered as you&#x27;d expect—in the small rectangular container they were heated in, covered in aluminum foil—refreshingly they were served on a plate rather than a large tray. It was a minor difference, but a nice change of pace for sure. Utensils were made from bamboo and were given to us in a napkin free of plastic wrappings, which was also a pleasant surprise. The butter chicken and rice was actually quite good, especially when compared to in-flight meals on other carriers. &lt;&#x2F;p&gt;
+&lt;p&gt;Halfway though the flight, they raised the lights to ~50% (very annoying if you&#x27;re a light sleeper) for a drink service and a warm chocolate chip cookie. &lt;&#x2F;p&gt;
+&lt;p&gt;The secondary meal service consisted of a &amp;quot;Mediterranean Breakfast Calzone, Egg &amp;amp; Cheese&amp;quot; in a box inscribed as such (&amp;quot;whatever the hell that is,&amp;quot; I thought to myself), and a small bowl of fruit. I didn&#x27;t have to wait long to find out that the &amp;quot;calzone&amp;quot; was nothing more than a dense, flavor-less breadstick with a substance that vaguely resembled the look of scrambled egg in the middle. Incredibly disappointing in its own right, it&#x27;s even more egregious given the quality of the meal served at the beginning of the flight.&lt;&#x2F;p&gt;
+&lt;p&gt;A personal complaint of mine, when departing at 9am and arriving at 3pm the next day it feels a bit strange to get a lunch service on departure followed by a breakfast service at landing. This complaint isn&#x27;t specific to Delta, it seems to be a common trend across the industry. I&#x27;m sure others probably disagree, it&#x27;s that way for a reason of course. &lt;&#x2F;p&gt;
+&lt;h3 id=&quot;delays-delays-delays&quot;&gt;Delays, Delays, Delays&lt;a class=&quot;zola-anchor&quot; href=&quot;#delays-delays-delays&quot; aria-label=&quot;Anchor link for: delays-delays-delays&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;Now, according to the wonderful people over on the  &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;flyertalk.com&#x2F;forum&#x2F;delta-air-lines-skymiles&#x2F;1952193-a330-neo-consolidated-discussion-thread-29.html&quot;&gt;FlyerTalk&lt;&#x2F;a&gt; forum, Delta&#x27;s newest A330-900s appear to be plagued with mechanical faults and delays. My flight was no exception, shortly before even arriving at LAX we were greeted by an unspecified delay of about 75 minutes before we were able to get underway. Based on largely anecdotal evidence, at least some of the faults appear to be due to Airbus&#x27;s attempts to shave weight and make the A330-900 more efficient, at the cost of the durability of the fixtures in the cabin. As one user noted, they were delayed leaving London due to an arm rest that was stuck in the up position (FAA requires them to be in the down position during takeoff and landing). I can&#x27;t speak to this myself as nothing in the cabin on my flight was glaringly broken once I stepped on board, but it&#x27;ll be interesting to see the long-term durability on cabins of the A330. &lt;&#x2F;p&gt;
+&lt;p&gt;Delta appears to be continuing to take deliveries of the A330-900 for revenue service as far as I can tell, so they&#x27;re obviously banking on this aircraft to be a critical part of their long-haul mid-traffic fleet.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;connecting-to-the-world&quot;&gt;Connecting to the World&lt;a class=&quot;zola-anchor&quot; href=&quot;#connecting-to-the-world&quot; aria-label=&quot;Anchor link for: connecting-to-the-world&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;Wi-Fi on this aircraft (at least, directly after departure) was decently quick for satellite-based internet service. &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;fast.com&quot;&gt;fast.com&lt;&#x2F;a&gt; measured 59Mbps down&#x2F;1.5Mbps up, with an unloaded latency of 582ms and a loaded latency of 1.4s. While this isn&#x27;t incredible by any means, the download speed performed admirably and is more than enough to stream 720p video. While Delta currently offers Wi-Fi service on their domestic flights for free, service on this flight cost $15. The Delta website claims Wi-Fi will be free on all international flights later in 2024, but that remains to be seen. There was also an option for &amp;quot;Free Messaging&amp;quot;, which included service for things like WhatsApp and Facebook Messenger. &lt;&#x2F;p&gt;
+&lt;p&gt;As a delightful surprise, video platforms such as Youtube and voice-chat applications like Discord and Google Meet were not blocked on the network, which is not always the case on other carriers. For instance, on a previous flight I took with American last month, Discord was freely accessible however popular streaming sites like Youtube were blocked (streaming video on American&#x27;s 787-8 was still possible, however speeds in the APAC region were poor. I was able to stream using the video hosting platform NicoChannel on that flight).&lt;&#x2F;p&gt;
+&lt;p&gt;There is a glaring issue with the Wi-Fi service on offer from Delta on the A330-900, at least on this particular route between Los Angeles (LAX) and Tokyo Haneda (HND) here in January 2024. This aircraft&#x27;s internet connectivity is provided by Viasat which, on the surface, would normally be a good thing. Viasat&#x27;s network is far superior in bandwidth to competitors like GoGo—when you&#x27;re inside the coverage area. Due to the failed launch of Viasat&#x27;s Viasat-3 Americas satellite in the second half of 2023, the additional launches of the Viasat-3 Asia-Pacific satellite was delayed. This results in a coverage map for Delta which includes the United States and southern Canada, a small part of south Alaska, Brazil, the Atlantic, Europe, and the Middle East. Glaringly, on this particular route, Wi-Fi service is only expected to last approximately until passing Seattle, with some additional coverage lasting about 45 minutes to an hour appearing as the plane passes the southern coast of Alaska. &lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;2024-01-delta-wifi-coverage.png&quot; alt=&quot;Delta&#x27;s Wi-Fi coverage map as of January 2024&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;For some reason, Delta has pushed forward with retrofitting their older A330-900s, originally equipped with GoGo Inflight, with Viasat&#x27;s hardware. This isn&#x27;t a problem on transcontinental and transatlantic routes, but for routes operating over Asia and the Pacific (including routes to Hawaii), selling Wi-Fi even at $15 feels overpriced for a maximum of 2.5 hours of connectivity on an 11+ hour flight. Now, if Delta&#x27;s claims are true about the service becoming free later in 2024, and if Viasat can get their APAC satellite launched and performing properly, I may consider Delta as my primary carrier when flying across the pacific. For now, considering the fact that I need to work on flights, it&#x27;s not an option. &lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Liella! appears on Weekly 99 Music, performs シェキラ☆☆☆!</title>
+		<published>2024-01-17T00:00:00+00:00</published>
+		<updated>2024-01-17T00:00:00+00:00</updated>
+        <summary>&lt;p&gt;Liella! was on Weekly 99 Music on FujiTV tonight, including both an interview from one of their costume designers and a performance of their newest single, シェキラ☆☆☆. &lt;&#x2F;p&gt;
+</summary>
+		<link href="https://mikansoro.org/blog/liella-99music-shekira/" type="text/html"/>
+		<id>https://mikansoro.org/blog/liella-99music-shekira/</id>
+		<content type="html">&lt;p&gt;Liella! was on Weekly 99 Music on FujiTV tonight, including both an interview from one of their costume designers and a performance of their newest single, シェキラ☆☆☆. &lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;シェキラ☆☆☆ (pronounced &amp;quot;Shekira&amp;quot;, translation: Shake it up!) is the theme song for &lt;a href=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;blog&#x2F;liella-99music-shekira&#x2F;#liella-5th-lovelive-twinkle-triangle&quot;&gt;Liella!&#x27;s 5th LoveLive! ~Twinkle Triangle~&lt;&#x2F;a&gt;, the first leg of which is this weekend in Fukuoka!&lt;&#x2F;p&gt;
+&lt;p&gt;If you missed it, &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;tver.jp&#x2F;episodes&#x2F;epaqtkmzxt&quot;&gt;the vod is available for free on TVer&lt;&#x2F;a&gt; (requires a Japanese IP address, VPN OK). As of writing it doesn&#x27;t require a (free) account to watch, but it may in the future. &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;talk-segment&quot;&gt;Talk Segment&lt;a class=&quot;zola-anchor&quot; href=&quot;#talk-segment&quot; aria-label=&quot;Anchor link for: talk-segment&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;Before the performance, Weekly 99 Music interviewed one of Liella!&#x27;s costume design companies as part of their ongoing series of interviews highlighting the behind-the-scenes work in the music industry. オサレカンパニー (Osare Company), the producers of many of Liella!&#x27;s costumes, also produced the costumes for AKB48 and Nogizaka46. One of the designers walked the viewers through the warehouse, which apparently holds more than 40,000 costumes (I believe it, that place was huge!). They also highlighted some of the more creative AKB48 costumes such as the costume for AKB48&#x27;s 37th single, which has a skirt made from pink bubble-wrap.&lt;&#x2F;p&gt;
+&lt;p&gt;From the works that I&#x27;ve seen from Osare Company, they take an excruciating amount of detail into account when designing costumes. For example, on Nogizaka46&#x27;s outfits all the skirts and dresses are made to fall at an exactly equal height from the floor, regardless of how tall each individual member is.&lt;&#x2F;p&gt;
+&lt;p&gt;Likewise, the シェキラ☆☆☆ outfits are filled with small details suited to each member, most of which I had noticed on previous appearances with this outfit back in December. For instance, each member of Liella! has one, two, or three rings on their epaulettes; and one, two, or three stars on the pin on their chest corresponding to which school year their character is currently in in the Love Live! Superstar!! anime. The first-generation members also all wear matching hats, while the second and third generation members have a mixed style of hats and hair ribbons depending on the member. As part of the broadcast, they revealed that the white fabric of the outfit is a different shade for each member generation as well, which is a wonderful yet subtle addition from the designer. &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;siekira&quot;&gt;シェキラ☆☆☆&lt;a class=&quot;zola-anchor&quot; href=&quot;#siekira&quot; aria-label=&quot;Anchor link for: siekira&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;The song began, and it was clear that every member of Liella! was firing on all cylinders when they made this recording. As the camera panned, each member added their own individual flair to the choreography—distinct from the previous TV appearance of the song. Most apparent of all, Date Sayuri (Liella!&#x27;s center member, affectionately known as Sayurin) was brimming confidence in both her dancing and singing abilities. Every time the camera pointed her way, she&#x27;d fire off a dazzling smile, a cheeky wink, or a heart from her hands. &lt;&#x2F;p&gt;
+&lt;p&gt;Back during Liella!&#x27;s 4th LoveLive! Tour in August of 2023, Sayurin noted in her final MC that she was finally able to have genuine fun on stage; it was the first time she was able to focus on enjoying every moment on stage instead of worrying about her performance. It showed in her performances back then, and has continued to shine through in her presence on stage ever since. Her movements now are sharp; her singing voice is powerful, packed with love and overflowing with gratitude for everyone who lends her their support. &lt;&#x2F;p&gt;
+&lt;p&gt;If this doesn&#x27;t look like someone having fun on stage, I couldn&#x27;t possibly guess what that looks like.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;shekira-sayurin-wink.gif&quot; alt=&quot;A GIF of Sayurin, holding her hands in a heart-shape and winking to the camera.&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;liella-5th-lovelive-twinkle-triangle&quot;&gt;Liella! 5th LoveLive! ~Twinkle Triangle~&lt;a class=&quot;zola-anchor&quot; href=&quot;#liella-5th-lovelive-twinkle-triangle&quot; aria-label=&quot;Anchor link for: liella-5th-lovelive-twinkle-triangle&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;If the two TV performances of シェキラ☆☆☆ are anything to go by, we&#x27;re in for an absolutely wonderful treat at Liella!&#x27;s 5th Live. Personally, I can&#x27;t wait, and anyone who&#x27;s on the fence about watching it absolutely should.&lt;&#x2F;p&gt;
+&lt;p&gt;See &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;ramen.events&#x2F;liella-5th-lovelive&quot;&gt;ramen.events&lt;&#x2F;a&gt; for all details, including where to watch the live stream. I&#x27;ll be attending all four days, if you&#x27;re there too make sure to say hi!&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fukuoka Leg
+&lt;ul&gt;
+&lt;li&gt;West Japan General Exhibition Center Annex, Kitakyushu, Japan&lt;&#x2F;li&gt;
+&lt;li&gt;Jan 20-21, 2024&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Tokyo Leg
+&lt;ul&gt;
+&lt;li&gt;Musashino Forest Sports Plaza, Main Arena, Tokyo, Japan&lt;&#x2F;li&gt;
+&lt;li&gt;Feb 10-11, 2024&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Working from a plane, without your work computer</title>
+		<published>2024-01-17T00:00:00+00:00</published>
+		<updated>2024-01-17T00:00:00+00:00</updated>
+        <summary>&lt;p&gt;Traveling with corporate devices can be difficult, cumbersome, or full of red tape. Here&#x27;s one way to work around that problem.&lt;&#x2F;p&gt;
+</summary>
+		<link href="https://mikansoro.org/blog/remotework-without-laptop/" type="text/html"/>
+		<id>https://mikansoro.org/blog/remotework-without-laptop/</id>
+		<content type="html">&lt;p&gt;Traveling with corporate devices can be difficult, cumbersome, or full of red tape. Here&#x27;s one way to work around that problem.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;blockquote class=&quot;callout warning&quot;&gt;
+    
+    &lt;div class=&quot;icon&quot;&gt;
+        &lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M12.865 3.00017L22.3912 19.5002C22.6674 19.9785 22.5035 20.5901 22.0252 20.8662C21.8732 20.954 21.7008 21.0002 21.5252 21.0002H2.47266C1.92037 21.0002 1.47266 20.5525 1.47266 20.0002C1.47266 19.8246 1.51886 19.6522 1.60663 19.5002L11.1329 3.00017C11.4091 2.52187 12.0206 2.358 12.4989 2.63414C12.651 2.72191 12.7772 2.84815 12.865 3.00017ZM4.20471 19.0002H19.7932L11.9989 5.50017L4.20471 19.0002ZM10.9989 16.0002H12.9989V18.0002H10.9989V16.0002ZM10.9989 9.00017H12.9989V14.0002H10.9989V9.00017Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+    &lt;&#x2F;div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+        
+        &lt;p&gt;&lt;strong&gt;Disclaimer&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+        
+        &lt;p&gt;Consider checking with your company&#x27;s Security team before attempting to work remotely like illustrated in this post. I&#x27;m not responsible if you wind up in hot water over anything posted herein. &lt;&#x2F;p&gt;
+&lt;p&gt;While this post&#x27;s example provides and illustrates precautions and protections taken to minimize potential security vectors, the information presented here should be taken as an illustrative thought exercise.&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Some employers require you to notify the IT department when traveling with a company-issued device, espeically when traveling overseas. The concept of &amp;quot;work from anywhere&amp;quot; in the post-pandemic world is here to stay; however, employers are (rightfully) weary of machines posessing potentially sensitive data traveling to unsavory places. Embarking on a weekend getaway early on a Friday or getting a high priority page for &amp;quot;something on you can fix&amp;quot; while in the middle of a pre-approved &amp;quot;Avoid Jira for a Few Days&amp;quot; stint shouldn&#x27;t necessitate lugging &lt;em&gt;another&lt;&#x2F;em&gt; device along. In fact, it doesn&#x27;t. &lt;&#x2F;p&gt;
+&lt;p&gt;This post&#x27;s focus is on connecting back to a work machine securely over the internet in time of need from another device. Primarily, the post will focus on initiating this connection from inflight wifi, a notoriously high-latency and low-bandwidth environment that makes any form of work difficult—especially remote control of a machine over the internet. However, that should not negate the fact that this configuration will work anywhere provided one can initiate the remote connection. The list of optimizations herein are also non-exhaustive, and are a result of my own trials and troubleshooting.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;a class=&quot;zola-anchor&quot; href=&quot;#background&quot; aria-label=&quot;Anchor link for: background&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;I work from a company issued Macbook Pro, that sits connected to a docking station on my desk at all times. The dock provides both power and an ethernet connection to one of my home networks. &lt;&#x2F;p&gt;
+&lt;h3 id=&quot;personal-vpn&quot;&gt;Personal VPN&lt;a class=&quot;zola-anchor&quot; href=&quot;#personal-vpn&quot; aria-label=&quot;Anchor link for: personal-vpn&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;When roaming away from home, each of my devices are configured with a Wireguard-based VPN, allowing connectivity to several of my home networks. Wireguard offers several benefits over competitors like OpenVPN, offering reduced connecton overhead, latency, and the ability for clients to roam between networks dynamically without dropping connections. The actual setup of this VPN is outside the scope of this post, in this case any VPN that allows connectivity between the device being used and the network of the work device is sufficient.&lt;&#x2F;p&gt;
+&lt;p&gt;Important to note that as part of this example, I will not be configuring my personal Wireguard VPN on my work machine. That would be a violation of security policy, and isn&#x27;t necessary due to the fact that the VPN tunnel has direct access to the network that the work machine is connected to. &lt;&#x2F;p&gt;
+&lt;h3 id=&quot;rationale&quot;&gt;Rationale&lt;a class=&quot;zola-anchor&quot; href=&quot;#rationale&quot; aria-label=&quot;Anchor link for: rationale&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;While seemingly inconvenient, there&#x27;s a specific reason I have to connect in the manner I&#x27;m describing in this post. Our particular corporate VPN can only be installed on a company-issued device as a matter of security policy. It would be far easier—and less error-prone—to temporarily connect a personal device to the corporate VPN and access internal resources. This introduces all sorts of headaches for myself and my colleagues on the security team: &lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;I don&#x27;t have access to my work credentials on my personal device (and I don&#x27;t want to)
+&lt;ul&gt;
+&lt;li&gt;SSH keys, cloud provider authentication, password manager, etc.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;My personal device has different configurations and&#x2F;or unsupported toolchains
+&lt;ul&gt;
+&lt;li&gt;Wrong terraform version, personal vs. work gitconfig, etc. &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Git repos have to be recloned and stored on a personal device
+&lt;ul&gt;
+&lt;li&gt;That can be a long process on in-flight wifi, with sufficiently large repositories. And yes, I mean &lt;em&gt;large&lt;&#x2F;em&gt; repositories&lt;&#x2F;li&gt;
+&lt;li&gt;This necessitates storage of company assets&#x2F;intellectual property on a personal device, which should be avoided&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;constraints-and-working-around-them&quot;&gt;Constraints, and Working Around Them&lt;a class=&quot;zola-anchor&quot; href=&quot;#constraints-and-working-around-them&quot; aria-label=&quot;Anchor link for: constraints-and-working-around-them&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;As mentioned above, my work&#x27;s corporate VPN can only be installed on a company-issued device. In addition, connecting to the VPN requires an OIDC challenge to be completed with our identity provider (IdP). This challenge is browser based, and due to its nature it initiates a request to a localhost callback URL served by the VPN client, passing along the authentication token and any other additional required info. This can&#x27;t be worked around in a SSH session (that I&#x27;ve found, at least), so VNC is required here to connect to the desktop session for authenticating to the corporate VPN. &lt;&#x2F;p&gt;
+&lt;p&gt;Our credentials service also uses a similar paradigm, but due to the need for it to run on headless remote development workstations, it&#x27;s capable of outputting the challenge URL for the challenge to be completed in a remote browser. This means we&#x27;re not bound by VNC for issuing temporary credentials, and they can be issued over SSH. &lt;&#x2F;p&gt;
+&lt;p&gt;With the above in mind, Before leaving on a trip I enable the following settings on the work machine: &lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;ssh server service (under System Preferences &amp;gt; Sharing)&lt;&#x2F;li&gt;
+&lt;li&gt;vnc service (under System Preferences &amp;gt; Sharing)&lt;&#x2F;li&gt;
+&lt;li&gt;no sleep mode (via a &amp;quot;caffeinate&amp;quot;-type app, power settings, etc. I normally use &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;newmarcel&#x2F;KeepingYouAwake&quot;&gt;KeepingYouAwake&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I&#x27;m also a CLI-heavy user, and operate primarily in Emacs with Vim bindings (Evil mode) as my editor of choice. Terminal emacs with vim bindings doesn&#x27;t translate well over an ssh connection (at least, not with the linux terminal emulator on my personal machine), but I can work entirely through Vim if needed. This allows me to connect from slow, high-latency networks like in-flight wifi and still get things done. &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;a class=&quot;zola-anchor&quot; href=&quot;#setup&quot; aria-label=&quot;Anchor link for: setup&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;preparation-optimization&quot;&gt;Preparation &amp;amp; Optimization&lt;a class=&quot;zola-anchor&quot; href=&quot;#preparation-optimization&quot; aria-label=&quot;Anchor link for: preparation-optimization&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;Ideally before boarding the plane, VNC into the work machine and connect to the corporate VPN. VNC doesn&#x27;t play nice with most high-latency wifi networks, so it&#x27;s best to handle this ahead of time. This saves a lot of headache later on. If you have a windows machine and can use Windows Remote Desktop, it&#x27;s much better at handling transactions over slow networks.&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s another setting we can enable on macos to help stabilize the connection to the remote machine. In order to mac macos respond more reliably in poor connectivity conditions, set the following sysctl option. Full details can be found on &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;apple.stackexchange.com&#x2F;questions&#x2F;437555&#x2F;macos-networking-brutally-slow-using-vnc-or-apple-remote-desktop&quot;&gt;this StackExchange answer&lt;&#x2F;a&gt;, but the gist is by default macos will batch sending ACKs until some threshold is met for there being &amp;quot;enough&amp;quot; data to be &amp;quot;worth sending&amp;quot;. We want ACKs to be sent immediately to us. &lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; sysctl&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;w&lt;&#x2F;span&gt; net.inet.tcp.delayed_ack=0&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;connection-time&quot;&gt;Connection Time&lt;a class=&quot;zola-anchor&quot; href=&quot;#connection-time&quot; aria-label=&quot;Anchor link for: connection-time&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;Now we&#x27;re ready to actually connect to our work machine and get something done. There are two options here: if your network will sustain it, connect to the desktop via VNC and work normally, or connect over ssh if it doesn&#x27;t. To utilize our full environment effectively over ssh, we&#x27;re going to create two different ssh connections.&lt;&#x2F;p&gt;
+&lt;p&gt;Those who have used ssh with bad internet know that it can be quite painful, so I actually recommend first installing &lt;code&gt;mosh&lt;&#x2F;code&gt; on both machines and using that to connect instead. This way, any network disruptions won&#x27;t hang your terminal or force you to start a new session, and your inputs will be buffered to the remote machine when the network is available. &lt;&#x2F;p&gt;
+&lt;p&gt;Once connectivity is established via ssh&#x2F;mosh, setup a separate ssh tunnel and open a chromium&#x2F;chrome&#x2F;firefox instance using the tunnel as a socks proxy. With this proxied browser, we can access any internal sites on the corporate network, complete authenticaiton challenges, and more, as all traffic inside the browser act as if its coming from the remote machine. &lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;ssh&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;ND&lt;&#x2F;span&gt; 1080&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;fC&lt;&#x2F;span&gt; user@host&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;chromium-browser&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;proxy-server&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-option z-shell&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;socks5:&#x2F;&#x2F;localhost:1080&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;a class=&quot;zola-anchor&quot; href=&quot;#conclusion&quot; aria-label=&quot;Anchor link for: conclusion&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;There are definitely more optimizations that could be made here, and this just scratches the surface. That being said, I was able to successfully work from a metal tube over the Pacific Ocean via this message in an emergency, in a situation where I didn&#x27;t have the right computer for the job. If you have more optimizations or suggestions, please reach out. I&#x27;d love to hear them. &lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>About this blog (a &#x27;first post&#x27; of sorts)</title>
+		<published>2024-01-13T00:00:00+00:00</published>
+		<updated>2024-01-13T00:00:00+00:00</updated>
+        <summary>&lt;p&gt;The first post on this blog (sort of). Part FAQ, part intro, part ramble. &lt;&#x2F;p&gt;
+</summary>
+		<link href="https://mikansoro.org/blog/first-post/" type="text/html"/>
+		<id>https://mikansoro.org/blog/first-post/</id>
+		<content type="html">&lt;p&gt;The first post on this blog (sort of). Part FAQ, part intro, part ramble. &lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;First off, hello and welcome! After much pondering and many delays I&#x27;ve finally started to kick off a blog!&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;about-the-blog&quot;&gt;About the blog&lt;a class=&quot;zola-anchor&quot; href=&quot;#about-the-blog&quot; aria-label=&quot;Anchor link for: about-the-blog&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h1&gt;
+&lt;p&gt;This is a home for everything that makes my mind tick. I plan to post tutorials, long-form articles, trip reports, travel guides, short tidbits of things I find interesting, and more! I set out building this site with two goals in mind: &lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;To build somewhere I can be myself, and express any and all my interests in one place&lt;&#x2F;li&gt;
+&lt;li&gt;To express those interests on a platform and in a manner that I control&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Platforms like Twitter or Mastodon are great for posting short tidbits and sharing them with others; likewise, blogging platforms like Medium make it easy for anyone to share long-form written content. Most of these platforms excel at a single type of content or topic, but I plan on sharing a wide variety content and formats that don&#x27;t necessarily fit into the structure of a single platform. Also, posting &lt;em&gt;everything&lt;&#x2F;em&gt; about me and my interests to social platforms feels both (for lack of a better term) &amp;quot;loud&amp;quot; and all but guarantees its sale and aggregation into some large dataset. I&#x27;m not insinuating that content posted to this site &amp;quot;can&#x27;t be scraped&amp;quot; or will never wind up in some massive LLM&#x27;s training data, but at least all the data is still firmly in my control. I built this site with portability in mind, so if the platform hosting this site disappeared tomorrow it could be redeployed elsewhere in a few clicks. No single corporate collapse will keep this page offline forever. &lt;&#x2F;p&gt;
+&lt;p&gt;Also I&#x27;m a verbose person, consider this your warning. &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-site-s-technicals&quot;&gt;The site&#x27;s technicals&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-site-s-technicals&quot; aria-label=&quot;Anchor link for: the-site-s-technicals&quot; style=&quot;visibility: hidden;&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;This site was created using &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;getzola.org&quot;&gt;Zola&lt;&#x2F;a&gt;, a static site generation (SSG) tool that ships a as a single binary. It&#x27;s similar to tools like &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;jekyllrb.com&#x2F;&quot;&gt;Jekyll&lt;&#x2F;a&gt; or &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;gohugo.io&quot;&gt;Hugo&lt;&#x2F;a&gt;. It boasts full compliance with the CommonMark specification, syntax highlighting for code blocks, easy cross-article and anchor linking, and more. Content (such as this article&#x27;s text!) is written in Markdown, and template files are used to format it into the page you&#x27;re viewing now. Currently I&#x27;m using the &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;isunjn&#x2F;serene&#x2F;&quot;&gt;serene&lt;&#x2F;a&gt; theme for Zola, but the design of the site will likely continue to change in the future. Hopefully, only for the better.&lt;&#x2F;p&gt;
+&lt;p&gt;This site is currently hosted by Github Pages, as it&#x27;s free and requires minimal ongoing maintenance. I currently use Github as my primary source control server, however I&#x27;ve toyed with the idea of moving personal projects to &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;sr.ht&quot;&gt;SourceHut&lt;&#x2F;a&gt; or a self-hosted &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;gitea.com&quot;&gt;Gitea&lt;&#x2F;a&gt; instance (which I&#x27;ve done in the past). &lt;&#x2F;p&gt;
+&lt;p&gt;I won&#x27;t tell you to go out and adopt Zola if you&#x27;re already using another SSG, but it&#x27;s the one I clicked with the most when I was researching options for building this site. &lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>
