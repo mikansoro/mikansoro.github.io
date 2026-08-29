@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>mikansoro.org - wayland</title>
+      <link>https://mikansoro.org</link>
+      <description>Michael&#x27;s small corner of the internet.</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mikansoro.org/tags/wayland/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sun, 23 Nov 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Screensharing, Wayland, Pipewire, and Discord. Choose three.</title>
+          <pubDate>Sun, 23 Nov 2025 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://mikansoro.org/blog/screensharing-pipewire-with-discord/</link>
+          <guid>https://mikansoro.org/blog/screensharing-pipewire-with-discord/</guid>
+          <description xml:base="https://mikansoro.org/blog/screensharing-pipewire-with-discord/">&lt;p&gt;Discord refuses to capture audio from Pipewire applications when screensharing on a Wayland desktop.&lt;&#x2F;p&gt;</description>
+      </item>
+    </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>mikansoro.org - faq</title>
+      <link>https://mikansoro.org</link>
+      <description>Michael&#x27;s small corner of the internet.</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mikansoro.org/tags/faq/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sat, 15 Aug 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>About this blog (a &#x27;first post&#x27; of sorts)</title>
+          <pubDate>Sat, 13 Jan 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://mikansoro.org/blog/first-post/</link>
+          <guid>https://mikansoro.org/blog/first-post/</guid>
+          <description xml:base="https://mikansoro.org/blog/first-post/">&lt;p&gt;The first post on this blog (sort of). Part FAQ, part intro, part ramble.&lt;&#x2F;p&gt;</description>
+      </item>
+    </channel>
+</rss>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>mikansoro.org - kubernetes</title>
+    <subtitle>Michael&#x27;s small corner of the internet.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mikansoro.org/tags/kubernetes/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mikansoro.org"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-12-24T00:00:00+00:00</updated>
+    <id>https://mikansoro.org/tags/kubernetes/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Kubernetes Secrets - from Sealed-Secrets to Sops+Age</title>
+        <published>2025-12-24T00:00:00+00:00</published>
+        <updated>2025-12-24T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/sealed-secrets-to-sops/"/>
+        <id>https://mikansoro.org/blog/sealed-secrets-to-sops/</id>
+        
+        <summary type="html">&lt;p&gt;I finally switched from sealed-secrets to sops + age for managing Kubernetes secrets in git. It&#x27;s been a long time coming.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>AWS IAM Role Chaining using IAM Roles for Service Accounts inside Kubernetes</title>
+        <published>2024-04-12T00:00:00+00:00</published>
+        <updated>2024-04-12T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/aws-role-chaining-irsa/"/>
+        <id>https://mikansoro.org/blog/aws-role-chaining-irsa/</id>
+        
+        <summary type="html">&lt;p&gt;Today, we&#x27;re taking a look at using IAM roles inside of AWS EKS, leveraging the combined power of IAM Roles for Service Accounts (IRSA) and role chaining inside of AWS config files.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

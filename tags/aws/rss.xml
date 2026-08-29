@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>mikansoro.org - aws</title>
+      <link>https://mikansoro.org</link>
+      <description>Michael&#x27;s small corner of the internet.</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mikansoro.org/tags/aws/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 12 Apr 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>AWS IAM Role Chaining using IAM Roles for Service Accounts inside Kubernetes</title>
+          <pubDate>Fri, 12 Apr 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://mikansoro.org/blog/aws-role-chaining-irsa/</link>
+          <guid>https://mikansoro.org/blog/aws-role-chaining-irsa/</guid>
+          <description xml:base="https://mikansoro.org/blog/aws-role-chaining-irsa/">&lt;p&gt;Today, we&#x27;re taking a look at using IAM roles inside of AWS EKS, leveraging the combined power of IAM Roles for Service Accounts (IRSA) and role chaining inside of AWS config files.&lt;&#x2F;p&gt;</description>
+      </item>
+    </channel>
+</rss>

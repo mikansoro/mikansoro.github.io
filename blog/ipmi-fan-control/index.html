@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible"
+      content="IE=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+<meta name="description"
+      content="Michael&#x27;s small corner of the internet." />
+<meta name="keywords"
+      content="blog, technology, kubernetes, sre, homelab, travel, idols, Love Live!, anime" /> 
+
+<title>
+  Manual Fanspeed Control through IPMI // mikansoro.org</title>
+<meta property="og:site_name" content="mikansoro.org"/>
+<meta property="og:title" content="mikansoro.org | Manual Fanspeed Control through IPMI"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mikansoro.org/blog/ipmi-fan-control/"/>
+<meta property="og:description" content="Michael&#x27;s small corner of the internet."/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Manual Fanspeed Control through IPMI"/>
+<meta name="twitter:description" content="Michael&#x27;s small corner of the internet."/>
+<link rel="alternate" type="application/atom+xml" title="mikansoro.org" href="https://mikansoro.org/atom.xml">
+    <meta name="color-scheme" content="light dark">
+    
+    <style>
+html{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:1rem;line-height:1.5;margin:auto;max-width:70ch;padding:1.5rem 1em 3em}
+img{max-width:100%}img:not([src$=".svg"]),article>div,pre{border-radius:.3rem}img[src$="#pixelate"]{image-rendering:pixelated}
+h1{font-size:1.75rem}
+h2{font-size:1.4rem} 
+h3{font-size:1.15rem}
+h4,h5,h6{font-size:inherit;}
+h1,h2,h3,h4,h5,h6{color:#4299eb}
+a.anchor{color:#4299eb}
+p{text-align:left;line-height:1.6;}p,ul,ol,.g,article>footer,article>header{margin:0 0 1.5em}
+pre,blockquote{padding:1.5rem;margin:0 0 1.5rem}pre{overflow-x:auto}pre code{background:0!important}blockquote{border-left:3px solid}blockquote>*:last-child{margin-bottom:0}
+article>img,article>p>img,article>div{display:block;margin-bottom:1.5rem;width:100%}
+.yt{aspect-ratio:16/9;width:100%;overflow:hidden}.yt iframe{width:100%;height:100%;border:0}
+.s{font-size:.85rem}
+.theme{display:inline-block;width:1.5rem;height:1.5rem}.theme img,.theme svg{width:100%;height:100%}
+html.lt .theme img:first-child,html.lt .theme svg:first-child,html.dk .theme img:last-child,html.dk .theme svg:last-child{display:none}
+header>div{margin-bottom:1.5rem}footer{margin-top:1.5rem}body>footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+body>footer img,body>footer svg{width:1em;height:1em;vertical-align:middle}
+.tags{padding:.5rem 0 0 0}.tags li{display:inline}.tags li+li::before{content:' · '}
+table{width:100%;border-collapse:collapse;margin:0 0 1.5rem}
+th,td{padding:.5rem;border-bottom:1px solid;text-align:center;}
+nav{display:flex;gap:.5rem;margin:1.5rem 0}nav a{flex:1;display:flex;flex-direction:column;align-items:center;overflow:hidden;font-weight:bold}nav img,nav svg{width:2rem;height:2rem;margin-bottom:.25rem}nav a .s{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.5rem,1fr));gap:.5rem}.g a{aspect-ratio:1;display:flex;align-items:center;justify-content:center}.g img{object-fit:contain;max-height:100%;max-width:100%}
+.p{list-style:none;padding:0}.p ul{margin:0}.p>li{display:flex;gap:1rem;margin-bottom:1rem}.p time{display:flex;flex-direction:column;align-items:center;min-width:3rem;margin:.25rem 0}.p time span:first-child{font-size:1.5em;line-height:1}
+.lb{position:fixed;inset:0;background:#000d;display:flex;align-items:center;justify-content:center;z-index:999;cursor:pointer}.lb img{max-width:95vw;max-height:95vh}
+@media(max-width:30em){html{font-size:.9rem}header .desc{display:none}nav{flex-wrap:wrap;row-gap:1.5rem}nav a{flex-basis:25%}}
+.footnote-definition{font-size:.85rem;margin:0 0 .5em;display:flex;gap:.5em}.footnote-definition-label{min-width:1.5em}.footnote-definition p{margin:0}.footnote-reference{margin:0 .15em}
+html.lt{background:#e8edff;--tc:#e8edff;color:#111111}
+html.lt a{color:#eb9442}
+html.lt a:visited{color:#eb9442}
+html.lt a.active,html.lt a:active,html.lt a:hover{color:#eb9442}
+html.lt p,html.lt ul,html.lt ol,html.lt .desc{color:#111111}
+html.lt blockquote,html.lt pre,html.lt code,html.lt article>img,html.lt article>p>img,html.lt .g img{background:oklch(.94 .1 93)!important}
+html.lt ::selection{background:#eb9442;color:#fff}html.lt .giallo{color-scheme:light!important}
+html.dk{background:#0b051c;--tc:#0b051c;color:#efefef}
+html.dk a{color:#eb9442}
+html.dk a:visited{color:#eb9442}
+html.dk a.active,html.dk a:active,html.dk a:hover{color:#eb9442}
+html.dk p,html.dk ul,html.dk ol,html.dk .desc{color:#efefef}
+html.dk img[src$=".svg"],html.dk nav svg,html.dk .theme svg,html.dk footer svg{filter:invert(1)}
+html.dk blockquote,html.dk pre,html.dk code,html.dk article>img,html.dk article>p>img,html.dk .g img{background:#222!important}
+html.dk ::selection{background:#eb9442;color:#000}html.dk .giallo{color-scheme:dark!important}
+a.active,a:active,a:hover{text-decoration-style:wavy}
+.tags a{text-decoration-style:dotted}
+hr{border:0;border-top:1px dashed;clear:both;margin-bottom:1.5rem}
+@media print{*{color:#000!important;filter:none!important}html[class][class] *{background:none!important}html{font-size:.8rem;max-width:none;padding:0;background:#fff!important}.theme{display:none}img,pre{break-inside:avoid}}
+    </style>
+    <meta name="theme-color" id="tc"><script>(function(){var m=matchMedia('(prefers-color-scheme:dark)'),t=localStorage.theme,h=document.documentElement,c=document.getElementById('tc');t=t=='dk'||t=='lt'?t:m.matches?'dk':'lt';localStorage.theme=t;h.className=t;function u(){c.content=getComputedStyle(h).getPropertyValue('--tc')}u();window.zb=function(){t=t==='dk'?'lt':'dk';localStorage.theme=t;h.className=t;u()}})()</script>
+    
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="home" viewBox="0 0 32 32"><path d="M16.6123,2.2138a1.01,1.01,0,0,0-1.2427,0L1,13.4194l1.2427,1.5717L4,13.6209V26a2.0041,2.0041,0,0,0,2,2H26a2.0037,2.0037,0,0,0,2-2V13.63L29.7573,15,31,13.4282ZM18,26H14V18h4Zm2,0V18a2.0023,2.0023,0,0,0-2-2H14a2.002,2.002,0,0,0-2,2v8H6V12.0615l10-7.79,10,7.8005V26Z"/></symbol>
+<symbol id="chat" viewBox="0 0 32 32"><path d="M17.74,30,16,29l4-7h6a2,2,0,0,0,2-2V8a2,2,0,0,0-2-2H6A2,2,0,0,0,4,8V20a2,2,0,0,0,2,2h9v2H6a4,4,0,0,1-4-4V8A4,4,0,0,1,6,4H26a4,4,0,0,1,4,4V20a4,4,0,0,1-4,4H21.16Z"/><rect x="8" y="10" width="16" height="2"/><rect x="8" y="16" width="10" height="2"/></symbol>
+<symbol id="color-palette" viewBox="0 0 32 32"><circle cx="10" cy="12" r="2"/><circle cx="16" cy="9" r="2"/><circle cx="22" cy="12" r="2"/><circle cx="23" cy="18" r="2"/><circle cx="19" cy="23" r="2"/><path d="M16.54,2A14,14,0,0,0,2,16a4.82,4.82,0,0,0,6.09,4.65l1.12-.31A3,3,0,0,1,13,23.24V27a3,3,0,0,0,3,3A14,14,0,0,0,30,15.46,14.05,14.05,0,0,0,16.54,2Zm8.11,22.31A11.93,11.93,0,0,1,16,28a1,1,0,0,1-1-1V23.24a5,5,0,0,0-5-5,5.07,5.07,0,0,0-1.33.18l-1.12.31A2.82,2.82,0,0,1,4,16,12,12,0,0,1,16.47,4,12.18,12.18,0,0,1,28,15.53,11.89,11.89,0,0,1,24.65,24.32Z"/></symbol>
+<symbol id="idea" viewBox="0 0 32 32"><rect x="11" y="24" width="10" height="2"/><rect x="13" y="28" width="6" height="2"/><path d="M16,2A10,10,0,0,0,6,12a9.19,9.19,0,0,0,3.46,7.62c1,.93,1.54,1.46,1.54,2.38h2c0-1.84-1.11-2.87-2.19-3.86A7.2,7.2,0,0,1,8,12a8,8,0,0,1,16,0,7.2,7.2,0,0,1-2.82,6.14c-1.07,1-2.18,2-2.18,3.86h2c0-.92.53-1.45,1.54-2.39A9.18,9.18,0,0,0,26,12,10,10,0,0,0,16,2Z"/></symbol>
+<symbol id="search" viewBox="0 0 32 32"><path d="M29,27.5859l-7.5521-7.5521a11.0177,11.0177,0,1,0-1.4141,1.4141L27.5859,29ZM4,13a9,9,0,1,1,9,9A9.01,9.01,0,0,1,4,13Z"/></symbol>
+<symbol id="light" viewBox="0 0 32 32"><rect x="15" y="2" width="2" height="5"/><rect x="21.6675" y="6.8536" width="4.958" height="1.9998" transform="translate(1.5191 19.3744) rotate(-45)"/><rect x="25" y="15" width="5" height="2"/><rect x="23.1466" y="21.6675" width="1.9998" height="4.958" transform="translate(-10.0018 24.1465) rotate(-45)"/><rect x="15" y="25" width="2" height="5"/><rect x="5.3745" y="23.1466" width="4.958" height="1.9998" transform="translate(-14.7739 12.6256) rotate(-45)"/><rect x="2" y="15" width="5" height="2"/><rect x="6.8536" y="5.3745" width="1.9998" height="4.958" transform="translate(-3.253 7.8535) rotate(-45)"/><path d="M16,12a4,4,0,1,1-4,4,4.0045,4.0045,0,0,1,4-4m0-2a6,6,0,1,0,6,6,6,6,0,0,0-6-6Z"/></symbol>
+<symbol id="asleep" viewBox="0 0 32 32"><path d="M13.5025,5.4136A15.0755,15.0755,0,0,0,25.096,23.6082a11.1134,11.1134,0,0,1-7.9749,3.3893c-.1385,0-.2782.0051-.4178,0A11.0944,11.0944,0,0,1,13.5025,5.4136M14.98,3a1.0024,1.0024,0,0,0-.1746.0156A13.0959,13.0959,0,0,0,16.63,28.9973c.1641.006.3282,0,.4909,0a13.0724,13.0724,0,0,0,10.702-5.5556,1.0094,1.0094,0,0,0-.7833-1.5644A13.08,13.08,0,0,1,15.8892,4.38,1.0149,1.0149,0,0,0,14.98,3Z"/></symbol>
+<symbol id="rss" viewBox="0 0 32 32"><path d="M8,18c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6C14,20.7,11.3,18,8,18z M8,28c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4C12,26.2,10.2,28,8,28z"/><path d="M30,24h-2C28,13,19,4,8,4V2C20.1,2,30,11.9,30,24z"/><path d="M22,24h-2c0-6.6-5.4-12-12-12v-2C15.7,10,22,16.3,22,24z"/></symbol>
+<symbol id="user" viewBox="0 0 32 32"><path d="M16,4a5,5,0,1,1-5,5,5,5,0,0,1,5-5m0-2a7,7,0,1,0,7,7A7,7,0,0,0,16,2Z"/><path d="M26,30H24V25a5,5,0,0,0-5-5H13a5,5,0,0,0-5,5v5H6V25a7,7,0,0,1,7-7h6a7,7,0,0,1,7,7Z"/></symbol>
+<symbol id="book" viewBox="0 0 32 32"><rect x="19" y="10" width="7" height="2"/><rect x="19" y="15" width="7" height="2"/><rect x="19" y="20" width="7" height="2"/><rect x="6" y="10" width="7" height="2"/><rect x="6" y="15" width="7" height="2"/><rect x="6" y="20" width="7" height="2"/><path d="M28,5H4A2.002,2.002,0,0,0,2,7V25a2.002,2.002,0,0,0,2,2H28a2.002,2.002,0,0,0,2-2V7A2.002,2.002,0,0,0,28,5ZM4,7H15V25H4ZM17,25V7H28V25Z"/></symbol>
+</svg>
+
+    <header>
+        <div class="s" style="display:flex;justify-content:space-between;align-items:center">
+            <span><strong>mikansoro.org</strong><span class="desc"> · Michael&#x27;s small corner of the internet.</span></span>
+            <a href="#" onclick="zb();return false" class="theme" aria-label="Toggle theme" title="Toggle theme">
+<svg><use href="#light"/></svg>
+<svg><use href="#asleep"/></svg></a>
+        </div>
+        <hr>
+        <nav>
+            <a href="https://mikansoro.org/" aria-label="Home">
+<svg><use href="#home"/></svg><span class="s">Home</span></a>
+            <a href="https://mikansoro.org/blog/" aria-label="Blog" class="active" aria-current="page">
+<svg><use href="#chat"/></svg><span class="s">Blog</span></a>
+            <a href="https://mikansoro.org/gallery/" aria-label="Gallery">
+<svg><use href="#color-palette"/></svg><span class="s">Gallery</span></a>
+            <a href="https://mikansoro.org/about/" aria-label="About">
+<svg><use href="#user"/></svg><span class="s">About</span></a>
+            <a href="https://mikansoro.org/blogroll/" aria-label="Blogroll">
+<svg><use href="#book"/></svg><span class="s">Blogroll</span></a>
+            <a href="https://mikansoro.org/tags/" aria-label="Tags">
+<svg><use href="#idea"/></svg><span class="s">Tags</span></a>
+            </nav>
+    </header>
+    <hr>
+    <main>
+    
+<article>
+  <header>
+    <h1>Manual Fanspeed Control through IPMI</h1>
+    <time class="s" datetime="2024-04-27">27 Apr 2024</time>
+    
+  </header>
+  
+  
+  
+    <span id="continue-reading"></span>
+<p>By default, enterprise compute and networking gear from large vendors (Dell, Supermicro, HPE, Cisco, etc) use dynamic fanspeed controls based on system temperature to ensure their vital components remain at a safe operating temperature.
+That's all well and good in the datacenter space where increased cooling capacity far outweighs an increase in noise.
+Likewise, sufficient cooling potential is provided by the ambient temperature delta between the cold and hot aisles, letting the BMC simply ramp fan speeds up as users push the hardware ever closer to the redline.</p>
+<p>In a homelab though, the calculus changes.</p>
+<p>Those fortunate enough to own a basement—one that doesn't flood when it rains—can care less when the natural cooling properties of a subterranean room plus decent sound isolation keep their servers running happily as they were designed.
+For the rest of us who wish to take advantage of enterprise-grade gear but live in a space-restricted dwelling, we must trade some cooling performance for a reduction in noise to stay sane.</p>
+<p>In my lab, I regularly run my server fans at 16-20% their maximum operating speed.
+I'm rarely stressing my systems above 15% utilization under normal operation for any significant period, and this range provides a workable cooling-to-noise ratio such that I don't feel like my ears are going to start bleeding when I open my server closet.</p>
+<p>But enough blabber. Let's talk solutions.</p>
+<p>I'll update this post with more vendors as I come across them, but as my lab is largely composed of Supermicro gear due to their less-uptight nature around vendor-specific hardware (<em>cough cough HPE</em>), updates will likely be few and far between.</p>
+<h2 id="ipmitool">ipmitool
+<a class="anchor" aria-label="Anchor link for: ipmitool" href="#ipmitool">#</a>
+
+</h2>
+<p><code>ipmitool</code> is a command-line tool for interacting with both the host-local and remote IPMI BMCs. It's largely used by sysadmins to administer low-level server function across a fleet, but it's a good back-pocket tool for homelabbers too. In the case of making servers quiet, ipmitool allows for bypassing the lack of proper fanspeed controls in IPMI management web UIs by interfacing directly with the BMC.</p>
+<p>Every fan controller implementation is a bit different, so the ultimate source of information for which commands work on what platform would be the vendor's specific documentation.</p>
+<h3 id="supermicro-ipmi">Supermicro IPMI
+<a class="anchor" aria-label="Anchor link for: supermicro-ipmi" href="#supermicro-ipmi">#</a>
+
+</h3>
+<p>To use ipmitool to connect to a remote Supermicro IPMI interface, run <code>ipmitool</code> with the following flags. <code>-P</code> is optional, and an interactive password prompt will appear if it is ommitted.</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ipmitool</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">I</span><span style="color: light-dark(#032F62, #9ECBFF);"> lan</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span> $</span><span>IPMI_IP_ADDR</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">U</span><span> $</span><span>IPMI_USER</span><span> [-P</span><span> $</span><span>IPMI_PASS</span><span style="color: light-dark(#032F62, #9ECBFF);">]</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">comman</span><span>d</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span></span></code></pre>
+<p>Supermicro fan controls consist of two zones, "system" and "peripheral". System fans are fans identified with a number (<code>FAN0</code>), and peripheral fans (like hot-swappable power supplies) are identified by letter (<code>FANA</code>).
+Supermicro provides four fan profiles to users: "Standard", "Full", "Optimal", and "Heavy IO". The definitions of these zones are provided below, but they come from <a rel="nofollow noreferrer external" href="https://forums.servethehome.com/index.php?resources/supermicro-x9-x10-x11-fan-speed-control.20/">this great ServeTheHome post</a> about controlling fans on the Supermicro x9-x11 platforms.</p>
+<ul>
+<li>Standard: BMC control of both fan zones, with CPU zone based on CPU temp (target speed 50%) and Peripheral zone based on PCH temp (target speed 50%)</li>
+<li>Optimal: BMC control of the CPU zone (target speed 30%), with Peripheral zone fixed at low speed (fixed ~30%)</li>
+<li>Full: all fans running at 100%</li>
+<li>Heavy IO: BMC control of CPU zone (target speed 50%), Peripheral zone fixed at 75%</li>
+</ul>
+<p>To manually set the fan speed to a fixed target, the fans must be set to use the "Full" profile. Other profiles will ignore the manual target speed commands we issue to the BMC.</p>
+<blockquote class="markdown-alert-note">
+<p>The post from ServeTheHome omits an <code>0x01</code> value from their raw commands, before the configurable values highlighted in my command blocks. These are the commands I use on my Supermicro x10-based <code>SuperServer 6028U-TR4T+</code> systems and 45Drives Storinators. I'll update this post in the future with more information on this extra magic number.</p>
+</blockquote>
+<p>All of the fan controls here use "raw" ipmi commands with seemingly magic numbers. For instance, here's the command to set the system to use the "Full" fan profile:</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> set the system to use the &quot;Full&quot; fan profile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> [args] are the connection arguments listed above</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ipmitool</span><span> [args</span><span>] raw 0x30 0x45 0x01 0x01</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);">                                     ^ Fan profile value</span></span></code></pre>
+<p>The final hex value in the command above is the fan profile for the system to use.
+<code>0x01</code> designates the "Full" profile.</p>
+<ul>
+<li>Standard: 0</li>
+<li>Full: 1</li>
+<li>Optimal: 2</li>
+<li>Heavy IO: 4</li>
+</ul>
+<p>Once the fans are set to "Full", each fan group's PWM duty cycle can be set to a percentage value of 0-100%, using the hex values <code>0x00</code> to <code>0x64</code>.
+Time for more magic numbers.</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);">                                          v &#39;0x00&#39; for the &quot;System&quot; fan group, &quot;0x01&quot; for the &quot;Peripheral&quot; group</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ipmitool</span><span> [args</span><span>] raw 0x30 0x70 0x66 0x01 0x00 0x16</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);">                                              ^ PWM duty cycle, 0x00 (0%) - 0x64 (100%)</span></span></code></pre><h3 id="dell-idrac">Dell iDRAC
+<a class="anchor" aria-label="Anchor link for: dell-idrac" href="#dell-idrac">#</a>
+
+</h3>
+<p>To use ipmitool to connect to a remote Dell iDRAC interface, run <code>ipmitool</code> with the following flags. <code>-P</code> is optional, and an interactive password prompt will appear if it is ommitted.</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span>IPMI_EK</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">0</span><span style="color: light-dark(#6A737D, #6A737D);"> #</span><span style="color: light-dark(#6A737D, #6A737D);"> default idrac encryption key</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ipmitool</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">I</span><span style="color: light-dark(#032F62, #9ECBFF);"> lanplus</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span> $</span><span>IPMI_IP_ADDR</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">U</span><span> $</span><span>IPMI_USER</span><span> [-P</span><span> $</span><span>IPMI_PASS</span><span style="color: light-dark(#032F62, #9ECBFF);">]</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">y</span><span> $</span><span>IPMI_EK</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">comman</span><span>d</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span></span></code></pre>
+<p>Similar to the Supermicro section above, we can set a fixed target PWM speed percentage through issuing "raw" commands to our BMC. It's the same two-step process, first setting the fans to their "Full" profile, and then adjusting the PWM duty cycle to our desired value.</p>
+<blockquote class="markdown-alert-note">
+<p>These are the commands to control the fans on a Dell r710. Subsequent versions of Dell R-series server iDRACs may have different values. Consult your system's documentation for a full list of options.</p>
+</blockquote>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Set fan profile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ipmitool</span><span> [args</span><span>] raw 0x30 0x30 0x01 0x00</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);">                                     ^ Fan Profile selector. 0x00 == &quot;Full&quot;, 0x01 == &quot;Optimal/Automatic&quot;</span></span></code></pre>
+<p>Setting the fan percentage is similar to the Supermicro example, where we pass a percentage value to lock the fans to a particular speed. However, there are no separate zones, and at the time of writing I don't know the actual percentage curve. <code>0x08</code> - <code>0x10</code> are reasonable for sitting in the same room while offering acceptable cooling performance in environments where the system isn't under heavy stress.</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Set fan percentage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ipmitool</span><span> [args</span><span>] raw 0x30 0x30 0x02 0xff 0xYY</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);">                                         ^ Speed selector value</span></span></code></pre>
+<p>This <a rel="nofollow noreferrer external" href="https://forums.servethehome.com/index.php?threads/r710-and-probably-other-11th-gen-dell-servers-fan-controller-shell-script.17284/post-197102">ServeTheHome thread</a> has some further discussion on the topic for 11th Generation Dell servers.</p>
+
+  
+  
+  
+  <footer class="s">
+    Tags: <a href='https://mikansoro.org/tags/homelab'>homelab</a>, <a href='https://mikansoro.org/tags/servers'>servers</a>, <a href='https://mikansoro.org/tags/selfhosting'>selfhosting</a>
+  </footer>
+  
+  
+</article>
+</main>
+    <hr>
+    <footer class="s">
+        <span>© mikansoro.org 2026</span>
+        <span>
+<svg><use href="#rss"/></svg> Feeds: <a href="https://mikansoro.org/atom.xml">Atom</a> · <a href="https://mikansoro.org/rss.xml">RSS</a></span>
+    </footer>
+    
+    
+    
+    <script>document.querySelectorAll('article img[srcset]').forEach(i=>{if(i.closest('a'))return;i.style.cursor='pointer';i.onclick=()=>{let d=document.createElement('div'),s=i.srcset.split(',').pop().trim().split(' ')[0];d.className='lb';d.innerHTML='<img src="'+s+'">';document.body.style.overflow='hidden';d.onclick=()=>{d.remove();document.body.style.overflow=''};document.body.appendChild(d)}})</script>
+    </body>
+</html>

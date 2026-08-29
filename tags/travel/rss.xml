@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>mikansoro.org - travel</title>
+      <link>https://mikansoro.org</link>
+      <description>Michael&#x27;s small corner of the internet.</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mikansoro.org/tags/travel/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Wed, 31 Jul 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Coin Lockers and Where to Find Them</title>
+          <pubDate>Wed, 31 Jul 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://mikansoro.org/blog/coin-lockers/</link>
+          <guid>https://mikansoro.org/blog/coin-lockers/</guid>
+          <description xml:base="https://mikansoro.org/blog/coin-lockers/">&lt;p&gt;Coin lockers are a near-ubiquitous oasis within Japanese cities and train stations for the multi-bag traveler.&lt;&#x2F;p&gt;</description>
+      </item>
+      <item>
+          <title>Tax-Free Shopping and the Japan Trusted Travel Program (TTP)</title>
+          <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://mikansoro.org/blog/japan-taxfree-ttp/</link>
+          <guid>https://mikansoro.org/blog/japan-taxfree-ttp/</guid>
+          <description xml:base="https://mikansoro.org/blog/japan-taxfree-ttp/">&lt;p&gt;Japan lets foreigners shop tax free at lots of stores, using the QR-code entry visa stamp in their passport. What most stores don&#x27;t know how to handle however, is a Japan Trusted Traveler Program card.&lt;&#x2F;p&gt;</description>
+      </item>
+      <item>
+          <title>Flying the new Delta Airlines A330-900</title>
+          <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://mikansoro.org/blog/flying-delta-a339-neo/</link>
+          <guid>https://mikansoro.org/blog/flying-delta-a339-neo/</guid>
+          <description xml:base="https://mikansoro.org/blog/flying-delta-a339-neo/">&lt;p&gt;A few things I noticed while flying one of the newest Delta A330-900s.&lt;&#x2F;p&gt;</description>
+      </item>
+    </channel>
+</rss>

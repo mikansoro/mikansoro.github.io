@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible"
+      content="IE=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+<meta name="description"
+      content="Michael&#x27;s small corner of the internet." />
+<meta name="keywords"
+      content="blog, technology, kubernetes, sre, homelab, travel, idols, Love Live!, anime" /> 
+
+<title>
+  Kubernetes Secrets - from Sealed-Secrets to Sops+Age // mikansoro.org</title>
+<meta property="og:site_name" content="mikansoro.org"/>
+<meta property="og:title" content="mikansoro.org | Kubernetes Secrets - from Sealed-Secrets to Sops+Age"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mikansoro.org/blog/sealed-secrets-to-sops/"/>
+<meta property="og:description" content="Michael&#x27;s small corner of the internet."/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Kubernetes Secrets - from Sealed-Secrets to Sops+Age"/>
+<meta name="twitter:description" content="Michael&#x27;s small corner of the internet."/>
+<link rel="alternate" type="application/atom+xml" title="mikansoro.org" href="https://mikansoro.org/atom.xml">
+    <meta name="color-scheme" content="light dark">
+    
+    <style>
+html{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:1rem;line-height:1.5;margin:auto;max-width:70ch;padding:1.5rem 1em 3em}
+img{max-width:100%}img:not([src$=".svg"]),article>div,pre{border-radius:.3rem}img[src$="#pixelate"]{image-rendering:pixelated}
+h1{font-size:1.75rem}
+h2{font-size:1.4rem} 
+h3{font-size:1.15rem}
+h4,h5,h6{font-size:inherit;}
+h1,h2,h3,h4,h5,h6{color:#4299eb}
+a.anchor{color:#4299eb}
+p{text-align:left;line-height:1.6;}p,ul,ol,.g,article>footer,article>header{margin:0 0 1.5em}
+pre,blockquote{padding:1.5rem;margin:0 0 1.5rem}pre{overflow-x:auto}pre code{background:0!important}blockquote{border-left:3px solid}blockquote>*:last-child{margin-bottom:0}
+article>img,article>p>img,article>div{display:block;margin-bottom:1.5rem;width:100%}
+.yt{aspect-ratio:16/9;width:100%;overflow:hidden}.yt iframe{width:100%;height:100%;border:0}
+.s{font-size:.85rem}
+.theme{display:inline-block;width:1.5rem;height:1.5rem}.theme img,.theme svg{width:100%;height:100%}
+html.lt .theme img:first-child,html.lt .theme svg:first-child,html.dk .theme img:last-child,html.dk .theme svg:last-child{display:none}
+header>div{margin-bottom:1.5rem}footer{margin-top:1.5rem}body>footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+body>footer img,body>footer svg{width:1em;height:1em;vertical-align:middle}
+.tags{padding:.5rem 0 0 0}.tags li{display:inline}.tags li+li::before{content:' · '}
+table{width:100%;border-collapse:collapse;margin:0 0 1.5rem}
+th,td{padding:.5rem;border-bottom:1px solid;text-align:center;}
+nav{display:flex;gap:.5rem;margin:1.5rem 0}nav a{flex:1;display:flex;flex-direction:column;align-items:center;overflow:hidden;font-weight:bold}nav img,nav svg{width:2rem;height:2rem;margin-bottom:.25rem}nav a .s{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.5rem,1fr));gap:.5rem}.g a{aspect-ratio:1;display:flex;align-items:center;justify-content:center}.g img{object-fit:contain;max-height:100%;max-width:100%}
+.p{list-style:none;padding:0}.p ul{margin:0}.p>li{display:flex;gap:1rem;margin-bottom:1rem}.p time{display:flex;flex-direction:column;align-items:center;min-width:3rem;margin:.25rem 0}.p time span:first-child{font-size:1.5em;line-height:1}
+.lb{position:fixed;inset:0;background:#000d;display:flex;align-items:center;justify-content:center;z-index:999;cursor:pointer}.lb img{max-width:95vw;max-height:95vh}
+@media(max-width:30em){html{font-size:.9rem}header .desc{display:none}nav{flex-wrap:wrap;row-gap:1.5rem}nav a{flex-basis:25%}}
+.footnote-definition{font-size:.85rem;margin:0 0 .5em;display:flex;gap:.5em}.footnote-definition-label{min-width:1.5em}.footnote-definition p{margin:0}.footnote-reference{margin:0 .15em}
+html.lt{background:#e8edff;--tc:#e8edff;color:#111111}
+html.lt a{color:#eb9442}
+html.lt a:visited{color:#eb9442}
+html.lt a.active,html.lt a:active,html.lt a:hover{color:#eb9442}
+html.lt p,html.lt ul,html.lt ol,html.lt .desc{color:#111111}
+html.lt blockquote,html.lt pre,html.lt code,html.lt article>img,html.lt article>p>img,html.lt .g img{background:oklch(.94 .1 93)!important}
+html.lt ::selection{background:#eb9442;color:#fff}html.lt .giallo{color-scheme:light!important}
+html.dk{background:#0b051c;--tc:#0b051c;color:#efefef}
+html.dk a{color:#eb9442}
+html.dk a:visited{color:#eb9442}
+html.dk a.active,html.dk a:active,html.dk a:hover{color:#eb9442}
+html.dk p,html.dk ul,html.dk ol,html.dk .desc{color:#efefef}
+html.dk img[src$=".svg"],html.dk nav svg,html.dk .theme svg,html.dk footer svg{filter:invert(1)}
+html.dk blockquote,html.dk pre,html.dk code,html.dk article>img,html.dk article>p>img,html.dk .g img{background:#222!important}
+html.dk ::selection{background:#eb9442;color:#000}html.dk .giallo{color-scheme:dark!important}
+a.active,a:active,a:hover{text-decoration-style:wavy}
+.tags a{text-decoration-style:dotted}
+hr{border:0;border-top:1px dashed;clear:both;margin-bottom:1.5rem}
+@media print{*{color:#000!important;filter:none!important}html[class][class] *{background:none!important}html{font-size:.8rem;max-width:none;padding:0;background:#fff!important}.theme{display:none}img,pre{break-inside:avoid}}
+    </style>
+    <meta name="theme-color" id="tc"><script>(function(){var m=matchMedia('(prefers-color-scheme:dark)'),t=localStorage.theme,h=document.documentElement,c=document.getElementById('tc');t=t=='dk'||t=='lt'?t:m.matches?'dk':'lt';localStorage.theme=t;h.className=t;function u(){c.content=getComputedStyle(h).getPropertyValue('--tc')}u();window.zb=function(){t=t==='dk'?'lt':'dk';localStorage.theme=t;h.className=t;u()}})()</script>
+    
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="home" viewBox="0 0 32 32"><path d="M16.6123,2.2138a1.01,1.01,0,0,0-1.2427,0L1,13.4194l1.2427,1.5717L4,13.6209V26a2.0041,2.0041,0,0,0,2,2H26a2.0037,2.0037,0,0,0,2-2V13.63L29.7573,15,31,13.4282ZM18,26H14V18h4Zm2,0V18a2.0023,2.0023,0,0,0-2-2H14a2.002,2.002,0,0,0-2,2v8H6V12.0615l10-7.79,10,7.8005V26Z"/></symbol>
+<symbol id="chat" viewBox="0 0 32 32"><path d="M17.74,30,16,29l4-7h6a2,2,0,0,0,2-2V8a2,2,0,0,0-2-2H6A2,2,0,0,0,4,8V20a2,2,0,0,0,2,2h9v2H6a4,4,0,0,1-4-4V8A4,4,0,0,1,6,4H26a4,4,0,0,1,4,4V20a4,4,0,0,1-4,4H21.16Z"/><rect x="8" y="10" width="16" height="2"/><rect x="8" y="16" width="10" height="2"/></symbol>
+<symbol id="color-palette" viewBox="0 0 32 32"><circle cx="10" cy="12" r="2"/><circle cx="16" cy="9" r="2"/><circle cx="22" cy="12" r="2"/><circle cx="23" cy="18" r="2"/><circle cx="19" cy="23" r="2"/><path d="M16.54,2A14,14,0,0,0,2,16a4.82,4.82,0,0,0,6.09,4.65l1.12-.31A3,3,0,0,1,13,23.24V27a3,3,0,0,0,3,3A14,14,0,0,0,30,15.46,14.05,14.05,0,0,0,16.54,2Zm8.11,22.31A11.93,11.93,0,0,1,16,28a1,1,0,0,1-1-1V23.24a5,5,0,0,0-5-5,5.07,5.07,0,0,0-1.33.18l-1.12.31A2.82,2.82,0,0,1,4,16,12,12,0,0,1,16.47,4,12.18,12.18,0,0,1,28,15.53,11.89,11.89,0,0,1,24.65,24.32Z"/></symbol>
+<symbol id="idea" viewBox="0 0 32 32"><rect x="11" y="24" width="10" height="2"/><rect x="13" y="28" width="6" height="2"/><path d="M16,2A10,10,0,0,0,6,12a9.19,9.19,0,0,0,3.46,7.62c1,.93,1.54,1.46,1.54,2.38h2c0-1.84-1.11-2.87-2.19-3.86A7.2,7.2,0,0,1,8,12a8,8,0,0,1,16,0,7.2,7.2,0,0,1-2.82,6.14c-1.07,1-2.18,2-2.18,3.86h2c0-.92.53-1.45,1.54-2.39A9.18,9.18,0,0,0,26,12,10,10,0,0,0,16,2Z"/></symbol>
+<symbol id="search" viewBox="0 0 32 32"><path d="M29,27.5859l-7.5521-7.5521a11.0177,11.0177,0,1,0-1.4141,1.4141L27.5859,29ZM4,13a9,9,0,1,1,9,9A9.01,9.01,0,0,1,4,13Z"/></symbol>
+<symbol id="light" viewBox="0 0 32 32"><rect x="15" y="2" width="2" height="5"/><rect x="21.6675" y="6.8536" width="4.958" height="1.9998" transform="translate(1.5191 19.3744) rotate(-45)"/><rect x="25" y="15" width="5" height="2"/><rect x="23.1466" y="21.6675" width="1.9998" height="4.958" transform="translate(-10.0018 24.1465) rotate(-45)"/><rect x="15" y="25" width="2" height="5"/><rect x="5.3745" y="23.1466" width="4.958" height="1.9998" transform="translate(-14.7739 12.6256) rotate(-45)"/><rect x="2" y="15" width="5" height="2"/><rect x="6.8536" y="5.3745" width="1.9998" height="4.958" transform="translate(-3.253 7.8535) rotate(-45)"/><path d="M16,12a4,4,0,1,1-4,4,4.0045,4.0045,0,0,1,4-4m0-2a6,6,0,1,0,6,6,6,6,0,0,0-6-6Z"/></symbol>
+<symbol id="asleep" viewBox="0 0 32 32"><path d="M13.5025,5.4136A15.0755,15.0755,0,0,0,25.096,23.6082a11.1134,11.1134,0,0,1-7.9749,3.3893c-.1385,0-.2782.0051-.4178,0A11.0944,11.0944,0,0,1,13.5025,5.4136M14.98,3a1.0024,1.0024,0,0,0-.1746.0156A13.0959,13.0959,0,0,0,16.63,28.9973c.1641.006.3282,0,.4909,0a13.0724,13.0724,0,0,0,10.702-5.5556,1.0094,1.0094,0,0,0-.7833-1.5644A13.08,13.08,0,0,1,15.8892,4.38,1.0149,1.0149,0,0,0,14.98,3Z"/></symbol>
+<symbol id="rss" viewBox="0 0 32 32"><path d="M8,18c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6C14,20.7,11.3,18,8,18z M8,28c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4C12,26.2,10.2,28,8,28z"/><path d="M30,24h-2C28,13,19,4,8,4V2C20.1,2,30,11.9,30,24z"/><path d="M22,24h-2c0-6.6-5.4-12-12-12v-2C15.7,10,22,16.3,22,24z"/></symbol>
+<symbol id="user" viewBox="0 0 32 32"><path d="M16,4a5,5,0,1,1-5,5,5,5,0,0,1,5-5m0-2a7,7,0,1,0,7,7A7,7,0,0,0,16,2Z"/><path d="M26,30H24V25a5,5,0,0,0-5-5H13a5,5,0,0,0-5,5v5H6V25a7,7,0,0,1,7-7h6a7,7,0,0,1,7,7Z"/></symbol>
+<symbol id="book" viewBox="0 0 32 32"><rect x="19" y="10" width="7" height="2"/><rect x="19" y="15" width="7" height="2"/><rect x="19" y="20" width="7" height="2"/><rect x="6" y="10" width="7" height="2"/><rect x="6" y="15" width="7" height="2"/><rect x="6" y="20" width="7" height="2"/><path d="M28,5H4A2.002,2.002,0,0,0,2,7V25a2.002,2.002,0,0,0,2,2H28a2.002,2.002,0,0,0,2-2V7A2.002,2.002,0,0,0,28,5ZM4,7H15V25H4ZM17,25V7H28V25Z"/></symbol>
+</svg>
+
+    <header>
+        <div class="s" style="display:flex;justify-content:space-between;align-items:center">
+            <span><strong>mikansoro.org</strong><span class="desc"> · Michael&#x27;s small corner of the internet.</span></span>
+            <a href="#" onclick="zb();return false" class="theme" aria-label="Toggle theme" title="Toggle theme">
+<svg><use href="#light"/></svg>
+<svg><use href="#asleep"/></svg></a>
+        </div>
+        <hr>
+        <nav>
+            <a href="https://mikansoro.org/" aria-label="Home">
+<svg><use href="#home"/></svg><span class="s">Home</span></a>
+            <a href="https://mikansoro.org/blog/" aria-label="Blog" class="active" aria-current="page">
+<svg><use href="#chat"/></svg><span class="s">Blog</span></a>
+            <a href="https://mikansoro.org/gallery/" aria-label="Gallery">
+<svg><use href="#color-palette"/></svg><span class="s">Gallery</span></a>
+            <a href="https://mikansoro.org/about/" aria-label="About">
+<svg><use href="#user"/></svg><span class="s">About</span></a>
+            <a href="https://mikansoro.org/blogroll/" aria-label="Blogroll">
+<svg><use href="#book"/></svg><span class="s">Blogroll</span></a>
+            <a href="https://mikansoro.org/tags/" aria-label="Tags">
+<svg><use href="#idea"/></svg><span class="s">Tags</span></a>
+            </nav>
+    </header>
+    <hr>
+    <main>
+    
+<article>
+  <header>
+    <h1>Kubernetes Secrets - from Sealed-Secrets to Sops+Age</h1>
+    <time class="s" datetime="2025-12-24">24 Dec 2025</time>
+    
+  </header>
+  
+  
+  
+    <p>I finally switched from sealed-secrets to sops + age for managing Kubernetes secrets in git. It's been a long time coming.</p>
+<span id="continue-reading"></span>
+<p>Right after spinning up my first (and recently retired) Kubernetes cluster, one of the first problems I faced was how to manage secrets for the applications I wanted to run on it. If I had chosen to deploy my cluster with a cloud provider, the simple and obvious choice would be to use whatever secrets management platform they had on offer. I was not afforded that luxury with selfhosting. Likewise I could've created secrets imperatively with <code>kubectl create secret</code> and called it a day. That felt even dirtier than signing up for AWS just to use Secrets Manager. I was going to do it the "right" way: Kubernetes, with blackjack and gitops!</p>
+<p>There were a few ways I could solve this thorny problem, including <a rel="nofollow noreferrer external" href="https://github.com/bitnami-labs/sealed-secrets">sealed-secrets</a>, <a rel="nofollow noreferrer external" href="https://github.com/getsops/sops">sops</a>, and <a rel="nofollow noreferrer external" href="https://www.hashicorp.com/products/vault">Hashicorp Vault</a>. Vault was so far beyond overkill I couldn't see it over the horizon, and running it to manage a couple of api keys was out of the question. At the time, 1password didn't support api access to secrets in Kubernetes on any sort of plan obtainable by a puny individual subscriber, so integrating directly with my password manager was also out of the question.</p>
+<p>Sops, originally created by Mozilla, seemed like a good solution. Pass it a GPG key (or several other formats) and it could encrypt portions of files at rest, making them safe to commit to a git repository. It felt like ansible-vault, but capable of standalone operation. For reasons unknown to me at the time of writing, I decided it was too much headache to manage keys and partial repo encryption, and went looking elsewhere.</p>
+<p>Eventually, I landed on the sealed-secrets controller developed by bitnami. It ran a controller inside Kubernetes that generated a key on first boot, and kubernetes secrets were encrypted via a cli tool to store at rest in git. The key was (in theory) unextractable, tying an encrypted secret manifest to a cluster. Even better, sealed-secrets included a CRD for the encrypted secret resource which made secret management with ArgoCD a breeze.</p>
+<h2 id="sealed-secrets-and-why-i-left-them-behind">Sealed-Secrets, and Why I Left them Behind
+<a class="anchor" aria-label="Anchor link for: sealed-secrets-and-why-i-left-them-behind" href="#sealed-secrets-and-why-i-left-them-behind">#</a>
+
+</h2>
+<p>When I only had a single cluster, life was easy. Deploying the controller was a breeze. I created manifests, stored them in git, and wrote a short helper script to manage secret encryption with sealed-secrets. I went on with my day deploying workloads to my shiny new Kubernetes cluster.</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#!</span><span style="color: light-dark(#6A737D, #6A737D);">/usr/bin/env bash</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">if</span><span> [</span><span style="color: light-dark(#D73A49, #F97583);"> !</span><span style="color: light-dark(#D73A49, #F97583);"> -f</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">$</span><span style="color: light-dark(#005CC5, #79B8FF);">1</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span> ]</span><span>;</span><span style="color: light-dark(#D73A49, #F97583);"> then</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">    echo</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Requires path to a secret file to seal.</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;&amp;2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">    exit</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">fi</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">if</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">$(</span><span style="color: light-dark(#6F42C1, #B392F0);">yq</span><span style="color: light-dark(#032F62, #9ECBFF);"> e</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">.kind</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">$</span><span style="color: light-dark(#005CC5, #79B8FF);">1</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">)</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#D73A49, #F97583);"> !=</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Secret</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span> ]</span><span>;</span><span style="color: light-dark(#D73A49, #F97583);"> then</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">    echo</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">File </span><span style="color: light-dark(#005CC5, #79B8FF);">$</span><span style="color: light-dark(#005CC5, #79B8FF);">1</span><span style="color: light-dark(#032F62, #9ECBFF);"> must be a secret manifest</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;&amp;2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">    exit</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">fi</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>tmpl_file</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">$</span><span style="color: light-dark(#005CC5, #79B8FF);">1</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>tmpl_dir</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span>$(</span><span style="color: light-dark(#6F42C1, #B392F0);">dirname</span><span style="color: light-dark(#E36209, #FFAB70);"> $</span><span style="color: light-dark(#E36209, #FFAB70);">1</span><span>)</span></span>
+<span class="giallo-l"><span>tmpl_filename</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span>$(</span><span style="color: light-dark(#6F42C1, #B392F0);">basename</span><span style="color: light-dark(#E36209, #FFAB70);"> $</span><span style="color: light-dark(#E36209, #FFAB70);">1</span><span>)</span></span>
+<span class="giallo-l"><span>tmp_file</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">$</span><span style="color: light-dark(#032F62, #9ECBFF);">{</span><span>tmpl_dir</span><span style="color: light-dark(#032F62, #9ECBFF);">}</span><span style="color: light-dark(#032F62, #9ECBFF);">/</span><span style="color: light-dark(#032F62, #9ECBFF);">$(</span><span style="color: light-dark(#005CC5, #79B8FF);">echo</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span>$</span><span>tmpl_filename</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> cut</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">.</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">f1</span><span style="color: light-dark(#032F62, #9ECBFF);">)</span><span style="color: light-dark(#032F62, #9ECBFF);">.tmp.yaml</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>sealed_file</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">$</span><span style="color: light-dark(#032F62, #9ECBFF);">{</span><span>tmpl_dir</span><span style="color: light-dark(#032F62, #9ECBFF);">}</span><span style="color: light-dark(#032F62, #9ECBFF);">/</span><span style="color: light-dark(#032F62, #9ECBFF);">$(</span><span style="color: light-dark(#005CC5, #79B8FF);">echo</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span>$</span><span>tmpl_filename</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> cut</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">.</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">f1</span><span style="color: light-dark(#032F62, #9ECBFF);">)</span><span style="color: light-dark(#032F62, #9ECBFF);">.sealed.yaml</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> regular expression to check for any base64 encoded values in input file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> if a base64 value is found, assume secret is properly formatted.</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> runs with grep -Po, to force perl mode regular expression evaluation for positive lookback support to avoid matching other k8s keys/values</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> positive lookback: &#39;(?&lt;=\: )&#39; -&gt; only match if &#39;: &#39; exists before the base64 text</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">if</span><span style="color: light-dark(#D73A49, #F97583);"> !</span><span style="color: light-dark(#6F42C1, #B392F0);"> grep</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">Po</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">(?&lt;=\: )([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)?$</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">$</span><span style="color: light-dark(#005CC5, #79B8FF);">1</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>;</span><span style="color: light-dark(#D73A49, #F97583);"> then</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    yq</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o=json</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">$</span><span style="color: light-dark(#005CC5, #79B8FF);">1</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> jq</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">.data |= map_values(@base64) | { data: .data }</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> yq</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">P</span><span style="color: light-dark(#032F62, #9ECBFF);"> eval-all</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">. as $item ireduce ({}; . * $item )</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span>$</span><span>tmpl_file</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);"> -</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span>$</span><span>tmp_file</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">else</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    cat</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>$</span><span>tmpl_file</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>$</span><span>tmp_file</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">fi</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">kubeseal</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-controller-namespace</span><span style="color: light-dark(#032F62, #9ECBFF);"> sealed-secrets</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>$</span><span>tmp_file</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>$</span><span>sealed_file</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#D73A49, #F97583);">|</span><span style="color: light-dark(#6F42C1, #B392F0);"> rm</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span>$</span><span>sealed_file</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">rm</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span>$</span><span>tmp_file</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre>
+<p>Two years in, I needed to deploy my first workload that needed to be open to the public internet: Nextcloud. Not wanting to open the internet floodgate to my hand-rolled, no automation kubeadm managed house of jank that was my first attempt at Kubernetes, I decided it best to separate fully public workloads from private ones with a dedicated cluster in a separate, isolated network with minimal permissions. Great idea, right?</p>
+<p>It was. Except for a neat little conundrum I unwittingly committed future me to solving. My manifests for core cluster components like <a rel="nofollow noreferrer external" href="https://cert-manager.io/">cert-manager</a> weren't completely portable. The sealed-secrets controller's decryption key couldn't be replicated to the new cluster (without work and <em>a lot of</em> jank), so the easiest path forward was to pull secrets off the private cluster one-by-one and re-encrypt them for the new cluster. (Yes, I could've made new API keys for some of these services, I have now. Not the point here.)</p>
+<p>Now, what happens when my third (or fourth) cluster come along? The problem continues to compound. Add on the fact that secrets can't be decrypted locally for inspection and rotating secrets requires accessing every cluster to re-encrypt the template? The friction is unsustainable.</p>
+<h2 id="back-to-basics-sops-age">Back to Basics: sops + age
+<a class="anchor" aria-label="Anchor link for: back-to-basics-sops-age" href="#back-to-basics-sops-age">#</a>
+
+</h2>
+<p>Ironically, I'm looking to the same solution I dismissed early on as "too complex" for salvation. "Too complex" isn't quite right; my past self describing sops as "too difficult" would be more accurate. It was reasonable at the time to pick a tooling ecosystem with a low barrier to entry for which I already had a strong mental model, but now it's time to pick something <a rel="nofollow noreferrer external" href="https://scotmcknight.substack.com/p/difference-between-easy-and-simple"><em>simple</em></a>.</p>
+<p>Sops on its own won't offer me salvation, but it gets me close. Sops handles encryption and decryption of yaml files on disk (including partial encryption by encrypting only the <em>actually sensitive</em> keys, which is awesome!), but on its own it neither knows or cares about Kubernetes. It needs some help.</p>
+<p>Sops also has support for a few different types of encryption keys, but I'll be using <a rel="nofollow noreferrer external" href="https://github.com/FiloSottile/age">age</a> as it's a well-tested modern encryption solution that integrates cleanly with sops. With the incredible <a rel="nofollow noreferrer external" href="https://github.com/Mic92/ssh-to-age/">ssh-to-age</a> I can even use machine-specific ssh keys to encrypt and decrypt secret data! No sharing keys across every development device!</p>
+<h3 id="kubernetes-with-ksops">Kubernetes with ksops
+<a class="anchor" aria-label="Anchor link for: kubernetes-with-ksops" href="#kubernetes-with-ksops">#</a>
+
+</h3>
+<p>My main concern with switching to sops was integrating my encrypted secrets data with my deployment tools of choice: kustomize and ArgoCD. Luckily, the folks over at Viaduct AI created <a rel="nofollow noreferrer external" href="https://github.com/viaduct-ai/kustomize-sops">kustomize-sops</a> (<code>ksops</code>), a kustomize plugin written in go that can handle the decryption of sops secrets during a <code>kustomize build</code> execution. They even included a handy guide for integrating their plugin into ArgoCD via an initContainer.</p>
+<p>I won't cover integrations with other tools like Helm here. I already make heavy use of Kustomize in my repository for patches and management of remote manifests from upstream projects. I haven't been publicly vocal about my distaste for Helm before, but at best Helm is a mistake. I won't turn this into a rant, it deserves its own post. Stay tuned for that.</p>
+<p>Tangent aside, let's move on to the fun stuff.</p>
+<h2 id="lets-encrypt-some-secrets">Lets Encrypt some Secrets
+<a class="anchor" aria-label="Anchor link for: lets-encrypt-some-secrets" href="#lets-encrypt-some-secrets">#</a>
+
+</h2>
+<p>Any type of secret, not just TLS certs (i'm sorry, the pun was too good to omit).</p>
+<p>Let's look at a practical deployment of sops + age, integrated with ArgoCD.</p>
+<h3 id="setting-up-sops-age-on-nixos">Setting up sops + age on NixOS
+<a class="anchor" aria-label="Anchor link for: setting-up-sops-age-on-nixos" href="#setting-up-sops-age-on-nixos">#</a>
+
+</h3>
+<p>I'll walk through how I use sops with Kubernetes, but you don't need to copy my implementation to implement this yourself.</p>
+<p>All of my workstations (and soon, all of my servers!) run on NixOS. The "everything is declarative" approach to package management and configuration is <em>amazing</em> for reproducing environments across multiple machines. That extends to nix-shell too, a method of defining a "devshell" specific to a project. I have the following <code>shell.nix</code> file in my Kubernetes manifests/argocd git repo:</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="nix"><span class="giallo-l"><span>{</span><span> pkgs</span><span style="color: light-dark(#D73A49, #F97583);"> ?</span><span style="color: light-dark(#005CC5, #79B8FF);"> import</span><span style="color: light-dark(#032F62, #9ECBFF);"> &lt;nixpkgs&gt;</span><span> {</span><span>}</span><span> }</span><span>:</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">with</span><span style="color: light-dark(#E36209, #FFAB70);"> pkgs</span><span>;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">pkgs</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span style="color: light-dark(#E36209, #FFAB70);">mkShellNoCC</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">  buildInputs</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> [</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> sops tooling</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    sops</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    age</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    ssh-to-age</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    kustomize-sops</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    kustomize</span></span>
+<span class="giallo-l"><span>  ]</span><span>;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">  #</span><span style="color: light-dark(#6A737D, #6A737D);"> thanks github:starcraft66/infrastructure</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">  KUSTOMIZE_PLUGIN_HOME</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#E36209, #FFAB70);"> pkgs</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span style="color: light-dark(#E36209, #FFAB70);">buildEnv</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    name</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">kustomize-plugins</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    paths</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#D73A49, #F97583);"> with</span><span style="color: light-dark(#E36209, #FFAB70);"> pkgs</span><span>;</span><span> [</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">      kustomize-sops</span></span>
+<span class="giallo-l"><span>    ]</span><span>;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    postBuild</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">      mv $out/lib/* $out</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">      rm -r $out/lib</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &#39;&#39;</span><span>;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    pathsToLink</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">/lib</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span> ]</span><span>;</span></span>
+<span class="giallo-l"><span>  }</span><span>;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">  shellHook</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">     export SOPS_AGE_KEY=&quot;$(ssh-to-age -private-key -i $HOME/.ssh/id_ed25519)&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">  &#39;&#39;</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>This does a few things, and credit to github user <a rel="nofollow noreferrer external" href="https://github.com/starcraft66/infrastructure/blob/89caa0506ce7c21a7b11cb39c5b304ee69652b82/flake.nix#L80-L90">starcraft66's infrastructure repo</a> for the <code>KUSTOMIZE_PLUGIN_HOME</code> variable creation example. This nix shell sets up the following:</p>
+<ul>
+<li>installs necessary packages (<code>sops</code>, <code>age</code>, <code>kustomize</code>, <code>ssh-to-age</code>)</li>
+<li>installs <code>kustomize-sops</code> and places the go modules in a plugin directory, exported as <code>KUSTOMIZE_PLUGIN_HOME</code></li>
+<li>exports <code>SOPS_AGE_KEY</code> based on the current user's ssh key</li>
+</ul>
+<p>This can all be configured manually on any linux distribution with the right packages, but checking in the declarative shell definition with my manifests makes my life so much simpler.</p>
+<h4 id="patching-ksops">Patching ksops
+</h4>
+<p>When I first started working on this post, the <code>kustomizes-sops</code> package in nixpkgs was broken. The go module was renamed in v3, and there was a <a rel="nofollow noreferrer external" href="https://github.com/NixOS/nixpkgs/pull/175539">2 year old PR</a> to address it (also by <code>starcraft66</code>, you rock). At the time, I created a nix derivation for <code>kustomize-sops</code> inside my repo and included it in my <code>shell.nix</code>:</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="nix"><span class="giallo-l"><span>final</span><span>:</span><span> prev</span><span>:</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">  kustomize-sops</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#E36209, #FFAB70);"> prev</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span style="color: light-dark(#E36209, #FFAB70);">kustomize-sops</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span style="color: light-dark(#E36209, #FFAB70);">overrideAttrs</span><span>(</span><span>previousAttrs</span><span>:</span><span> {</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Based on unresolved patch here from 2022: https://github.com/NixOS/nixpkgs/pull/175539/files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> module name is expected as ksops/ksops, not ksops-exec/ksops-exec after version 2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    installPhase</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> (</span><span style="color: light-dark(#E36209, #FFAB70);">previousAttrs</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span style="color: light-dark(#E36209, #FFAB70);">installPhase</span><span style="color: light-dark(#D73A49, #F97583);"> or</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>)</span><span style="color: light-dark(#D73A49, #F97583);"> +</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">      mkdir -p $out/lib/viaduct.ai/v1/ksops/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">      cp $out/lib/viaduct.ai/v1/ksops-exec/ksops-exec $out/lib/viaduct.ai/v1/ksops/ksops</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &#39;&#39;</span><span>;</span></span>
+<span class="giallo-l"><span>  }</span><span>)</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="diff"><span class="giallo-l"><span style="color: light-dark(#B31D28, #FDAEB7);background-color: light-dark(#FFEEF0, #86181D);">-</span><span style="color: light-dark(#B31D28, #FDAEB7);background-color: light-dark(#FFEEF0, #86181D);"> { pkgs ? import &lt;nixpkgs&gt; {} }:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);"> { pkgs ? import &lt;nixpkgs&gt; { overlays = [ (import ./.nix/overlays/kustomize-sops.nix) ]; } }:</span></span></code></pre><h3 id="generating-age-keys">Generating Age Keys
+<a class="anchor" aria-label="Anchor link for: generating-age-keys" href="#generating-age-keys">#</a>
+
+</h3>
+<p>(The keys in this post were only ever used for demonstration purposes. If you want to YOLO, go ahead and use it at your own risk.)</p>
+<p>Generating an age key is as simple as running <code>age-keygen</code> with the optional <code>-o output.txt</code> parameter. This will generate a public/private age keypair that we can use with sops:</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">michael@laptop</span><span style="color: light-dark(#032F62, #9ECBFF);"> ❯</span><span style="color: light-dark(#032F62, #9ECBFF);"> age-keygen</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> created: 2025-11-12T15:11:27-08:00</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> public key: age1jg5r9uynw5xp52lyac7nh0e8puxs74yqskh5fx6txd34fnkpkv8qlzzq0w</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">AGE-SECRET-KEY-1NCQSKFRE0F0T69W2PVVQZVT3C0VJMS0JQW3YFUH6KQZNE60LUSPQQR37M7</span></span></code></pre>
+<p>We can also use <code>ssh-to-age</code> to generate public and private age keys based on an ed25519 ssh key. I'll generate a new ssh key pair and then use it to generate an age key pair here:</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">michael@laptop</span><span style="color: light-dark(#032F62, #9ECBFF);"> ❯</span><span style="color: light-dark(#032F62, #9ECBFF);"> ssh-keygen</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">Generating</span><span style="color: light-dark(#032F62, #9ECBFF);"> public/private</span><span style="color: light-dark(#032F62, #9ECBFF);"> ed25519</span><span style="color: light-dark(#032F62, #9ECBFF);"> key</span><span style="color: light-dark(#032F62, #9ECBFF);"> pair.</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">Enter</span><span style="color: light-dark(#032F62, #9ECBFF);"> file</span><span style="color: light-dark(#032F62, #9ECBFF);"> in</span><span style="color: light-dark(#032F62, #9ECBFF);"> which</span><span style="color: light-dark(#032F62, #9ECBFF);"> to</span><span style="color: light-dark(#032F62, #9ECBFF);"> save</span><span style="color: light-dark(#032F62, #9ECBFF);"> the</span><span style="color: light-dark(#032F62, #9ECBFF);"> key</span><span> (/home/michael/.ssh/id_ed25519</span><span>): ./age-example-25519</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">Enter</span><span style="color: light-dark(#032F62, #9ECBFF);"> passphrase</span><span style="color: light-dark(#032F62, #9ECBFF);"> for</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">./age-example-25519</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span> (empty</span><span style="color: light-dark(#032F62, #9ECBFF);"> for</span><span style="color: light-dark(#032F62, #9ECBFF);"> no</span><span style="color: light-dark(#032F62, #9ECBFF);"> passphrase</span><span>):</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">Enter</span><span style="color: light-dark(#032F62, #9ECBFF);"> same</span><span style="color: light-dark(#032F62, #9ECBFF);"> passphrase</span><span style="color: light-dark(#032F62, #9ECBFF);"> again:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">Your</span><span style="color: light-dark(#032F62, #9ECBFF);"> identification</span><span style="color: light-dark(#032F62, #9ECBFF);"> has</span><span style="color: light-dark(#032F62, #9ECBFF);"> been</span><span style="color: light-dark(#032F62, #9ECBFF);"> saved</span><span style="color: light-dark(#032F62, #9ECBFF);"> in</span><span style="color: light-dark(#032F62, #9ECBFF);"> ./age-example-25519</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">Your</span><span style="color: light-dark(#032F62, #9ECBFF);"> public</span><span style="color: light-dark(#032F62, #9ECBFF);"> key</span><span style="color: light-dark(#032F62, #9ECBFF);"> has</span><span style="color: light-dark(#032F62, #9ECBFF);"> been</span><span style="color: light-dark(#032F62, #9ECBFF);"> saved</span><span style="color: light-dark(#032F62, #9ECBFF);"> in</span><span style="color: light-dark(#032F62, #9ECBFF);"> ./age-example-25519.pub</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">The</span><span style="color: light-dark(#032F62, #9ECBFF);"> key</span><span style="color: light-dark(#032F62, #9ECBFF);"> fingerprint</span><span style="color: light-dark(#032F62, #9ECBFF);"> is:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">SHA256:UG+fcTl6Zyh1xzV7Ha/YeAyPByzvd0RVyYaqLGfipLA</span><span style="color: light-dark(#032F62, #9ECBFF);"> michael@laptop</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">The</span><span style="color: light-dark(#032F62, #9ECBFF);"> key</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">s randomart image is:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">+--[ED25519 256]--+</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">|        .     oo*|</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">|       . . . . *O|</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">|      .   + * *.O|</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">|       . . = / *o|</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">|        S . X X +|</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">|   .   + = . = + |</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">|    o + =   . . .|</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">|   E . .     . . |</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">|                 |</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">+----[SHA256]-----+</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">michael@laptop ❯ ssh-to-age -i age-example-25519.pub</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">age1qejhjaqlwncvkhylgjnzssujjxk4mfztz8jxcdmu3frrs3vjte5s2uk8uu</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">michael@laptop ❯ ssh-to-age -private-key -i age-example-25519</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">AGE-SECRET-KEY-1QP9RZ37D6ASRU448CQ8TJNPYYE0HCQK7FA4R6LCG5RSJV28KZ7YQ3XYC5M</span></span></code></pre><h3 id="configuring-sops">Configuring Sops
+<a class="anchor" aria-label="Anchor link for: configuring-sops" href="#configuring-sops">#</a>
+
+</h3>
+<p>Now that we have some keys to work with, we can start looking at sops itself. I'll be reusing the keys generated in the previous section here.</p>
+<p>Before we can encrypt anything, sops has to be told <em>what</em> should be considered secret and <em>how</em> to encrypt it. Sops automatically searches for its config file (<code>.sops.yaml</code>) in the current directory tree. Instead of rambling about how the configuration works, let's take a look at an example config file.</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">k</span><span style="color: light-dark(#22863A, #85E89D);">eys</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#D73A49, #F97583);"> &amp;</span><span style="color: light-dark(#6F42C1, #B392F0);">argocd</span><span style="color: light-dark(#032F62, #9ECBFF);"> a</span><span style="color: light-dark(#032F62, #9ECBFF);">ge1jg5r9uynw5xp52lyac7nh0e8puxs74yqskh5fx6txd34fnkpkv8qlzzq0w</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#D73A49, #F97583);"> &amp;</span><span style="color: light-dark(#6F42C1, #B392F0);">admin</span><span style="color: light-dark(#032F62, #9ECBFF);"> a</span><span style="color: light-dark(#032F62, #9ECBFF);">ge1qejhjaqlwncvkhylgjnzssujjxk4mfztz8jxcdmu3frrs3vjte5s2uk8uu</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">c</span><span style="color: light-dark(#22863A, #85E89D);">reation_rules</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> u</span><span style="color: light-dark(#22863A, #85E89D);">nencrypted_regex</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">^(apiVersion|metadata|kind|type)$</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    p</span><span style="color: light-dark(#22863A, #85E89D);">ath_regex</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> .</span><span style="color: light-dark(#032F62, #9ECBFF);">*\.(yaml|json|env|ini)$</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    k</span><span style="color: light-dark(#22863A, #85E89D);">ey_groups</span><span>:</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#22863A, #85E89D);"> a</span><span style="color: light-dark(#22863A, #85E89D);">ge</span><span>:</span></span>
+<span class="giallo-l"><span>          -</span><span style="color: light-dark(#D73A49, #F97583);"> *</span><span>admin</span></span>
+<span class="giallo-l"><span>          -</span><span style="color: light-dark(#D73A49, #F97583);"> *</span><span>argocd</span></span></code></pre>
+<p>This basic sops config does two things:</p>
+<ul>
+<li>defines two age public keys as sops identities, named <code>admin</code> and <code>argocd</code>
+<ul>
+<li><code>argocd</code>'s key is the plain age key generated earlier</li>
+<li><code>admin</code>'s key is the key derived from an ssh key generated earlier</li>
+</ul>
+</li>
+<li>for any file named <code>secret*</code> with the extensions <code>.yaml</code>, <code>.json</code>, <code>.env</code>, or <code>.ini</code> in the directory <code>manifests/</code>, apply the following rules:
+<ul>
+<li>encrypt the values of each key in the file such that either the <code>admin</code> or <code>argocd</code> private key can decrypt them</li>
+<li>do not encrypt the keys <code>apiVersion</code>, <code>metadata</code>, <code>kind</code>, or <code>type</code> if they're present in the document</li>
+</ul>
+</li>
+</ul>
+<p>Sops's config can go much deeper than this, but that's outside the scope of this post. For now, this is enough to highlight how to encrypt and decrypt secrets for use with Kubernetes. The official documentation for <code>.sops.yaml</code> is <a rel="nofollow noreferrer external" href="https://github.com/getsops/sops?tab=readme-ov-file#using-sops-yaml-conf-to-select-kms-pgp-and-age-for-new-files">here</a>.</p>
+<h3 id="encrypting-a-kubernetes-secret">Encrypting a Kubernetes Secret
+<a class="anchor" aria-label="Anchor link for: encrypting-a-kubernetes-secret" href="#encrypting-a-kubernetes-secret">#</a>
+
+</h3>
+<p>With our sops config defined, we can create a secret manifest for Kubernetes and encrypt it! Let's create a basic secret, and encrypt it with sops:</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> v</span><span style="color: light-dark(#032F62, #9ECBFF);">1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">k</span><span style="color: light-dark(#22863A, #85E89D);">ind</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> S</span><span style="color: light-dark(#032F62, #9ECBFF);">ecret</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">m</span><span style="color: light-dark(#22863A, #85E89D);">etadata</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> m</span><span style="color: light-dark(#032F62, #9ECBFF);">y-secret</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> O</span><span style="color: light-dark(#032F62, #9ECBFF);">paque</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">s</span><span style="color: light-dark(#22863A, #85E89D);">tringData</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">  S</span><span style="color: light-dark(#22863A, #85E89D);">ECRET_PASSWORD</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> h</span><span style="color: light-dark(#032F62, #9ECBFF);">unter2</span></span></code></pre>
+<p>This is a perfectly valid Kubernetes secret resource, but obviously we wouldn't want to commit this to git in its current state (even though there's no way you could see my password in that yaml file, right?!).</p>
+<p>I've saved the secret in the same directory as <code>.sops.yaml</code>, and when I run <code>sops --encrypt</code>, it spits out a yaml file with the contents of <code>stringData</code> encrypted! (I could also use <code>--in-place</code> to overwrite the file instead of directing it to stdout, which is what I would normally do working in my repo).</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">15:56</span><span style="color: light-dark(#032F62, #9ECBFF);"> michael@laptop</span><span style="color: light-dark(#032F62, #9ECBFF);"> ❯</span><span style="color: light-dark(#032F62, #9ECBFF);"> sops</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-encrypt</span><span style="color: light-dark(#032F62, #9ECBFF);"> test-secret.yaml</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">apiVersion:</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">kind:</span><span style="color: light-dark(#032F62, #9ECBFF);"> Secret</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">metadata:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    name:</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-secret</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#032F62, #9ECBFF);">:</span><span style="color: light-dark(#032F62, #9ECBFF);"> Opaque</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">stringData:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    SECRET_PASSWORD:</span><span style="color: light-dark(#032F62, #9ECBFF);"> ENC[AES256_GCM,data:Qt1RcJPgZA==,iv:Y2x8JcSk7CmghR/6V8dhKykt46pNYwZjoY8srdiWGdA=,tag:1L9s418X6E39RR/IbNsueg==,type:str]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sops:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    age:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">        -</span><span style="color: light-dark(#032F62, #9ECBFF);"> recipient:</span><span style="color: light-dark(#032F62, #9ECBFF);"> age1qejhjaqlwncvkhylgjnzssujjxk4mfztz8jxcdmu3frrs3vjte5s2uk8uu</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">          enc:</span><span style="color: light-dark(#D73A49, #F97583);"> |</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            -----BEGIN</span><span style="color: light-dark(#032F62, #9ECBFF);"> AGE</span><span style="color: light-dark(#032F62, #9ECBFF);"> ENCRYPTED</span><span style="color: light-dark(#032F62, #9ECBFF);"> FILE-----</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQNFMzdHhkbmVBTTBJL1Fl</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            SkpVN1ZPQ1pEU2lOWk9ZV2twREFXQ0p2bUdBCm9hdzRabUZtdzcreGdjZnl2WjFY</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            ZEtuZmk4aUtscGJObk0rRmFhaUFMbGMKLS0tIHZ4ZkhFVWlMS2N1cVg5dU1WWmc5</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            YnYyRUxjZEd1ZGowOEViWjNKY0tEMnMK1kIkFSGyliVBX9R4G+WKDBhAiw7VXD9b</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            CHm2mmskmgaBNOlNFhll/CsYwEvxPb3ehf1dxj6QP335ShmRK2qo0A</span><span style="color: light-dark(#032F62, #9ECBFF);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">=</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            -----END</span><span style="color: light-dark(#032F62, #9ECBFF);"> AGE</span><span style="color: light-dark(#032F62, #9ECBFF);"> ENCRYPTED</span><span style="color: light-dark(#032F62, #9ECBFF);"> FILE-----</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">        -</span><span style="color: light-dark(#032F62, #9ECBFF);"> recipient:</span><span style="color: light-dark(#032F62, #9ECBFF);"> age1jg5r9uynw5xp52lyac7nh0e8puxs74yqskh5fx6txd34fnkpkv8qlzzq0w</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">          enc:</span><span style="color: light-dark(#D73A49, #F97583);"> |</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            -----BEGIN</span><span style="color: light-dark(#032F62, #9ECBFF);"> AGE</span><span style="color: light-dark(#032F62, #9ECBFF);"> ENCRYPTED</span><span style="color: light-dark(#032F62, #9ECBFF);"> FILE-----</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDZ1BTQjh1Wm5ZalZ3T2hL</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            N1NqamNVeTcrTnZTY01yekREYmJGRDdwR2dvCmFXQXhVNUJUQlRzcThuYmpUTDh0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            SlNRdnpQTGFQbkFZdHJpNEU3aGVCZmsKLS0tIEUwelRwLzJQaVFNVGFBMXRvWVAw</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            aVNXQ1RjVjlINm9vY1JWN0g3bmVNeDQKY1aFNPgq2z6kYZ/47TCzB6o6cQUFJ1eq</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            kfS9Bsi0bRA2/xD4W0ChuNgvwmBOLwZcSSJYvnZxp82OZBzoJPbpYQ</span><span style="color: light-dark(#032F62, #9ECBFF);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">=</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">            -----END</span><span style="color: light-dark(#032F62, #9ECBFF);"> AGE</span><span style="color: light-dark(#032F62, #9ECBFF);"> ENCRYPTED</span><span style="color: light-dark(#032F62, #9ECBFF);"> FILE-----</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    lastmodified:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">2025-11-12T23:56:33Z</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    mac:</span><span style="color: light-dark(#032F62, #9ECBFF);"> ENC[AES256_GCM,data:zLLitqbHNqKY/j2cdYgule6R80FBxwJsu8/WYuCcX3MDtf+2z8KJUzCIXu56zpL7xRc6I6Hrd0PlIvuj1YRo1Hu9/8fJ+B0ulDyOnZ1fypBh5rGCbrywZgZSKsWSByEAtL1Fz6MHF5xX2bVeUJ1kabzLmF/S3LT5ISvx22HlmYA=,iv:pMpu3g96eqzGEzXVHYZJ953T4UBXJyJ+n03jD0UCa+8=,tag:3+EpPzJ64LTEErnWobe2mw==,type:str]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    unencrypted_regex:</span><span style="color: light-dark(#032F62, #9ECBFF);"> ^</span><span>(</span><span style="color: light-dark(#6F42C1, #B392F0);">apiVersion</span><span style="color: light-dark(#D73A49, #F97583);">|</span><span style="color: light-dark(#6F42C1, #B392F0);">metadata</span><span style="color: light-dark(#D73A49, #F97583);">|</span><span style="color: light-dark(#6F42C1, #B392F0);">kind</span><span style="color: light-dark(#D73A49, #F97583);">|</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span>)</span><span>$</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    version:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 3.11.0</span></span></code></pre>
+<p>But wait! there are two blocks containing <code>BEGIN AGE ENCRYPTED FILE</code>, but we only have one piece of encrypted data!</p>
+<p>Because both identities are listed in the same key group in <code>.sops.yaml</code>, either key on it's own can decrypt the value. If multiple key groups are present, <em>at least one key from each group</em> must be present to decrypt the data.</p>
+<h2 id="deploying-encrypted-secrets-with-argocd">Deploying Encrypted Secrets with ArgoCD
+<a class="anchor" aria-label="Anchor link for: deploying-encrypted-secrets-with-argocd" href="#deploying-encrypted-secrets-with-argocd">#</a>
+
+</h2>
+<h3 id="telling-kustomize-about-our-secrets">Telling Kustomize about our Secrets
+<a class="anchor" aria-label="Anchor link for: telling-kustomize-about-our-secrets" href="#telling-kustomize-about-our-secrets">#</a>
+
+</h3>
+<p>Encrypting our secrets is one thing, but deploying them is another. Sops encryption protects the secrets at rest in git but they must be decrypted before they're applied to a Kubernetes cluster. I mentioned <a href="https://mikansoro.org/blog/sealed-secrets-to-sops/#kubernetes-with-ksops">ksops</a> above; it's a kustomize plugin that handles on-the-fly decryption of sops-encrypted files when running commands like <code>kustomize build</code>. Since ArgoCD understands kustomize, ksops can handle decryption both on my local machine and in ArgoCD.</p>
+<p>Let's take this typical <code>kustomization.yaml</code> file as an example, and add an encrypted secret to it.</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> k</span><span style="color: light-dark(#032F62, #9ECBFF);">ustomize.config.k8s.io/v1beta1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">k</span><span style="color: light-dark(#22863A, #85E89D);">ind</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> K</span><span style="color: light-dark(#032F62, #9ECBFF);">ustomization</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">r</span><span style="color: light-dark(#22863A, #85E89D);">esources</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> r</span><span style="color: light-dark(#032F62, #9ECBFF);">esources/cluster-issuer.yaml</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> r</span><span style="color: light-dark(#032F62, #9ECBFF);">esources/wildcard-cert.yaml</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> r</span><span style="color: light-dark(#032F62, #9ECBFF);">esources/cluster-wildcard-cert.yaml</span></span></code></pre>
+<p>This applies two Certificates and one ClusterIssuer cert-manager resource to create two wildcard TLS certificates for my ingress to use. The ClusterIssuer needs an API key for a supported DNS service like Cloudflare or Digital Ocean to create proof of ownership DNS records for the domain. Let's pretend our <code>test-secret.yaml</code> holds the API key for Cloudflare, and is currently in <code>secrets/test-secret.yaml</code>. If it was added to the <code>resources:</code> block directly in kustomization.yaml, Kubernetes wouldn't understand what to do with it. To tell ksops to decrypt it, we add a secret generator:</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> secret-generator.yaml</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">---</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> v</span><span style="color: light-dark(#032F62, #9ECBFF);">iaduct.ai/v1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">k</span><span style="color: light-dark(#22863A, #85E89D);">ind</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> k</span><span style="color: light-dark(#032F62, #9ECBFF);">sops</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">m</span><span style="color: light-dark(#22863A, #85E89D);">etadata</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">  n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> s</span><span style="color: light-dark(#032F62, #9ECBFF);">ecret-generator</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">f</span><span style="color: light-dark(#22863A, #85E89D);">iles</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> s</span><span style="color: light-dark(#032F62, #9ECBFF);">ecrets/test-secret.yaml</span></span></code></pre><pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="diff"><span class="giallo-l"><span>apiVersion: kustomize.config.k8s.io/v1beta1</span></span>
+<span class="giallo-l"><span>kind: Kustomization</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">generators:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">  - secret-generator.yaml</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>resources:</span></span>
+<span class="giallo-l"><span>  - resources/cluster-issuer.yaml</span></span>
+<span class="giallo-l"><span>  - resources/wildcard-cert.yaml</span></span>
+<span class="giallo-l"><span>  - resources/cluster-wildcard-cert.yaml</span></span></code></pre>
+<p>With the plugin installed, running <code>kustomize build</code> will decrypt the secret and add it to the output.</p>
+<h3 id="i-thought-this-was-about-argocd">I thought  this was about ArgoCD...
+<a class="anchor" aria-label="Anchor link for: i-thought-this-was-about-argocd" href="#i-thought-this-was-about-argocd">#</a>
+
+</h3>
+<p>Now that Kustomize can read and decrypt the secrets, it's time to give ArgoCD the same power. The steps remaining are as follows:</p>
+<ol>
+<li>Generate an age key for argocd, different from our other keys</li>
+<li>Add the key to <code>.sops.yaml</code></li>
+<li>Run <code>sops updatekeys $file</code> for each file, or to run against every sops file:</li>
+</ol>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span>GIT_BASE</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span>$(</span><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rev-parse</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-show-toplevel</span><span>)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">for</span><span> file</span><span style="color: light-dark(#D73A49, #F97583);"> in</span><span> $(</span><span style="color: light-dark(#6F42C1, #B392F0);">grep</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">lrE</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">sops[</span><span style="color: light-dark(#005CC5, #79B8FF);">\&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">]?[:|_age]</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span> $</span><span>GIT_BASE</span><span>)</span><span>;</span><span style="color: light-dark(#D73A49, #F97583);"> do</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    sops</span><span style="color: light-dark(#032F62, #9ECBFF);"> updatekeys</span><span> $</span><span>file</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#D73A49, #F97583);">|</span><span style="color: light-dark(#005CC5, #79B8FF);"> true</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">done</span></span></code></pre>
+<ol start="4">
+<li>Add the key as a secret to ArgoCD's namespace (you can encrypt it with sops and keep it in the repo, but you must <code>kubectl apply -n argocd -f</code> the secret from a decrypted state the first time)</li>
+<li>Add the ksops plugin to argocd</li>
+</ol>
+<p>The first four steps are pretty self-explanatory and have already been covered above, so those will remain an exercise to the reader.</p>
+<p>Instead of rebuilding an argocd image (a valid way to handle this), we'll use an initContainer to install the binary in a volume, and mount that volume into the <code>argocd-repo-server</code> pod. Let's create a Kustomize patch to add ksops support to the argocd repo server, mount our Kubernetes age key secret as a volume, and add the <code>SOPS_AGE_KEY_FILE</code> environment variable.</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> argocd/patches/argocd-repo-server-ksops.yaml</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">---</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> a</span><span style="color: light-dark(#032F62, #9ECBFF);">pps/v1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">k</span><span style="color: light-dark(#22863A, #85E89D);">ind</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> D</span><span style="color: light-dark(#032F62, #9ECBFF);">eployment</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">m</span><span style="color: light-dark(#22863A, #85E89D);">etadata</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">  n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> a</span><span style="color: light-dark(#032F62, #9ECBFF);">rgocd-repo-server</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">s</span><span style="color: light-dark(#22863A, #85E89D);">pec</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">  t</span><span style="color: light-dark(#22863A, #85E89D);">emplate</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    s</span><span style="color: light-dark(#22863A, #85E89D);">pec</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> 1. Define an emptyDir volume which will hold the custom binaries</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">      v</span><span style="color: light-dark(#22863A, #85E89D);">olumes</span><span>:</span></span>
+<span class="giallo-l"><span>        -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> k</span><span style="color: light-dark(#032F62, #9ECBFF);">ustomize-plugins</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          e</span><span style="color: light-dark(#22863A, #85E89D);">mptyDir</span><span>:</span><span> {</span><span>}</span></span>
+<span class="giallo-l"><span>        -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> s</span><span style="color: light-dark(#032F62, #9ECBFF);">ops-age</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          s</span><span style="color: light-dark(#22863A, #85E89D);">ecret</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">            s</span><span style="color: light-dark(#22863A, #85E89D);">ecretName</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> s</span><span style="color: light-dark(#032F62, #9ECBFF);">ops-age</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> 2. Use an init container to download/copy custom binaries into the emptyDir</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">      i</span><span style="color: light-dark(#22863A, #85E89D);">nitContainers</span><span>:</span></span>
+<span class="giallo-l"><span>        -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> i</span><span style="color: light-dark(#032F62, #9ECBFF);">nstall-ksops</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          i</span><span style="color: light-dark(#22863A, #85E89D);">mage</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> v</span><span style="color: light-dark(#032F62, #9ECBFF);">iaductoss/ksops:v4.3.2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          c</span><span style="color: light-dark(#22863A, #85E89D);">ommand</span><span>:</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">/bin/sh</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">-c</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          a</span><span style="color: light-dark(#22863A, #85E89D);">rgs</span><span>:</span></span>
+<span class="giallo-l"><span>            -</span><span style="color: light-dark(#032F62, #9ECBFF);"> e</span><span style="color: light-dark(#032F62, #9ECBFF);">cho &quot;Installing KSOPS...&quot;;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">              m</span><span style="color: light-dark(#032F62, #9ECBFF);">kdir -p /kustomize-plugins/viaduct.ai/v1/ksops/;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">              m</span><span style="color: light-dark(#032F62, #9ECBFF);">v ksops /kustomize-plugins/viaduct.ai/v1/ksops/ksops;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">              e</span><span style="color: light-dark(#032F62, #9ECBFF);">cho &quot;Done.&quot;;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          v</span><span style="color: light-dark(#22863A, #85E89D);">olumeMounts</span><span>:</span></span>
+<span class="giallo-l"><span>            -</span><span style="color: light-dark(#22863A, #85E89D);"> m</span><span style="color: light-dark(#22863A, #85E89D);">ountPath</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> /</span><span style="color: light-dark(#032F62, #9ECBFF);">kustomize-plugins</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">              n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> k</span><span style="color: light-dark(#032F62, #9ECBFF);">ustomize-plugins</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> 3. Volume mount the custom binary to the bin directory (overriding the existing version)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">      c</span><span style="color: light-dark(#22863A, #85E89D);">ontainers</span><span>:</span></span>
+<span class="giallo-l"><span>        -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> a</span><span style="color: light-dark(#032F62, #9ECBFF);">rgocd-repo-server</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          e</span><span style="color: light-dark(#22863A, #85E89D);">nv</span><span>:</span></span>
+<span class="giallo-l"><span>            -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> S</span><span style="color: light-dark(#032F62, #9ECBFF);">OPS_AGE_KEY_FILE</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">              v</span><span style="color: light-dark(#22863A, #85E89D);">alue</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> /</span><span style="color: light-dark(#032F62, #9ECBFF);">secret/age.key</span></span>
+<span class="giallo-l"><span>            -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> K</span><span style="color: light-dark(#032F62, #9ECBFF);">USTOMIZE_PLUGIN_HOME</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">              v</span><span style="color: light-dark(#22863A, #85E89D);">alue</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> /</span><span style="color: light-dark(#032F62, #9ECBFF);">kustomize-plugins</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          v</span><span style="color: light-dark(#22863A, #85E89D);">olumeMounts</span><span>:</span></span>
+<span class="giallo-l"><span>            -</span><span style="color: light-dark(#22863A, #85E89D);"> m</span><span style="color: light-dark(#22863A, #85E89D);">ountPath</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> /</span><span style="color: light-dark(#032F62, #9ECBFF);">kustomize-plugins</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">              n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> k</span><span style="color: light-dark(#032F62, #9ECBFF);">ustomize-plugins</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);">subPath: ksops</span></span>
+<span class="giallo-l"><span>            -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> s</span><span style="color: light-dark(#032F62, #9ECBFF);">ops-age</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">              m</span><span style="color: light-dark(#22863A, #85E89D);">ountPath</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> /</span><span style="color: light-dark(#032F62, #9ECBFF);">secret</span></span></code></pre>
+<p>To add a file patch (which does a strategicMerge), add it like so:</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="diff"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> argocd/kustomization.yaml</span></span>
+<span class="giallo-l"><span>apiVersion: kustomize.config.k8s.io/v1beta1</span></span>
+<span class="giallo-l"><span>kind: Kustomization</span></span>
+<span class="giallo-l"><span>namespace: argocd</span></span>
+<span class="giallo-l"><span>generators:</span></span>
+<span class="giallo-l"><span>  - secret-generator.yaml</span></span>
+<span class="giallo-l"><span>resources:</span></span>
+<span class="giallo-l"><span>  - ./custom</span></span>
+<span class="giallo-l"><span>  - ./external</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">patches:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">  - path: patches/argocd-repo-server-ksops.yaml</span></span>
+<span class="giallo-l"></span></code></pre>
+<p>With a final <code>kustomize build argocd | kubectl apply -f -</code>, ArgoCD can now read sops-encrypted secrets and deploy them like any other resource.</p>
+
+  
+  
+  
+  <footer class="s">
+    Tags: <a href='https://mikansoro.org/tags/kubernetes'>kubernetes</a>, <a href='https://mikansoro.org/tags/secrets'>secrets</a>
+  </footer>
+  
+  
+</article>
+</main>
+    <hr>
+    <footer class="s">
+        <span>© mikansoro.org 2026</span>
+        <span>
+<svg><use href="#rss"/></svg> Feeds: <a href="https://mikansoro.org/atom.xml">Atom</a> · <a href="https://mikansoro.org/rss.xml">RSS</a></span>
+    </footer>
+    
+    
+    
+    <script>document.querySelectorAll('article img[srcset]').forEach(i=>{if(i.closest('a'))return;i.style.cursor='pointer';i.onclick=()=>{let d=document.createElement('div'),s=i.srcset.split(',').pop().trim().split(' ')[0];d.className='lb';d.innerHTML='<img src="'+s+'">';document.body.style.overflow='hidden';d.onclick=()=>{d.remove();document.body.style.overflow=''};document.body.appendChild(d)}})</script>
+    </body>
+</html>

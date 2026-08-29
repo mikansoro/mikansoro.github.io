@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible"
+      content="IE=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+<meta name="description"
+      content="Michael&#x27;s small corner of the internet." />
+<meta name="keywords"
+      content="blog, technology, kubernetes, sre, homelab, travel, idols, Love Live!, anime" /> 
+
+<title>
+  Tax-Free Shopping and the Japan Trusted Travel Program (TTP) // mikansoro.org</title>
+<meta property="og:site_name" content="mikansoro.org"/>
+<meta property="og:title" content="mikansoro.org | Tax-Free Shopping and the Japan Trusted Travel Program (TTP)"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mikansoro.org/blog/japan-taxfree-ttp/"/>
+<meta property="og:description" content="Michael&#x27;s small corner of the internet."/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Tax-Free Shopping and the Japan Trusted Travel Program (TTP)"/>
+<meta name="twitter:description" content="Michael&#x27;s small corner of the internet."/>
+<link rel="alternate" type="application/atom+xml" title="mikansoro.org" href="https://mikansoro.org/atom.xml">
+    <meta name="color-scheme" content="light dark">
+    
+    <style>
+html{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:1rem;line-height:1.5;margin:auto;max-width:70ch;padding:1.5rem 1em 3em}
+img{max-width:100%}img:not([src$=".svg"]),article>div,pre{border-radius:.3rem}img[src$="#pixelate"]{image-rendering:pixelated}
+h1{font-size:1.75rem}
+h2{font-size:1.4rem} 
+h3{font-size:1.15rem}
+h4,h5,h6{font-size:inherit;}
+h1,h2,h3,h4,h5,h6{color:#4299eb}
+a.anchor{color:#4299eb}
+p{text-align:left;line-height:1.6;}p,ul,ol,.g,article>footer,article>header{margin:0 0 1.5em}
+pre,blockquote{padding:1.5rem;margin:0 0 1.5rem}pre{overflow-x:auto}pre code{background:0!important}blockquote{border-left:3px solid}blockquote>*:last-child{margin-bottom:0}
+article>img,article>p>img,article>div{display:block;margin-bottom:1.5rem;width:100%}
+.yt{aspect-ratio:16/9;width:100%;overflow:hidden}.yt iframe{width:100%;height:100%;border:0}
+.s{font-size:.85rem}
+.theme{display:inline-block;width:1.5rem;height:1.5rem}.theme img,.theme svg{width:100%;height:100%}
+html.lt .theme img:first-child,html.lt .theme svg:first-child,html.dk .theme img:last-child,html.dk .theme svg:last-child{display:none}
+header>div{margin-bottom:1.5rem}footer{margin-top:1.5rem}body>footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+body>footer img,body>footer svg{width:1em;height:1em;vertical-align:middle}
+.tags{padding:.5rem 0 0 0}.tags li{display:inline}.tags li+li::before{content:' · '}
+table{width:100%;border-collapse:collapse;margin:0 0 1.5rem}
+th,td{padding:.5rem;border-bottom:1px solid;text-align:center;}
+nav{display:flex;gap:.5rem;margin:1.5rem 0}nav a{flex:1;display:flex;flex-direction:column;align-items:center;overflow:hidden;font-weight:bold}nav img,nav svg{width:2rem;height:2rem;margin-bottom:.25rem}nav a .s{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.5rem,1fr));gap:.5rem}.g a{aspect-ratio:1;display:flex;align-items:center;justify-content:center}.g img{object-fit:contain;max-height:100%;max-width:100%}
+.p{list-style:none;padding:0}.p ul{margin:0}.p>li{display:flex;gap:1rem;margin-bottom:1rem}.p time{display:flex;flex-direction:column;align-items:center;min-width:3rem;margin:.25rem 0}.p time span:first-child{font-size:1.5em;line-height:1}
+.lb{position:fixed;inset:0;background:#000d;display:flex;align-items:center;justify-content:center;z-index:999;cursor:pointer}.lb img{max-width:95vw;max-height:95vh}
+@media(max-width:30em){html{font-size:.9rem}header .desc{display:none}nav{flex-wrap:wrap;row-gap:1.5rem}nav a{flex-basis:25%}}
+.footnote-definition{font-size:.85rem;margin:0 0 .5em;display:flex;gap:.5em}.footnote-definition-label{min-width:1.5em}.footnote-definition p{margin:0}.footnote-reference{margin:0 .15em}
+html.lt{background:#e8edff;--tc:#e8edff;color:#111111}
+html.lt a{color:#eb9442}
+html.lt a:visited{color:#eb9442}
+html.lt a.active,html.lt a:active,html.lt a:hover{color:#eb9442}
+html.lt p,html.lt ul,html.lt ol,html.lt .desc{color:#111111}
+html.lt blockquote,html.lt pre,html.lt code,html.lt article>img,html.lt article>p>img,html.lt .g img{background:oklch(.94 .1 93)!important}
+html.lt ::selection{background:#eb9442;color:#fff}html.lt .giallo{color-scheme:light!important}
+html.dk{background:#0b051c;--tc:#0b051c;color:#efefef}
+html.dk a{color:#eb9442}
+html.dk a:visited{color:#eb9442}
+html.dk a.active,html.dk a:active,html.dk a:hover{color:#eb9442}
+html.dk p,html.dk ul,html.dk ol,html.dk .desc{color:#efefef}
+html.dk img[src$=".svg"],html.dk nav svg,html.dk .theme svg,html.dk footer svg{filter:invert(1)}
+html.dk blockquote,html.dk pre,html.dk code,html.dk article>img,html.dk article>p>img,html.dk .g img{background:#222!important}
+html.dk ::selection{background:#eb9442;color:#000}html.dk .giallo{color-scheme:dark!important}
+a.active,a:active,a:hover{text-decoration-style:wavy}
+.tags a{text-decoration-style:dotted}
+hr{border:0;border-top:1px dashed;clear:both;margin-bottom:1.5rem}
+@media print{*{color:#000!important;filter:none!important}html[class][class] *{background:none!important}html{font-size:.8rem;max-width:none;padding:0;background:#fff!important}.theme{display:none}img,pre{break-inside:avoid}}
+    </style>
+    <meta name="theme-color" id="tc"><script>(function(){var m=matchMedia('(prefers-color-scheme:dark)'),t=localStorage.theme,h=document.documentElement,c=document.getElementById('tc');t=t=='dk'||t=='lt'?t:m.matches?'dk':'lt';localStorage.theme=t;h.className=t;function u(){c.content=getComputedStyle(h).getPropertyValue('--tc')}u();window.zb=function(){t=t==='dk'?'lt':'dk';localStorage.theme=t;h.className=t;u()}})()</script>
+    
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="home" viewBox="0 0 32 32"><path d="M16.6123,2.2138a1.01,1.01,0,0,0-1.2427,0L1,13.4194l1.2427,1.5717L4,13.6209V26a2.0041,2.0041,0,0,0,2,2H26a2.0037,2.0037,0,0,0,2-2V13.63L29.7573,15,31,13.4282ZM18,26H14V18h4Zm2,0V18a2.0023,2.0023,0,0,0-2-2H14a2.002,2.002,0,0,0-2,2v8H6V12.0615l10-7.79,10,7.8005V26Z"/></symbol>
+<symbol id="chat" viewBox="0 0 32 32"><path d="M17.74,30,16,29l4-7h6a2,2,0,0,0,2-2V8a2,2,0,0,0-2-2H6A2,2,0,0,0,4,8V20a2,2,0,0,0,2,2h9v2H6a4,4,0,0,1-4-4V8A4,4,0,0,1,6,4H26a4,4,0,0,1,4,4V20a4,4,0,0,1-4,4H21.16Z"/><rect x="8" y="10" width="16" height="2"/><rect x="8" y="16" width="10" height="2"/></symbol>
+<symbol id="color-palette" viewBox="0 0 32 32"><circle cx="10" cy="12" r="2"/><circle cx="16" cy="9" r="2"/><circle cx="22" cy="12" r="2"/><circle cx="23" cy="18" r="2"/><circle cx="19" cy="23" r="2"/><path d="M16.54,2A14,14,0,0,0,2,16a4.82,4.82,0,0,0,6.09,4.65l1.12-.31A3,3,0,0,1,13,23.24V27a3,3,0,0,0,3,3A14,14,0,0,0,30,15.46,14.05,14.05,0,0,0,16.54,2Zm8.11,22.31A11.93,11.93,0,0,1,16,28a1,1,0,0,1-1-1V23.24a5,5,0,0,0-5-5,5.07,5.07,0,0,0-1.33.18l-1.12.31A2.82,2.82,0,0,1,4,16,12,12,0,0,1,16.47,4,12.18,12.18,0,0,1,28,15.53,11.89,11.89,0,0,1,24.65,24.32Z"/></symbol>
+<symbol id="idea" viewBox="0 0 32 32"><rect x="11" y="24" width="10" height="2"/><rect x="13" y="28" width="6" height="2"/><path d="M16,2A10,10,0,0,0,6,12a9.19,9.19,0,0,0,3.46,7.62c1,.93,1.54,1.46,1.54,2.38h2c0-1.84-1.11-2.87-2.19-3.86A7.2,7.2,0,0,1,8,12a8,8,0,0,1,16,0,7.2,7.2,0,0,1-2.82,6.14c-1.07,1-2.18,2-2.18,3.86h2c0-.92.53-1.45,1.54-2.39A9.18,9.18,0,0,0,26,12,10,10,0,0,0,16,2Z"/></symbol>
+<symbol id="search" viewBox="0 0 32 32"><path d="M29,27.5859l-7.5521-7.5521a11.0177,11.0177,0,1,0-1.4141,1.4141L27.5859,29ZM4,13a9,9,0,1,1,9,9A9.01,9.01,0,0,1,4,13Z"/></symbol>
+<symbol id="light" viewBox="0 0 32 32"><rect x="15" y="2" width="2" height="5"/><rect x="21.6675" y="6.8536" width="4.958" height="1.9998" transform="translate(1.5191 19.3744) rotate(-45)"/><rect x="25" y="15" width="5" height="2"/><rect x="23.1466" y="21.6675" width="1.9998" height="4.958" transform="translate(-10.0018 24.1465) rotate(-45)"/><rect x="15" y="25" width="2" height="5"/><rect x="5.3745" y="23.1466" width="4.958" height="1.9998" transform="translate(-14.7739 12.6256) rotate(-45)"/><rect x="2" y="15" width="5" height="2"/><rect x="6.8536" y="5.3745" width="1.9998" height="4.958" transform="translate(-3.253 7.8535) rotate(-45)"/><path d="M16,12a4,4,0,1,1-4,4,4.0045,4.0045,0,0,1,4-4m0-2a6,6,0,1,0,6,6,6,6,0,0,0-6-6Z"/></symbol>
+<symbol id="asleep" viewBox="0 0 32 32"><path d="M13.5025,5.4136A15.0755,15.0755,0,0,0,25.096,23.6082a11.1134,11.1134,0,0,1-7.9749,3.3893c-.1385,0-.2782.0051-.4178,0A11.0944,11.0944,0,0,1,13.5025,5.4136M14.98,3a1.0024,1.0024,0,0,0-.1746.0156A13.0959,13.0959,0,0,0,16.63,28.9973c.1641.006.3282,0,.4909,0a13.0724,13.0724,0,0,0,10.702-5.5556,1.0094,1.0094,0,0,0-.7833-1.5644A13.08,13.08,0,0,1,15.8892,4.38,1.0149,1.0149,0,0,0,14.98,3Z"/></symbol>
+<symbol id="rss" viewBox="0 0 32 32"><path d="M8,18c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6C14,20.7,11.3,18,8,18z M8,28c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4C12,26.2,10.2,28,8,28z"/><path d="M30,24h-2C28,13,19,4,8,4V2C20.1,2,30,11.9,30,24z"/><path d="M22,24h-2c0-6.6-5.4-12-12-12v-2C15.7,10,22,16.3,22,24z"/></symbol>
+<symbol id="user" viewBox="0 0 32 32"><path d="M16,4a5,5,0,1,1-5,5,5,5,0,0,1,5-5m0-2a7,7,0,1,0,7,7A7,7,0,0,0,16,2Z"/><path d="M26,30H24V25a5,5,0,0,0-5-5H13a5,5,0,0,0-5,5v5H6V25a7,7,0,0,1,7-7h6a7,7,0,0,1,7,7Z"/></symbol>
+<symbol id="book" viewBox="0 0 32 32"><rect x="19" y="10" width="7" height="2"/><rect x="19" y="15" width="7" height="2"/><rect x="19" y="20" width="7" height="2"/><rect x="6" y="10" width="7" height="2"/><rect x="6" y="15" width="7" height="2"/><rect x="6" y="20" width="7" height="2"/><path d="M28,5H4A2.002,2.002,0,0,0,2,7V25a2.002,2.002,0,0,0,2,2H28a2.002,2.002,0,0,0,2-2V7A2.002,2.002,0,0,0,28,5ZM4,7H15V25H4ZM17,25V7H28V25Z"/></symbol>
+</svg>
+
+    <header>
+        <div class="s" style="display:flex;justify-content:space-between;align-items:center">
+            <span><strong>mikansoro.org</strong><span class="desc"> · Michael&#x27;s small corner of the internet.</span></span>
+            <a href="#" onclick="zb();return false" class="theme" aria-label="Toggle theme" title="Toggle theme">
+<svg><use href="#light"/></svg>
+<svg><use href="#asleep"/></svg></a>
+        </div>
+        <hr>
+        <nav>
+            <a href="https://mikansoro.org/" aria-label="Home">
+<svg><use href="#home"/></svg><span class="s">Home</span></a>
+            <a href="https://mikansoro.org/blog/" aria-label="Blog" class="active" aria-current="page">
+<svg><use href="#chat"/></svg><span class="s">Blog</span></a>
+            <a href="https://mikansoro.org/gallery/" aria-label="Gallery">
+<svg><use href="#color-palette"/></svg><span class="s">Gallery</span></a>
+            <a href="https://mikansoro.org/about/" aria-label="About">
+<svg><use href="#user"/></svg><span class="s">About</span></a>
+            <a href="https://mikansoro.org/blogroll/" aria-label="Blogroll">
+<svg><use href="#book"/></svg><span class="s">Blogroll</span></a>
+            <a href="https://mikansoro.org/tags/" aria-label="Tags">
+<svg><use href="#idea"/></svg><span class="s">Tags</span></a>
+            </nav>
+    </header>
+    <hr>
+    <main>
+    
+<article>
+  <header>
+    <h1>Tax-Free Shopping and the Japan Trusted Travel Program (TTP)</h1>
+    <time class="s" datetime="2024-02-18">18 Feb 2024</time>
+    
+    <time class="s" datetime="2024-05-21"> · Updated 21 May 2024</time>
+    
+  </header>
+  
+  
+  
+    <p>Japan lets foreigners shop tax free at lots of stores, using the QR-code entry visa stamp in their passport. What most stores don't know how to handle however, is a Japan Trusted Traveler Program card.</p>
+<span id="continue-reading"></span><!--
+> [!NOTE]
+> Last Updated: 2024-05-21
+-->
+<blockquote class="markdown-alert-important">
+<p><strong>Please Note:</strong></p>
+<p>This post details my own personal testing with using Japan TTP cards for tax-free purchasing, as well as the most up-to-date information that I'm aware of from the Japan Ministry of Justice (MOJ). This post will continue to be updated over time as I test more stores and refine my testing methodology.</p>
+</blockquote>
+<h2 id="about-the-ttp">About the TTP
+<a class="anchor" aria-label="Anchor link for: about-the-ttp" href="#about-the-ttp">#</a>
+
+</h2>
+<p>Japan Trusted Traveler Program (TTP) cards are similar to Global Entry cards in the US, they allow cardholders to use automated customs and immigration gates instead of having to interact with a passport control agent. Instead of a Landing Permission stamp (which is actually a sticker), the back of the card is printed with a line indicating the entry/exit status of the cardholder. The card becomes your landing permission instead.</p>
+
+
+
+
+<img alt="A sample of the Japan TTP card from the MOJ." title="A sample of the Japan TTP card from the MOJ." src="https://mikansoro.org/processed_images/japan-ttp-card-sample.ad368ff8a38afc82.png" srcset="https://mikansoro.org/processed_images/japan-ttp-card-sample.9a6bf21e0cd191d7.png 512w" class="" />
+
+<p>It's a handy thing to have for frequent travelers as the line for immigration can get quite long depending on the time of day. Because the card is your legal entry document into Japan, you're not required to carry your passport with you at all times (<a rel="nofollow noreferrer external" href="https://www.moj.go.jp/isa/publications/materials/ttp2_q_a_faq_a_ja.html#qkiso-37-a">MOJ FAQ</a>). Carrying your passport is still a good idea regardless, however when the TTP card is used for entry it is not required. If you enter Japan without using your TTP card at the automated kiosk, you are required to carry your passport at all times to prove your lawful status in the country.</p>
+<h3 id="how-to-get-one-for-yourself">How to Get One for Yourself
+<a class="anchor" aria-label="Anchor link for: how-to-get-one-for-yourself" href="#how-to-get-one-for-yourself">#</a>
+
+</h3>
+<p>If you're interested in getting a TTP card, user @flammenkrieg_au in the r/LoveLive discord wrote a <a rel="nofollow noreferrer external" href="https://docs.google.com/document/d/1yvdlbKxcGKdFyPHoJCcs9ZvfMdD037TzL_f0A6WKbCM/edit?usp=sharing">comprehensive guide to the application process</a>.</p>
+<h3 id="purchasing-tax-free-with-a-ttp-card">Purchasing Tax-Free with a TTP Card
+<a class="anchor" aria-label="Anchor link for: purchasing-tax-free-with-a-ttp-card" href="#purchasing-tax-free-with-a-ttp-card">#</a>
+
+</h3>
+<p>As noted at the bottom of flammenkrieg's guide, Tax Free purchases normally require a Landing Permission stamp. Most stores use an iPad-based app to submit tax-free paperwork, which prompts the cashier to scan the photo page of the passport and the QR code of the currently valid Landing Permission stamp. Most people are unaware that the TTP card even exists, let alone the fact that it's valid as a temporary visitor authorization record instead of the normal passport stamp.</p>
+<p>Per the MOJ's documentation on <a rel="nofollow noreferrer external" href="https://www.nta.go.jp/publication/pamph/shohi/menzei/201805/pdf/0023004-052_03.pdf">Persons eligible for Duty-Free Sales</a>, holders of the TTP card who have used it to enter Japan are considered eligible, however without the stamp you may be ineligible to prove your short-term status at the tax-free store. It's stated that you can inform an immigration officer before after passing through the automated gate <em>and</em> before customs inspection that you need a stamp for tax-free purposes (<a rel="nofollow noreferrer external" href="https://www.nta.go.jp/publication/pamph/shohi/menzei/201805/pdf/0021009-040_13.pdf">JP</a>), (<a rel="nofollow noreferrer external" href="https://www.nta.go.jp/publication/pamph/shohi/menzei/201805/pdf/0021009-040_13.pdf">EN</a>). More testing is required to understand if this is viable.</p>
+<p>If this sounds confusing, that's because it is. The TTP program is not well known both inside and outside Japan. It's so poorly known and advertised that staff inside the immigration hall will likely direct you to the incorrect line if you show them the card and ask where to go.</p>
+<h2 id="store-testing">Store Testing
+<a class="anchor" aria-label="Anchor link for: store-testing" href="#store-testing">#</a>
+
+</h2>
+<p>When attempting to make tax-free purchases with my TTP card, I hand the cashier both my passport and the card to the cashier at the same time. I open my passport to the picture page and place the TTP card rear-side up (where the landing permission is printed) inside the passport. This ensures some amount of consistency when interacting with store staff regardless of their prior training.</p>
+<p>I've started trying to explain to cashiers that the back of my TTP card is my entry document, not a stamp in my passport. This includes using Google Translate/DeepL to explain the back of the card.</p>
+<p>I also include reports from others, either anonymously or with attribution where allowed.</p>
+<h3 id="bic-camera">Bic Camera
+<a class="anchor" aria-label="Anchor link for: bic-camera" href="#bic-camera">#</a>
+
+</h3>
+<p>A major camera and electronics store chain.</p>
+<p>Uses TaxFree iPad System: No</p>
+<h4 id="record">Record
+</h4>
+<ul>
+<li><a rel="nofollow noreferrer external" href="https://maps.app.goo.gl/Q2g6J9aZPepHSNS3A">Bic Camera Akihabara</a>
+<ul>
+<li>Success: 2024/02/09
+<ul>
+<li>I was able to successfully purchase an item tax-free using my TTP card at the 5th floor register near the escalator. Bic does not use the newer iPad app system to process tax-free purchases, they have a custom system built into their registers. The cashier did double-take upon receiving my card, however once he read the "Temporary Visitor" print line on the rear of the card (aka, what serves as my "stamp"), he entered that information into the register along with a scan of my passport to complete the transaction. The process was largely seamless, and no questions were asked.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="lashinbang">Lashinbang
+<a class="anchor" aria-label="Anchor link for: lashinbang" href="#lashinbang">#</a>
+
+</h3>
+<p>Lashinbang is a second-hand hobbyist store that largely focuses on anime merchandise, music, and doujinshi.</p>
+<p>Uses TaxFree iPad System: Yes</p>
+<h4 id="record-1">Record
+</h4>
+<ul>
+<li><a rel="nofollow noreferrer external" href="https://maps.app.goo.gl/56Dy5iB9o14Lf1NU6">Lashinbang Akihabara Culture Zone 1st Floor</a>
+<ul>
+<li>Failure: 2024/02/13
+<ul>
+<li>Upon handing the cashier my passport and TTP card, I saw them reach for the iPad on the back shelf and knew this one might be trouble. The staff immediately moved my TTP card out of the way and disregarded it, and despite my limited attempts to explain that the card would be necessary (with limited Japanese speaking ability and no preparation), he proceeded to try and scan my passport regardless. Eventually I was able to draw his attention to the landing permission on the back of the card. He then tried to scan it with the app (instead of the normal landing permission stamp's QR code), however this failed. I'm not sure if it failed due to the angle at which he tried to photograph it (there was quite a bit of glare from the store lighting from what I could see on screen) or if the app failed to recognize the card, more testing is required on that. The staff then found a Landing Permission stamp from a previous trip, scanned that, and it was considered valid to complete the transaction.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a rel="nofollow noreferrer external" href="https://maps.app.goo.gl/8DvkTEGAejfrV4KWA">Lashinbang Nagoya Osu Store</a>
+<ul>
+<li>Success: 2024/05/05
+<ul>
+<li>I handed both my passport and TTP card to the cashier and showed the staff a translation that I did not have a stamp in my passport and that the back of the card served as my temporary visitor entry document. After going through all the stamps in my passport anyway, the cashier read both sides of the card. The cashier then started digging through the iPad app and eventually found some sort of "manual entry" function. They entered the information from my card entry stamp as my time of entry and proceeded with the transaction as normal.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="pokemon-center">Pokemon Center
+<a class="anchor" aria-label="Anchor link for: pokemon-center" href="#pokemon-center">#</a>
+
+</h3>
+<p>The official "Pokemon Store" for all kinds of Pokemon merchandise.</p>
+<p>Uses TaxFree iPad System: No</p>
+<h4 id="record-2">Record
+</h4>
+<ul>
+<li><a rel="nofollow noreferrer external" href="https://maps.app.goo.gl/GxyVih6hCTbr6qCQ9">Pokemon Center DX Tokyo</a>
+<ul>
+<li>Success: 2024/03/10
+<ul>
+<li>Not all Pokemon Centers in Japan will do tax-free purchases (like the Mega Tokyo location in Ikebukero), but the DX Tokyo one does. DX Tokyo does not use the newer iPad app system, they use a system built into their register that requires scanning the photo page with a barcode reader and manually entering th epassport holder's arrival date in Japan. I handed the cashier my passport and TTP card, showed them both the front and back of the card, and pointed to the arrival log on the back of the card. She read the card asked if I could wait a moment. She took my card and passport into a back room behind the registers. After about 5 minutes, the cashier returned with a manager and the cashier input my passport information into the register. The cashier returned my passport and TTP card to me, but the manager then called over another cashier and asked for my TTP card back. They explained what the card was and the tax-free process to the other cashier. The manager was definitley familiar with the TTP card and knew what it was. The manager then returned my card, and the transaction was completed.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="yodobashi-camera">Yodobashi Camera
+<a class="anchor" aria-label="Anchor link for: yodobashi-camera" href="#yodobashi-camera">#</a>
+
+</h3>
+<p>A major camera and electronics store chain.</p>
+<p>Uses TaxFree iPad System: No</p>
+<h4 id="record-3">Record
+</h4>
+<ul>
+<li><a rel="nofollow noreferrer external" href="https://maps.app.goo.gl/AtfnivUgVHmUG6we7">Yodobashi Akihabara</a>
+<ul>
+<li>Success: 2024/03/11
+<ul>
+<li>This purchase was made at the video game register on the 6th floor of Yodobashi. Yodobashi does not use the newer iPad app tax free system, they use a system built into their register that requires scanning the photo page of the passport with a barcode reader and manually entering the passport holder's date of arrival. I gave the cashier my passport along with my TTP card face down, pointing to the entry stamp on the back of the card. After some visible confusion, flipping through all my stamps and reading the front of the TTP card, he consulted their internal rules binder for tax-free purchases. Not finding enough information, they made several phone calls in the back of the register area. Finally, the staff seemed satisfied that the tax-free purchase could proceed, and they called another employee over to explain the TTP tax free process to them.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="new-balance-store">New Balance Store
+<a class="anchor" aria-label="Anchor link for: new-balance-store" href="#new-balance-store">#</a>
+
+</h3>
+<p>Retail store for New Balance shoes.</p>
+<p>Uses TaxFree iPad System: No</p>
+<h4 id="record-4">Record
+</h4>
+<ul>
+<li><a rel="nofollow noreferrer external" href="https://maps.app.goo.gl/oKuUxeeXSmaY4bW17">New Balance Nagoya</a>
+<ul>
+<li>Success: 2024/05/05
+<ul>
+<li>This was tested by @coreymon77 on Discord. They handed their card and passport together to the cashier. The cashier looked through the passport to find a stamp, and when unsuccessful, read the back of the card. They didn't check the front of the card, it was enough that there was a card that said "Temporary Visitor" and had a date on it. They entered the data into the register and proceeded with the transaction.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  
+  
+  
+  <footer class="s">
+    Tags: <a href='https://mikansoro.org/tags/japan'>japan</a>, <a href='https://mikansoro.org/tags/travel'>travel</a>
+  </footer>
+  
+  
+</article>
+</main>
+    <hr>
+    <footer class="s">
+        <span>© mikansoro.org 2026</span>
+        <span>
+<svg><use href="#rss"/></svg> Feeds: <a href="https://mikansoro.org/atom.xml">Atom</a> · <a href="https://mikansoro.org/rss.xml">RSS</a></span>
+    </footer>
+    
+    
+    
+    <script>document.querySelectorAll('article img[srcset]').forEach(i=>{if(i.closest('a'))return;i.style.cursor='pointer';i.onclick=()=>{let d=document.createElement('div'),s=i.srcset.split(',').pop().trim().split(' ')[0];d.className='lb';d.innerHTML='<img src="'+s+'">';document.body.style.overflow='hidden';d.onclick=()=>{d.remove();document.body.style.overflow=''};document.body.appendChild(d)}})</script>
+    </body>
+</html>

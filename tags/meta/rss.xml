@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>mikansoro.org - meta</title>
+      <link>https://mikansoro.org</link>
+      <description>Michael&#x27;s small corner of the internet.</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mikansoro.org/tags/meta/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 28 Aug 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Site Update 2026</title>
+          <pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
+          <author>Michael</author>
+          <link>https://mikansoro.org/blog/site-update-2026/</link>
+          <guid>https://mikansoro.org/blog/site-update-2026/</guid>
+          <description xml:base="https://mikansoro.org/blog/site-update-2026/">&lt;p&gt;After several years of neglect this site has a fresh coat of paint! &lt;br &#x2F;&gt;
+&lt;em&gt;&lt;strong&gt;Warning:&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt; RSS feeds have changed, see below.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;theme-update&quot;&gt;Theme update
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: theme-update&quot; href=&quot;#theme-update&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;I&#x27;ve migrated from the &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;isunjn&#x2F;serene&quot;&gt;serene&lt;&#x2F;a&gt; theme created by isunjn to a &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mikansoro&#x2F;zola-zap&quot;&gt;personal fork&lt;&#x2F;a&gt; of the newer &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jimmyff&#x2F;zola-zap&quot;&gt;zola-zap&lt;&#x2F;a&gt; theme from jimmyff. Serene was good enough^tm  when I first started the site, it had good support for shortcodes and features that got me off the ground quickly, but it doesn&#x27;t currently support the latest version of Zola and I&#x27;ve gotten tired of the style. Zap is small, relatively feature complete, and is a lightweight base I can extend easily to fit my own tastes. I won&#x27;t guarantee my fork will work correctly for anyone else, but it&#x27;s there if you want inspiration.&lt;&#x2F;p&gt;
+&lt;p&gt;Also, I now have a &lt;a href=&quot;&#x2F;gallery&#x2F;&quot;&gt;gallery&lt;&#x2F;a&gt;! I&#x27;ll be posting my photography there. I&#x27;m excited to have a place thats fully mine to post photos that I&#x27;ve created and want to share with the rssworld.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;content-update&quot;&gt;Content update
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: content-update&quot; href=&quot;#content-update&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;I want to write more. Will that happen? I&#x27;m not sure yet. There&#x27;s no cadence here.&lt;&#x2F;p&gt;
+&lt;p&gt;I have a large backlog of event summaries for the last 10 months that I&#x27;m going to try and post eventually.&lt;&#x2F;p&gt;
+&lt;p&gt;I will be posting to the gallery more frequently. Gallery posts are included in the atom and rss feeds linked at the bottom of the site. The old blog only &lt;code&gt;feed.xml&lt;&#x2F;code&gt; has been deprecated and will not be updated, but blog-only &lt;a href=&quot;&#x2F;blog&#x2F;rss.xml&quot;&gt;rss&lt;&#x2F;a&gt; and &lt;a href=&quot;&#x2F;blog&#x2F;atom.xml&quot;&gt;atom&lt;&#x2F;a&gt; feeds are available (should you not want gallery posts in your rss reader.)&lt;&#x2F;p&gt;
+&lt;p&gt;The feeds in the footer include both the blog and gallery.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>Updates are still slow</title>
+          <pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://mikansoro.org/blog/2025-slow-updates/</link>
+          <guid>https://mikansoro.org/blog/2025-slow-updates/</guid>
+          <description xml:base="https://mikansoro.org/blog/2025-slow-updates/">&lt;p&gt;I haven&#x27;t forgotten about this blog, I&#x27;ve just been slow.&lt;&#x2F;p&gt;</description>
+      </item>
+      <item>
+          <title>Hi Again: 2025 Edition</title>
+          <pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://mikansoro.org/blog/2025-hi-again/</link>
+          <guid>https://mikansoro.org/blog/2025-hi-again/</guid>
+          <description xml:base="https://mikansoro.org/blog/2025-hi-again/">&lt;p&gt;I realized I haven&#x27;t posted anything on my blog in over 6 months. I&#x27;m not dead, I have ideas for posts that I&#x27;m working on. I plan to find time to write more in the second half of the year.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ve been writing this blog in my editor (emacs), but I might switch to integrating my blog content with &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;obsidian.md&#x2F;&quot;&gt;obsidian&lt;&#x2F;a&gt;. I&#x27;ve been using obsidian for my notes, and so far I&#x27;ve been really happy with it.&lt;&#x2F;p&gt;
+&lt;p&gt;I might update the site theme too soon and maybe (finally) add multilingual support for some pages. TBD.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>About this blog (a &#x27;first post&#x27; of sorts)</title>
+          <pubDate>Sat, 13 Jan 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://mikansoro.org/blog/first-post/</link>
+          <guid>https://mikansoro.org/blog/first-post/</guid>
+          <description xml:base="https://mikansoro.org/blog/first-post/">&lt;p&gt;The first post on this blog (sort of). Part FAQ, part intro, part ramble.&lt;&#x2F;p&gt;</description>
+      </item>
+    </channel>
+</rss>

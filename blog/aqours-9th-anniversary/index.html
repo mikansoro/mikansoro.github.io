@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible"
+      content="IE=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+<meta name="description"
+      content="Michael&#x27;s small corner of the internet." />
+<meta name="keywords"
+      content="blog, technology, kubernetes, sre, homelab, travel, idols, Love Live!, anime" /> 
+
+<title>
+  Reflecting on 9 Years with Aqours // mikansoro.org</title>
+<meta property="og:site_name" content="mikansoro.org"/>
+<meta property="og:title" content="mikansoro.org | Reflecting on 9 Years with Aqours"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mikansoro.org/blog/aqours-9th-anniversary/"/>
+<meta property="og:description" content="Michael&#x27;s small corner of the internet."/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Reflecting on 9 Years with Aqours"/>
+<meta name="twitter:description" content="Michael&#x27;s small corner of the internet."/>
+<link rel="alternate" type="application/atom+xml" title="mikansoro.org" href="https://mikansoro.org/atom.xml">
+    <meta name="color-scheme" content="light dark">
+    
+    <style>
+html{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:1rem;line-height:1.5;margin:auto;max-width:70ch;padding:1.5rem 1em 3em}
+img{max-width:100%}img:not([src$=".svg"]),article>div,pre{border-radius:.3rem}img[src$="#pixelate"]{image-rendering:pixelated}
+h1{font-size:1.75rem}
+h2{font-size:1.4rem} 
+h3{font-size:1.15rem}
+h4,h5,h6{font-size:inherit;}
+h1,h2,h3,h4,h5,h6{color:#4299eb}
+a.anchor{color:#4299eb}
+p{text-align:left;line-height:1.6;}p,ul,ol,.g,article>footer,article>header{margin:0 0 1.5em}
+pre,blockquote{padding:1.5rem;margin:0 0 1.5rem}pre{overflow-x:auto}pre code{background:0!important}blockquote{border-left:3px solid}blockquote>*:last-child{margin-bottom:0}
+article>img,article>p>img,article>div{display:block;margin-bottom:1.5rem;width:100%}
+.yt{aspect-ratio:16/9;width:100%;overflow:hidden}.yt iframe{width:100%;height:100%;border:0}
+.s{font-size:.85rem}
+.theme{display:inline-block;width:1.5rem;height:1.5rem}.theme img,.theme svg{width:100%;height:100%}
+html.lt .theme img:first-child,html.lt .theme svg:first-child,html.dk .theme img:last-child,html.dk .theme svg:last-child{display:none}
+header>div{margin-bottom:1.5rem}footer{margin-top:1.5rem}body>footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+body>footer img,body>footer svg{width:1em;height:1em;vertical-align:middle}
+.tags{padding:.5rem 0 0 0}.tags li{display:inline}.tags li+li::before{content:' · '}
+table{width:100%;border-collapse:collapse;margin:0 0 1.5rem}
+th,td{padding:.5rem;border-bottom:1px solid;text-align:center;}
+nav{display:flex;gap:.5rem;margin:1.5rem 0}nav a{flex:1;display:flex;flex-direction:column;align-items:center;overflow:hidden;font-weight:bold}nav img,nav svg{width:2rem;height:2rem;margin-bottom:.25rem}nav a .s{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.5rem,1fr));gap:.5rem}.g a{aspect-ratio:1;display:flex;align-items:center;justify-content:center}.g img{object-fit:contain;max-height:100%;max-width:100%}
+.p{list-style:none;padding:0}.p ul{margin:0}.p>li{display:flex;gap:1rem;margin-bottom:1rem}.p time{display:flex;flex-direction:column;align-items:center;min-width:3rem;margin:.25rem 0}.p time span:first-child{font-size:1.5em;line-height:1}
+.lb{position:fixed;inset:0;background:#000d;display:flex;align-items:center;justify-content:center;z-index:999;cursor:pointer}.lb img{max-width:95vw;max-height:95vh}
+@media(max-width:30em){html{font-size:.9rem}header .desc{display:none}nav{flex-wrap:wrap;row-gap:1.5rem}nav a{flex-basis:25%}}
+.footnote-definition{font-size:.85rem;margin:0 0 .5em;display:flex;gap:.5em}.footnote-definition-label{min-width:1.5em}.footnote-definition p{margin:0}.footnote-reference{margin:0 .15em}
+html.lt{background:#e8edff;--tc:#e8edff;color:#111111}
+html.lt a{color:#eb9442}
+html.lt a:visited{color:#eb9442}
+html.lt a.active,html.lt a:active,html.lt a:hover{color:#eb9442}
+html.lt p,html.lt ul,html.lt ol,html.lt .desc{color:#111111}
+html.lt blockquote,html.lt pre,html.lt code,html.lt article>img,html.lt article>p>img,html.lt .g img{background:oklch(.94 .1 93)!important}
+html.lt ::selection{background:#eb9442;color:#fff}html.lt .giallo{color-scheme:light!important}
+html.dk{background:#0b051c;--tc:#0b051c;color:#efefef}
+html.dk a{color:#eb9442}
+html.dk a:visited{color:#eb9442}
+html.dk a.active,html.dk a:active,html.dk a:hover{color:#eb9442}
+html.dk p,html.dk ul,html.dk ol,html.dk .desc{color:#efefef}
+html.dk img[src$=".svg"],html.dk nav svg,html.dk .theme svg,html.dk footer svg{filter:invert(1)}
+html.dk blockquote,html.dk pre,html.dk code,html.dk article>img,html.dk article>p>img,html.dk .g img{background:#222!important}
+html.dk ::selection{background:#eb9442;color:#000}html.dk .giallo{color-scheme:dark!important}
+a.active,a:active,a:hover{text-decoration-style:wavy}
+.tags a{text-decoration-style:dotted}
+hr{border:0;border-top:1px dashed;clear:both;margin-bottom:1.5rem}
+@media print{*{color:#000!important;filter:none!important}html[class][class] *{background:none!important}html{font-size:.8rem;max-width:none;padding:0;background:#fff!important}.theme{display:none}img,pre{break-inside:avoid}}
+    </style>
+    <meta name="theme-color" id="tc"><script>(function(){var m=matchMedia('(prefers-color-scheme:dark)'),t=localStorage.theme,h=document.documentElement,c=document.getElementById('tc');t=t=='dk'||t=='lt'?t:m.matches?'dk':'lt';localStorage.theme=t;h.className=t;function u(){c.content=getComputedStyle(h).getPropertyValue('--tc')}u();window.zb=function(){t=t==='dk'?'lt':'dk';localStorage.theme=t;h.className=t;u()}})()</script>
+    
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="home" viewBox="0 0 32 32"><path d="M16.6123,2.2138a1.01,1.01,0,0,0-1.2427,0L1,13.4194l1.2427,1.5717L4,13.6209V26a2.0041,2.0041,0,0,0,2,2H26a2.0037,2.0037,0,0,0,2-2V13.63L29.7573,15,31,13.4282ZM18,26H14V18h4Zm2,0V18a2.0023,2.0023,0,0,0-2-2H14a2.002,2.002,0,0,0-2,2v8H6V12.0615l10-7.79,10,7.8005V26Z"/></symbol>
+<symbol id="chat" viewBox="0 0 32 32"><path d="M17.74,30,16,29l4-7h6a2,2,0,0,0,2-2V8a2,2,0,0,0-2-2H6A2,2,0,0,0,4,8V20a2,2,0,0,0,2,2h9v2H6a4,4,0,0,1-4-4V8A4,4,0,0,1,6,4H26a4,4,0,0,1,4,4V20a4,4,0,0,1-4,4H21.16Z"/><rect x="8" y="10" width="16" height="2"/><rect x="8" y="16" width="10" height="2"/></symbol>
+<symbol id="color-palette" viewBox="0 0 32 32"><circle cx="10" cy="12" r="2"/><circle cx="16" cy="9" r="2"/><circle cx="22" cy="12" r="2"/><circle cx="23" cy="18" r="2"/><circle cx="19" cy="23" r="2"/><path d="M16.54,2A14,14,0,0,0,2,16a4.82,4.82,0,0,0,6.09,4.65l1.12-.31A3,3,0,0,1,13,23.24V27a3,3,0,0,0,3,3A14,14,0,0,0,30,15.46,14.05,14.05,0,0,0,16.54,2Zm8.11,22.31A11.93,11.93,0,0,1,16,28a1,1,0,0,1-1-1V23.24a5,5,0,0,0-5-5,5.07,5.07,0,0,0-1.33.18l-1.12.31A2.82,2.82,0,0,1,4,16,12,12,0,0,1,16.47,4,12.18,12.18,0,0,1,28,15.53,11.89,11.89,0,0,1,24.65,24.32Z"/></symbol>
+<symbol id="idea" viewBox="0 0 32 32"><rect x="11" y="24" width="10" height="2"/><rect x="13" y="28" width="6" height="2"/><path d="M16,2A10,10,0,0,0,6,12a9.19,9.19,0,0,0,3.46,7.62c1,.93,1.54,1.46,1.54,2.38h2c0-1.84-1.11-2.87-2.19-3.86A7.2,7.2,0,0,1,8,12a8,8,0,0,1,16,0,7.2,7.2,0,0,1-2.82,6.14c-1.07,1-2.18,2-2.18,3.86h2c0-.92.53-1.45,1.54-2.39A9.18,9.18,0,0,0,26,12,10,10,0,0,0,16,2Z"/></symbol>
+<symbol id="search" viewBox="0 0 32 32"><path d="M29,27.5859l-7.5521-7.5521a11.0177,11.0177,0,1,0-1.4141,1.4141L27.5859,29ZM4,13a9,9,0,1,1,9,9A9.01,9.01,0,0,1,4,13Z"/></symbol>
+<symbol id="light" viewBox="0 0 32 32"><rect x="15" y="2" width="2" height="5"/><rect x="21.6675" y="6.8536" width="4.958" height="1.9998" transform="translate(1.5191 19.3744) rotate(-45)"/><rect x="25" y="15" width="5" height="2"/><rect x="23.1466" y="21.6675" width="1.9998" height="4.958" transform="translate(-10.0018 24.1465) rotate(-45)"/><rect x="15" y="25" width="2" height="5"/><rect x="5.3745" y="23.1466" width="4.958" height="1.9998" transform="translate(-14.7739 12.6256) rotate(-45)"/><rect x="2" y="15" width="5" height="2"/><rect x="6.8536" y="5.3745" width="1.9998" height="4.958" transform="translate(-3.253 7.8535) rotate(-45)"/><path d="M16,12a4,4,0,1,1-4,4,4.0045,4.0045,0,0,1,4-4m0-2a6,6,0,1,0,6,6,6,6,0,0,0-6-6Z"/></symbol>
+<symbol id="asleep" viewBox="0 0 32 32"><path d="M13.5025,5.4136A15.0755,15.0755,0,0,0,25.096,23.6082a11.1134,11.1134,0,0,1-7.9749,3.3893c-.1385,0-.2782.0051-.4178,0A11.0944,11.0944,0,0,1,13.5025,5.4136M14.98,3a1.0024,1.0024,0,0,0-.1746.0156A13.0959,13.0959,0,0,0,16.63,28.9973c.1641.006.3282,0,.4909,0a13.0724,13.0724,0,0,0,10.702-5.5556,1.0094,1.0094,0,0,0-.7833-1.5644A13.08,13.08,0,0,1,15.8892,4.38,1.0149,1.0149,0,0,0,14.98,3Z"/></symbol>
+<symbol id="rss" viewBox="0 0 32 32"><path d="M8,18c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6C14,20.7,11.3,18,8,18z M8,28c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4C12,26.2,10.2,28,8,28z"/><path d="M30,24h-2C28,13,19,4,8,4V2C20.1,2,30,11.9,30,24z"/><path d="M22,24h-2c0-6.6-5.4-12-12-12v-2C15.7,10,22,16.3,22,24z"/></symbol>
+<symbol id="user" viewBox="0 0 32 32"><path d="M16,4a5,5,0,1,1-5,5,5,5,0,0,1,5-5m0-2a7,7,0,1,0,7,7A7,7,0,0,0,16,2Z"/><path d="M26,30H24V25a5,5,0,0,0-5-5H13a5,5,0,0,0-5,5v5H6V25a7,7,0,0,1,7-7h6a7,7,0,0,1,7,7Z"/></symbol>
+<symbol id="book" viewBox="0 0 32 32"><rect x="19" y="10" width="7" height="2"/><rect x="19" y="15" width="7" height="2"/><rect x="19" y="20" width="7" height="2"/><rect x="6" y="10" width="7" height="2"/><rect x="6" y="15" width="7" height="2"/><rect x="6" y="20" width="7" height="2"/><path d="M28,5H4A2.002,2.002,0,0,0,2,7V25a2.002,2.002,0,0,0,2,2H28a2.002,2.002,0,0,0,2-2V7A2.002,2.002,0,0,0,28,5ZM4,7H15V25H4ZM17,25V7H28V25Z"/></symbol>
+</svg>
+
+    <header>
+        <div class="s" style="display:flex;justify-content:space-between;align-items:center">
+            <span><strong>mikansoro.org</strong><span class="desc"> · Michael&#x27;s small corner of the internet.</span></span>
+            <a href="#" onclick="zb();return false" class="theme" aria-label="Toggle theme" title="Toggle theme">
+<svg><use href="#light"/></svg>
+<svg><use href="#asleep"/></svg></a>
+        </div>
+        <hr>
+        <nav>
+            <a href="https://mikansoro.org/" aria-label="Home">
+<svg><use href="#home"/></svg><span class="s">Home</span></a>
+            <a href="https://mikansoro.org/blog/" aria-label="Blog" class="active" aria-current="page">
+<svg><use href="#chat"/></svg><span class="s">Blog</span></a>
+            <a href="https://mikansoro.org/gallery/" aria-label="Gallery">
+<svg><use href="#color-palette"/></svg><span class="s">Gallery</span></a>
+            <a href="https://mikansoro.org/about/" aria-label="About">
+<svg><use href="#user"/></svg><span class="s">About</span></a>
+            <a href="https://mikansoro.org/blogroll/" aria-label="Blogroll">
+<svg><use href="#book"/></svg><span class="s">Blogroll</span></a>
+            <a href="https://mikansoro.org/tags/" aria-label="Tags">
+<svg><use href="#idea"/></svg><span class="s">Tags</span></a>
+            </nav>
+    </header>
+    <hr>
+    <main>
+    
+<article>
+  <header>
+    <h1>Reflecting on 9 Years with Aqours</h1>
+    <time class="s" datetime="2024-06-30">30 Jun 2024</time>
+    
+  </header>
+  
+  
+  
+    <p>Today marked the ninth anniversary of the creation of Aqours, the seiyuu idol group from the anime Love Live! Sunshine!! Each anniversary, Aqours would make announcements about their upcoming projects and release a new song as part of their fanclub (Aqours Club). It had become routine. This year seemed to be no different.</p>
+ <span id="continue-reading"></span>
+<p>Remember that this is their ninth anniversary. Nine is a symbolic number for Aqours and for the Love Live! franchise. The first Love Live! idol group, μ's, was formed with nine members; their name a reference to the nine Muses from Greek mythology. Aqours followed suit, considering themselves "fully formed" when they reached nine members, working to create miracles as nine.</p>
+<p>It was announced that Aqours would hold <a rel="nofollow noreferrer external" href="https://www.youtube.com/watch?v=7AGCpGnlGLY">a livestream</a> at 8PM JST on the 30th with all 9 members present. This used to be standard practice before the pandemic but hasn't happened in years. This raised alarm bells for some, but I believed that we were finally getting an announcement of a solo live performance (which Aqours hasn't had since June 2022). I was right, but not in the way I hoped.</p>
+<p>Aqours announced that their final solo live performance would take place within the next year.</p>
+<p>Even though I knew this day would come eventually, I wasn't ready.</p>
+<h2 id="nine-years">Nine Years
+<a class="anchor" aria-label="Anchor link for: nine-years" href="#nine-years">#</a>
+
+</h2>
+<p>It's hard to believe that nine years have passed since Aqours began. For nine years, the members of Aqours always pushed forwards to take on greater and greater challenges even though they were difficult. Their courage and determination led the Love Live! franchise to new heights and inspired the same courage in their fans all over the world. They inspired that same courage and determination within me, and I would not be the person I am today without their support.</p>
+<p>It's a little strange to think about, but Aqours has been with me my entire adult life. They've been a constant source of joy and inspiration to me; through good times and bad, I've always had them by my side. Aqours helped me conquer some of the toughest times in my life with ease, their love and power helping my heart shine brightly along with theirs.</p>
+<p>Somehow, those nine years passed by in a flash. Despite their seemingly rapid pace, I wouldn't trade my experiences with Aqours for anything. In the wake of the announcement of their final solo live countless memories came flooding back, reminding me that no matter how bad (or good) things seemed in the moment, the last nine years have been nothing short of extraordinary. I'm eternally grateful to the members of Aqours and to the friends I've made along the way for helping me create countless, incredible memories.</p>
+<h2 id="memories">Memories
+<a class="anchor" aria-label="Anchor link for: memories" href="#memories">#</a>
+
+</h2>
+
+
+
+
+<img alt="A collection of my Aqours event tickets" title="A collection of my Aqours event tickets" src="https://mikansoro.org/processed_images/tickets.2ad4cdf4a5c14ed7.png" srcset="https://mikansoro.org/processed_images/tickets.96e5502d4eaaac91.png 512w, https://mikansoro.org/processed_images/tickets.2ad4cdf4a5c14ed7.png 1024w, https://mikansoro.org/processed_images/tickets.b1ee39801ea1294f.png 2048w" class="" />
+
+<p>I'd like to share a few of my fondest memories with Aqours here. Don't feel pressured to read them, but I want to share some of the Wonderful Stories I've experienced over the last nine years. They're raw, poorly edited, and I may ramble a lot retelling them. But I think it's important to share memories that Aqours helped us make, because no matter what happens those memories will always be with us. I don't even know how many I'll make it through writing while still trying to post this on the 30th.</p>
+<p>I might try to add more over the next couple days, as I think through and process things.</p>
+<p>I've been fortunate enough to see Aqours perform in person quite a bit though. I wouldn't trade any of these experiences for anything. They're some of my most precious memories.</p>
+<ul>
+<li>Anime Expo 2017 - Anisong World Matsuri</li>
+<li>Anime Expo 2018 - Aqours World LoveLive! in LA <del>Beyond the Pacific</del></li>
+<li>Aqours 4th LoveLive! <del>Sailing to the Sunshine!</del> (2 days)</li>
+<li>Aqours 5th LoveLive! <del>Next SPARKLING!</del> (2 days)</li>
+<li>Anime Expo 2019 - Aqours World LoveLive! in LA <del>Brand New Wave</del> (2 days)</li>
+<li>AnimeNYC 2019 - Guilty Kiss at Lantis Matsuri 2019</li>
+<li>Love Live! Sunshine!! Unit Live Adventure 2020 <del>Braveheart Coaster</del> (2 days)</li>
+<li>Ijigen Fes IDOLM@STER Love Live! Uta Gassen (2 days)</li>
+<li>Genjitsu no Yohane -The Story of the Sound of Heart- (3 days)</li>
+</ul>
+<h3 id="july-2018-aqours-world-lovelive-in-la-beyond-the-pacific">July 2018 - Aqours World LoveLive! in LA <del>Beyond the Pacific</del>
+<a class="anchor" aria-label="Anchor link for: july-2018-aqours-world-lovelive-in-la-beyond-the-pacific" href="#july-2018-aqours-world-lovelive-in-la-beyond-the-pacific">#</a>
+
+</h3>
+<p><a rel="nofollow noreferrer external" href="https://love-live.fandom.com/wiki/Aqours_World_Love_Live!_in_LA_~Beyond_the_Pacific~">Information about Aqours World LoveLive! in LA <del>Beyond the Pacific</del></a></p>
+<p>This was a momentous occasion. The 2018 LA live marked the first time that Aqours (and Love Live! as a whole) held a one-man full-length live outside of Japan. Originally, I was supposed to fly out on vacation with my family that day, but with the biggest stroke of luck I was able to change my ticket and fly out a day later to make sure I didn't miss seeing my first Aqours solo live. That was one of the greatest decisions I've ever made.</p>
+<p>In order to surprise Aqours, a group of fans decided to organize a penlight project (where the whole crowd changes their penlight colors into a specific pattern at a certain time in a song). The goal was to form the sea of lights into a rainbow—the same rainbow that Aqours painted on their school upon its closure. The project was called the <a rel="nofollow noreferrer external" href="https://twitter.com/AX_AquoRainbow">AquoRainbow</a>. During Anchan's solo of <a rel="nofollow noreferrer external" href="https://love-live.fandom.com/wiki/Yuuki_wa_doko_ni%3F_Kimi_no_Mune_ni!">Yuuki wa doko ni? Kimi no Mune ni!</a>, everyone would change their penlights to their assigned color of the rainbow based on their seat location. Each band of color would be raised one at a time, until all nine colors of the rainbow were represented.</p>
+
+
+
+
+<img alt="The Rainbow in the Love Live! Sunshine!! Anime" title="The Rainbow in the Love Live! Sunshine!! Anime" src="https://mikansoro.org/processed_images/rainbow.f03f7229893e81ae.jpg" srcset="https://mikansoro.org/processed_images/rainbow.0c7e0d519dd3f088.jpg 512w, https://mikansoro.org/processed_images/rainbow.f03f7229893e81ae.jpg 1024w" class="" />
+
+<p>This seemed almost too ambitious. But we were determined to see it through. While waiting for the live to start, the person sitting next to me started asking about how the rainbow would work, and I remember explaining it to them. He wasn't sure when we needed to do it, so I promised I'd clue him in when the time came. We were seated in the white color band, so my normally orange (and blue, at the time) penlights would switch to white when it was time for Anchan's solo.</p>
+<p>YuuKimi is a special song for me. Not only is it the ending song for Season 2 of Love Live! Sunshine!!, it's a song that Aqours and the audience all sing together. It's an incredibly powerful moment, joining our voices with theirs for one of the most beautiful songs ever released by the Love Live! franchise.</p>
+<p>The time came, and as we sang along with Aqours I started to wonder if it would be successful. And then, right on queue as Anchan began her solo, the entire crowd dropped their penlights below the seats and the front section instantly switched to purple. I knew it was going to work. One by one, each band of color rose up from the crowd. By the 6th color the members of Aqours realized what was happening, and began to cry. Anchan's voice broke as she tried to keep singing while fighting back tears.</p>
+<p>We'd done it.</p>
+
+
+
+
+<img alt="The Penlight Rainbow at Beyond the Pacific" title="The Penlight Rainbow at Beyond the Pacific" src="https://mikansoro.org/processed_images/rainbow-penlights.86fedc5143802549.jpg" srcset="https://mikansoro.org/processed_images/rainbow-penlights.852f1179d48110d8.jpg 512w, https://mikansoro.org/processed_images/rainbow-penlights.86fedc5143802549.jpg 1024w" class="" />
+
+<p>I looked to my right across the venue, and all I could see was a rainbow of color. I'll never forget that moment as long as I live. I felt the international fanbase's strong love for Aqours in that moment, and they felt it too. After the song finished, they remarked about how surprised they were, shouting their thanks through tears of joy.</p>
+<p>Sadly, the only image of the rainbow that exists is the image posted officially on twitter which I've included above. In the venue they claimed they were filming the entire performance to releases later, but to this day that footage has never been seen. One photo and our memories (and some bootleg cellphone video, which I will not link here) are all that remains of that magical moment in history.</p>
+<h3 id="november-2018-aqours-4th-lovelive-sailing-to-the-sunshine">November 2018 - Aqours 4th LoveLive! <del>Sailing to the Sunshine!</del>
+<a class="anchor" aria-label="Anchor link for: november-2018-aqours-4th-lovelive-sailing-to-the-sunshine" href="#november-2018-aqours-4th-lovelive-sailing-to-the-sunshine">#</a>
+
+</h3>
+<p>I can't even begin to put my trip for Aqours 4th LoveLive! into an easily digestible context. After Beyond the Pacific, I told myself that there was no way I was going to miss the next major Aqours live taking place in November of that year. I had missed Aqours 1st through 3rd lives due to being a college student with limited income, but I decided that I would do whatever it took to get there for this one. Aqours 4th live was going to be one of the most important lives in the Love Live! franchise, as it was announced that it would be held in Tokyo Dome.</p>
+<p>Similar to how the number 9 is sacred in Love Live!, Tokyo Dome is the "holy grail" of venues for the franchise. In the Love Live! Sunshine!! anime, the finale of the Love Live! national school idol competition is held in Tokyo Dome (referred to as "Akiba Dome" in the show), and μ's Final LoveLive! <del>µ'sic Forever♪♪♪♪♪♪♪♪♪</del> was held on March 31 and April 1, 2016 at Tokyo Dome. Aqours making it to Tokyo dome by their 4th live was a massively momentous occasion.</p>
+<p>I didn't have an e+ account, or even a Japanese phone number back then. The whole process seemed incredibly daunting, but I wanted to try to make it work. To my shock and surprise, Aqours 4th live was the first Love Live! event in history to have a foreigner ticket+hotel package. This bypassed my need for an e+ account, asn I could get a ticket officially through the package. I applied, and waited with baited breath to hear if I'd be selected from the ticket lottery.</p>
+<p>Being the first time they had done this, winning ticket emails were sent out one at a time by the travel agency staff by hand. The first email to someone in the r/LoveLive discord came out early in the morning, and I finally received mine almost 12 hours later. 12 long hours of panic and pacing, but I had a ticket to Day 1 of Aqours 4th live. Not only that, I was going to Tokyo for the first time. I scalped a ticket for Day 2 off of TicketJam so I could attend both days, and I was set.</p>
+<p>I didn't really have strong ties with the international LL community at the time, but in the days leading up to my trip I wound up meeting a now close friend. We decided to hang out and walk around on my first day, and one by one we picked up other international livers to join our group. This tight-knit group of friends lasted into the pandemic, where due to life circumstances and (understandable) depression over the endless waves of cancellations we drifted apart. I'm hoping Aqours Finale will bring us back together one more time.</p>
+<p>Throughout my 94 hour (yes, 94 hour) time in Japan, I experienced a whirlwind of emotion, culminating in one of the best lives I've ever been to. I can still replay both days of the live fully in my mind like I was there. The memories are as sharp as ever. I couldn't hold back my tears across both days. It deserves its own blog entry some day reflecting on those moments. I can't do it justice here. Not today, at least.</p>
+<h2 id="reaction-to-the-announcement">Reaction to the Announcement
+<a class="anchor" aria-label="Anchor link for: reaction-to-the-announcement" href="#reaction-to-the-announcement">#</a>
+
+</h2>
+<p>I couldn't find a good place to put this, so it gets its own section. I seriously didn't think that this announcement was coming today. I laughed off the doom posts, thinking this would be an anniversary announcement like any other.</p>
+<p>Boy was I wrong.</p>
+<p>Each member introduced an announcement video as we all waited with baited breath, until it finally reached Anchan. She intro'd the video, and when it showed clips of Aqours' previous lives my heart sank. The words "Finale LoveLive!" flashed across the screen, and the penny dropped with a horrible clang.</p>
+<p>Anchan tried so hard to be strong, but as she read the announcement back to us she began to cry. Shuka gave her a rub on the back as she tried to push onwards with a smile. The fearless leader of Aqours kept pushing even though it was difficult, but the moment she began to cry I broke. It all felt real in that moment, even if later in the day it all felt like a bad dream.</p>
+<h2 id="what-s-next">What's Next?
+<a class="anchor" aria-label="Anchor link for: what-s-next" href="#what-s-next">#</a>
+
+</h2>
+<p>Despite the announcement of their final solo live, Aqours isn't disbanding. This will be their "Finale LoveLive!", the last time they stand on a solo stage as the nine members of Aqours. They've already confirmed their JimoAi Matsuri in Numazu will return in 2025, likely after their finale live. In all honesty, Aqours will proceed similarly to how they've been the past two years.</p>
+<p>As reassuring as that news may be, it's still heartbreaking. It's the end of an era, and no amount of reassurance makes the news any less painful to bear.</p>
+<p>I'll be there for the last nine member performance of Aqours. No matter what.</p>
+<p>I'll do my best to push forward with a smile, knowing the members of Aqours are doing the same.</p>
+<p>All I can say now is, <a rel="nofollow noreferrer external" href="https://open.spotify.com/track/6nzcHFeAFXlupIslA5lxav">Thank you, FRIENDS!!</a></p>
+<!--
+Nine years has gone by in a flash. Somehow, today is already Aqours's 9th anniversary, and its the 14th anniversary of the Love Live! series. Even though time has flown by so quickly, I have so many memories
+
+Aqours has been with me my entire adult life.
+
+My first trip to japan, my first ax, my first idol lives, all because of them.
+made me into the person I am today. Wouldn't be where I am without their support.
+
+Still remember my memories of Aqours clear as day. Like it was yesterday. Can replay all of 4th and 5th over in my head. The rainbow in 2018 forever burnt into my memory.
+
+Been wondering when this day would come for a while. It's been 5 years since Aqours 5th live. Missed the lives during covid, including white day/valentines. Glad I could see them at ijigen/koshien.
+Still wasn't ready.
+Watching an aqours 9 member nama like the old days with friends, but this time it was endless announcements.
+When it finally got to Anchan, i was worried. And rightfully so, because that was the announcement I was silently dreading.
+She tried her hardest to hold back her tears, but once she started I couldn't stop.
+All my memories of Aqours came flooding back.
+Even ones I hadn't thought about in years.
+All the friends I made, the ones I lost touch with along the way. Regrets, excitement, everything.
+
+
+It's not over yet, they're not disbanding. But it'll be their last solo live, and that'll be heartbreaking.
+I won't miss it for anything.
+Just like Anchan and Chika-chan always keep moving forward no matter how difficult the situation might be, I'll continue to do the same.
+I'll push forward with a smile, knowing the members of Aqours are doing the same.
+-->
+
+  
+  
+  
+  <footer class="s">
+    Tags: <a href='https://mikansoro.org/tags/aqours'>Aqours</a>, <a href='https://mikansoro.org/tags/love-live'>Love Live!</a>
+  </footer>
+  
+  
+</article>
+</main>
+    <hr>
+    <footer class="s">
+        <span>© mikansoro.org 2026</span>
+        <span>
+<svg><use href="#rss"/></svg> Feeds: <a href="https://mikansoro.org/atom.xml">Atom</a> · <a href="https://mikansoro.org/rss.xml">RSS</a></span>
+    </footer>
+    
+    
+    
+    <script>document.querySelectorAll('article img[srcset]').forEach(i=>{if(i.closest('a'))return;i.style.cursor='pointer';i.onclick=()=>{let d=document.createElement('div'),s=i.srcset.split(',').pop().trim().split(' ')[0];d.className='lb';d.innerHTML='<img src="'+s+'">';document.body.style.overflow='hidden';d.onclick=()=>{d.remove();document.body.style.overflow=''};document.body.appendChild(d)}})</script>
+    </body>
+</html>

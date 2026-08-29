@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible"
+      content="IE=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+<meta name="description"
+      content="Michael&#x27;s small corner of the internet." />
+<meta name="keywords"
+      content="blog, technology, kubernetes, sre, homelab, travel, idols, Love Live!, anime" /> 
+
+<title>
+  Creating a Debian Cloud-Init Template in Xen Orchestra // mikansoro.org</title>
+<meta property="og:site_name" content="mikansoro.org"/>
+<meta property="og:title" content="mikansoro.org | Creating a Debian Cloud-Init Template in Xen Orchestra"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mikansoro.org/blog/debian-cloud-init-xen-orchestra/"/>
+<meta property="og:description" content="Michael&#x27;s small corner of the internet."/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Creating a Debian Cloud-Init Template in Xen Orchestra"/>
+<meta name="twitter:description" content="Michael&#x27;s small corner of the internet."/>
+<link rel="alternate" type="application/atom+xml" title="mikansoro.org" href="https://mikansoro.org/atom.xml">
+    <meta name="color-scheme" content="light dark">
+    
+    <style>
+html{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:1rem;line-height:1.5;margin:auto;max-width:70ch;padding:1.5rem 1em 3em}
+img{max-width:100%}img:not([src$=".svg"]),article>div,pre{border-radius:.3rem}img[src$="#pixelate"]{image-rendering:pixelated}
+h1{font-size:1.75rem}
+h2{font-size:1.4rem} 
+h3{font-size:1.15rem}
+h4,h5,h6{font-size:inherit;}
+h1,h2,h3,h4,h5,h6{color:#4299eb}
+a.anchor{color:#4299eb}
+p{text-align:left;line-height:1.6;}p,ul,ol,.g,article>footer,article>header{margin:0 0 1.5em}
+pre,blockquote{padding:1.5rem;margin:0 0 1.5rem}pre{overflow-x:auto}pre code{background:0!important}blockquote{border-left:3px solid}blockquote>*:last-child{margin-bottom:0}
+article>img,article>p>img,article>div{display:block;margin-bottom:1.5rem;width:100%}
+.yt{aspect-ratio:16/9;width:100%;overflow:hidden}.yt iframe{width:100%;height:100%;border:0}
+.s{font-size:.85rem}
+.theme{display:inline-block;width:1.5rem;height:1.5rem}.theme img,.theme svg{width:100%;height:100%}
+html.lt .theme img:first-child,html.lt .theme svg:first-child,html.dk .theme img:last-child,html.dk .theme svg:last-child{display:none}
+header>div{margin-bottom:1.5rem}footer{margin-top:1.5rem}body>footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+body>footer img,body>footer svg{width:1em;height:1em;vertical-align:middle}
+.tags{padding:.5rem 0 0 0}.tags li{display:inline}.tags li+li::before{content:' · '}
+table{width:100%;border-collapse:collapse;margin:0 0 1.5rem}
+th,td{padding:.5rem;border-bottom:1px solid;text-align:center;}
+nav{display:flex;gap:.5rem;margin:1.5rem 0}nav a{flex:1;display:flex;flex-direction:column;align-items:center;overflow:hidden;font-weight:bold}nav img,nav svg{width:2rem;height:2rem;margin-bottom:.25rem}nav a .s{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.5rem,1fr));gap:.5rem}.g a{aspect-ratio:1;display:flex;align-items:center;justify-content:center}.g img{object-fit:contain;max-height:100%;max-width:100%}
+.p{list-style:none;padding:0}.p ul{margin:0}.p>li{display:flex;gap:1rem;margin-bottom:1rem}.p time{display:flex;flex-direction:column;align-items:center;min-width:3rem;margin:.25rem 0}.p time span:first-child{font-size:1.5em;line-height:1}
+.lb{position:fixed;inset:0;background:#000d;display:flex;align-items:center;justify-content:center;z-index:999;cursor:pointer}.lb img{max-width:95vw;max-height:95vh}
+@media(max-width:30em){html{font-size:.9rem}header .desc{display:none}nav{flex-wrap:wrap;row-gap:1.5rem}nav a{flex-basis:25%}}
+.footnote-definition{font-size:.85rem;margin:0 0 .5em;display:flex;gap:.5em}.footnote-definition-label{min-width:1.5em}.footnote-definition p{margin:0}.footnote-reference{margin:0 .15em}
+html.lt{background:#e8edff;--tc:#e8edff;color:#111111}
+html.lt a{color:#eb9442}
+html.lt a:visited{color:#eb9442}
+html.lt a.active,html.lt a:active,html.lt a:hover{color:#eb9442}
+html.lt p,html.lt ul,html.lt ol,html.lt .desc{color:#111111}
+html.lt blockquote,html.lt pre,html.lt code,html.lt article>img,html.lt article>p>img,html.lt .g img{background:oklch(.94 .1 93)!important}
+html.lt ::selection{background:#eb9442;color:#fff}html.lt .giallo{color-scheme:light!important}
+html.dk{background:#0b051c;--tc:#0b051c;color:#efefef}
+html.dk a{color:#eb9442}
+html.dk a:visited{color:#eb9442}
+html.dk a.active,html.dk a:active,html.dk a:hover{color:#eb9442}
+html.dk p,html.dk ul,html.dk ol,html.dk .desc{color:#efefef}
+html.dk img[src$=".svg"],html.dk nav svg,html.dk .theme svg,html.dk footer svg{filter:invert(1)}
+html.dk blockquote,html.dk pre,html.dk code,html.dk article>img,html.dk article>p>img,html.dk .g img{background:#222!important}
+html.dk ::selection{background:#eb9442;color:#000}html.dk .giallo{color-scheme:dark!important}
+a.active,a:active,a:hover{text-decoration-style:wavy}
+.tags a{text-decoration-style:dotted}
+hr{border:0;border-top:1px dashed;clear:both;margin-bottom:1.5rem}
+@media print{*{color:#000!important;filter:none!important}html[class][class] *{background:none!important}html{font-size:.8rem;max-width:none;padding:0;background:#fff!important}.theme{display:none}img,pre{break-inside:avoid}}
+    </style>
+    <meta name="theme-color" id="tc"><script>(function(){var m=matchMedia('(prefers-color-scheme:dark)'),t=localStorage.theme,h=document.documentElement,c=document.getElementById('tc');t=t=='dk'||t=='lt'?t:m.matches?'dk':'lt';localStorage.theme=t;h.className=t;function u(){c.content=getComputedStyle(h).getPropertyValue('--tc')}u();window.zb=function(){t=t==='dk'?'lt':'dk';localStorage.theme=t;h.className=t;u()}})()</script>
+    
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="home" viewBox="0 0 32 32"><path d="M16.6123,2.2138a1.01,1.01,0,0,0-1.2427,0L1,13.4194l1.2427,1.5717L4,13.6209V26a2.0041,2.0041,0,0,0,2,2H26a2.0037,2.0037,0,0,0,2-2V13.63L29.7573,15,31,13.4282ZM18,26H14V18h4Zm2,0V18a2.0023,2.0023,0,0,0-2-2H14a2.002,2.002,0,0,0-2,2v8H6V12.0615l10-7.79,10,7.8005V26Z"/></symbol>
+<symbol id="chat" viewBox="0 0 32 32"><path d="M17.74,30,16,29l4-7h6a2,2,0,0,0,2-2V8a2,2,0,0,0-2-2H6A2,2,0,0,0,4,8V20a2,2,0,0,0,2,2h9v2H6a4,4,0,0,1-4-4V8A4,4,0,0,1,6,4H26a4,4,0,0,1,4,4V20a4,4,0,0,1-4,4H21.16Z"/><rect x="8" y="10" width="16" height="2"/><rect x="8" y="16" width="10" height="2"/></symbol>
+<symbol id="color-palette" viewBox="0 0 32 32"><circle cx="10" cy="12" r="2"/><circle cx="16" cy="9" r="2"/><circle cx="22" cy="12" r="2"/><circle cx="23" cy="18" r="2"/><circle cx="19" cy="23" r="2"/><path d="M16.54,2A14,14,0,0,0,2,16a4.82,4.82,0,0,0,6.09,4.65l1.12-.31A3,3,0,0,1,13,23.24V27a3,3,0,0,0,3,3A14,14,0,0,0,30,15.46,14.05,14.05,0,0,0,16.54,2Zm8.11,22.31A11.93,11.93,0,0,1,16,28a1,1,0,0,1-1-1V23.24a5,5,0,0,0-5-5,5.07,5.07,0,0,0-1.33.18l-1.12.31A2.82,2.82,0,0,1,4,16,12,12,0,0,1,16.47,4,12.18,12.18,0,0,1,28,15.53,11.89,11.89,0,0,1,24.65,24.32Z"/></symbol>
+<symbol id="idea" viewBox="0 0 32 32"><rect x="11" y="24" width="10" height="2"/><rect x="13" y="28" width="6" height="2"/><path d="M16,2A10,10,0,0,0,6,12a9.19,9.19,0,0,0,3.46,7.62c1,.93,1.54,1.46,1.54,2.38h2c0-1.84-1.11-2.87-2.19-3.86A7.2,7.2,0,0,1,8,12a8,8,0,0,1,16,0,7.2,7.2,0,0,1-2.82,6.14c-1.07,1-2.18,2-2.18,3.86h2c0-.92.53-1.45,1.54-2.39A9.18,9.18,0,0,0,26,12,10,10,0,0,0,16,2Z"/></symbol>
+<symbol id="search" viewBox="0 0 32 32"><path d="M29,27.5859l-7.5521-7.5521a11.0177,11.0177,0,1,0-1.4141,1.4141L27.5859,29ZM4,13a9,9,0,1,1,9,9A9.01,9.01,0,0,1,4,13Z"/></symbol>
+<symbol id="light" viewBox="0 0 32 32"><rect x="15" y="2" width="2" height="5"/><rect x="21.6675" y="6.8536" width="4.958" height="1.9998" transform="translate(1.5191 19.3744) rotate(-45)"/><rect x="25" y="15" width="5" height="2"/><rect x="23.1466" y="21.6675" width="1.9998" height="4.958" transform="translate(-10.0018 24.1465) rotate(-45)"/><rect x="15" y="25" width="2" height="5"/><rect x="5.3745" y="23.1466" width="4.958" height="1.9998" transform="translate(-14.7739 12.6256) rotate(-45)"/><rect x="2" y="15" width="5" height="2"/><rect x="6.8536" y="5.3745" width="1.9998" height="4.958" transform="translate(-3.253 7.8535) rotate(-45)"/><path d="M16,12a4,4,0,1,1-4,4,4.0045,4.0045,0,0,1,4-4m0-2a6,6,0,1,0,6,6,6,6,0,0,0-6-6Z"/></symbol>
+<symbol id="asleep" viewBox="0 0 32 32"><path d="M13.5025,5.4136A15.0755,15.0755,0,0,0,25.096,23.6082a11.1134,11.1134,0,0,1-7.9749,3.3893c-.1385,0-.2782.0051-.4178,0A11.0944,11.0944,0,0,1,13.5025,5.4136M14.98,3a1.0024,1.0024,0,0,0-.1746.0156A13.0959,13.0959,0,0,0,16.63,28.9973c.1641.006.3282,0,.4909,0a13.0724,13.0724,0,0,0,10.702-5.5556,1.0094,1.0094,0,0,0-.7833-1.5644A13.08,13.08,0,0,1,15.8892,4.38,1.0149,1.0149,0,0,0,14.98,3Z"/></symbol>
+<symbol id="rss" viewBox="0 0 32 32"><path d="M8,18c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6C14,20.7,11.3,18,8,18z M8,28c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4C12,26.2,10.2,28,8,28z"/><path d="M30,24h-2C28,13,19,4,8,4V2C20.1,2,30,11.9,30,24z"/><path d="M22,24h-2c0-6.6-5.4-12-12-12v-2C15.7,10,22,16.3,22,24z"/></symbol>
+<symbol id="user" viewBox="0 0 32 32"><path d="M16,4a5,5,0,1,1-5,5,5,5,0,0,1,5-5m0-2a7,7,0,1,0,7,7A7,7,0,0,0,16,2Z"/><path d="M26,30H24V25a5,5,0,0,0-5-5H13a5,5,0,0,0-5,5v5H6V25a7,7,0,0,1,7-7h6a7,7,0,0,1,7,7Z"/></symbol>
+<symbol id="book" viewBox="0 0 32 32"><rect x="19" y="10" width="7" height="2"/><rect x="19" y="15" width="7" height="2"/><rect x="19" y="20" width="7" height="2"/><rect x="6" y="10" width="7" height="2"/><rect x="6" y="15" width="7" height="2"/><rect x="6" y="20" width="7" height="2"/><path d="M28,5H4A2.002,2.002,0,0,0,2,7V25a2.002,2.002,0,0,0,2,2H28a2.002,2.002,0,0,0,2-2V7A2.002,2.002,0,0,0,28,5ZM4,7H15V25H4ZM17,25V7H28V25Z"/></symbol>
+</svg>
+
+    <header>
+        <div class="s" style="display:flex;justify-content:space-between;align-items:center">
+            <span><strong>mikansoro.org</strong><span class="desc"> · Michael&#x27;s small corner of the internet.</span></span>
+            <a href="#" onclick="zb();return false" class="theme" aria-label="Toggle theme" title="Toggle theme">
+<svg><use href="#light"/></svg>
+<svg><use href="#asleep"/></svg></a>
+        </div>
+        <hr>
+        <nav>
+            <a href="https://mikansoro.org/" aria-label="Home">
+<svg><use href="#home"/></svg><span class="s">Home</span></a>
+            <a href="https://mikansoro.org/blog/" aria-label="Blog" class="active" aria-current="page">
+<svg><use href="#chat"/></svg><span class="s">Blog</span></a>
+            <a href="https://mikansoro.org/gallery/" aria-label="Gallery">
+<svg><use href="#color-palette"/></svg><span class="s">Gallery</span></a>
+            <a href="https://mikansoro.org/about/" aria-label="About">
+<svg><use href="#user"/></svg><span class="s">About</span></a>
+            <a href="https://mikansoro.org/blogroll/" aria-label="Blogroll">
+<svg><use href="#book"/></svg><span class="s">Blogroll</span></a>
+            <a href="https://mikansoro.org/tags/" aria-label="Tags">
+<svg><use href="#idea"/></svg><span class="s">Tags</span></a>
+            </nav>
+    </header>
+    <hr>
+    <main>
+    
+<article>
+  <header>
+    <h1>Creating a Debian Cloud-Init Template in Xen Orchestra</h1>
+    <time class="s" datetime="2024-06-23">23 Jun 2024</time>
+    
+  </header>
+  
+  
+  
+    <p>Xen Orchestra (the manager for my XCP-NG based hypervisors) supports cloud-init for creation-time configuration of virtual machines. This guide walks through creating a cloud-init ready VM Template for Xen Orchestra using Debian 12.</p>
+<span id="continue-reading"></span><h2 id="downloading-debian">Downloading Debian
+<a class="anchor" aria-label="Anchor link for: downloading-debian" href="#downloading-debian">#</a>
+
+</h2>
+<blockquote class="markdown-alert-note">
+<p>I'll be using Debian 12 in this post (the stable version at the time of writing) but these steps should be roughly the same for future versions of Debian.</p>
+</blockquote>
+<h3 id="cloud-images">Cloud Images
+<a class="anchor" aria-label="Anchor link for: cloud-images" href="#cloud-images">#</a>
+
+</h3>
+<p>Debian offers several flavors of "cloud" disk images for use with various cloud vendors along with a "generic" image. These images can be direclty used as a VM disk on their respective platforms, offering a base install of Debian that can be customizable at runtime via cloud-init or a vendor specific configuration mechanism. The images are available <a rel="nofollow noreferrer external" href="https://cdimage.debian.org/images/cloud/">on their site</a>.</p>
+<p>The two flavors of Debian cloud images useful for a homelab are "generic" and "genericcloud". "Genericcloud" lacks hardware driver support resulting in a smaller overall install size. Only use the "genericcloud" image if you know you will not need any generic hardware support (such as pci-e passthrough). In my experience, it's been best to use the "generic" image with Proxmox.</p>
+<h3 id="prepping-the-image">Prepping the Image
+<a class="anchor" aria-label="Anchor link for: prepping-the-image" href="#prepping-the-image">#</a>
+
+</h3>
+<p>Download the latest generic or genericcloud .qcow2 image <a rel="nofollow noreferrer external" href="https://cdimage.debian.org/images/cloud/"> from the Debian site </a> to your local machine.</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">wget</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://cdimage.debian.org/images/cloud/bookworm/[VER]/debian-12-genericcloud-[ARCH]-[VER].qcow2</span></span></code></pre>
+<p>Qcow2 images aren't compatible with Xen Orchestra or XCP-NG, so it needs to be converted to the VMDK format instead. On Linux, <code>qemu-img</code> is capable of converting the disk for us, so install it <a rel="nofollow noreferrer external" href="https://pkgs.org/search/?q=qemu-img">from your package manager</a> to complete the next step.</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">qemu-img</span><span style="color: light-dark(#032F62, #9ECBFF);"> convert</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">f</span><span style="color: light-dark(#032F62, #9ECBFF);"> qcow2</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">O</span><span style="color: light-dark(#032F62, #9ECBFF);"> vmdk</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">inpu</span><span>t</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#032F62, #9ECBFF);">.qcow2</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">outpu</span><span>t</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#032F62, #9ECBFF);">.vmdk</span></span></code></pre>
+<p>This .vmdk image can be imported direclty into Xen Orchestra for use.</p>
+<h2 id="creating-templates">Creating Templates
+<a class="anchor" aria-label="Anchor link for: creating-templates" href="#creating-templates">#</a>
+
+</h2>
+<p>Xen Orchestra only exposes cloud-init configuration through a complete cloud-init ready template. Since Debian only provides a disk and not a full VM (.ova/.ovf) template, the only way to get a working template is to create a VM and convert it to a template.</p>
+<p>The image provided from Debian has no root user password and no additional users configured, so any additional software modifications to the final template must be done in an intermediate stage which will be covered in a later step.</p>
+<h3 id="creating-the-base-cloud-init-template">Creating the Base Cloud-init Template
+<a class="anchor" aria-label="Anchor link for: creating-the-base-cloud-init-template" href="#creating-the-base-cloud-init-template">#</a>
+
+</h3>
+<p>In Xen Orchestra, import the .vmdk from the previous step as a disk. On the left-side menu, open the "Import" tab, and choose the "Disk" tab on the top right. Choose a Storage Repository (SR) to import to, and import the disk.</p>
+
+
+
+
+<img alt="Importing a .vmdk disk in Xen Orchestra" title="Importing a .vmdk disk in Xen Orchestra" src="https://mikansoro.org/processed_images/import.e94f08dc112b4108.png" srcset="https://mikansoro.org/processed_images/import.61e86deb82a102b7.png 512w, https://mikansoro.org/processed_images/import.e94f08dc112b4108.png 1024w" class="" />
+
+<p>After import, the .vmdk will appear in the available virtual disk inventory for the selected Storage Repository.</p>
+
+
+
+
+<img alt="Successfully imported the .vmdk" title="Successfully imported the .vmdk" src="https://mikansoro.org/processed_images/vmdk-imported.0285338b52ce235a.png" srcset="https://mikansoro.org/processed_images/vmdk-imported.6687a28a2cae7531.png 512w, https://mikansoro.org/processed_images/vmdk-imported.0285338b52ce235a.png 1024w" class="" />
+
+<p>Next, create a new VM, with the following properties (do not omit any):</p>
+<ul>
+<li>use <code>PXE</code> boot</li>
+<li>Delete any existing disks</li>
+<li>Advanced &gt; Uncheck <code>Boot VM after creation</code></li>
+</ul>
+
+
+
+
+<img alt="Creating the base template VM" title="Creating the base template VM" src="https://mikansoro.org/processed_images/base-template-vm-creation.d2be8a6417e72b48.png" srcset="https://mikansoro.org/processed_images/base-template-vm-creation.ba38d08e01b0c826.png 512w, https://mikansoro.org/processed_images/base-template-vm-creation.d2be8a6417e72b48.png 1024w" class="" />
+
+<p>Now, under Disks on the newly created VM, attach the .vmdk imported previously. It's also smart to rename the disk at this stage, but that's not required.</p>
+
+
+
+
+<img alt="Attaching a disk to the base template" title="Attaching a disk to the base template" src="https://mikansoro.org/processed_images/base-template-disk-attached.b6b875b9f5db91ea.png" srcset="https://mikansoro.org/processed_images/base-template-disk-attached.0211fb1f94536b18.png 512w" class="" />
+
+<p>Finally, under Advanced set the boot order to Hard-Drive first (over PXE), and hit "Convert to Template".</p>
+<blockquote class="markdown-alert-caution">
+<p>It's a good idea to "Clone" this VM at this point as creating a template is a one-way operation. It's easier to roll back and fix a missed step with this intermediate clone, but it's not required.</p>
+</blockquote>
+
+
+
+
+<img alt="Create the base template" title="Create the base template" src="https://mikansoro.org/processed_images/base-template-create.358bdb3d93d3fd56.png" srcset="https://mikansoro.org/processed_images/base-template-create.5547ce02a6564c46.png 512w" class="" />
+
+<p>This template can now be launched with a cloud-init template to specify actions to be taken on first boot. The VM's default disk size of 2GB can also be changed while the VM is off, and the filesystem will be automatically resized on the next boot to match the new size of the disk.</p>
+
+
+
+
+<img alt="Create the base template" title="Create the base template" src="https://mikansoro.org/processed_images/using-cloud-init.458521f63ca1fdf7.png" srcset="https://mikansoro.org/processed_images/using-cloud-init.197f44029e6c05e1.png 512w" class="" />
+
+<h3 id="installing-xe-guest-utilities">Installing xe-guest-utilities
+<a class="anchor" aria-label="Anchor link for: installing-xe-guest-utilities" href="#installing-xe-guest-utilities">#</a>
+
+</h3>
+<p>I'm currently deploying <code>xe-guest-utilities</code> to all my VMs as it's considered stable. There is a new <a rel="nofollow noreferrer external" href="https://xcp-ng.org/forum/topic/7974/new-rust-xen-guest-tools">rust-based replacement</a> under active development <a rel="nofollow noreferrer external" href="https://gitlab.com/xen-project/xen-guest-agent">on gitlab</a> and just underwent its 0.4 release. I'll likely switch after a 1.0 release to give some more time for bugs to get ironed out.</p>
+<p><code>xe-guest-utilities</code> is available <a rel="nofollow noreferrer external" href="https://github.com/xenserver/xe-guest-utilities/releases">on github</a>.</p>
+<p>To create a template with <code>xe-guest-utilities</code> preinstlaled, create a new VM using the template created in the last step. Make sure to supply a cloud-init configuration here, see <a href="https://mikansoro.org/blog/debian-cloud-init-xen-orchestra/#my-default-cloud-init-template">my default template</a> for how to configure a cloud-init VM for SSH access.</p>
+<p>Since there are no guest tools by default, Xen Orchestra will not report the IP address of this VM in the console. If a password was set for one of the users configured by cloud-init, the ip address could be obtained by logging in via the VM console. I typically just <code>nmap</code> my DHCP range and login with SSH.</p>
+<p>Once logged in, download and install the guest tools .deb <a rel="nofollow noreferrer external" href="https://github.com/xenserver/xe-guest-utilities/releases">from github</a>. and run <code>cloud-init clean</code> to prime cloud-init to run again on the next boot.</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">wget</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">O</span><span style="color: light-dark(#032F62, #9ECBFF);"> xe.deb</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://github.com/xenserver/xe-guest-utilities/releases/download/</span><span style="color: light-dark(#D73A49, #F97583);">&lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">VE</span><span>R</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#032F62, #9ECBFF);">/xe-guest-utilities_</span><span style="color: light-dark(#D73A49, #F97583);">&lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">VE</span><span>R</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#032F62, #9ECBFF);">_</span><span style="color: light-dark(#D73A49, #F97583);">&lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">ARC</span><span>H</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#032F62, #9ECBFF);">.deb</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> dpkg</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#032F62, #9ECBFF);"> xe.deb</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">rm</span><span style="color: light-dark(#032F62, #9ECBFF);"> xe.deb</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> cloud-init</span><span style="color: light-dark(#032F62, #9ECBFF);"> clean</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-logs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> shutdown</span><span style="color: light-dark(#032F62, #9ECBFF);"> now</span></span></code></pre><h3 id="convert-the-xe-guest-utilities-vm-into-a-template">Convert the xe-guest-utilities VM into a template
+<a class="anchor" aria-label="Anchor link for: convert-the-xe-guest-utilities-vm-into-a-template" href="#convert-the-xe-guest-utilities-vm-into-a-template">#</a>
+
+</h3>
+<p>After the VM shuts down, remove the extra "cloud-init" disk that was added to the VM on creation, and convert it to a template. This is the final "production" template.</p>
+
+
+
+
+<img alt="Removing the cloudconfig disk from the vm" title="Removing the cloudconfig disk from the vm" src="https://mikansoro.org/processed_images/remove-cloudconfig-disk.fde94611f50d8372.png" srcset="https://mikansoro.org/processed_images/remove-cloudconfig-disk.ee61b42f74af2be0.png 512w" class="" />
+
+<h2 id="my-default-cloud-init-template">My "Default" Cloud-Init Template
+<a class="anchor" aria-label="Anchor link for: my-default-cloud-init-template" href="#my-default-cloud-init-template">#</a>
+
+</h2>
+<p>On all my VMs, I create a "break glass" local administrator user with a specialized keypair used only for this purpose, as well as a local ansible runner user with a separate keypair that I can use with any of my ansible playbooks. This lets me go straight from VM deployment to running an ansible playbook to finalize the system configuration without any manual intervention.</p>
+<p>It also updates all apt repositories and packages on first boot, which saves me some time later on (and makes sure I'm starting with the latest fixes).</p>
+<p>I use DHCP for all of my VMs and create static reservations for some, so I don't bother with anything other than DHCP network configuration. A network config is <em>required</em> for cloud-init.</p>
+<blockquote class="markdown-alert-caution">
+<p>Debian 12 network interfaces inside Xen virtualization are now named <code>enXy</code> where <code>y</code> is an integer and <code>X</code> is a static capital <code>X</code>. In Debian 11, interfaces were named <code>ethy</code>.</p>
+<p>More info:</p>
+<p><a rel="nofollow noreferrer external" href="https://xcp-ng.org/blog/2023/06/15/upgrading-from-debian-11-to-debian-12/">https://xcp-ng.org/blog/2023/06/15/upgrading-from-debian-11-to-debian-12/</a></p>
+<p><a rel="nofollow noreferrer external" href="https://www.debian.org/releases/stable/amd64/release-notes/ch-information.en.html#xen-network">https://www.debian.org/releases/stable/amd64/release-notes/ch-information.en.html#xen-network</a></p>
+</blockquote>
+<p>User Config (user-data):</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);">cloud-config</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">h</span><span style="color: light-dark(#22863A, #85E89D);">ostname</span><span>:</span><span> {</span><span style="color: light-dark(#032F62, #9ECBFF);">n</span><span style="color: light-dark(#032F62, #9ECBFF);">ame</span><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">g</span><span style="color: light-dark(#22863A, #85E89D);">roups</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> l</span><span style="color: light-dark(#22863A, #85E89D);">ocal_admins</span><span>:</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">r</span><span style="color: light-dark(#032F62, #9ECBFF);">oot</span><span>]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">u</span><span style="color: light-dark(#22863A, #85E89D);">sers</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">admin-username&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    g</span><span style="color: light-dark(#22863A, #85E89D);">ecos</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Admin</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    g</span><span style="color: light-dark(#22863A, #85E89D);">roups</span><span>:</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">a</span><span style="color: light-dark(#032F62, #9ECBFF);">dm</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> a</span><span style="color: light-dark(#032F62, #9ECBFF);">udio</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> c</span><span style="color: light-dark(#032F62, #9ECBFF);">drom</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> d</span><span style="color: light-dark(#032F62, #9ECBFF);">ialout</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> d</span><span style="color: light-dark(#032F62, #9ECBFF);">ip</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> f</span><span style="color: light-dark(#032F62, #9ECBFF);">loppy</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> l</span><span style="color: light-dark(#032F62, #9ECBFF);">ocal_admins</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> n</span><span style="color: light-dark(#032F62, #9ECBFF);">etdev</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">lugdev</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> s</span><span style="color: light-dark(#032F62, #9ECBFF);">udo</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> v</span><span style="color: light-dark(#032F62, #9ECBFF);">ideo</span><span>]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    s</span><span style="color: light-dark(#22863A, #85E89D);">udo</span><span>:</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">ALL=(ALL) NOPASSWD:ALL</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    s</span><span style="color: light-dark(#22863A, #85E89D);">sh_authorized_keys</span><span>:</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#032F62, #9ECBFF);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">admin-ssh-public-key&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    l</span><span style="color: light-dark(#22863A, #85E89D);">ock_passwd</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> false</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    s</span><span style="color: light-dark(#22863A, #85E89D);">hell</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> /</span><span style="color: light-dark(#032F62, #9ECBFF);">bin/bash</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> s</span><span style="color: light-dark(#032F62, #9ECBFF);">vc-ansible-local</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    g</span><span style="color: light-dark(#22863A, #85E89D);">ecos</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Local Ansible Service Account</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    p</span><span style="color: light-dark(#22863A, #85E89D);">rimary_group</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> l</span><span style="color: light-dark(#032F62, #9ECBFF);">ocal_admins</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    g</span><span style="color: light-dark(#22863A, #85E89D);">roups</span><span>:</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">n</span><span style="color: light-dark(#032F62, #9ECBFF);">etdev</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">lugdev</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> s</span><span style="color: light-dark(#032F62, #9ECBFF);">udo</span><span>]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    s</span><span style="color: light-dark(#22863A, #85E89D);">udo</span><span>:</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">ALL=(ALL) NOPASSWD:ALL</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    s</span><span style="color: light-dark(#22863A, #85E89D);">sh_authorized_keys</span><span>:</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#032F62, #9ECBFF);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">ansible-ssh-public-key&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    l</span><span style="color: light-dark(#22863A, #85E89D);">ock_passwd</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> true</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    s</span><span style="color: light-dark(#22863A, #85E89D);">hell</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> /</span><span style="color: light-dark(#032F62, #9ECBFF);">bin/bash</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">p</span><span style="color: light-dark(#22863A, #85E89D);">ackages</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> h</span><span style="color: light-dark(#032F62, #9ECBFF);">top</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> c</span><span style="color: light-dark(#032F62, #9ECBFF);">url</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> j</span><span style="color: light-dark(#032F62, #9ECBFF);">q</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> v</span><span style="color: light-dark(#032F62, #9ECBFF);">im</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> n</span><span style="color: light-dark(#032F62, #9ECBFF);">et-tools</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> g</span><span style="color: light-dark(#032F62, #9ECBFF);">it</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> m</span><span style="color: light-dark(#032F62, #9ECBFF);">osh</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> g</span><span style="color: light-dark(#032F62, #9ECBFF);">nupg</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> m</span><span style="color: light-dark(#032F62, #9ECBFF);">ake</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#032F62, #9ECBFF);"> t</span><span style="color: light-dark(#032F62, #9ECBFF);">ree</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">p</span><span style="color: light-dark(#22863A, #85E89D);">ackage_update</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> true</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">p</span><span style="color: light-dark(#22863A, #85E89D);">ackage_upgrade</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> true</span></span></code></pre>
+<p>Network Config:</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">n</span><span style="color: light-dark(#22863A, #85E89D);">etwork</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">  v</span><span style="color: light-dark(#22863A, #85E89D);">ersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">  c</span><span style="color: light-dark(#22863A, #85E89D);">onfig</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">hysical</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> e</span><span style="color: light-dark(#032F62, #9ECBFF);">nX0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    s</span><span style="color: light-dark(#22863A, #85E89D);">ubnets</span><span>:</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#22863A, #85E89D);"> t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> d</span><span style="color: light-dark(#032F62, #9ECBFF);">hcp</span></span></code></pre>
+  
+  
+  
+  <footer class="s">
+    Tags: <a href='https://mikansoro.org/tags/virtualization'>virtualization</a>, <a href='https://mikansoro.org/tags/servers'>servers</a>, <a href='https://mikansoro.org/tags/xen-orchestra'>xen-orchestra</a>, <a href='https://mikansoro.org/tags/homelab'>homelab</a>
+  </footer>
+  
+  
+</article>
+</main>
+    <hr>
+    <footer class="s">
+        <span>© mikansoro.org 2026</span>
+        <span>
+<svg><use href="#rss"/></svg> Feeds: <a href="https://mikansoro.org/atom.xml">Atom</a> · <a href="https://mikansoro.org/rss.xml">RSS</a></span>
+    </footer>
+    
+    
+    
+    <script>document.querySelectorAll('article img[srcset]').forEach(i=>{if(i.closest('a'))return;i.style.cursor='pointer';i.onclick=()=>{let d=document.createElement('div'),s=i.srcset.split(',').pop().trim().split(' ')[0];d.className='lb';d.innerHTML='<img src="'+s+'">';document.body.style.overflow='hidden';d.onclick=()=>{d.remove();document.body.style.overflow=''};document.body.appendChild(d)}})</script>
+    </body>
+</html>

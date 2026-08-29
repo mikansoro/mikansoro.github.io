@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>mikansoro.org - homelab</title>
+    <subtitle>Michael&#x27;s small corner of the internet.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mikansoro.org/tags/homelab/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mikansoro.org"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-02-15T00:00:00+00:00</updated>
+    <id>https://mikansoro.org/tags/homelab/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Using LLMs to Transcribe and Translate (Part 1)</title>
+        <published>2026-02-15T00:00:00+00:00</published>
+        <updated>2026-02-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/transcribing-and-translating-with-llm/"/>
+        <id>https://mikansoro.org/blog/transcribing-and-translating-with-llm/</id>
+        
+        <content type="html" xml:base="https://mikansoro.org/blog/transcribing-and-translating-with-llm/">&lt;p&gt;Languages are hard. They&#x27;re complex systems of communication that take years to understand and many more to master.&lt;&#x2F;p&gt;
+&lt;p&gt;Though I study Japanese when I can (read: I&#x27;m terrible at self-study motivation, so I don&#x27;t study nearly as much as I should), my knowledge and understanding of the spoken and written word could at best be described as rudimentary; more often than not, it&#x27;s closer to illiterate. Despite my slow progress, I still want to enjoy and understand various Japanese shows and radio programs at a deeper-than-surface level. Official translation outside of high-budget works such as Anime TV series or films are few and far between, and while fan translators are excellent and wonderful people who produce amazing, high quality work, they are still just people; individuals or small groups who translate the content they enjoy as a hobby or by commission. They do incredible work for those of us less linguistically inclined, but sometimes the content I&#x27;m looking to understand doesn&#x27;t have a dedicated, overworked and thankless translator working into the wee hours to deliver localized translations of those works because they find it fun.&lt;&#x2F;p&gt;
+&lt;p&gt;Before we go any further, allow me a moment to be candid: &lt;em&gt;This is not a post about how to replace fan translators or official translators with Large Language Models (LLMs). This is also not a post complaining that XYZ program or broadcast does not have a fan translator working on it yet.&lt;&#x2F;em&gt; The ethics surrounding the training of LLMs are poor, but they are a tool that when used properly can aid in both understanding and learning (in this post, both in a technical and linguistic sense).&lt;&#x2F;p&gt;
+&lt;p&gt;If (hopefully when) I&#x27;m smart enough to actually understand (any of) the nuances of Japanese, I&#x27;d be filling in the gaps and publishing translations of things &lt;em&gt;I&lt;&#x2F;em&gt; found important too.&lt;&#x2F;p&gt;
+&lt;p&gt;For the time being, I&#x27;ve been leveraging one of my favorite language models: &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;openai&#x2F;whisper&quot;&gt;whisper&lt;&#x2F;a&gt;. Released by OpenAI, whisper is a multilingual speech recognition model capable of both speech-to-text and text-to-speech conversion. We&#x27;re interested in the former capability here, taking the spoken word from a radio show, youtube live stream, or TV show and converting it to text that we (or I) can understand. The model is small enough and fast enough to run on commodity desktop hardware. With the right machine, it&#x27;s even capable of real-time transcription &lt;em&gt;and translation&lt;&#x2F;em&gt; of voice to text.&lt;&#x2F;p&gt;
+&lt;p&gt;If that sounds like something either a) cool or b) useful to you, read on. I&#x27;ll show you how I&#x27;m currently leveraging whisper (and other LLMs) to generate reasonable, understandable transcriptions and translations of the spoken word.&lt;&#x2F;p&gt;
+&lt;p&gt;This will be a multi-part series. This is just an introduction post to the world of whisper and its tooling.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;environment&quot;&gt;Environment
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: environment&quot; href=&quot;#environment&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;From this point on, we&#x27;re going to get technical.&lt;&#x2F;p&gt;
+&lt;p&gt;Whisper is a niche, specialized LLM focused entirely on transcribing speech-to-text. It&#x27;s specialization is great for us commonfolk who don&#x27;t own a data center; it&#x27;s overall size is quite small (several gigabytes for the largest model). It comes in a variety of sizes (small-en, small, medium, large, etc) for use on single board computers like a raspberry pi to high end desktop and server hardware. The current front-runner version of the model, &lt;code&gt;large-v3&lt;&#x2F;code&gt;, takes up about 3GB on disk, and when expanded into system or video memory consumes about 7GB during workloads. Most tools built on whisper even support cpu-only inference at reasonable speeds.&lt;&#x2F;p&gt;
+&lt;p&gt;This has a few advantages:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;any modern computer with a halfway decent CPU can transcribe video using the high-end (high parameter count) whisper models&lt;&#x2F;li&gt;
+&lt;li&gt;a CUDA-compatible (NVIDIA) gpu with &amp;gt;=8GB of VRAM can load the entire model into video memory for high-speed operation&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The old laptop you have sitting in the corner can run Whisper, and that&#x27;s a really cool thing.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dependency-hell&quot;&gt;Dependency Hell
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: dependency-hell&quot; href=&quot;#dependency-hell&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h3&gt;
+&lt;p&gt;One of the most challenging aspects of using whisper (and the tools developed around it) is managing the packages and dependencies required by each tool. To put it mildly, its dependency hell.&lt;&#x2F;p&gt;
+&lt;p&gt;Many machine learning (ML) and LLM tools are built with Python due to its nearly endless suite of third party libraries and extensions. However, Python is an &quot;interpreted&quot; language instead of a &quot;compiled&quot; one, so instead of the developer sharing a built and packaged binary with you (like an &lt;code&gt;.exe&lt;&#x2F;code&gt; on Windows), your machine must have a version of Python &lt;em&gt;and&lt;&#x2F;em&gt; any dependencies the program author makes use of on your system every time you run the tool.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ve dealt with this in two ways: virtual environments and containers (docker). Which you choose is ultimately up to you and your comfort level, but &lt;em&gt;my&lt;&#x2F;em&gt; recommendation is to use containers. You&#x27;ll save yourself a lot of headache in the long run.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;containers-podman-docker&quot;&gt;Containers (Podman &#x2F; Docker)
+&lt;&#x2F;h4&gt;
+&lt;p&gt;If you&#x27;re unfamiliar with containers here&#x27;s the elevator pitch on why they&#x27;re useful:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What is a container? Simply put, containers are isolated processes for each of your app&#x27;s components. Each component - the frontend React app, the Python API engine, and the database - runs in its own isolated environment, completely isolated from everything else on your machine. &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;docs.docker.com&#x2F;get-started&#x2F;docker-concepts&#x2F;the-basics&#x2F;what-is-a-container&#x2F;&quot;&gt;read more&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;They&#x27;re small, predefined, prepackaged environments that are ready to run the tool installed in them. No managing dependent packages or 10 versions of Python. You run the container, and it runs the software exactly as the developer packaged it. Think of it like a mini operating system that you download from the internet, and run inside your main OS (Windows, macOS, or Linux). Multiple containers can run side by side, each with their own versions of software dependencies that will never conflict with each other.&lt;&#x2F;p&gt;
+&lt;p&gt;They solve the &quot;works on my machine&quot; problem for those who don&#x27;t want to get their hands (and operating systems) dirty.&lt;&#x2F;p&gt;
+&lt;p&gt;To enter the magical world of containers, install either &lt;code&gt;podman&lt;&#x2F;code&gt; or &lt;code&gt;docker&lt;&#x2F;code&gt; onto your computer. I recommend &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;podman.io&#x2F;&quot;&gt;podman&lt;&#x2F;a&gt;, which for reasons outside the scope of this post is slowly gaining ground in the container desktop runtime space from docker (the &quot;established&quot; corporate player) due to its excellent feature set and backwards compatibility with the docker ecosystem.&lt;&#x2F;p&gt;
+&lt;p&gt;For macOS and Windows, I recommend using &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;podman-desktop.io&#x2F;&quot;&gt;podman desktop&lt;&#x2F;a&gt; because it offers a good, UI-driven view of your podman install &amp;amp; running containers. It also offers step-by-step instructions for installing the podman runtime. As a note, on both Windows and Mac, podman (and docker) use a virtual machine to run container processes, and you&#x27;ll have to configure that as part of the first-time setup. Once it&#x27;s all configured, you don&#x27;t have to touch it again.&lt;&#x2F;p&gt;
+&lt;p&gt;If you need them, the &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;podman.io&#x2F;docs&#x2F;installation#installing-on-linux&quot;&gt;linux install instructions&lt;&#x2F;a&gt; are here, along with CLI-only installation instructions for both Windows and Mac. Linux users can also make use of podman desktop, if that&#x27;s your thing.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;python-virtual-environments&quot;&gt;Python Virtual Environments
+&lt;&#x2F;h4&gt;
+&lt;p&gt;If containers aren&#x27;t up your alley but you smartly don&#x27;t want to install every required package under the sun to your global system state (otherwise known as &lt;em&gt;dependency hell&lt;&#x2F;em&gt;), python virtual environments will be your friend. I&#x27;ve had success with both &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;virtualenv.pypa.io&#x2F;en&#x2F;latest&#x2F;&quot;&gt;virtualenv&lt;&#x2F;a&gt; and &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.anaconda.com&#x2F;download&quot;&gt;anaconda&lt;&#x2F;a&gt; in the past; the former for managing project dependencies from &lt;code&gt;pip&lt;&#x2F;code&gt; (python&#x27;s package manager) and the latter to manage versioned installations of python. Both have trade-offs (and this is not an exhaustive list), but for beginners I&#x27;d recommend starting with anaconda. Tools built around AI&#x2F;LLMs use many different versions of python, so having a version manager for python itself is a good idea.&lt;&#x2F;p&gt;
+&lt;p&gt;If you&#x27;re a developer who regularly works with python, feel free to ignore my advice and advocate your position!&lt;&#x2F;p&gt;
+&lt;p&gt;For windows &lt;code&gt;anaconda&lt;&#x2F;code&gt; users who find themselves needing access to their environments over ssh, execute the following after connecting to your windows machine:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;vb&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;powershell.&lt;&#x2F;span&gt;&lt;span&gt;exe&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span&gt;ExecutionPolicy&lt;&#x2F;span&gt;&lt;span&gt; ByPass&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span&gt;NoExit&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span&gt;Command&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;amp; &amp;#39;C:\Users\&amp;lt;youruser&amp;gt;\anaconda3\shell\condabin\conda-hook.ps1&amp;#39; ; conda activate &amp;#39;C:\Users\&amp;lt;youruser&amp;gt;\anaconda3&amp;#39; &lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This is the same command the &quot;Anaconda Shell&quot; start menu entry runs to launch anaconda.&lt;&#x2F;p&gt;
+&lt;p&gt;Some resources to help get started with Anaconda:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.anaconda.com&#x2F;docs&#x2F;getting-started&#x2F;main&quot;&gt;Anaconda&#x27;s Getting Started guide&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;conda&lt;&#x2F;code&gt; &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;docs.conda.io&#x2F;projects&#x2F;conda&#x2F;en&#x2F;stable&#x2F;user-guide&#x2F;cheatsheet.html&quot;&gt;Command cheatsheet&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;gpu-acceleration&quot;&gt;GPU Acceleration
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: gpu-acceleration&quot; href=&quot;#gpu-acceleration&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h3&gt;
+&lt;p&gt;Unless you live under a rock, you no doubt are aware that running AI inference workloads (like whisper) on a GPU speeds up the process dramatically. Whisper is a small model that runs fine on a CPU, but if you have a GPU with &amp;gt;=8GB of VRAM, you might as well try to accelerate it.&lt;&#x2F;p&gt;
+&lt;p&gt;Each GPU vendor (Nvidia, AMD, Intel) have their own acceleration api (CUDA, rocm, and oneapi&#x2F;openvino, respectively). Each API has its own setup steps for each operating system, so refer to the respective documentation for installation instructions. Make sure you have up-to-date GPU drivers for your card as well. There is also the Vulkan graphics api. which supports multiple GPU types which can be used as a fallback.&lt;&#x2F;p&gt;
+&lt;p&gt;Frankly, the easiest path to GPU acceleration is to use containers. All of the libraries (like CUDA) are installed within the container instead of globally on the operating system, making multiple library versions a non-issue. I&#x27;ll walk through my setup in a subsequent post, for both Nvidia CUDA and Vulkan.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;transcription&quot;&gt;Transcription
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: transcription&quot; href=&quot;#transcription&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Whisper itself is just a model so to actually &lt;em&gt;use&lt;&#x2F;em&gt; whisper we&#x27;ll need some tools. Fortunately, other developers have built a plethora for us to choose from. I&#x27;ll list a few of my favorites here:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ggml-org&#x2F;whisper.cpp&quot;&gt;whisper.cpp&lt;&#x2F;a&gt; - a high-speed c++ command-line based whisper execution tool that works with practically every gpu&#x2F;machine acceleration API currently in use&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;fortypercnt&#x2F;stream-translator&quot;&gt;stream-translator&lt;&#x2F;a&gt; - a tool for generating real-time subtitles from a live stream (like youtube or a &lt;code&gt;.m3u8&lt;&#x2F;code&gt; manifest)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;gitlab.com&#x2F;aadnk&#x2F;whisper-webui&#x2F;&quot;&gt;whisper-webui&lt;&#x2F;a&gt; - a self-hostable web interface to running whisper that takes file uploads from the browser (or youtube URLs) to generate transcripts&#x2F;translations. Very new-user friendly.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;There are many other tools to transcribe audio to text (and even translate it to english!) using whisper, but these are the ones I&#x27;ve used in the past.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;translation&quot;&gt;Translation
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: translation&quot; href=&quot;#translation&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;While whisper can translate text to English in the same breath as transcribing in the audio&#x27;s native language, the translations aren&#x27;t high quality. They&#x27;re serviceable, but you&#x27;ll get better results shoving the transcribed text&#x2F;subtitle file through another general purpose LLM (with internet access preferred) like Claude Sonnet, Gemini or ChatGPT. (Anecdotally, ChatGPT 5.x&#x27;s translation quality is far below GPT4, so YMMV. I&#x27;ve had good luck with Claude via Kagi.)&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Forgetting to run vim with sudo</title>
+        <published>2026-01-02T00:00:00+00:00</published>
+        <updated>2026-01-02T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/forget-vim-sudo/"/>
+        <id>https://mikansoro.org/blog/forget-vim-sudo/</id>
+        
+        <content type="html" xml:base="https://mikansoro.org/blog/forget-vim-sudo/">&lt;p&gt;Ever make edits to a file with vim, only to realize you forgot to open it with &lt;code&gt;sudo&lt;&#x2F;code&gt;? Yeah, me too.&lt;&#x2F;p&gt;
+&lt;p&gt;For eons, I&#x27;d close the file, reopen with sudo, and re-edit the file. Obviously, this sucks, so I looked up a better solution, and now I share it with you:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;viml&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;:w &lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;!&lt;&#x2F;span&gt;&lt;span&gt;sudo tee %&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;:w&lt;&#x2F;code&gt; accepts arguments, such as a filename (&lt;code&gt;:w file2.txt&lt;&#x2F;code&gt;), but anything prefixed with an explanation point is interpreted as a shell command with the file contents passed to stdin. &lt;code&gt;sudo tee&lt;&#x2F;code&gt; will overwrite the file (vim will substitute &lt;code&gt;%&lt;&#x2F;code&gt; with the filename) with the contents from stdin.&lt;&#x2F;p&gt;
+&lt;p&gt;Credit to &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;7078429&quot;&gt;Nathan Long on stackoverflow&lt;&#x2F;a&gt; for a much better explanation.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Creating a Debian Cloud-Init Template in Xen Orchestra</title>
+        <published>2024-06-23T00:00:00+00:00</published>
+        <updated>2024-06-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/debian-cloud-init-xen-orchestra/"/>
+        <id>https://mikansoro.org/blog/debian-cloud-init-xen-orchestra/</id>
+        
+        <summary type="html">&lt;p&gt;Xen Orchestra (the manager for my XCP-NG based hypervisors) supports cloud-init for creation-time configuration of virtual machines. This guide walks through creating a cloud-init ready VM Template for Xen Orchestra using Debian 12.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Proxying my Homelab (Part 1) - Options, Options, Options</title>
+        <published>2024-06-13T00:00:00+00:00</published>
+        <updated>2024-06-13T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/proxying-my-homelab/"/>
+        <id>https://mikansoro.org/blog/proxying-my-homelab/</id>
+        
+        <summary type="html">&lt;p&gt;Discussing the myriad of options for proxying public internet traffic into a homelab.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Manual Fanspeed Control through IPMI</title>
+        <published>2024-04-27T00:00:00+00:00</published>
+        <updated>2024-04-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/ipmi-fan-control/"/>
+        <id>https://mikansoro.org/blog/ipmi-fan-control/</id>
+        
+        <content type="html" xml:base="https://mikansoro.org/blog/ipmi-fan-control/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;By default, enterprise compute and networking gear from large vendors (Dell, Supermicro, HPE, Cisco, etc) use dynamic fanspeed controls based on system temperature to ensure their vital components remain at a safe operating temperature.
+That&#x27;s all well and good in the datacenter space where increased cooling capacity far outweighs an increase in noise.
+Likewise, sufficient cooling potential is provided by the ambient temperature delta between the cold and hot aisles, letting the BMC simply ramp fan speeds up as users push the hardware ever closer to the redline.&lt;&#x2F;p&gt;
+&lt;p&gt;In a homelab though, the calculus changes.&lt;&#x2F;p&gt;
+&lt;p&gt;Those fortunate enough to own a basement—one that doesn&#x27;t flood when it rains—can care less when the natural cooling properties of a subterranean room plus decent sound isolation keep their servers running happily as they were designed.
+For the rest of us who wish to take advantage of enterprise-grade gear but live in a space-restricted dwelling, we must trade some cooling performance for a reduction in noise to stay sane.&lt;&#x2F;p&gt;
+&lt;p&gt;In my lab, I regularly run my server fans at 16-20% their maximum operating speed.
+I&#x27;m rarely stressing my systems above 15% utilization under normal operation for any significant period, and this range provides a workable cooling-to-noise ratio such that I don&#x27;t feel like my ears are going to start bleeding when I open my server closet.&lt;&#x2F;p&gt;
+&lt;p&gt;But enough blabber. Let&#x27;s talk solutions.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ll update this post with more vendors as I come across them, but as my lab is largely composed of Supermicro gear due to their less-uptight nature around vendor-specific hardware (&lt;em&gt;cough cough HPE&lt;&#x2F;em&gt;), updates will likely be few and far between.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ipmitool&quot;&gt;ipmitool
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: ipmitool&quot; href=&quot;#ipmitool&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;ipmitool&lt;&#x2F;code&gt; is a command-line tool for interacting with both the host-local and remote IPMI BMCs. It&#x27;s largely used by sysadmins to administer low-level server function across a fleet, but it&#x27;s a good back-pocket tool for homelabbers too. In the case of making servers quiet, ipmitool allows for bypassing the lack of proper fanspeed controls in IPMI management web UIs by interfacing directly with the BMC.&lt;&#x2F;p&gt;
+&lt;p&gt;Every fan controller implementation is a bit different, so the ultimate source of information for which commands work on what platform would be the vendor&#x27;s specific documentation.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;supermicro-ipmi&quot;&gt;Supermicro IPMI
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: supermicro-ipmi&quot; href=&quot;#supermicro-ipmi&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h3&gt;
+&lt;p&gt;To use ipmitool to connect to a remote Supermicro IPMI interface, run &lt;code&gt;ipmitool&lt;&#x2F;code&gt; with the following flags. &lt;code&gt;-P&lt;&#x2F;code&gt; is optional, and an interactive password prompt will appear if it is ommitted.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6F42C1, #B392F0);&quot;&gt;ipmitool&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;I&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; lan&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;H&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_IP_ADDR&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;U&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_USER&lt;&#x2F;span&gt;&lt;span&gt; [-P&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_PASS&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;comman&lt;&#x2F;span&gt;&lt;span&gt;d&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Supermicro fan controls consist of two zones, &quot;system&quot; and &quot;peripheral&quot;. System fans are fans identified with a number (&lt;code&gt;FAN0&lt;&#x2F;code&gt;), and peripheral fans (like hot-swappable power supplies) are identified by letter (&lt;code&gt;FANA&lt;&#x2F;code&gt;).
+Supermicro provides four fan profiles to users: &quot;Standard&quot;, &quot;Full&quot;, &quot;Optimal&quot;, and &quot;Heavy IO&quot;. The definitions of these zones are provided below, but they come from &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;forums.servethehome.com&#x2F;index.php?resources&#x2F;supermicro-x9-x10-x11-fan-speed-control.20&#x2F;&quot;&gt;this great ServeTheHome post&lt;&#x2F;a&gt; about controlling fans on the Supermicro x9-x11 platforms.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Standard: BMC control of both fan zones, with CPU zone based on CPU temp (target speed 50%) and Peripheral zone based on PCH temp (target speed 50%)&lt;&#x2F;li&gt;
+&lt;li&gt;Optimal: BMC control of the CPU zone (target speed 30%), with Peripheral zone fixed at low speed (fixed ~30%)&lt;&#x2F;li&gt;
+&lt;li&gt;Full: all fans running at 100%&lt;&#x2F;li&gt;
+&lt;li&gt;Heavy IO: BMC control of CPU zone (target speed 50%), Peripheral zone fixed at 75%&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;To manually set the fan speed to a fixed target, the fans must be set to use the &quot;Full&quot; profile. Other profiles will ignore the manual target speed commands we issue to the BMC.&lt;&#x2F;p&gt;
+&lt;blockquote class=&quot;markdown-alert-note&quot;&gt;
+&lt;p&gt;The post from ServeTheHome omits an &lt;code&gt;0x01&lt;&#x2F;code&gt; value from their raw commands, before the configurable values highlighted in my command blocks. These are the commands I use on my Supermicro x10-based &lt;code&gt;SuperServer 6028U-TR4T+&lt;&#x2F;code&gt; systems and 45Drives Storinators. I&#x27;ll update this post in the future with more information on this extra magic number.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;All of the fan controls here use &quot;raw&quot; ipmi commands with seemingly magic numbers. For instance, here&#x27;s the command to set the system to use the &quot;Full&quot; fan profile:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; set the system to use the &amp;quot;Full&amp;quot; fan profile&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; [args] are the connection arguments listed above&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6F42C1, #B392F0);&quot;&gt;ipmitool&lt;&#x2F;span&gt;&lt;span&gt; [args&lt;&#x2F;span&gt;&lt;span&gt;] raw 0x30 0x45 0x01 0x01&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;                                     ^ Fan profile value&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The final hex value in the command above is the fan profile for the system to use.
+&lt;code&gt;0x01&lt;&#x2F;code&gt; designates the &quot;Full&quot; profile.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Standard: 0&lt;&#x2F;li&gt;
+&lt;li&gt;Full: 1&lt;&#x2F;li&gt;
+&lt;li&gt;Optimal: 2&lt;&#x2F;li&gt;
+&lt;li&gt;Heavy IO: 4&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Once the fans are set to &quot;Full&quot;, each fan group&#x27;s PWM duty cycle can be set to a percentage value of 0-100%, using the hex values &lt;code&gt;0x00&lt;&#x2F;code&gt; to &lt;code&gt;0x64&lt;&#x2F;code&gt;.
+Time for more magic numbers.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;                                          v &amp;#39;0x00&amp;#39; for the &amp;quot;System&amp;quot; fan group, &amp;quot;0x01&amp;quot; for the &amp;quot;Peripheral&amp;quot; group&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6F42C1, #B392F0);&quot;&gt;ipmitool&lt;&#x2F;span&gt;&lt;span&gt; [args&lt;&#x2F;span&gt;&lt;span&gt;] raw 0x30 0x70 0x66 0x01 0x00 0x16&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;                                              ^ PWM duty cycle, 0x00 (0%) - 0x64 (100%)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;dell-idrac&quot;&gt;Dell iDRAC
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: dell-idrac&quot; href=&quot;#dell-idrac&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h3&gt;
+&lt;p&gt;To use ipmitool to connect to a remote Dell iDRAC interface, run &lt;code&gt;ipmitool&lt;&#x2F;code&gt; with the following flags. &lt;code&gt;-P&lt;&#x2F;code&gt; is optional, and an interactive password prompt will appear if it is ommitted.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;IPMI_EK&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; #&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; default idrac encryption key&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6F42C1, #B392F0);&quot;&gt;ipmitool&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;I&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; lanplus&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;H&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_IP_ADDR&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;U&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_USER&lt;&#x2F;span&gt;&lt;span&gt; [-P&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_PASS&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;y&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_EK&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;comman&lt;&#x2F;span&gt;&lt;span&gt;d&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Similar to the Supermicro section above, we can set a fixed target PWM speed percentage through issuing &quot;raw&quot; commands to our BMC. It&#x27;s the same two-step process, first setting the fans to their &quot;Full&quot; profile, and then adjusting the PWM duty cycle to our desired value.&lt;&#x2F;p&gt;
+&lt;blockquote class=&quot;markdown-alert-note&quot;&gt;
+&lt;p&gt;These are the commands to control the fans on a Dell r710. Subsequent versions of Dell R-series server iDRACs may have different values. Consult your system&#x27;s documentation for a full list of options.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; Set fan profile&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6F42C1, #B392F0);&quot;&gt;ipmitool&lt;&#x2F;span&gt;&lt;span&gt; [args&lt;&#x2F;span&gt;&lt;span&gt;] raw 0x30 0x30 0x01 0x00&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;                                     ^ Fan Profile selector. 0x00 == &amp;quot;Full&amp;quot;, 0x01 == &amp;quot;Optimal&#x2F;Automatic&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Setting the fan percentage is similar to the Supermicro example, where we pass a percentage value to lock the fans to a particular speed. However, there are no separate zones, and at the time of writing I don&#x27;t know the actual percentage curve. &lt;code&gt;0x08&lt;&#x2F;code&gt; - &lt;code&gt;0x10&lt;&#x2F;code&gt; are reasonable for sitting in the same room while offering acceptable cooling performance in environments where the system isn&#x27;t under heavy stress.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; Set fan percentage&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6F42C1, #B392F0);&quot;&gt;ipmitool&lt;&#x2F;span&gt;&lt;span&gt; [args&lt;&#x2F;span&gt;&lt;span&gt;] raw 0x30 0x30 0x02 0xff 0xYY&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;                                         ^ Speed selector value&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;forums.servethehome.com&#x2F;index.php?threads&#x2F;r710-and-probably-other-11th-gen-dell-servers-fan-controller-shell-script.17284&#x2F;post-197102&quot;&gt;ServeTheHome thread&lt;&#x2F;a&gt; has some further discussion on the topic for 11th Generation Dell servers.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible"
+      content="IE=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+<meta name="description"
+      content="Michael&#x27;s small corner of the internet." />
+<meta name="keywords"
+      content="blog, technology, kubernetes, sre, homelab, travel, idols, Love Live!, anime" /> 
+
+<title>
+  AWS IAM Role Chaining using IAM Roles for Service Accounts inside Kubernetes // mikansoro.org</title>
+<meta property="og:site_name" content="mikansoro.org"/>
+<meta property="og:title" content="mikansoro.org | AWS IAM Role Chaining using IAM Roles for Service Accounts inside Kubernetes"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mikansoro.org/blog/aws-role-chaining-irsa/"/>
+<meta property="og:description" content="Michael&#x27;s small corner of the internet."/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="AWS IAM Role Chaining using IAM Roles for Service Accounts inside Kubernetes"/>
+<meta name="twitter:description" content="Michael&#x27;s small corner of the internet."/>
+<link rel="alternate" type="application/atom+xml" title="mikansoro.org" href="https://mikansoro.org/atom.xml">
+    <meta name="color-scheme" content="light dark">
+    
+    <style>
+html{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:1rem;line-height:1.5;margin:auto;max-width:70ch;padding:1.5rem 1em 3em}
+img{max-width:100%}img:not([src$=".svg"]),article>div,pre{border-radius:.3rem}img[src$="#pixelate"]{image-rendering:pixelated}
+h1{font-size:1.75rem}
+h2{font-size:1.4rem} 
+h3{font-size:1.15rem}
+h4,h5,h6{font-size:inherit;}
+h1,h2,h3,h4,h5,h6{color:#4299eb}
+a.anchor{color:#4299eb}
+p{text-align:left;line-height:1.6;}p,ul,ol,.g,article>footer,article>header{margin:0 0 1.5em}
+pre,blockquote{padding:1.5rem;margin:0 0 1.5rem}pre{overflow-x:auto}pre code{background:0!important}blockquote{border-left:3px solid}blockquote>*:last-child{margin-bottom:0}
+article>img,article>p>img,article>div{display:block;margin-bottom:1.5rem;width:100%}
+.yt{aspect-ratio:16/9;width:100%;overflow:hidden}.yt iframe{width:100%;height:100%;border:0}
+.s{font-size:.85rem}
+.theme{display:inline-block;width:1.5rem;height:1.5rem}.theme img,.theme svg{width:100%;height:100%}
+html.lt .theme img:first-child,html.lt .theme svg:first-child,html.dk .theme img:last-child,html.dk .theme svg:last-child{display:none}
+header>div{margin-bottom:1.5rem}footer{margin-top:1.5rem}body>footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+body>footer img,body>footer svg{width:1em;height:1em;vertical-align:middle}
+.tags{padding:.5rem 0 0 0}.tags li{display:inline}.tags li+li::before{content:' · '}
+table{width:100%;border-collapse:collapse;margin:0 0 1.5rem}
+th,td{padding:.5rem;border-bottom:1px solid;text-align:center;}
+nav{display:flex;gap:.5rem;margin:1.5rem 0}nav a{flex:1;display:flex;flex-direction:column;align-items:center;overflow:hidden;font-weight:bold}nav img,nav svg{width:2rem;height:2rem;margin-bottom:.25rem}nav a .s{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.5rem,1fr));gap:.5rem}.g a{aspect-ratio:1;display:flex;align-items:center;justify-content:center}.g img{object-fit:contain;max-height:100%;max-width:100%}
+.p{list-style:none;padding:0}.p ul{margin:0}.p>li{display:flex;gap:1rem;margin-bottom:1rem}.p time{display:flex;flex-direction:column;align-items:center;min-width:3rem;margin:.25rem 0}.p time span:first-child{font-size:1.5em;line-height:1}
+.lb{position:fixed;inset:0;background:#000d;display:flex;align-items:center;justify-content:center;z-index:999;cursor:pointer}.lb img{max-width:95vw;max-height:95vh}
+@media(max-width:30em){html{font-size:.9rem}header .desc{display:none}nav{flex-wrap:wrap;row-gap:1.5rem}nav a{flex-basis:25%}}
+.footnote-definition{font-size:.85rem;margin:0 0 .5em;display:flex;gap:.5em}.footnote-definition-label{min-width:1.5em}.footnote-definition p{margin:0}.footnote-reference{margin:0 .15em}
+html.lt{background:#e8edff;--tc:#e8edff;color:#111111}
+html.lt a{color:#eb9442}
+html.lt a:visited{color:#eb9442}
+html.lt a.active,html.lt a:active,html.lt a:hover{color:#eb9442}
+html.lt p,html.lt ul,html.lt ol,html.lt .desc{color:#111111}
+html.lt blockquote,html.lt pre,html.lt code,html.lt article>img,html.lt article>p>img,html.lt .g img{background:oklch(.94 .1 93)!important}
+html.lt ::selection{background:#eb9442;color:#fff}html.lt .giallo{color-scheme:light!important}
+html.dk{background:#0b051c;--tc:#0b051c;color:#efefef}
+html.dk a{color:#eb9442}
+html.dk a:visited{color:#eb9442}
+html.dk a.active,html.dk a:active,html.dk a:hover{color:#eb9442}
+html.dk p,html.dk ul,html.dk ol,html.dk .desc{color:#efefef}
+html.dk img[src$=".svg"],html.dk nav svg,html.dk .theme svg,html.dk footer svg{filter:invert(1)}
+html.dk blockquote,html.dk pre,html.dk code,html.dk article>img,html.dk article>p>img,html.dk .g img{background:#222!important}
+html.dk ::selection{background:#eb9442;color:#000}html.dk .giallo{color-scheme:dark!important}
+a.active,a:active,a:hover{text-decoration-style:wavy}
+.tags a{text-decoration-style:dotted}
+hr{border:0;border-top:1px dashed;clear:both;margin-bottom:1.5rem}
+@media print{*{color:#000!important;filter:none!important}html[class][class] *{background:none!important}html{font-size:.8rem;max-width:none;padding:0;background:#fff!important}.theme{display:none}img,pre{break-inside:avoid}}
+    </style>
+    <meta name="theme-color" id="tc"><script>(function(){var m=matchMedia('(prefers-color-scheme:dark)'),t=localStorage.theme,h=document.documentElement,c=document.getElementById('tc');t=t=='dk'||t=='lt'?t:m.matches?'dk':'lt';localStorage.theme=t;h.className=t;function u(){c.content=getComputedStyle(h).getPropertyValue('--tc')}u();window.zb=function(){t=t==='dk'?'lt':'dk';localStorage.theme=t;h.className=t;u()}})()</script>
+    
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="home" viewBox="0 0 32 32"><path d="M16.6123,2.2138a1.01,1.01,0,0,0-1.2427,0L1,13.4194l1.2427,1.5717L4,13.6209V26a2.0041,2.0041,0,0,0,2,2H26a2.0037,2.0037,0,0,0,2-2V13.63L29.7573,15,31,13.4282ZM18,26H14V18h4Zm2,0V18a2.0023,2.0023,0,0,0-2-2H14a2.002,2.002,0,0,0-2,2v8H6V12.0615l10-7.79,10,7.8005V26Z"/></symbol>
+<symbol id="chat" viewBox="0 0 32 32"><path d="M17.74,30,16,29l4-7h6a2,2,0,0,0,2-2V8a2,2,0,0,0-2-2H6A2,2,0,0,0,4,8V20a2,2,0,0,0,2,2h9v2H6a4,4,0,0,1-4-4V8A4,4,0,0,1,6,4H26a4,4,0,0,1,4,4V20a4,4,0,0,1-4,4H21.16Z"/><rect x="8" y="10" width="16" height="2"/><rect x="8" y="16" width="10" height="2"/></symbol>
+<symbol id="color-palette" viewBox="0 0 32 32"><circle cx="10" cy="12" r="2"/><circle cx="16" cy="9" r="2"/><circle cx="22" cy="12" r="2"/><circle cx="23" cy="18" r="2"/><circle cx="19" cy="23" r="2"/><path d="M16.54,2A14,14,0,0,0,2,16a4.82,4.82,0,0,0,6.09,4.65l1.12-.31A3,3,0,0,1,13,23.24V27a3,3,0,0,0,3,3A14,14,0,0,0,30,15.46,14.05,14.05,0,0,0,16.54,2Zm8.11,22.31A11.93,11.93,0,0,1,16,28a1,1,0,0,1-1-1V23.24a5,5,0,0,0-5-5,5.07,5.07,0,0,0-1.33.18l-1.12.31A2.82,2.82,0,0,1,4,16,12,12,0,0,1,16.47,4,12.18,12.18,0,0,1,28,15.53,11.89,11.89,0,0,1,24.65,24.32Z"/></symbol>
+<symbol id="idea" viewBox="0 0 32 32"><rect x="11" y="24" width="10" height="2"/><rect x="13" y="28" width="6" height="2"/><path d="M16,2A10,10,0,0,0,6,12a9.19,9.19,0,0,0,3.46,7.62c1,.93,1.54,1.46,1.54,2.38h2c0-1.84-1.11-2.87-2.19-3.86A7.2,7.2,0,0,1,8,12a8,8,0,0,1,16,0,7.2,7.2,0,0,1-2.82,6.14c-1.07,1-2.18,2-2.18,3.86h2c0-.92.53-1.45,1.54-2.39A9.18,9.18,0,0,0,26,12,10,10,0,0,0,16,2Z"/></symbol>
+<symbol id="search" viewBox="0 0 32 32"><path d="M29,27.5859l-7.5521-7.5521a11.0177,11.0177,0,1,0-1.4141,1.4141L27.5859,29ZM4,13a9,9,0,1,1,9,9A9.01,9.01,0,0,1,4,13Z"/></symbol>
+<symbol id="light" viewBox="0 0 32 32"><rect x="15" y="2" width="2" height="5"/><rect x="21.6675" y="6.8536" width="4.958" height="1.9998" transform="translate(1.5191 19.3744) rotate(-45)"/><rect x="25" y="15" width="5" height="2"/><rect x="23.1466" y="21.6675" width="1.9998" height="4.958" transform="translate(-10.0018 24.1465) rotate(-45)"/><rect x="15" y="25" width="2" height="5"/><rect x="5.3745" y="23.1466" width="4.958" height="1.9998" transform="translate(-14.7739 12.6256) rotate(-45)"/><rect x="2" y="15" width="5" height="2"/><rect x="6.8536" y="5.3745" width="1.9998" height="4.958" transform="translate(-3.253 7.8535) rotate(-45)"/><path d="M16,12a4,4,0,1,1-4,4,4.0045,4.0045,0,0,1,4-4m0-2a6,6,0,1,0,6,6,6,6,0,0,0-6-6Z"/></symbol>
+<symbol id="asleep" viewBox="0 0 32 32"><path d="M13.5025,5.4136A15.0755,15.0755,0,0,0,25.096,23.6082a11.1134,11.1134,0,0,1-7.9749,3.3893c-.1385,0-.2782.0051-.4178,0A11.0944,11.0944,0,0,1,13.5025,5.4136M14.98,3a1.0024,1.0024,0,0,0-.1746.0156A13.0959,13.0959,0,0,0,16.63,28.9973c.1641.006.3282,0,.4909,0a13.0724,13.0724,0,0,0,10.702-5.5556,1.0094,1.0094,0,0,0-.7833-1.5644A13.08,13.08,0,0,1,15.8892,4.38,1.0149,1.0149,0,0,0,14.98,3Z"/></symbol>
+<symbol id="rss" viewBox="0 0 32 32"><path d="M8,18c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6C14,20.7,11.3,18,8,18z M8,28c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4C12,26.2,10.2,28,8,28z"/><path d="M30,24h-2C28,13,19,4,8,4V2C20.1,2,30,11.9,30,24z"/><path d="M22,24h-2c0-6.6-5.4-12-12-12v-2C15.7,10,22,16.3,22,24z"/></symbol>
+<symbol id="user" viewBox="0 0 32 32"><path d="M16,4a5,5,0,1,1-5,5,5,5,0,0,1,5-5m0-2a7,7,0,1,0,7,7A7,7,0,0,0,16,2Z"/><path d="M26,30H24V25a5,5,0,0,0-5-5H13a5,5,0,0,0-5,5v5H6V25a7,7,0,0,1,7-7h6a7,7,0,0,1,7,7Z"/></symbol>
+<symbol id="book" viewBox="0 0 32 32"><rect x="19" y="10" width="7" height="2"/><rect x="19" y="15" width="7" height="2"/><rect x="19" y="20" width="7" height="2"/><rect x="6" y="10" width="7" height="2"/><rect x="6" y="15" width="7" height="2"/><rect x="6" y="20" width="7" height="2"/><path d="M28,5H4A2.002,2.002,0,0,0,2,7V25a2.002,2.002,0,0,0,2,2H28a2.002,2.002,0,0,0,2-2V7A2.002,2.002,0,0,0,28,5ZM4,7H15V25H4ZM17,25V7H28V25Z"/></symbol>
+</svg>
+
+    <header>
+        <div class="s" style="display:flex;justify-content:space-between;align-items:center">
+            <span><strong>mikansoro.org</strong><span class="desc"> · Michael&#x27;s small corner of the internet.</span></span>
+            <a href="#" onclick="zb();return false" class="theme" aria-label="Toggle theme" title="Toggle theme">
+<svg><use href="#light"/></svg>
+<svg><use href="#asleep"/></svg></a>
+        </div>
+        <hr>
+        <nav>
+            <a href="https://mikansoro.org/" aria-label="Home">
+<svg><use href="#home"/></svg><span class="s">Home</span></a>
+            <a href="https://mikansoro.org/blog/" aria-label="Blog" class="active" aria-current="page">
+<svg><use href="#chat"/></svg><span class="s">Blog</span></a>
+            <a href="https://mikansoro.org/gallery/" aria-label="Gallery">
+<svg><use href="#color-palette"/></svg><span class="s">Gallery</span></a>
+            <a href="https://mikansoro.org/about/" aria-label="About">
+<svg><use href="#user"/></svg><span class="s">About</span></a>
+            <a href="https://mikansoro.org/blogroll/" aria-label="Blogroll">
+<svg><use href="#book"/></svg><span class="s">Blogroll</span></a>
+            <a href="https://mikansoro.org/tags/" aria-label="Tags">
+<svg><use href="#idea"/></svg><span class="s">Tags</span></a>
+            </nav>
+    </header>
+    <hr>
+    <main>
+    
+<article>
+  <header>
+    <h1>AWS IAM Role Chaining using IAM Roles for Service Accounts inside Kubernetes</h1>
+    <time class="s" datetime="2024-04-12">12 Apr 2024</time>
+    
+  </header>
+  
+  
+  
+    <p>Today, we're taking a look at using IAM roles inside of AWS EKS, leveraging the combined power of IAM Roles for Service Accounts (IRSA) and role chaining inside of AWS config files.</p>
+<span id="continue-reading"></span>
+<blockquote class="markdown-alert-note">
+<p><strong>Prerequisites</strong></p>
+<p>This post assumes the reader has a working understanding of AWS IAM, including the differences between IAM users and roles, how roles are assumed/used, and their purpose in the IAM ecosystem.</p>
+</blockquote>
+<h2 id="why-does-this-even-matter">Why does this even matter?
+<a class="anchor" aria-label="Anchor link for: why-does-this-even-matter" href="#why-does-this-even-matter">#</a>
+
+</h2>
+<p>I've encountered several instances where a service/job/pod/what-have-you running in an AWS EKS cluster needed to assume multiple AWS roles to accomplish its task. Typically, when a pod needs access to several resources (say, several s3 buckets, an AWS Redshift cluster, and an Athena/Glue crawler in a different account from the EKS cluster), common sense dictates we should create a role specifically for that pod to assume and call it a day. This is a fine pattern, and its a good practice to separate roles meant for assumption by humans from roles meant for robots anyhow.</p>
+<p>However, there are scenarios where it may not be practical or desirable to create a monolithic role for a specific task. That could be for a myriad of reasons, such as migrating legacy workflows into Kubernetes, using roles that connect to partner/client AWS resources not under your control, or not granting cross-account resource access for roles. Some resources, like AWS Glue and AWS Secrets Manager, don't behave the same way during cross-account access.</p>
+<h2 id="so-a-single-role-isn-t-always-feasible-for-a-pod-have-an-example">So a single role isn't always feasible for a pod. Have an example?
+<a class="anchor" aria-label="Anchor link for: so-a-single-role-isn-t-always-feasible-for-a-pod-have-an-example" href="#so-a-single-role-isn-t-always-feasible-for-a-pod-have-an-example">#</a>
+
+</h2>
+<p>Recently, I tried to run an ansible playbook inside a Kubernetes cronjob, while maintaining the playbook's ability to be run by humans (who all use a standardized set of AWS profiles, that's important later). Ideally, both human operators and robots should be able to use the playbook without any code changes. The playbook uses two profiles, named <code>account-a-admin</code> and <code>account-b-admin</code>. All humans who need to run this playbook locally have <code>account-a-admin</code> and <code>account-b-admin</code> profiles defined already in their AWS config file (<code>~/.aws/config</code>), and each profile assumes a role role in either account <code>a</code> or <code>b</code> respectively. These admin roles are powerful, and not something that should be handed out lightly (and never assumed by robots).</p>
+<p>Now, that still doesn't explain why we can't create new role used solely by this pod, granting the specific access required to execute the playbook. Well, because this playbook operates on ec2 instances, it uses the <code>aws_ec2</code> dynamic inventory plugin. For the inventory plugin to work properly for human users, an AWS profile name must be passed as part of the configuration. Normally, we could override profile names with ansible extra vars (using the <code>-e</code> command line flag) or by using a jinja2 template to look up the value from an environment variable. Sounds simple, right?</p>
+<p>Wrong. Some dynamic inventory plugins respect extra vars, but are not required to. They also don't support jinja2 templates. You can see where I'm going with this. There isn't a way to dynamically select a profile for the <code>aws_ec2</code> dynamic inventory. Therefore, we need to create AWS config profiles with credentials that will satisfy the inventory plugin.</p>
+<h2 id="okay-you-need-to-make-aws-config-profiles-so-that-s-common">Okay, you need to make AWS config profiles. So? That's common.
+<a class="anchor" aria-label="Anchor link for: okay-you-need-to-make-aws-config-profiles-so-that-s-common" href="#okay-you-need-to-make-aws-config-profiles-so-that-s-common">#</a>
+
+</h2>
+<p>That's the impetus behind me writing this. Most engineers who have written AWS config files before have only used them with static credentials stored in <code>~/.aws/credentials</code>, then used those credentials to assume a role. Instead, we can adapt the AWS config with some lesser-known options assume roles granted to pods through EKS, without defining static credentials.</p>
+<h2 id="how-irsa-works">How IRSA Works
+<a class="anchor" aria-label="Anchor link for: how-irsa-works" href="#how-irsa-works">#</a>
+
+</h2>
+<p>Now, before we get too deep, here's a brief overview on how IAM integrates with Kubernetes in AWS.</p>
+<p>At some point, a workload running in Kubernetes will need to access some resource outside the cluster to perform its task. For the sake of example, we'll assume that we have a pod running inside EKS, AWS's cloud Kubernetes distribution. This pod needs to access some files in s3, but it was deemed too risky to stash a non-expiring IAM keypair inside a kubernetes secret and call it a day. Instead, we can grant a pod the temporary credentials required to assume an IAM role through AWS <a rel="nofollow noreferrer external" href="https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/">IAM roles for Service Accounts (IRSA)</a> feature.</p>
+<p>IRSA works by allowing the exchange of Kubernetes service account OIDC JWT tokens with IAM for set of temporary IAM credentials corresponding to a role. This requires both an <a rel="nofollow noreferrer external" href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_openid_connect_provider.html">IAM OIDC Connect Provider</a> to be created using the cluster OIDC issuer's URL and thumbprint, and the <a rel="nofollow noreferrer external" href="https://github.com/aws/amazon-eks-pod-identity-webhook">eks pod identity mutating admission webhook</a>. When a Kubernetes service account with the <code>eks.amazonaws.com/role-arn: &lt;arn&gt;</code> annotation is attached to a pod, the pod identity webhook injects a token via a projected <code>serviceAccountToken</code> volume and sets several environment variables.</p>
+<p>With this token, the pod can then call the AWS SecurityTokenService (STS) api to exchange the the token for a set of IAM credentials, using the <code>AssumeroleWithWebIdentity</code> action. Modern versions of the AWS SDK will see the <code>AWS_WEB_IDENTITY_TOKEN_FILE</code> environment variable and automatically assume the role on startup. For instance, the AWS cli command <code>aws sts get-caller-identity</code> will return a role session for the role specified in the service account annotation instead of a role session for the underlying host node role when the service account is attached.</p>
+<p>To illustrate what is added by the pod identity webhook, see the following diff.</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="diff"><span class="giallo-l"><span>apiVersion: v1</span></span>
+<span class="giallo-l"><span>kind: ServiceAccount</span></span>
+<span class="giallo-l"><span>metadata:</span></span>
+<span class="giallo-l"><span>  annotations:</span></span>
+<span class="giallo-l"><span>    eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/svc-eks-podrole</span></span>
+<span class="giallo-l"><span>  name: my-serviceaccount</span></span>
+<span class="giallo-l"><span>  namespace: default</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);font-weight: bold;">---</span></span>
+<span class="giallo-l"><span>apiVersion: apps/v1</span></span>
+<span class="giallo-l"><span>kind: Pod</span></span>
+<span class="giallo-l"><span>metadata:</span></span>
+<span class="giallo-l"><span>  name: myapp</span></span>
+<span class="giallo-l"><span>spec:</span></span>
+<span class="giallo-l"><span>  serviceAccountName: my-serviceaccount</span></span>
+<span class="giallo-l"><span>  containers:</span></span>
+<span class="giallo-l"><span>  - name: myapp</span></span>
+<span class="giallo-l"><span>    image: myapp:1.2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">    env:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">    - name: AWS_ROLE_ARN</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">      value: arn:aws:iam::123456789012:role/svc-eks-podrole</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">    - name: AWS_WEB_IDENTITY_TOKEN_FILE</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">      value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">    volumeMounts:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">    - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">        name: aws-iam-token</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">        readOnly: true</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">  volumes:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">  - name: aws-iam-token</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">    projected:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">      defaultMode: 420</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">      sources:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">      - serviceAccountToken:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">          audience: sts.amazonaws.com</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">          expirationSeconds: 86400</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">+</span><span style="color: light-dark(#22863A, #85E89D);background-color: light-dark(#F0FFF4, #144620);">          path: token</span></span></code></pre><h2 id="now-lets-set-up-some-profiles">Now, Lets Set Up Some Profiles
+<a class="anchor" aria-label="Anchor link for: now-lets-set-up-some-profiles" href="#now-lets-set-up-some-profiles">#</a>
+
+</h2>
+<p>Now, we've established that role credentials provided thorugh the EKS pod identity webhook are WebIdentity roles, and credentials are granted through the <code>AssumeroleWithWebIdentity</code> STS api. While the AWS SDK and cli will automatically detect the environment variable and assume the role, that does not extend to profiles. For example, if we call <code>aws sts get-caller-identity --profile default</code> from within our EKS pod, the command will exit with an error that no config profile was found with the name "default". Which makes sense, since we haven't defined one in the config file yet.</p>
+<p>Digging through the <a rel="nofollow noreferrer external" href="https://awscli.amazonaws.com/v2/documentation/api/latest/topic/config-vars.html">AWS cli config reference</a>, there's a section for options relating to AssumeroleWithWebIdentity. We can create a profile that takes a web identity token file and role arn, and the SDK will automatically call STS on our behalf to retrieve credentials for the role. Since our token is automatically injected into the pod using a volume and because we know the mount path, this config becomes pretty trivial.</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="plain"><span class="giallo-l"><span># In ~/.aws/config</span></span>
+<span class="giallo-l"><span>[profile default]</span></span>
+<span class="giallo-l"><span>role_arn=arn:aws:iam::123456789012:role/svc-eks-podrole</span></span>
+<span class="giallo-l"><span>web_identity_token_file=/var/run/secrets/eks.amazonaws.com/serviceaccount/token</span></span></code></pre>
+<p>Now, calling <code>aws sts get-caller-identity --profile default</code> will produce the same result as not providing a profile. We're now assuming the role the same as the SDK does without a config file, but in a more explicit way.</p>
+<p>We can take this a couple steps further though, and chain several role assumptions together. This unlocks a tremendous amount of power when working with multiple roles:</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="plain"><span class="giallo-l"><span># In ~/.aws/config</span></span>
+<span class="giallo-l"><span>[profile default]</span></span>
+<span class="giallo-l"><span>role_arn = arn:aws:iam::123456789012:role/svc-eks-podrole</span></span>
+<span class="giallo-l"><span>web_identity_token_file = /var/run/secrets/eks.amazonaws.com/serviceaccount/token</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[profile account-a-admin]</span></span>
+<span class="giallo-l"><span>source_profile = default</span></span>
+<span class="giallo-l"><span>role_arn = arn:aws:iam::345678901234:role/Administrator-role</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[profile account-b-admin]</span></span>
+<span class="giallo-l"><span>source_profile = default</span></span>
+<span class="giallo-l"><span>role_arn = arn:aws:iam::567890123456:role/Administrator-role</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[profile account-b-specialized]</span></span>
+<span class="giallo-l"><span>source_profile = account-b-admin</span></span>
+<span class="giallo-l"><span>role_arn = arn:aws:iam::567890123456:role/special-s3-access</span></span></code></pre>
+<p>If we call <code>aws sts get-caller-identity --profile account-b-specialized</code> now, the AWS SDK will automatically chain the assumption of all three roles and return a set of credentials matching the <code>arn:aws:iam::567890123456:role/special-s3-access</code> role. Not only that, but the SDK now has a template on how to automatically refresh these role credentials when they're close to expiring, without having to call STS ourselves or write any code that creates or manages AWS sessions.</p>
+<h3 id="bonus-points-kubernetes-best-practices">Bonus Points: Kubernetes Best Practices
+<a class="anchor" aria-label="Anchor link for: bonus-points-kubernetes-best-practices" href="#bonus-points-kubernetes-best-practices">#</a>
+
+</h3>
+<p>Instead of injecting this AWS config into your container at build time, create a Kubernetes configmap with the AWS config and mount it inside the pod using a volume. Commit these manifests to your kubernetes source control repository (you have one, don't you?), that way other engineers very explicitly know what roles are being consumed by this particular workload, and they can be easily adapted down the line.</p>
+<h2 id="should-i-use-this">Should I use this?
+<a class="anchor" aria-label="Anchor link for: should-i-use-this" href="#should-i-use-this">#</a>
+
+</h2>
+<p>Ultimately, that comes down to your use case and the organization you work in. If your code (script in a cronjob, Airflow DAG, web microservice, etc) can operate off of a single AWS role that can be directly assumed by the pod, then no, don't bother. Continue using web identity role assumption directly through the SDK as you have been and move on with life.</p>
+<p>If you need multiple roles for different actions, run with an ancient SDK, or need to maintain code execution compatibility between different types of systems as I had, then this might be an easy solution. Sure, it's possible to write some code against boto3 to assume multiple roles and auto-refresh their credentials before every operation if they're close to expiring. You can gate that code to only running in specific execution environments too. Or, you can offload all that work (and brittleness) to the AWS SDK, and let it do its job handling credentials for you.</p>
+<p>Put it this way, do you really want to be parsing temp files to check the credential expiry time with <code>jq</code> every time your bash script needs to connect to s3, and renew them if they're close to expiring? I certainly wouldn't.</p>
+
+  
+  
+  
+  <footer class="s">
+    Tags: <a href='https://mikansoro.org/tags/aws'>aws</a>, <a href='https://mikansoro.org/tags/kubernetes'>kubernetes</a>, <a href='https://mikansoro.org/tags/iam'>iam</a>
+  </footer>
+  
+  
+</article>
+</main>
+    <hr>
+    <footer class="s">
+        <span>© mikansoro.org 2026</span>
+        <span>
+<svg><use href="#rss"/></svg> Feeds: <a href="https://mikansoro.org/atom.xml">Atom</a> · <a href="https://mikansoro.org/rss.xml">RSS</a></span>
+    </footer>
+    
+    
+    
+    <script>document.querySelectorAll('article img[srcset]').forEach(i=>{if(i.closest('a'))return;i.style.cursor='pointer';i.onclick=()=>{let d=document.createElement('div'),s=i.srcset.split(',').pop().trim().split(' ')[0];d.className='lb';d.innerHTML='<img src="'+s+'">';document.body.style.overflow='hidden';d.onclick=()=>{d.remove();document.body.style.overflow=''};document.body.appendChild(d)}})</script>
+    </body>
+</html>

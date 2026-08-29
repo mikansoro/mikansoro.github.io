@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>mikansoro.org - Sayuri Date</title>
+    <subtitle>Michael&#x27;s small corner of the internet.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mikansoro.org/tags/sayuri-date/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mikansoro.org"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-09-10T00:00:00+00:00</updated>
+    <id>https://mikansoro.org/tags/sayuri-date/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Sayuri Date Has Released Her First Original Songs!</title>
+        <published>2024-09-10T00:00:00+00:00</published>
+        <updated>2024-09-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/sayuri-date-first-song/"/>
+        <id>https://mikansoro.org/blog/sayuri-date-first-song/</id>
+        
+        <summary type="html">&lt;p&gt;Sayuri Date has released her first original songs today as part of the run up to her birthday event on September 30th!&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible"
+      content="IE=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+<meta name="description"
+      content="Michael&#x27;s small corner of the internet." />
+<meta name="keywords"
+      content="blog, technology, kubernetes, sre, homelab, travel, idols, Love Live!, anime" /> 
+
+<title>
+  Event Report: AnimeNYC 2024 // mikansoro.org</title>
+<meta property="og:site_name" content="mikansoro.org"/>
+<meta property="og:title" content="mikansoro.org | Event Report: AnimeNYC 2024"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mikansoro.org/blog/event-report-anyc-2024/"/>
+<meta property="og:description" content="Michael&#x27;s small corner of the internet."/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Event Report: AnimeNYC 2024"/>
+<meta name="twitter:description" content="Michael&#x27;s small corner of the internet."/>
+<link rel="alternate" type="application/atom+xml" title="mikansoro.org" href="https://mikansoro.org/atom.xml">
+    <meta name="color-scheme" content="light dark">
+    
+    <style>
+html{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:1rem;line-height:1.5;margin:auto;max-width:70ch;padding:1.5rem 1em 3em}
+img{max-width:100%}img:not([src$=".svg"]),article>div,pre{border-radius:.3rem}img[src$="#pixelate"]{image-rendering:pixelated}
+h1{font-size:1.75rem}
+h2{font-size:1.4rem} 
+h3{font-size:1.15rem}
+h4,h5,h6{font-size:inherit;}
+h1,h2,h3,h4,h5,h6{color:#4299eb}
+a.anchor{color:#4299eb}
+p{text-align:left;line-height:1.6;}p,ul,ol,.g,article>footer,article>header{margin:0 0 1.5em}
+pre,blockquote{padding:1.5rem;margin:0 0 1.5rem}pre{overflow-x:auto}pre code{background:0!important}blockquote{border-left:3px solid}blockquote>*:last-child{margin-bottom:0}
+article>img,article>p>img,article>div{display:block;margin-bottom:1.5rem;width:100%}
+.yt{aspect-ratio:16/9;width:100%;overflow:hidden}.yt iframe{width:100%;height:100%;border:0}
+.s{font-size:.85rem}
+.theme{display:inline-block;width:1.5rem;height:1.5rem}.theme img,.theme svg{width:100%;height:100%}
+html.lt .theme img:first-child,html.lt .theme svg:first-child,html.dk .theme img:last-child,html.dk .theme svg:last-child{display:none}
+header>div{margin-bottom:1.5rem}footer{margin-top:1.5rem}body>footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+body>footer img,body>footer svg{width:1em;height:1em;vertical-align:middle}
+.tags{padding:.5rem 0 0 0}.tags li{display:inline}.tags li+li::before{content:' · '}
+table{width:100%;border-collapse:collapse;margin:0 0 1.5rem}
+th,td{padding:.5rem;border-bottom:1px solid;text-align:center;}
+nav{display:flex;gap:.5rem;margin:1.5rem 0}nav a{flex:1;display:flex;flex-direction:column;align-items:center;overflow:hidden;font-weight:bold}nav img,nav svg{width:2rem;height:2rem;margin-bottom:.25rem}nav a .s{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.5rem,1fr));gap:.5rem}.g a{aspect-ratio:1;display:flex;align-items:center;justify-content:center}.g img{object-fit:contain;max-height:100%;max-width:100%}
+.p{list-style:none;padding:0}.p ul{margin:0}.p>li{display:flex;gap:1rem;margin-bottom:1rem}.p time{display:flex;flex-direction:column;align-items:center;min-width:3rem;margin:.25rem 0}.p time span:first-child{font-size:1.5em;line-height:1}
+.lb{position:fixed;inset:0;background:#000d;display:flex;align-items:center;justify-content:center;z-index:999;cursor:pointer}.lb img{max-width:95vw;max-height:95vh}
+@media(max-width:30em){html{font-size:.9rem}header .desc{display:none}nav{flex-wrap:wrap;row-gap:1.5rem}nav a{flex-basis:25%}}
+.footnote-definition{font-size:.85rem;margin:0 0 .5em;display:flex;gap:.5em}.footnote-definition-label{min-width:1.5em}.footnote-definition p{margin:0}.footnote-reference{margin:0 .15em}
+html.lt{background:#e8edff;--tc:#e8edff;color:#111111}
+html.lt a{color:#eb9442}
+html.lt a:visited{color:#eb9442}
+html.lt a.active,html.lt a:active,html.lt a:hover{color:#eb9442}
+html.lt p,html.lt ul,html.lt ol,html.lt .desc{color:#111111}
+html.lt blockquote,html.lt pre,html.lt code,html.lt article>img,html.lt article>p>img,html.lt .g img{background:oklch(.94 .1 93)!important}
+html.lt ::selection{background:#eb9442;color:#fff}html.lt .giallo{color-scheme:light!important}
+html.dk{background:#0b051c;--tc:#0b051c;color:#efefef}
+html.dk a{color:#eb9442}
+html.dk a:visited{color:#eb9442}
+html.dk a.active,html.dk a:active,html.dk a:hover{color:#eb9442}
+html.dk p,html.dk ul,html.dk ol,html.dk .desc{color:#efefef}
+html.dk img[src$=".svg"],html.dk nav svg,html.dk .theme svg,html.dk footer svg{filter:invert(1)}
+html.dk blockquote,html.dk pre,html.dk code,html.dk article>img,html.dk article>p>img,html.dk .g img{background:#222!important}
+html.dk ::selection{background:#eb9442;color:#000}html.dk .giallo{color-scheme:dark!important}
+a.active,a:active,a:hover{text-decoration-style:wavy}
+.tags a{text-decoration-style:dotted}
+hr{border:0;border-top:1px dashed;clear:both;margin-bottom:1.5rem}
+@media print{*{color:#000!important;filter:none!important}html[class][class] *{background:none!important}html{font-size:.8rem;max-width:none;padding:0;background:#fff!important}.theme{display:none}img,pre{break-inside:avoid}}
+    </style>
+    <meta name="theme-color" id="tc"><script>(function(){var m=matchMedia('(prefers-color-scheme:dark)'),t=localStorage.theme,h=document.documentElement,c=document.getElementById('tc');t=t=='dk'||t=='lt'?t:m.matches?'dk':'lt';localStorage.theme=t;h.className=t;function u(){c.content=getComputedStyle(h).getPropertyValue('--tc')}u();window.zb=function(){t=t==='dk'?'lt':'dk';localStorage.theme=t;h.className=t;u()}})()</script>
+    
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="home" viewBox="0 0 32 32"><path d="M16.6123,2.2138a1.01,1.01,0,0,0-1.2427,0L1,13.4194l1.2427,1.5717L4,13.6209V26a2.0041,2.0041,0,0,0,2,2H26a2.0037,2.0037,0,0,0,2-2V13.63L29.7573,15,31,13.4282ZM18,26H14V18h4Zm2,0V18a2.0023,2.0023,0,0,0-2-2H14a2.002,2.002,0,0,0-2,2v8H6V12.0615l10-7.79,10,7.8005V26Z"/></symbol>
+<symbol id="chat" viewBox="0 0 32 32"><path d="M17.74,30,16,29l4-7h6a2,2,0,0,0,2-2V8a2,2,0,0,0-2-2H6A2,2,0,0,0,4,8V20a2,2,0,0,0,2,2h9v2H6a4,4,0,0,1-4-4V8A4,4,0,0,1,6,4H26a4,4,0,0,1,4,4V20a4,4,0,0,1-4,4H21.16Z"/><rect x="8" y="10" width="16" height="2"/><rect x="8" y="16" width="10" height="2"/></symbol>
+<symbol id="color-palette" viewBox="0 0 32 32"><circle cx="10" cy="12" r="2"/><circle cx="16" cy="9" r="2"/><circle cx="22" cy="12" r="2"/><circle cx="23" cy="18" r="2"/><circle cx="19" cy="23" r="2"/><path d="M16.54,2A14,14,0,0,0,2,16a4.82,4.82,0,0,0,6.09,4.65l1.12-.31A3,3,0,0,1,13,23.24V27a3,3,0,0,0,3,3A14,14,0,0,0,30,15.46,14.05,14.05,0,0,0,16.54,2Zm8.11,22.31A11.93,11.93,0,0,1,16,28a1,1,0,0,1-1-1V23.24a5,5,0,0,0-5-5,5.07,5.07,0,0,0-1.33.18l-1.12.31A2.82,2.82,0,0,1,4,16,12,12,0,0,1,16.47,4,12.18,12.18,0,0,1,28,15.53,11.89,11.89,0,0,1,24.65,24.32Z"/></symbol>
+<symbol id="idea" viewBox="0 0 32 32"><rect x="11" y="24" width="10" height="2"/><rect x="13" y="28" width="6" height="2"/><path d="M16,2A10,10,0,0,0,6,12a9.19,9.19,0,0,0,3.46,7.62c1,.93,1.54,1.46,1.54,2.38h2c0-1.84-1.11-2.87-2.19-3.86A7.2,7.2,0,0,1,8,12a8,8,0,0,1,16,0,7.2,7.2,0,0,1-2.82,6.14c-1.07,1-2.18,2-2.18,3.86h2c0-.92.53-1.45,1.54-2.39A9.18,9.18,0,0,0,26,12,10,10,0,0,0,16,2Z"/></symbol>
+<symbol id="search" viewBox="0 0 32 32"><path d="M29,27.5859l-7.5521-7.5521a11.0177,11.0177,0,1,0-1.4141,1.4141L27.5859,29ZM4,13a9,9,0,1,1,9,9A9.01,9.01,0,0,1,4,13Z"/></symbol>
+<symbol id="light" viewBox="0 0 32 32"><rect x="15" y="2" width="2" height="5"/><rect x="21.6675" y="6.8536" width="4.958" height="1.9998" transform="translate(1.5191 19.3744) rotate(-45)"/><rect x="25" y="15" width="5" height="2"/><rect x="23.1466" y="21.6675" width="1.9998" height="4.958" transform="translate(-10.0018 24.1465) rotate(-45)"/><rect x="15" y="25" width="2" height="5"/><rect x="5.3745" y="23.1466" width="4.958" height="1.9998" transform="translate(-14.7739 12.6256) rotate(-45)"/><rect x="2" y="15" width="5" height="2"/><rect x="6.8536" y="5.3745" width="1.9998" height="4.958" transform="translate(-3.253 7.8535) rotate(-45)"/><path d="M16,12a4,4,0,1,1-4,4,4.0045,4.0045,0,0,1,4-4m0-2a6,6,0,1,0,6,6,6,6,0,0,0-6-6Z"/></symbol>
+<symbol id="asleep" viewBox="0 0 32 32"><path d="M13.5025,5.4136A15.0755,15.0755,0,0,0,25.096,23.6082a11.1134,11.1134,0,0,1-7.9749,3.3893c-.1385,0-.2782.0051-.4178,0A11.0944,11.0944,0,0,1,13.5025,5.4136M14.98,3a1.0024,1.0024,0,0,0-.1746.0156A13.0959,13.0959,0,0,0,16.63,28.9973c.1641.006.3282,0,.4909,0a13.0724,13.0724,0,0,0,10.702-5.5556,1.0094,1.0094,0,0,0-.7833-1.5644A13.08,13.08,0,0,1,15.8892,4.38,1.0149,1.0149,0,0,0,14.98,3Z"/></symbol>
+<symbol id="rss" viewBox="0 0 32 32"><path d="M8,18c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6C14,20.7,11.3,18,8,18z M8,28c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4C12,26.2,10.2,28,8,28z"/><path d="M30,24h-2C28,13,19,4,8,4V2C20.1,2,30,11.9,30,24z"/><path d="M22,24h-2c0-6.6-5.4-12-12-12v-2C15.7,10,22,16.3,22,24z"/></symbol>
+<symbol id="user" viewBox="0 0 32 32"><path d="M16,4a5,5,0,1,1-5,5,5,5,0,0,1,5-5m0-2a7,7,0,1,0,7,7A7,7,0,0,0,16,2Z"/><path d="M26,30H24V25a5,5,0,0,0-5-5H13a5,5,0,0,0-5,5v5H6V25a7,7,0,0,1,7-7h6a7,7,0,0,1,7,7Z"/></symbol>
+<symbol id="book" viewBox="0 0 32 32"><rect x="19" y="10" width="7" height="2"/><rect x="19" y="15" width="7" height="2"/><rect x="19" y="20" width="7" height="2"/><rect x="6" y="10" width="7" height="2"/><rect x="6" y="15" width="7" height="2"/><rect x="6" y="20" width="7" height="2"/><path d="M28,5H4A2.002,2.002,0,0,0,2,7V25a2.002,2.002,0,0,0,2,2H28a2.002,2.002,0,0,0,2-2V7A2.002,2.002,0,0,0,28,5ZM4,7H15V25H4ZM17,25V7H28V25Z"/></symbol>
+</svg>
+
+    <header>
+        <div class="s" style="display:flex;justify-content:space-between;align-items:center">
+            <span><strong>mikansoro.org</strong><span class="desc"> · Michael&#x27;s small corner of the internet.</span></span>
+            <a href="#" onclick="zb();return false" class="theme" aria-label="Toggle theme" title="Toggle theme">
+<svg><use href="#light"/></svg>
+<svg><use href="#asleep"/></svg></a>
+        </div>
+        <hr>
+        <nav>
+            <a href="https://mikansoro.org/" aria-label="Home">
+<svg><use href="#home"/></svg><span class="s">Home</span></a>
+            <a href="https://mikansoro.org/blog/" aria-label="Blog" class="active" aria-current="page">
+<svg><use href="#chat"/></svg><span class="s">Blog</span></a>
+            <a href="https://mikansoro.org/gallery/" aria-label="Gallery">
+<svg><use href="#color-palette"/></svg><span class="s">Gallery</span></a>
+            <a href="https://mikansoro.org/about/" aria-label="About">
+<svg><use href="#user"/></svg><span class="s">About</span></a>
+            <a href="https://mikansoro.org/blogroll/" aria-label="Blogroll">
+<svg><use href="#book"/></svg><span class="s">Blogroll</span></a>
+            <a href="https://mikansoro.org/tags/" aria-label="Tags">
+<svg><use href="#idea"/></svg><span class="s">Tags</span></a>
+            </nav>
+    </header>
+    <hr>
+    <main>
+    
+<article>
+  <header>
+    <h1>Event Report: AnimeNYC 2024</h1>
+    <time class="s" datetime="2024-08-29">29 Aug 2024</time>
+    
+  </header>
+  
+  
+  
+    <p>My event report for AnimeNYC 2024, focusing largely on my time with CatChu!</p>
+<span id="continue-reading"></span>
+<p>By the time I actually get around to posting this I'll be a bit later than I wanted to be, so thank you for bearing with me. This is also my first "formal" written event report, so it may be a little rough around the edges. I want to continue writing event reports so I may change things in the future as I evolve and grow this format. Thanks for your understanding!</p>
+<p>This turned out to be pretty long, so I appreciate your patience as I go through all my thoughts!</p>
+
+
+
+
+<img alt="Bandai Namco Filmworks&#x27; Booth Stage" title="Bandai Namco Filmworks&#x27; Booth Stage" src="https://mikansoro.org/processed_images/booth-stage.ded04b95d3e690a2.jpg" srcset="https://mikansoro.org/processed_images/booth-stage.cadf3d57fe836f10.jpg 512w, https://mikansoro.org/processed_images/booth-stage.ded04b95d3e690a2.jpg 1024w, https://mikansoro.org/processed_images/booth-stage.52456eb3f880cf09.jpg 2048w" class="" />
+
+<h2 id="introductions">Introductions
+<a class="anchor" aria-label="Anchor link for: introductions" href="#introductions">#</a>
+
+</h2>
+<p>Before I continue, I will introduce the members of Liella! who were present at the convention for those who may not be familiar with them. The three members are all part of the same subunit named "CatChu!", an upbeat rock-type idol unit with powerful songs and a cute, catlike demeanor. They are:</p>
+<p><img src="https://pbs.twimg.com/media/GVtIWFSa8AEQrxa?format=jpg&amp;name=large" alt="The three members of CatChu! pose with printed standees of their characters from Love Live! Superstar!!" />
+<em>The members of CatChu! from left to right: Naomi Payton, Sayuri Date, and Akane Yabushima. Photo from Bandai Namco Filmworks</em></p>
+<ul>
+<li><a rel="nofollow noreferrer external" href="https://twitter.com/sayuridate"> Sayuri Date </a> (「伊達さゆり」)
+<ul>
+<li>Nickname: Sayurin</li>
+<li>Voices: Kanon Shibuya (「澁谷かのん」)</li>
+</ul>
+</li>
+<li><a rel="nofollow noreferrer external" href="https://twitter.com/_naomi_payton_"> Naomi Payton </a> (「ペイトン尚未」)
+<ul>
+<li>Nickname: Paychan</li>
+<li>Voices: Sumire Heanna (「平安名すみれ」)</li>
+</ul>
+</li>
+<li><a rel="nofollow noreferrer external" href="https://twitter.com/a_yabushima"> Akane Yabushima </a> (「薮島朱音」)
+<ul>
+<li>Nickname: Yabu-chan</li>
+<li>Voices: Mei Yoneme (「米女メイ」)</li>
+</ul>
+</li>
+</ul>
+<p>Sayurin is my "oshi", or the member that I support the most/my favorite. I have favorite idols from other groups, but Sayurin is by far the idol I support the most.</p>
+<h2 id="fan-projects">Fan Projects
+<a class="anchor" aria-label="Anchor link for: fan-projects" href="#fan-projects">#</a>
+
+</h2>
+<h3 id="retro-saikou">Retro Saikou
+<a class="anchor" aria-label="Anchor link for: retro-saikou" href="#retro-saikou">#</a>
+
+</h3>
+<p>I want to sincerely thank Andy (<a rel="nofollow noreferrer external" href="https://twitter.com/yggdrizzle">@yggdrizzle</a>) and Julia (<a rel="nofollow noreferrer external" href="https://twitter.com/idol_trash">@idol_trash</a>) for their hard work in pulling together an incredible project to help everyone share their love of CatChu!. I also want to thank all the artists involved. Every piece of art contributed to the project was beautiful and were packed with love for CatChu!! Lastly, I want to thank everyone who contributed financially or otherwise to make the project a success!</p>
+<p><a rel="nofollow noreferrer external" href="https://x.com/yggdrizzle/status/1827033847327773123">Fan Project Thread from Andy</a></p>
+<p>I know this project was difficult and ambitious, but thanks to everyone's hard work it came together in the nick of time to create a wonderful display of love for CatChu!! I'm honored to have been allowed to play a small part in constructing the display on-site, and hope to be able to lend a hand to more fan projects in the future.</p>
+<p>
+
+
+
+<img alt="The message banner from Andy&#x27;s fan project after two days of signing. It&#x27;s completely full." title="The message banner from Andy&#x27;s fan project after two days of signing. It&#x27;s completely full." src="https://mikansoro.org/processed_images/message-banner-full.b00702a7caadd2dd.jpg" srcset="https://mikansoro.org/processed_images/message-banner-full.c78931a25a8e7bb0.jpg 512w, https://mikansoro.org/processed_images/message-banner-full.b00702a7caadd2dd.jpg 1024w, https://mikansoro.org/processed_images/message-banner-full.49a2c0eff6dcce77.jpg 2048w" class="" />
+
+
+<em>The message banner after two days! It was completely full!</em></p>
+<p>It's no secret that the girls came and saw the banner and standees on the last day. They absolutely loved it, they looked thrilled and they took tons of photos! Hopefully we might see some of those photos one day. Our love for CatChu! was definitely conveyed to them!</p>
+<h3 id="flower-stand">Flower Stand
+<a class="anchor" aria-label="Anchor link for: flower-stand" href="#flower-stand">#</a>
+
+</h3>
+<p>I also contributed financially to a flower stand project run by <a rel="nofollow noreferrer external" href="https://twitter.com/gs_sunshine">Garden State Sunshine</a>. It turned out really nice, but unfortunately I don't have a picture of it! It looked amazing though! You can see it on twitter <a rel="nofollow noreferrer external" href="https://twitter.com/gs_sunshine/status/1827038109764059549">here</a>.</p>
+<h3 id="times-square">Times Square
+<a class="anchor" aria-label="Anchor link for: times-square" href="#times-square">#</a>
+
+</h3>
+<p>Originally I had planned to post a message in Times Square on the TSX screen to celebrate CatChu! coming to NYC, but I wasn't able to get a timeslot. Since I wasn't able to post it, I <a rel="nofollow noreferrer external" href="https://x.com/timidtogekiss/status/1827797708951707782">shared it on twitter</a> and I'll post it here too!</p>
+
+
+
+
+<img alt="Times Square Banner for CatChu!" title="Times Square Banner for CatChu!" src="https://mikansoro.org/processed_images/times-square.f85ac0ea0d8f8b59.jpg" srcset="https://mikansoro.org/processed_images/times-square.e3bbe91c9ed83715.jpg 512w, https://mikansoro.org/processed_images/times-square.f85ac0ea0d8f8b59.jpg 1024w, https://mikansoro.org/processed_images/times-square.3af01d43f12c9430.jpg 2048w" class="" />
+
+<h2 id="panels">Panels
+<a class="anchor" aria-label="Anchor link for: panels" href="#panels">#</a>
+
+</h2>
+<p>CatChu! participated in several panels throughout the weekend, including their own panel on AnimeNYC's second largest stage! The rooms were full and the crowd was swarming with energy and excitement every time they appeared! We certainly shocked them a bit with our reactions to their antics and with our overwhelming love and passion!</p>
+
+
+
+
+<img alt="A photo from my seat for CatChu!&#x27;s panel, with my Kanon-chan nesoberi and heart-shaped penlight!" title="A photo from my seat for CatChu!&#x27;s panel, with my Kanon-chan nesoberi and heart-shaped penlight!" src="https://mikansoro.org/processed_images/panel-seat.65a001a0f48727f8.jpg" srcset="https://mikansoro.org/processed_images/panel-seat.93df2e6c12cb558a.jpg 512w, https://mikansoro.org/processed_images/panel-seat.65a001a0f48727f8.jpg 1024w, https://mikansoro.org/processed_images/panel-seat.6009ab2369553473.jpg 2048w" class="" />
+
+<p>I managed to secure seats near the stage for all three of their panels! I was really lucky! It's not often that we get to see them up close, so I'm glad I was able to get such an opportunity. The girls spent a lot of time waving and interacting with their supporters from the stage, and I got quite a few waves, smiles, and hearts from Sayurin! It's always such a rush to be recognized in the audience like that! It made me so happy!</p>
+<p>There were various questions asked to each of them from the staff, and one picked from the fans. I can't summarize them all here because it's been too long and I can't quite remember all the answers, but to name a few we heard about their favorite scenes in <em>Love Live! Superstar!!</em>, their favorite insert songs, and key moments to watch out for during the screening of Ijigen Fes that took place after their appearance. Surprisingly to me, Sayurin's favorite scene in Superstar is in Season 2 Episode 1 where Kanon-chan invites Kinako-chan to be a school idol. It's an exceptionally sweet moment and one of my favorites as well, so I was really happy to hear that! Unsurprisingly, her favorite insert song from the anime was <a rel="nofollow noreferrer external" href="https://open.spotify.com/track/0posBXcIeMLyjrYsSHR01P?si=35dc8ae1e7374cdf">Mirai Yohou Hallelujah</a>, where Kanon-chan is able to sing again for the first time!</p>
+<p>The interpreter did well to convey the meaning of each of the girls answers to the predominantly English speaking audience as well. I could understand about half of their answers without needing the translation, and the interpreter was right on.</p>
+<p>Throughout it all, the members of CatChu! were constantly giggling and laughing in their seats, and weren't nervous at all! We definitely took them by surprise a few times with our animated and boisterous reactions, but that made them all the happier! I know they made as many incredible memories as we did, and that makes me both happy and proud!</p>
+<h2 id="odu-sihui-handover-event">お渡し会 (Handover Event)
+<a class="anchor" aria-label="Anchor link for: odu-sihui-handover-event" href="#odu-sihui-handover-event">#</a>
+
+</h2>
+<p>One of the big draws for many Liella! fans to AnimeNYC this year was that the three members of CatChu! would hold an "owatashikai", or "handover event". These types of events consist of each idol handing you something (a postcard or a photograph) and a few seconds to talk one on one. They're relatively infrequent even in Japan, and the ones held overseas are arguably even more special since a ticket guarantees meeting multiple idols instead of just one.</p>
+
+
+
+
+<img alt="Handover Event Ticket" title="Handover Event Ticket" src="https://mikansoro.org/processed_images/handover-ticket.1b7d782fe0db8872.jpg" srcset="https://mikansoro.org/processed_images/handover-ticket.fc0bb1ea99e72da2.jpg 512w, https://mikansoro.org/processed_images/handover-ticket.1b7d782fe0db8872.jpg 1024w, https://mikansoro.org/processed_images/handover-ticket.b3fe6dd58a3978fc.jpg 2048w" class="" />
+
+<p>After failing the pre-con lottery for the free owatashikai session, I was able to secure a ticket to the paid session by purchasing $100 worth of merchandise from the Bandai Namco Filmworks booth early on Friday morning. I was in!</p>
+<h3 id="what-do-i-say">What Do I Say...
+<a class="anchor" aria-label="Anchor link for: what-do-i-say" href="#what-do-i-say">#</a>
+
+</h3>
+<p>I contemplated for weeks on what I was going to say to each of them. For Sayurin I knew my topic right away. I would tell her in person that I won a ticket to her birthday event at the end of September and that I was really looking forward to it. Normally that's something I would've posted on twitter or instagram, but I kept silent on purpose to tell her at AnimeNYC.</p>
+<p>For Paychan and Yabu-chan, I wanted to bring up a topic from Liella!'s most recent fanmeeting tour. I had a few topics that I could choose from, but I decided that I would ask each of them to do a cute pose they referred to as a "kyurun" during the fanmeeting. It was super adorable at the fanmeeting, and I wanted to see it up close! I also wanted to tell them that I attended CatChu!'s fanmeeting in Aichi and the full group fanmeeting in K Arena.</p>
+<p>This was my 4th time meeting Sayurin at an owatashikai, so I felt a little more at ease talking to her. I gained a lot of confidence after successfully speaking to her twice in Japan earlier this year. I was still super nervous, and I was shaking a bit in the line as I rehearsed what I was going to say. My Japanese ability isn't very good in general, but gets even worse when I'm stressed or worried. I was certainly nervous thinking about meeting Paychan and Yabu-chan too. I was shaking a bit while talking to each of them, and at the end I thought I hadn't taken Yabu-chan's postcard. I had taken it, but I was so caught up in everything that I couldn't remember if I had it with me. I hope they didn't notice that I was shaking too badly.</p>
+<p>I had lots of other things to say to each of them, but I had to cut my conversations short while I was waiting due to the staff giving us much less time than the previous Love Live owatashikai I attended at Anime Expo in 2023. At AX, each person got about 15-20 seconds with each of the three members, and up to 30 seconds with one of the members if you had a clear and obvious favorite. The staff were very lenient with time at AX but were much stricter at AnimeNYC. I had about 10 seconds with each member of CatChu!, so I wasn't able to say everything that I wanted to. I had to skip telling them that I went to the fanmeets, and I couldn't ask Sayurin for a "kyurun".</p>
+<p>I still treasure the memories of the event though! Getting to meet them one-on-one is nothing short of incredible! It's always a dream come true!</p>
+
+
+
+
+<img alt="Postcards from the Event" title="Postcards from the Event" src="https://mikansoro.org/processed_images/postcards.77bef6c91663a4a9.jpg" srcset="https://mikansoro.org/processed_images/postcards.ac302ed09c8771e0.jpg 512w, https://mikansoro.org/processed_images/postcards.77bef6c91663a4a9.jpg 1024w, https://mikansoro.org/processed_images/postcards.de927e52ba00212d.jpg 2048w" class="" />
+
+<p>Thank you to those near me in line for helping me stay calm. You know who you are. I'm glad we could help each other relaxed and enjoy these moments together!</p>
+<p>I'm so grateful for the opportunity to meet each of them in New York! The members of CatChu! were overjoyed to see all of the foreign fans' happiness and passion for both them and Liella!!</p>
+<h3 id="conversations">Conversations
+<a class="anchor" aria-label="Anchor link for: conversations" href="#conversations">#</a>
+
+</h3>
+<p>A few of you may have seen my post on <a rel="nofollow noreferrer external" href="https://x.com/timidtogekiss/status/1827694957815374041/">twitter</a> already, but I posted my full conversation summary with the members of CatChu! there. I've also included it here, in both Japanese and English. The conversations took place entirely in Japanese.</p>
+<p>✌️ is me. All descriptions of what happened are shown in parentheses.</p>
+<h4 id="paychan">Paychan
+</h4>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="plain"><span class="giallo-l"><span>✌️: こんにちは！</span></span>
+<span class="giallo-l"><span>🪐: (She was totally expecting English, I caught her by surprise 😝)</span></span>
+<span class="giallo-l"><span>🪐: こんにちは！</span></span>
+<span class="giallo-l"><span>(Postcard handover)</span></span>
+<span class="giallo-l"><span>✌️: ありがとうございます！</span></span>
+<span class="giallo-l"><span>✌️: NY に来てくれてありがとうございます！</span></span>
+<span class="giallo-l"><span>🪐: (happy paychan noises, then back to listening intently)</span></span>
+<span class="giallo-l"><span>✌️: Liella! ファンミーティングの神奈川公園の「キュルン選手権」が素晴らしいかったです！あの、もう一回キュルンはおねがいできますか？</span></span>
+<span class="giallo-l"><span>🪐: キュルン~</span></span>
+<span class="giallo-l"><span>(too damn cute...)</span></span>
+<span class="giallo-l"><span>✌️: えぇ~！かわいい！！ありがとうございます！</span></span>
+<span class="giallo-l"><span>🪐: ありがとうございます！</span></span></code></pre>
+<p>Translated Version:</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="plain"><span class="giallo-l"><span>✌️: Hello!</span></span>
+<span class="giallo-l"><span>🪐: (She was totally expecting English, I caught her by surprise 😝)</span></span>
+<span class="giallo-l"><span>🪐: Hello!</span></span>
+<span class="giallo-l"><span>(Postcard handover)</span></span>
+<span class="giallo-l"><span>✌️: Thank you!</span></span>
+<span class="giallo-l"><span>✌️: Thank you for coming to New York!</span></span>
+<span class="giallo-l"><span>🪐: (happy paychan noises, then back to listening intently)</span></span>
+<span class="giallo-l"><span>✌️: The &quot;Kyurun Championship&quot; at the Kanagawa leg of the Liella fanmeeting was really great! Could you do a &quot;kyurun&quot; one more time?</span></span>
+<span class="giallo-l"><span>🪐: kyurun~</span></span>
+<span class="giallo-l"><span>(too damn cute...)</span></span>
+<span class="giallo-l"><span>✌️: Eeeh?! Cute! Thank you!</span></span>
+<span class="giallo-l"><span>🪐: Thank you!</span></span></code></pre><h4 id="sayurin">Sayurin
+</h4>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="plain"><span class="giallo-l"><span>✌️: こんにちは！</span></span>
+<span class="giallo-l"><span>🌷: (Sayurin realizes it&#39;s me and her eyes light up)</span></span>
+<span class="giallo-l"><span>🌷: こんにちは！どぞ！</span></span>
+<span class="giallo-l"><span>(Postcard handover)</span></span>
+<span class="giallo-l"><span>✌️: ありがとうございます！</span></span>
+<span class="giallo-l"><span>✌️: NY に来てくれてありがとうございます！</span></span>
+<span class="giallo-l"><span>🌷: (nodding enthusiastically)</span></span>
+<span class="giallo-l"><span>✌️: さゆりんのバースデーイベントのチケットが当たりました！楽しみにしています！！</span></span>
+<span class="giallo-l"><span>🌷: (shocked, eyes wide, hands over her mouth with a massive smile)</span></span>
+<span class="giallo-l"><span>🌷: えぇぇ！？本と？ありがとう！嬉しい！</span></span>
+<span class="giallo-l"><span>スタッフ: Time, thank you</span></span>
+<span class="giallo-l"><span>🌷: (pointed to my itabags of Kanon-chan and Sayurin, and made a heart)</span></span>
+<span class="giallo-l"><span>✌️: ありがとうございます！</span></span>
+<span class="giallo-l"><span>🌷: ありがとうございます！！ (waving with a large smile)</span></span></code></pre>
+<p>Translated Version:</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="plain"><span class="giallo-l"><span>✌️: Hello!</span></span>
+<span class="giallo-l"><span>🌷: (Sayurin realizes it&#39;s me and her eyes light up)</span></span>
+<span class="giallo-l"><span>🌷: Hello! Here you go!</span></span>
+<span class="giallo-l"><span>(Postcard handover)</span></span>
+<span class="giallo-l"><span>✌️: Thank you!</span></span>
+<span class="giallo-l"><span>✌️: Thank you for coming to New York!</span></span>
+<span class="giallo-l"><span>🌷: (nodding enthusiastically)</span></span>
+<span class="giallo-l"><span>✌️: I won a ticket to Sayurin&#39;s birthday event! I&#39;m really looking forward to it!</span></span>
+<span class="giallo-l"><span>🌷: (shocked, eyes wide, hands over her mouth with a massive smile)</span></span>
+<span class="giallo-l"><span>🌷: Eeeh? Really?! Thank you! I&#39;m so happy!</span></span>
+<span class="giallo-l"><span>Staff: Time, thank you</span></span>
+<span class="giallo-l"><span>✌️: (too nervous to remember to ask for a kyurun)</span></span>
+<span class="giallo-l"><span>🌷: (pointed to my itabags of Kanon-chan and Sayurin, and made a heart)</span></span>
+<span class="giallo-l"><span>✌️: Thank you!</span></span>
+<span class="giallo-l"><span>🌷: Thank you!! (waving with a large smile)</span></span></code></pre><h4 id="yabu-chan">Yabu-chan
+</h4>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="plain"><span class="giallo-l"><span>✌️: こんにちは！</span></span>
+<span class="giallo-l"><span>(Interpreter looked releaved to have a break, lol)</span></span>
+<span class="giallo-l"><span>🐾: こんにちは！</span></span>
+<span class="giallo-l"><span>(Postcard handover)</span></span>
+<span class="giallo-l"><span>✌️: ありがとうございます！</span></span>
+<span class="giallo-l"><span>✌️: えと、Liella! ファンミーティングの神奈川公園の「キュルン選手権」が素晴らしいかったです！</span></span>
+<span class="giallo-l"><span>🐾: ありがとう！</span></span>
+<span class="giallo-l"><span>✌️: あの、もう一回キュルンはおねがいできますか？</span></span>
+<span class="giallo-l"><span>🐾: え？(It was loud, she couldn&#39;t hear me)</span></span>
+<span class="giallo-l"><span>✌️: もう一回キュルンはおねがいできますか？</span></span>
+<span class="giallo-l"><span>🐾: キュルン~</span></span>
+<span class="giallo-l"><span>(she could kill people with that cuteness.)</span></span>
+<span class="giallo-l"><span>✌️: かわいい！！ありがとうございます！</span></span>
+<span class="giallo-l"><span>🐾: ありがとうございます！</span></span></code></pre>
+<p>Translated Version:</p>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="plain"><span class="giallo-l"><span>✌️: Hello!</span></span>
+<span class="giallo-l"><span>(Interpreter looked releaved to have a break, lol)</span></span>
+<span class="giallo-l"><span>🐾: Hello!</span></span>
+<span class="giallo-l"><span>(Postcard handover)</span></span>
+<span class="giallo-l"><span>✌️: Thank you!</span></span>
+<span class="giallo-l"><span>✌️: so... The &quot;Kyurun Championship&quot; at the Kanagawa leg of the Liella fanmeeting was really great!</span></span>
+<span class="giallo-l"><span>🐾: Thank you!</span></span>
+<span class="giallo-l"><span>✌️: Um, Could you do a &quot;kyurun&quot; one more time?</span></span>
+<span class="giallo-l"><span>🐾: Huh? (It was loud, she couldn&#39;t hear me)</span></span>
+<span class="giallo-l"><span>✌️: Could you do a &quot;kyurun&quot; one more time?</span></span>
+<span class="giallo-l"><span>🐾: kyurun~</span></span>
+<span class="giallo-l"><span>(she could kill people with that cuteness.)</span></span>
+<span class="giallo-l"><span>✌️:  Cute!! Thank you!</span></span>
+<span class="giallo-l"><span>🐾: Thank you！</span></span></code></pre><h2 id="intro-quiz">Intro Quiz
+<a class="anchor" aria-label="Anchor link for: intro-quiz" href="#intro-quiz">#</a>
+
+</h2>
+
+
+
+
+<img alt="Intro Quiz Screen Announcement" title="Intro Quiz Screen Announcement" src="https://mikansoro.org/processed_images/quiz-display.979acf0345a6543a.jpg" srcset="https://mikansoro.org/processed_images/quiz-display.811190318013f392.jpg 512w, https://mikansoro.org/processed_images/quiz-display.979acf0345a6543a.jpg 1024w, https://mikansoro.org/processed_images/quiz-display.53e8766451e166c0.jpg 2048w" class="" />
+
+<p>During the con, <em>LoveLive!</em> staff ran the first ever "<em>Love Live! Superstar!!</em> Intro Quiz"! We didn't know what the quiz would be but it turned out to be a "name that tune" style quiz where the faster you answered the more points you earned. After ten questions, the top three contestants (who had a ticket), received a trophy directly from the members of CatChu!.</p>
+
+
+
+
+<img alt="Intro Quiz Ticket" title="Intro Quiz Ticket" src="https://mikansoro.org/processed_images/quiz-ticket.b9400456d8f6a571.jpg" srcset="https://mikansoro.org/processed_images/quiz-ticket.54c1878dd730af32.jpg 512w, https://mikansoro.org/processed_images/quiz-ticket.b9400456d8f6a571.jpg 1024w, https://mikansoro.org/processed_images/quiz-ticket.c5bdf5a5bd748856.jpg 2048w" class="" />
+
+<p>I was able to get a ticket for both rounds of the intro quiz! Tickets were distributed at 10:15am each morning, and only 50 tickets were available for each day. Though if you weren't in line before 10am when the hall opened, you were unlikely to get a ticket. I'll admit that was a little unfair, because if you weren't an ANYC+ badge holder, an Exhibitor, or had an ADA accomodation you were unlikely to make it into the ticket line before the 50 person cap was reached.</p>
+<p>In the end, it turned out that anyone could enter the quiz, but only ticket holders were able to actually collect a prize. This caused a bit of chaos with the leaderboards, but everything (mostly) worked out in the end.</p>
+<p>The coolest part was the members of CatChu! were actually present for the quiz! It was a little hard to focus on answering questions because their reactions to each song were super cute! They had no idea which songs would be played either, so everyone was able to see their reactions in real time! We were even treated to impromptu singing on occasion! During Yabu-chan's solo song Akane Gokoro when Sayurin shoved the microphone in Yabu-chan's face and she sung one of the lines. Sayurin was so happy that she wound up laying across the seat to put her head in Yabu-chan's lap, still holding the microphone up to a confused and embarrassed Yabu-chan. Paychan eventually realized what was happening and laid across Sayurin to join in, it was so damn cute! Sayurin then proceeded to do the same thing to Paychan when the next song turned out to be Starry Prayer, one of her solos.</p>
+<p>Staff included a couple trick questions as well! Question 10 on Day 1 had everyone picking between the subunit versions of <em>What a Wonderful Dream!</em>, with CatChu!'s version being the correct answer. Most participants were correct. Day 2's question was a bit more evil, asking everyone to pick between the three versions of 私のSymphony that have been released on CD: the original, 2022 version, and 2023 version (which released on CD in 2024, ironically). The fourth answer was the "2024 version" which doesn't yet exist. A majority chose 2024, including myself and all three members of CatChu!! I can't fault myself too much for that, I picked the highest number in the list in under a second when I realized it was the 2023 version, and only after clicking I realized that I had picked 2024.</p>
+<p>I managed to get 8/10 correct both days, which wasn't enough to place in the top 10. It was a lot of fun though! It definitely challenged my song title retention, and I hope I get another chance to participate in something like it some day.</p>
+
+
+
+
+<img alt="My result screenshot in 35th place." title="My result screenshot in 35th place." src="https://mikansoro.org/processed_images/35th-place.6822895f17f6e5f3.jpg" srcset="https://mikansoro.org/processed_images/35th-place.1d2e45c810b918ae.jpg 512w, https://mikansoro.org/processed_images/35th-place.6822895f17f6e5f3.jpg 1024w" class="" />
+
+<h2 id="community">Community
+<a class="anchor" aria-label="Anchor link for: community" href="#community">#</a>
+
+</h2>
+<p>Honestly, I'm lost for words trying to write about the amazing community of fans that I met this weekend. Many have been good friends to me for a while, and a majority I met for the first time. It didn't matter if they were a <em>LoveLive!</em> fan for 10 years or 10 days, everyone there was brimming with their love for Liella! and gratitude for the members of CatChu! for traveling so far to see us. At every event, big or small, everyone was buzzing with excitement and fixated on every moment we were able to spend with our idols.</p>
+<p>Our energy was almost overwhelming at times, physically propelling the members of CatChu! back in their seats when we got particularly excited. Judging by their reactions they weren't expecting to fill the second largest stage at AnimeNYC with passionate, fervent fans cheering for them, overjoyed at the fact that their idols were in the same room. The members of CatChu! returned home certain that they weren't simply known in the west; they were deeply loved.</p>
+<p>If anyone I met this weekend is reading this, I'm deeply grateful for the amazing memories you helped me create. I hope I was able to help you create amazing memories in the same way. It doesn't matter if we spoke for three seconds or three days, seeing your passion and excitement for this franchise makes me happy beyond compare. I hope to see you all again at the next event, and I'd like to say お疲れ様でした, or thank you for your hard work.</p>
+<h2 id="other-thoughts">Other Thoughts
+<a class="anchor" aria-label="Anchor link for: other-thoughts" href="#other-thoughts">#</a>
+
+</h2>
+<p>I have some thoughts that I wanted to include in their own section that didn't quite fit in above. They're important to discuss though.</p>
+<h3 id="things-that-could-ve-gone-better">Things that Could've Gone Better
+<a class="anchor" aria-label="Anchor link for: things-that-could-ve-gone-better" href="#things-that-could-ve-gone-better">#</a>
+
+</h3>
+<p>I heard reports from others during the owatashikai who were allotted less than 10 seconds (sometimes only 5 seconds). There was no hard and fast rule given by the staff for how much time we would have, and enforcement seemed selective. This led to awkward moments with the members where their interpreters were still translating messages while fans were pushed along by the staff, leading to the members looking awkward and confused since they were unable to react properly.</p>
+<p>There were 150 tickets for each session, and the scheduled time was for the session was about one hour. Both sessions finished in under 45 minutes, so there was definitely enough time for those who were pushed onwards early to have their full session time. I would like to see the staff be more consistent in the future, and allow attendees to have <em>at least</em> a fixed bare minimum time to converse with each member.</p>
+<p>Some of the interpreters were also slower than others, so those who were able to speak Japanese were able to get more time with each of the members depending on the interpreter's speed. From what I heard, they were all quite good at conveying messages and interactions were generally good, but I felt like I should call that out since some attendees weren't able to get their messages out properly to CatChu! due to issues with interpreting. I'm not saying there's really a fix for this as I recognize interpreting is <em>very</em> difficult. But it was something I noticed.</p>
+<h3 id="things-that-went-well">Things that Went Well
+<a class="anchor" aria-label="Anchor link for: things-that-went-well" href="#things-that-went-well">#</a>
+
+</h3>
+<p>At the owatashikai, here were several attendees who had mobility issues that would've prevented them from easily navigating the narrow line. They were allowed to go first, and the staff arranged for the members of CatChu! to come speak with them individually and hand over their postcards. This was a very wholesome moment, and I was very happy to see that everyone's needs were considered in a very professional (and sweet) manner.</p>
+<p>The staff also had CatChu! enter and exit on opposite sides of the panel rooms, so all sections were able to interact up close with them!</p>
+<h2 id="conclusion">Conclusion
+<a class="anchor" aria-label="Anchor link for: conclusion" href="#conclusion">#</a>
+
+</h2>
+<p>Overall, it was an absolutely incredible weekend. Thank you CatChu!, and thank you all. I had several dreams come true at AnimeNYC, and I know that many of the other attendees had their dreams come true as well. I know the members of CatChu! are headed back to Tokyo with our happiness and joy keeping their smiles bright and sparkling.</p>
+<p>I hope that Bandai Namco staff has seen our passion for Liella! and lets them return to the US again. I will pray for the day that Liella! can come as 11 members and perform for everyone overseas.</p>
+<p>I can't wait for the next one.</p>
+
+  
+  
+  
+  <footer class="s">
+    Tags: <a href='https://mikansoro.org/tags/liella'>Liella!</a>, <a href='https://mikansoro.org/tags/love-live'>Love Live!</a>, <a href='https://mikansoro.org/tags/catchu'>CatChu!</a>, <a href='https://mikansoro.org/tags/event-report'>event report</a>
+  </footer>
+  
+  
+</article>
+</main>
+    <hr>
+    <footer class="s">
+        <span>© mikansoro.org 2026</span>
+        <span>
+<svg><use href="#rss"/></svg> Feeds: <a href="https://mikansoro.org/atom.xml">Atom</a> · <a href="https://mikansoro.org/rss.xml">RSS</a></span>
+    </footer>
+    
+    
+    
+    <script>document.querySelectorAll('article img[srcset]').forEach(i=>{if(i.closest('a'))return;i.style.cursor='pointer';i.onclick=()=>{let d=document.createElement('div'),s=i.srcset.split(',').pop().trim().split(' ')[0];d.className='lb';d.innerHTML='<img src="'+s+'">';document.body.style.overflow='hidden';d.onclick=()=>{d.remove();document.body.style.overflow=''};document.body.appendChild(d)}})</script>
+    </body>
+</html>
