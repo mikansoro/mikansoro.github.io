@@ -1,0 +1,1045 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>mikansoro.org</title>
+    <subtitle>Michael&#x27;s small corner of the internet.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mikansoro.org/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mikansoro.org"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-08-28T00:00:00+00:00</updated>
+    <id>https://mikansoro.org/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Site Update 2026</title>
+        <published>2026-08-28T00:00:00+00:00</published>
+        <updated>2026-08-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            Michael
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/site-update-2026/"/>
+        <id>https://mikansoro.org/blog/site-update-2026/</id>
+        
+        <content type="html" xml:base="https://mikansoro.org/blog/site-update-2026/">&lt;p&gt;After several years of neglect this site has a fresh coat of paint! &lt;br &#x2F;&gt;
+&lt;em&gt;&lt;strong&gt;Warning:&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt; RSS feeds have changed, see below.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;theme-update&quot;&gt;Theme update
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: theme-update&quot; href=&quot;#theme-update&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;I&#x27;ve migrated from the &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;isunjn&#x2F;serene&quot;&gt;serene&lt;&#x2F;a&gt; theme created by isunjn to a &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mikansoro&#x2F;zola-zap&quot;&gt;personal fork&lt;&#x2F;a&gt; of the newer &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jimmyff&#x2F;zola-zap&quot;&gt;zola-zap&lt;&#x2F;a&gt; theme from jimmyff. Serene was good enough^tm  when I first started the site, it had good support for shortcodes and features that got me off the ground quickly, but it doesn&#x27;t currently support the latest version of Zola and I&#x27;ve gotten tired of the style. Zap is small, relatively feature complete, and is a lightweight base I can extend easily to fit my own tastes. I won&#x27;t guarantee my fork will work correctly for anyone else, but it&#x27;s there if you want inspiration.&lt;&#x2F;p&gt;
+&lt;p&gt;Also, I now have a &lt;a href=&quot;&#x2F;gallery&#x2F;&quot;&gt;gallery&lt;&#x2F;a&gt;! I&#x27;ll be posting my photography there. I&#x27;m excited to have a place thats fully mine to post photos that I&#x27;ve created and want to share with the rssworld.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;content-update&quot;&gt;Content update
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: content-update&quot; href=&quot;#content-update&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;I want to write more. Will that happen? I&#x27;m not sure yet. There&#x27;s no cadence here.&lt;&#x2F;p&gt;
+&lt;p&gt;I have a large backlog of event summaries for the last 10 months that I&#x27;m going to try and post eventually.&lt;&#x2F;p&gt;
+&lt;p&gt;I will be posting to the gallery more frequently. Gallery posts are included in the atom and rss feeds linked at the bottom of the site. The old blog only &lt;code&gt;feed.xml&lt;&#x2F;code&gt; has been deprecated and will not be updated, but blog-only &lt;a href=&quot;&#x2F;blog&#x2F;rss.xml&quot;&gt;rss&lt;&#x2F;a&gt; and &lt;a href=&quot;&#x2F;blog&#x2F;atom.xml&quot;&gt;atom&lt;&#x2F;a&gt; feeds are available (should you not want gallery posts in your rss reader.)&lt;&#x2F;p&gt;
+&lt;p&gt;The feeds in the footer include both the blog and gallery.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Rolling back time remotely with git reflog</title>
+        <published>2026-02-18T00:00:00+00:00</published>
+        <updated>2026-02-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/git-remote-reflog/"/>
+        <id>https://mikansoro.org/blog/git-remote-reflog/</id>
+        
+        <summary type="html">&lt;p&gt;Git&#x27;s reflog is a magic time machine, and you can use it to reset to points only available on the remote server as well as the local repository.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Using LLMs to Transcribe and Translate (Part 1)</title>
+        <published>2026-02-15T00:00:00+00:00</published>
+        <updated>2026-02-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/transcribing-and-translating-with-llm/"/>
+        <id>https://mikansoro.org/blog/transcribing-and-translating-with-llm/</id>
+        
+        <content type="html" xml:base="https://mikansoro.org/blog/transcribing-and-translating-with-llm/">&lt;p&gt;Languages are hard. They&#x27;re complex systems of communication that take years to understand and many more to master.&lt;&#x2F;p&gt;
+&lt;p&gt;Though I study Japanese when I can (read: I&#x27;m terrible at self-study motivation, so I don&#x27;t study nearly as much as I should), my knowledge and understanding of the spoken and written word could at best be described as rudimentary; more often than not, it&#x27;s closer to illiterate. Despite my slow progress, I still want to enjoy and understand various Japanese shows and radio programs at a deeper-than-surface level. Official translation outside of high-budget works such as Anime TV series or films are few and far between, and while fan translators are excellent and wonderful people who produce amazing, high quality work, they are still just people; individuals or small groups who translate the content they enjoy as a hobby or by commission. They do incredible work for those of us less linguistically inclined, but sometimes the content I&#x27;m looking to understand doesn&#x27;t have a dedicated, overworked and thankless translator working into the wee hours to deliver localized translations of those works because they find it fun.&lt;&#x2F;p&gt;
+&lt;p&gt;Before we go any further, allow me a moment to be candid: &lt;em&gt;This is not a post about how to replace fan translators or official translators with Large Language Models (LLMs). This is also not a post complaining that XYZ program or broadcast does not have a fan translator working on it yet.&lt;&#x2F;em&gt; The ethics surrounding the training of LLMs are poor, but they are a tool that when used properly can aid in both understanding and learning (in this post, both in a technical and linguistic sense).&lt;&#x2F;p&gt;
+&lt;p&gt;If (hopefully when) I&#x27;m smart enough to actually understand (any of) the nuances of Japanese, I&#x27;d be filling in the gaps and publishing translations of things &lt;em&gt;I&lt;&#x2F;em&gt; found important too.&lt;&#x2F;p&gt;
+&lt;p&gt;For the time being, I&#x27;ve been leveraging one of my favorite language models: &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;openai&#x2F;whisper&quot;&gt;whisper&lt;&#x2F;a&gt;. Released by OpenAI, whisper is a multilingual speech recognition model capable of both speech-to-text and text-to-speech conversion. We&#x27;re interested in the former capability here, taking the spoken word from a radio show, youtube live stream, or TV show and converting it to text that we (or I) can understand. The model is small enough and fast enough to run on commodity desktop hardware. With the right machine, it&#x27;s even capable of real-time transcription &lt;em&gt;and translation&lt;&#x2F;em&gt; of voice to text.&lt;&#x2F;p&gt;
+&lt;p&gt;If that sounds like something either a) cool or b) useful to you, read on. I&#x27;ll show you how I&#x27;m currently leveraging whisper (and other LLMs) to generate reasonable, understandable transcriptions and translations of the spoken word.&lt;&#x2F;p&gt;
+&lt;p&gt;This will be a multi-part series. This is just an introduction post to the world of whisper and its tooling.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;environment&quot;&gt;Environment
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: environment&quot; href=&quot;#environment&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;From this point on, we&#x27;re going to get technical.&lt;&#x2F;p&gt;
+&lt;p&gt;Whisper is a niche, specialized LLM focused entirely on transcribing speech-to-text. It&#x27;s specialization is great for us commonfolk who don&#x27;t own a data center; it&#x27;s overall size is quite small (several gigabytes for the largest model). It comes in a variety of sizes (small-en, small, medium, large, etc) for use on single board computers like a raspberry pi to high end desktop and server hardware. The current front-runner version of the model, &lt;code&gt;large-v3&lt;&#x2F;code&gt;, takes up about 3GB on disk, and when expanded into system or video memory consumes about 7GB during workloads. Most tools built on whisper even support cpu-only inference at reasonable speeds.&lt;&#x2F;p&gt;
+&lt;p&gt;This has a few advantages:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;any modern computer with a halfway decent CPU can transcribe video using the high-end (high parameter count) whisper models&lt;&#x2F;li&gt;
+&lt;li&gt;a CUDA-compatible (NVIDIA) gpu with &amp;gt;=8GB of VRAM can load the entire model into video memory for high-speed operation&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The old laptop you have sitting in the corner can run Whisper, and that&#x27;s a really cool thing.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dependency-hell&quot;&gt;Dependency Hell
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: dependency-hell&quot; href=&quot;#dependency-hell&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h3&gt;
+&lt;p&gt;One of the most challenging aspects of using whisper (and the tools developed around it) is managing the packages and dependencies required by each tool. To put it mildly, its dependency hell.&lt;&#x2F;p&gt;
+&lt;p&gt;Many machine learning (ML) and LLM tools are built with Python due to its nearly endless suite of third party libraries and extensions. However, Python is an &quot;interpreted&quot; language instead of a &quot;compiled&quot; one, so instead of the developer sharing a built and packaged binary with you (like an &lt;code&gt;.exe&lt;&#x2F;code&gt; on Windows), your machine must have a version of Python &lt;em&gt;and&lt;&#x2F;em&gt; any dependencies the program author makes use of on your system every time you run the tool.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ve dealt with this in two ways: virtual environments and containers (docker). Which you choose is ultimately up to you and your comfort level, but &lt;em&gt;my&lt;&#x2F;em&gt; recommendation is to use containers. You&#x27;ll save yourself a lot of headache in the long run.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;containers-podman-docker&quot;&gt;Containers (Podman &#x2F; Docker)
+&lt;&#x2F;h4&gt;
+&lt;p&gt;If you&#x27;re unfamiliar with containers here&#x27;s the elevator pitch on why they&#x27;re useful:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What is a container? Simply put, containers are isolated processes for each of your app&#x27;s components. Each component - the frontend React app, the Python API engine, and the database - runs in its own isolated environment, completely isolated from everything else on your machine. &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;docs.docker.com&#x2F;get-started&#x2F;docker-concepts&#x2F;the-basics&#x2F;what-is-a-container&#x2F;&quot;&gt;read more&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;They&#x27;re small, predefined, prepackaged environments that are ready to run the tool installed in them. No managing dependent packages or 10 versions of Python. You run the container, and it runs the software exactly as the developer packaged it. Think of it like a mini operating system that you download from the internet, and run inside your main OS (Windows, macOS, or Linux). Multiple containers can run side by side, each with their own versions of software dependencies that will never conflict with each other.&lt;&#x2F;p&gt;
+&lt;p&gt;They solve the &quot;works on my machine&quot; problem for those who don&#x27;t want to get their hands (and operating systems) dirty.&lt;&#x2F;p&gt;
+&lt;p&gt;To enter the magical world of containers, install either &lt;code&gt;podman&lt;&#x2F;code&gt; or &lt;code&gt;docker&lt;&#x2F;code&gt; onto your computer. I recommend &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;podman.io&#x2F;&quot;&gt;podman&lt;&#x2F;a&gt;, which for reasons outside the scope of this post is slowly gaining ground in the container desktop runtime space from docker (the &quot;established&quot; corporate player) due to its excellent feature set and backwards compatibility with the docker ecosystem.&lt;&#x2F;p&gt;
+&lt;p&gt;For macOS and Windows, I recommend using &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;podman-desktop.io&#x2F;&quot;&gt;podman desktop&lt;&#x2F;a&gt; because it offers a good, UI-driven view of your podman install &amp;amp; running containers. It also offers step-by-step instructions for installing the podman runtime. As a note, on both Windows and Mac, podman (and docker) use a virtual machine to run container processes, and you&#x27;ll have to configure that as part of the first-time setup. Once it&#x27;s all configured, you don&#x27;t have to touch it again.&lt;&#x2F;p&gt;
+&lt;p&gt;If you need them, the &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;podman.io&#x2F;docs&#x2F;installation#installing-on-linux&quot;&gt;linux install instructions&lt;&#x2F;a&gt; are here, along with CLI-only installation instructions for both Windows and Mac. Linux users can also make use of podman desktop, if that&#x27;s your thing.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;python-virtual-environments&quot;&gt;Python Virtual Environments
+&lt;&#x2F;h4&gt;
+&lt;p&gt;If containers aren&#x27;t up your alley but you smartly don&#x27;t want to install every required package under the sun to your global system state (otherwise known as &lt;em&gt;dependency hell&lt;&#x2F;em&gt;), python virtual environments will be your friend. I&#x27;ve had success with both &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;virtualenv.pypa.io&#x2F;en&#x2F;latest&#x2F;&quot;&gt;virtualenv&lt;&#x2F;a&gt; and &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.anaconda.com&#x2F;download&quot;&gt;anaconda&lt;&#x2F;a&gt; in the past; the former for managing project dependencies from &lt;code&gt;pip&lt;&#x2F;code&gt; (python&#x27;s package manager) and the latter to manage versioned installations of python. Both have trade-offs (and this is not an exhaustive list), but for beginners I&#x27;d recommend starting with anaconda. Tools built around AI&#x2F;LLMs use many different versions of python, so having a version manager for python itself is a good idea.&lt;&#x2F;p&gt;
+&lt;p&gt;If you&#x27;re a developer who regularly works with python, feel free to ignore my advice and advocate your position!&lt;&#x2F;p&gt;
+&lt;p&gt;For windows &lt;code&gt;anaconda&lt;&#x2F;code&gt; users who find themselves needing access to their environments over ssh, execute the following after connecting to your windows machine:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;vb&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;powershell.&lt;&#x2F;span&gt;&lt;span&gt;exe&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span&gt;ExecutionPolicy&lt;&#x2F;span&gt;&lt;span&gt; ByPass&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span&gt;NoExit&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span&gt;Command&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;amp; &amp;#39;C:\Users\&amp;lt;youruser&amp;gt;\anaconda3\shell\condabin\conda-hook.ps1&amp;#39; ; conda activate &amp;#39;C:\Users\&amp;lt;youruser&amp;gt;\anaconda3&amp;#39; &lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This is the same command the &quot;Anaconda Shell&quot; start menu entry runs to launch anaconda.&lt;&#x2F;p&gt;
+&lt;p&gt;Some resources to help get started with Anaconda:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.anaconda.com&#x2F;docs&#x2F;getting-started&#x2F;main&quot;&gt;Anaconda&#x27;s Getting Started guide&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;conda&lt;&#x2F;code&gt; &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;docs.conda.io&#x2F;projects&#x2F;conda&#x2F;en&#x2F;stable&#x2F;user-guide&#x2F;cheatsheet.html&quot;&gt;Command cheatsheet&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;gpu-acceleration&quot;&gt;GPU Acceleration
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: gpu-acceleration&quot; href=&quot;#gpu-acceleration&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h3&gt;
+&lt;p&gt;Unless you live under a rock, you no doubt are aware that running AI inference workloads (like whisper) on a GPU speeds up the process dramatically. Whisper is a small model that runs fine on a CPU, but if you have a GPU with &amp;gt;=8GB of VRAM, you might as well try to accelerate it.&lt;&#x2F;p&gt;
+&lt;p&gt;Each GPU vendor (Nvidia, AMD, Intel) have their own acceleration api (CUDA, rocm, and oneapi&#x2F;openvino, respectively). Each API has its own setup steps for each operating system, so refer to the respective documentation for installation instructions. Make sure you have up-to-date GPU drivers for your card as well. There is also the Vulkan graphics api. which supports multiple GPU types which can be used as a fallback.&lt;&#x2F;p&gt;
+&lt;p&gt;Frankly, the easiest path to GPU acceleration is to use containers. All of the libraries (like CUDA) are installed within the container instead of globally on the operating system, making multiple library versions a non-issue. I&#x27;ll walk through my setup in a subsequent post, for both Nvidia CUDA and Vulkan.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;transcription&quot;&gt;Transcription
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: transcription&quot; href=&quot;#transcription&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Whisper itself is just a model so to actually &lt;em&gt;use&lt;&#x2F;em&gt; whisper we&#x27;ll need some tools. Fortunately, other developers have built a plethora for us to choose from. I&#x27;ll list a few of my favorites here:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ggml-org&#x2F;whisper.cpp&quot;&gt;whisper.cpp&lt;&#x2F;a&gt; - a high-speed c++ command-line based whisper execution tool that works with practically every gpu&#x2F;machine acceleration API currently in use&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;fortypercnt&#x2F;stream-translator&quot;&gt;stream-translator&lt;&#x2F;a&gt; - a tool for generating real-time subtitles from a live stream (like youtube or a &lt;code&gt;.m3u8&lt;&#x2F;code&gt; manifest)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;gitlab.com&#x2F;aadnk&#x2F;whisper-webui&#x2F;&quot;&gt;whisper-webui&lt;&#x2F;a&gt; - a self-hostable web interface to running whisper that takes file uploads from the browser (or youtube URLs) to generate transcripts&#x2F;translations. Very new-user friendly.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;There are many other tools to transcribe audio to text (and even translate it to english!) using whisper, but these are the ones I&#x27;ve used in the past.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;translation&quot;&gt;Translation
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: translation&quot; href=&quot;#translation&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;While whisper can translate text to English in the same breath as transcribing in the audio&#x27;s native language, the translations aren&#x27;t high quality. They&#x27;re serviceable, but you&#x27;ll get better results shoving the transcribed text&#x2F;subtitle file through another general purpose LLM (with internet access preferred) like Claude Sonnet, Gemini or ChatGPT. (Anecdotally, ChatGPT 5.x&#x27;s translation quality is far below GPT4, so YMMV. I&#x27;ve had good luck with Claude via Kagi.)&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>A Guide to Donating to Japanese Flowerstands</title>
+        <published>2026-01-08T00:00:00+00:00</published>
+        <updated>2026-01-08T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/donating-to-japanese-flowerstands/"/>
+        <id>https://mikansoro.org/blog/donating-to-japanese-flowerstands/</id>
+        
+        <summary type="html">&lt;p&gt;A guide on donating to flower stand projects in Japan.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Forgetting to run vim with sudo</title>
+        <published>2026-01-02T00:00:00+00:00</published>
+        <updated>2026-01-02T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/forget-vim-sudo/"/>
+        <id>https://mikansoro.org/blog/forget-vim-sudo/</id>
+        
+        <content type="html" xml:base="https://mikansoro.org/blog/forget-vim-sudo/">&lt;p&gt;Ever make edits to a file with vim, only to realize you forgot to open it with &lt;code&gt;sudo&lt;&#x2F;code&gt;? Yeah, me too.&lt;&#x2F;p&gt;
+&lt;p&gt;For eons, I&#x27;d close the file, reopen with sudo, and re-edit the file. Obviously, this sucks, so I looked up a better solution, and now I share it with you:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;viml&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;:w &lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;!&lt;&#x2F;span&gt;&lt;span&gt;sudo tee %&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;:w&lt;&#x2F;code&gt; accepts arguments, such as a filename (&lt;code&gt;:w file2.txt&lt;&#x2F;code&gt;), but anything prefixed with an explanation point is interpreted as a shell command with the file contents passed to stdin. &lt;code&gt;sudo tee&lt;&#x2F;code&gt; will overwrite the file (vim will substitute &lt;code&gt;%&lt;&#x2F;code&gt; with the filename) with the contents from stdin.&lt;&#x2F;p&gt;
+&lt;p&gt;Credit to &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;7078429&quot;&gt;Nathan Long on stackoverflow&lt;&#x2F;a&gt; for a much better explanation.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Kubernetes Secrets - from Sealed-Secrets to Sops+Age</title>
+        <published>2025-12-24T00:00:00+00:00</published>
+        <updated>2025-12-24T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/sealed-secrets-to-sops/"/>
+        <id>https://mikansoro.org/blog/sealed-secrets-to-sops/</id>
+        
+        <summary type="html">&lt;p&gt;I finally switched from sealed-secrets to sops + age for managing Kubernetes secrets in git. It&#x27;s been a long time coming.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Event Summary: September 2025</title>
+        <published>2025-12-21T00:00:00+00:00</published>
+        <updated>2025-12-21T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/event-summary-2025-09/"/>
+        <id>https://mikansoro.org/blog/event-summary-2025-09/</id>
+        
+        <content type="html" xml:base="https://mikansoro.org/blog/event-summary-2025-09/">&lt;p&gt;Yes, it&#x27;s December. I know this was supposed to come out sometime in October, but better late than never!&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s the end of another month, so it&#x27;s time for another post highlighting the interesting events I attended (both physically and virtually)!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;aiscream-presents-topping-live-come-see-me-before-i-melt-awaywhite-heart-white-heart-white-heart&quot;&gt;AiScReam Presents TOPPING LIVE &lt;del&gt;Come See Me Before I Melt Away&lt;&#x2F;del&gt;♡♡♡
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: aiscream-presents-topping-live-come-see-me-before-i-melt-awaywhite-heart-white-heart-white-heart&quot; href=&quot;#aiscream-presents-topping-live-come-see-me-before-i-melt-awaywhite-heart-white-heart-white-heart&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Date: 2025.09.06-2025.09.07 &lt;br &#x2F;&gt;
+&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;ll-fans.jp&#x2F;data&#x2F;event&#x2F;235&quot;&gt;Setlist&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;433452&quot;&gt;EventerNote&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;If you&#x27;ve watched short-form content at all in the last nine months, you&#x27;ve undoubtedly come across &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=8Yy7Jzle338&quot;&gt;this song&lt;&#x2F;a&gt; as it steamrolled its way into the collective brainrot of the worldwide under-30 populace. AiScReam&#x27;s catchy beat and imitable chorus sent it to the front of the tiktok algorithm upon its release, skyrocketing its popularity so hard that with just one single to their name the cross-generation subunit earned its own dedicated live event. Alongside them, (almost) all of the members&#x27; original units would be in attendance too for another cross-generational love live event, the 3rd this year!&lt;&#x2F;p&gt;
+&lt;p&gt;&quot;What could this really be other than a unit live?&quot;, &quot;Will it really be worth traveling for?&quot; we all thought. I&#x27;ll tell you right now, it would&#x27;ve been worth it if I could and my oshis weren&#x27;t even in it! Sure, it was a unit fes live, but the song and outfit selection and the performances themselves made it fun and memorable. It was a bit of a bummer that Saku-chan was still on her hiatus (and returned a few days after), but I&#x27;m just glad she&#x27;s back and doing better now!&lt;&#x2F;p&gt;
+&lt;p&gt;It felt a little weird watching a live alone in my apartment via streaming at 3am again instead of attending in person. It&#x27;s been a few months since the last time and I&#x27;d kind of forgotten the feeling. I still had a ton of fun watching it while chatting with other friends watching along though!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;no picture, because it was 3am and I forgot to take one&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;aqours-documentary&quot;&gt;Aqours Documentary
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: aqours-documentary&quot; href=&quot;#aqours-documentary&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Date: 2025.09.26&lt;br &#x2F;&gt;
+Venue: Cinema Sunshine BIVI, Numazu&lt;&#x2F;p&gt;
+&lt;p&gt;Following their Finale Live earlier this year, LoveLive! staff created and released a theatrical documentary detailing the history of Aqours, and I was able to go see it in theaters on release day! There was one theater I wanted to see it in more than any other, Cinema Sunshine in Numazu! The first showing sold out, but I was able to attend the second and third showings that day. It was two jam-packed hours detailing the history of Aqours, their struggles during the pandemic, and the lead up to their finale live. It featured interviews from the entire cast, producers, and choreographers, as well as a lot of unreleased footage and stories from Aqours&#x27; past. I understood maybe 30% of it, and I absolutely cried my eyes out.&lt;&#x2F;p&gt;
+&lt;p&gt;No one&#x27;s really sure how long it will show in theaters. &lt;del&gt;With no Blu-ray release announcement as of my writing this, go see it if you can.&lt;&#x2F;del&gt; This post is so delayed &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.lovelive-anime.jp&#x2F;news&#x2F;01_5467.html&quot;&gt;that the Blu-ray release has been confirmed&lt;&#x2F;a&gt;! It&#x27;s an emotional rollercoaster. It&#x27;s raw, painful at times, and doesn&#x27;t shy away from addressing the painful parts of Aqours&#x27; history. In my opinion, it&#x27;s a must-watch for any of their fans (even if it&#x27;s painful).&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Spoilers in this paragraph&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt;: the most painful part to me was seeing and hearing firsthand what the pandemic did to the members of Aqours. It destroyed them mentally, just as it did to me (and so many others). Anchan tried her hardest to make everything work and be the positive leader she thought everyone needed to be, but by taking on the weight of the world on her shoulders she silently suffered to the point where she said the thing she lost during the pandemic &quot;was herself&quot;. According to the documentary, Finale Live on their 10th anniversary was a goal created to keep Aqours going through the pandemic after their outdoor lives were cancelled in 2022. Without it, it&#x27;s possible Aqours would&#x27;ve suffered a quiet disbandment. Finale wasn&#x27;t the grand ending they deserved, but it was the one Aqours were able to create for us to celebrate the ten years we had together. Aqours has always been about struggling to turn dreams into reality, and I&#x27;ll certainly treasure the final dream they struggled so much to achieve (along with every moment I spent with them) forever.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;m so glad I could see it in their hometown. I didn&#x27;t want to leave afterwards. I wish I could&#x27;ve sat the day and night away down by the harbor.&lt;&#x2F;p&gt;
+&lt;p&gt;Their story isn&#x27;t over yet, and hand-in-hand I&#x27;ll keep walking forward with them.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Update!&lt;&#x2F;strong&gt; - LoveLive! Staff have confirmed that the documentary will also be available on Japanese video streaming sites like Amazon and U-Next for a limited time starting on Christmas Eve (12&#x2F;24) at midnight JST! You can find the information &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.lovelive-anime.jp&#x2F;news&#x2F;01_5632.html&quot;&gt;here&lt;&#x2F;a&gt;, and the twitter announcement &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;lovelive_staff&#x2F;status&#x2F;1998962897817579761&quot;&gt;here&lt;&#x2F;a&gt;. You&#x27;ll need a VPN (mullvad, nordvpn, etc) with a Japanese exit node to watch it, and the acceptance of foreign payment cards is spotty at best. The most foreigner-friendly will likely be AmazonJP, but I haven&#x27;t used their version of Prime Video so your mileage may vary. I won&#x27;t outright say U-Next will work, but give it a try if you can&#x27;t use Amazon (wink wink). HuluJP does not accept foreign credit cards.&lt;&#x2F;p&gt;
+
+
+
+
+&lt;img alt=&quot;Aqours Documentary poster outside Cinema Sunshine Numazu&quot; title=&quot;Aqours Documentary poster outside Cinema Sunshine Numazu&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;aqours-documentary-poster.36b846deced1ea2d.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;aqours-documentary-poster.b319e8863c1ce030.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;aqours-documentary-poster.36b846deced1ea2d.jpg 1024w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;h2 id=&quot;lieraji-public-recording-public-live-broadcast-2025&quot;&gt;Lieraji! Public Recording &amp;amp; Public Live Broadcast 2025
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: lieraji-public-recording-public-live-broadcast-2025&quot; href=&quot;#lieraji-public-recording-public-live-broadcast-2025&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Date: 2025.09.28&lt;br &#x2F;&gt;
+Venue:  Ushiku City Central Lifelong Learning Center Culture Hall &lt;br &#x2F;&gt;
+Eventernote: &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;440730&quot;&gt;Session 1&lt;&#x2F;a&gt;, &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;440731&quot;&gt;Session 2&lt;&#x2F;a&gt;, &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;440732&quot;&gt;Livestream Broadcast&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Oh god, this was so much fun! The second and third generation members of Liella! recorded two episodes of Liella!&#x27;s weekly web radio show &quot;Lieraji!&quot; and one of their livestream broadcasts with an in-person audience In Ushiku, the city home to the characters Natsumi and Tomari Onitsuka! I managed to win tickets to all three sessions. Each one was absolute chaos in the best way, especially during the &quot;game&quot; corners.&lt;&#x2F;p&gt;
+&lt;p&gt;This was Sakakura Sakura&#x27;s (voice of Onitsuka Tomari) first in-person appearance as a member of Liella! since June, when she took a three-month hiatus for personal health and mental health reasons. I was so happy to see her again! She has a warm, gentle smile that always brightens up the room she&#x27;s in, and behind it lies a mischievous goofball who&#x27;s Liella!&#x27;s biggest fan! We all warmly welcomed her back each session. The crowd was noticeably louder when it was her turn to walk on stage.&lt;&#x2F;p&gt;
+&lt;p&gt;Somehow during the livestream broadcast session, my seat was in the second row in the center! They were so close, and we received a lot of love and attention from each of them! (Three visibly foreign guys in the front row will do that, lol.)&lt;&#x2F;p&gt;
+&lt;p&gt;At the beginning of each session (and most Liella! events), the members will read a couple of messages off the Twitter hashtag and ask if the poster is in the audience. I had tweeted a photo and a few words between the second radio session and the livestream session just because, as I normally would. I thought nothing of it, seeing others&#x27; tweets get read until Kuma-chan called out the name &quot;マイケルさん？&quot;. No way she just said my name, right? Time slowed to a crawl and by the third time she called out my name I pulled myself out of shock enough to shoot my hand in the air and wave. The six of them immediately lit up with massive smiles realizing it was me, bemused at my stunlocked reaction to hearing my name called. I brought Tomari goods with me to support Saku-chan (both for myself and on behalf of my fiancé), and embarrassingly Yabu-chan had to motion to me to look over to Saku-chan because I was a complete deer in headlights. I waved over to her and made a heart, and she leaned down and made one back to me with a smile so dazzling I felt like I&#x27;d go blind!&lt;&#x2F;p&gt;
+&lt;p&gt;The six of them have amazing chemistry, and all of the corners were hilarious. We were shown options for the outfits for the solo songs on the Aspire album and a preview of the 2nd and 3rd gen&#x27;s new song 「High! モチベーション」too!  The livestream broadcast is available &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;live&#x2F;gagyLlM-N8U&quot;&gt;for free on youtube&lt;&#x2F;a&gt; if you want to see what they&#x27;re like together!&lt;&#x2F;p&gt;
+
+
+
+
+&lt;img alt=&quot;The front archway of the Ushiku City Culture Hall&quot; title=&quot;The front archway of the Ushiku City Culture Hall&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;ushiku-culture-hall.60e69f1a0c9a167a.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;ushiku-culture-hall.97544953c0b7b51f.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;ushiku-culture-hall.60e69f1a0c9a167a.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;ushiku-culture-hall.0daed3b2564aa711.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+
+
+
+
+&lt;img alt=&quot;View from the second row&quot; title=&quot;View from the second row&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;radio-second-row.4aa9207a59e20039.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;radio-second-row.6a39f935c3f0d3f5.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;radio-second-row.4aa9207a59e20039.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;radio-second-row.d51abf7200311539.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;h2 id=&quot;date-sayuri-23rd-birthday-fanmeeting-see-you-tomorrow&quot;&gt;Date Sayuri 23rd Birthday Fanmeeting ~See you tomorrow~
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: date-sayuri-23rd-birthday-fanmeeting-see-you-tomorrow&quot; href=&quot;#date-sayuri-23rd-birthday-fanmeeting-see-you-tomorrow&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Date: 2025.09.30&lt;br &#x2F;&gt;
+Venue: Nissho Hall, Tokyo &lt;br &#x2F;&gt;
+Eventernote: &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;435013&quot;&gt;Afternoon&lt;&#x2F;a&gt;, &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;435015&quot;&gt;Evening&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;For the second year in a row I was able to attend Date Sayuri&#x27;s (Sayu-chan&#x27;s) birthday event! This year, instead of just one session she had four, two in Tokyo on her birthday and two more in her hometown of Sendai the following weekend. I was able to secure tickets to both sessions in Tokyo in the first round, and I was so glad! Unfortunately the date of the Sendai sessions coincided with a friend&#x27;s wedding, so I could only make it to the two. Thankfully, those were livestreamed online.&lt;&#x2F;p&gt;
+&lt;p&gt;Her outfits for both sessions were incredibly cute! Words don&#x27;t do them justice, so here are some pictures!&lt;&#x2F;p&gt;
+
+
+
+
+&lt;img alt=&quot;Date Sayuri&amp;#x27;s black and white outfit from the afternoon session&quot; title=&quot;Date Sayuri&amp;#x27;s black and white outfit from the afternoon session&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;date-sayuri-birthday-outfit-afternoon.c6edea04c20b7a66.png&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;date-sayuri-birthday-outfit-afternoon.42369be9c8e75012.png 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;date-sayuri-birthday-outfit-afternoon.c6edea04c20b7a66.png 1024w&quot; class=&quot;&quot; &#x2F;&gt;
+
+
+
+
+
+&lt;img alt=&quot;Date Sayuri&amp;#x27;s rainbow-colored outfit from the evening session&quot; title=&quot;Date Sayuri&amp;#x27;s rainbow-colored outfit from the evening session&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;date-sayuri-birthday-outfit-evening.8548ca3bb3de9e80.png&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;date-sayuri-birthday-outfit-evening.0cd2dc8853146e33.png 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;date-sayuri-birthday-outfit-evening.8548ca3bb3de9e80.png 1024w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;p&gt;At this point I roughly know what to expect from an event like this; they&#x27;re typically some sort of talk&#x2F;games segment, a raffle of some sort, and then a singing part. I was so excited to hear her sing her solo songs live again, but the games session was fun too! The audience worked with her as a team on a quiz about things that happened in 2002, which was way more challenging than I thought. There were some unintentional trick questions (to me, as a foreigner), such as &quot;Which game console released in this year?&quot; with both the &quot;GameCube&quot; and &quot;Xbox&quot; as options. I knew the original Xbox came out in 2001 so I figured it must&#x27;ve been the GameCube, but I forgot that in Japan the Xbox actually released in 2002. That one really threw me for a loop, but I got about half of them right! She also did a game where she drew object names from a box, and she&#x27;d have to scavenge the item from someone in the audience to get points. I was too slow understanding most of them to get my hand up in time, but one of them was &quot;foreign currency&quot; and I hastily whipped out the only thing I had, a crumpled US$5 bill. She came up to our section and I really thought she was about to pick me, but she took the Korean Won from someone in the row in front of me. So close!&lt;&#x2F;p&gt;
+&lt;p&gt;Knowing only a little Japanese and not being very confident at it, the raffle (chuusen-kai) part always scares me a little bit. My biggest fear is being called on without knowing what&#x27;s being asked of me and looking like a fool in front of everyone. Usually after the first couple of people are called on I can piece together the rules of the game and feel less nervous, but this time the rules were completely different. The past two years, she&#x27;s drawn six seat numbers out of a box, and the people sitting in those seats would 1) pick a line off a list shown on screen for her to read to them and 2) get a signed can badge after the event was over that they could pick up from the staff. While the signed can badge was still the prize, she started calling out multiple seats without stopping to do the line readings, and this had me spooked. At one of Inami Anju&#x27;s live events in 2023 she brought the winners up on stage with her, and while that experience would be amazing to me it&#x27;d be equal parts awesome and mortifying. Turns out, the chuusen-kai was to have her &lt;em&gt;come to your seat&lt;&#x2F;em&gt; and personally sign the can badge in front of you! I sat through the entire first session&#x27;s drawing scared of winning, but in reality I had nothing to worry about. I didn&#x27;t win in either session, but it meant that she came all the way to the back and to the second floor to sign the badges for the winners, and we got to say hi and congratulate her up close!&lt;&#x2F;p&gt;
+&lt;p&gt;Finally, at the end of the afternoon song she sang her original song 「Love Song」, and in the evening she sang 「1up!」! It&#x27;d been a year since the last time I&#x27;d seen them performed live (at her birthday event last year, to be precise) so I was super happy! Nothing could&#x27;ve prepared me for what came after her song in the evening session though. Her voice cracking before she even began, she announced through tears that she was officially making her solo artist debut. A thunderous roar erupted at the words 「アーチストデビュー」, and through tears of our own we shouted our congratulations back. This was it, the moment we were all silently waiting for with bated breath! She was finally ready to make this leap, and I couldn&#x27;t have been more proud! Alongside this amazing news was the announcement of the release of her first mini album!! A real mini album too, not just a single! (Though it wouldn&#x27;t surprise me if it&#x27;s a new single + a cd release of her first three songs. Either way, I&#x27;m glad!) It releases on March 25th next year, and I can&#x27;t wait!&lt;&#x2F;p&gt;
+&lt;p&gt;If I know you and you want a copy, I&#x27;ll definitely have extras to hand out!&lt;&#x2F;p&gt;
+
+
+
+
+&lt;img alt=&quot;The outside of Nissho Hall&quot; title=&quot;The outside of Nissho Hall&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;nissho-hall.b44035c1bce82254.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;nissho-hall.11c7b54358c31dc8.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;nissho-hall.b44035c1bce82254.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;nissho-hall.43f2624b87761613.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;p&gt;Bonus photo! The ad created by the wonderful &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;sayuri_d_ADPJ&quot;&gt;もりおさん&lt;&#x2F;a&gt; celebrating Sayu-chan&#x27;s birthday, which was dispalyed in Harajuku Station in Tokyo for one week! I donated a small portion of the funds to help make it happen, he accepts donations every year for the ad!&lt;&#x2F;p&gt;
+
+
+
+
+&lt;img alt=&quot;A station banner advertisement created by fans for Date Sayuri&amp;#x27;s 23rd Birthday&quot; title=&quot;A station banner advertisement created by fans for Date Sayuri&amp;#x27;s 23rd Birthday&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;birthday-ad.b88b1c59b32e48da.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;birthday-ad.cd77fdcf7053d863.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;birthday-ad.b88b1c59b32e48da.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;birthday-ad.ab9d5819b45e410c.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;h2 id=&quot;musical-on-a-night-guided-by-the-stars&quot;&gt;Musical 「On a Night Guided by the Stars」
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: musical-on-a-night-guided-by-the-stars&quot; href=&quot;#musical-on-a-night-guided-by-the-stars&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Date: 2025.10.02&lt;br &#x2F;&gt;
+Venue: Theater H, Shinagawa, Tokyo&lt;br &#x2F;&gt;
+&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;435886&quot;&gt;EventerNote&lt;&#x2F;a&gt; &lt;br &#x2F;&gt;
+&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;hoshimichi.jp&#x2F;&quot;&gt;Show Info&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Bonus round! I&#x27;m including this in September&#x27;s roundup, since it&#x27;s the only event I went to in October and is right at the start.&lt;&#x2F;p&gt;
+&lt;p&gt;At the last minute, I got a ticket to a musical featuring a star-studded cast of LoveLive! seiyuu. While the plot was a little too advanced for me to fully grok, it was a story of five girls living in a foster family who really grow to know each other when the eldest, an astrophysicist, discovers a comet hurtling towards the Earth. Their peaceful family life was thrown into chaos by this discovery (it leaked out, since the eldest daughter was too scared to break the news to the others). Turns out, the sisters had a hidden magical power that they had to discover how to awaken, and come together to both defeat an evil cult hell-bent on stopping any opposition to the comet crashing into the Earth and combine their magic together to divert it. It was weird, it was quirky, and the songs were gorgeous. A great way to spend the afternoon before flying home.&lt;&#x2F;p&gt;
+&lt;p&gt;The cast rotated out between performances. The LoveLive! seiyuu in the performance I went to were Kobayashi Aika (voice of Tsushima Yoshiko), Emori Aya (voice of Onitsuka Natsumi) and Yoshitake Chihaya (voice of Hijirisawa Yuna).&lt;&#x2F;p&gt;
+&lt;p&gt;There was an after-talk session too with some of the cast, where they were able to share their thoughts about the performance!&lt;&#x2F;p&gt;
+
+
+
+
+&lt;img alt=&quot;A poster for the musical&quot; title=&quot;A poster for the musical&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;musical-poster.b738344c5cd39b88.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;musical-poster.3203e2a9ad14c6c1.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;musical-poster.b738344c5cd39b88.jpg 1024w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;h2 id=&quot;end&quot;&gt;End
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: end&quot; href=&quot;#end&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Thank you as always for reading until the end! I&#x27;m grateful that I can share some of my crazy memories and experiences with you, so thank you for taking the time to read them. Getting to travel for events like these makes me incredibly happy, but so does sharing those feelings with others. Never stop reaching for the shining light and working to turn that day&#x27;s 0 into a 1.&lt;&#x2F;p&gt;
+&lt;p&gt;The November recap post will be up soon, followed (hopefully) by a year-in-review!&lt;&#x2F;p&gt;
+&lt;p&gt;By the by, I&#x27;m not kidding about the cd thing. If I know you and you want a copy, it&#x27;s yours! (as long as I have stock left)&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Screensharing, Wayland, Pipewire, and Discord. Choose three.</title>
+        <published>2025-11-23T00:00:00+00:00</published>
+        <updated>2025-11-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/screensharing-pipewire-with-discord/"/>
+        <id>https://mikansoro.org/blog/screensharing-pipewire-with-discord/</id>
+        
+        <summary type="html">&lt;p&gt;Discord refuses to capture audio from Pipewire applications when screensharing on a Wayland desktop.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Enabling Nvidia Power Management means I can say Goodbye, Windows 10</title>
+        <published>2025-11-15T00:00:00+00:00</published>
+        <updated>2025-11-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/nixos-nvidia-powermanagement/"/>
+        <id>https://mikansoro.org/blog/nixos-nvidia-powermanagement/</id>
+        
+        <summary type="html">&lt;p&gt;Nvidia&#x27;s driver on NixOS wasn&#x27;t &lt;em&gt;broken&lt;&#x2F;em&gt;, but my usage of it was (well, maybe it was broken a little bit).&lt;&#x2F;p&gt;
+&lt;p&gt;Now that it&#x27;s working, I can say &quot;bye Windows&quot;.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Event Summary: August 2025</title>
+        <published>2025-08-19T00:00:00+00:00</published>
+        <updated>2025-08-19T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/event-summary-2025-08/"/>
+        <id>https://mikansoro.org/blog/event-summary-2025-08/</id>
+        
+        <content type="html" xml:base="https://mikansoro.org/blog/event-summary-2025-08/">&lt;p&gt;Hi! This is a new format I&#x27;m trying out! I travel a lot for conventions and concerts, and while I sometimes try to write long and detailed event reports (even if I don&#x27;t finish them half the time) I want to start posting smaller summaries too! Normally I&#x27;ll try to post these around the end of the month as that&#x27;s where I think they make the most sense, but this one is special!&lt;&#x2F;p&gt;
+&lt;p&gt;The past week has been what I can only describe as a &quot;live rush&quot;. 9 days, 5 concerts, 3 cities. Legitimately, it&#x27;s been one of the best week&#x27;s of my life. Crazy, hectic, insane, busy, and long, but worth every second.&lt;&#x2F;p&gt;
+&lt;p&gt;I also want to note that exactly 2 years ago today was the start of Liella!&#x27;s 4th Live Tour &lt;del&gt;Brand New Sparkle&lt;&#x2F;del&gt;! 2023.08.19 was the very first day of their tour, at Makuhari Messe in Chiba! This was Liella!&#x27;s first performance with 11 members present! Saku-chan made her LoveLive! debut with Liella! that day, and was absolutely stunning!&lt;&#x2F;p&gt;
+&lt;p&gt;4th Live Chiba is also very special to me, because it marks the day where I first fell in love with Liella!! By chance and a lot of luck, I attended both days of 4th Live Chiba and the sights I saw those two days changed the course of my life forever in the best way possible. I would not be who I am today without Liella!.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;liella-first-generation-lovelive-wonderful-starlines-tokyo-performance&quot;&gt;Liella! First Generation LoveLive! &lt;em&gt;~Wonderful Starlines~&lt;&#x2F;em&gt; Tokyo Performance
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: liella-first-generation-lovelive-wonderful-starlines-tokyo-performance&quot; href=&quot;#liella-first-generation-lovelive-wonderful-starlines-tokyo-performance&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Date: 2025.08.09 - 2025.08.10&lt;br &#x2F;&gt;
+Venue: Ariake Arena, Tokyo&lt;br &#x2F;&gt;
+&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;ll-fans.jp&#x2F;data&#x2F;event&#x2F;255&quot;&gt;Setlist&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+EventerNote &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;426450&quot;&gt;Day 1&lt;&#x2F;a&gt; &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;426451&quot;&gt;Day 2&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I was in the audience both days for the Tokyo stop of &lt;em&gt;Wonderful Starlines&lt;&#x2F;em&gt;. I&#x27;m working on a full event report for both the Tokyo and Osaka stops of &lt;em&gt;Wonderful Starlines&lt;&#x2F;em&gt; that will be posted very soon. Once it is, I&#x27;ll link it here, and it&#x27;ll also be available in the blog list.&lt;&#x2F;p&gt;
+&lt;p&gt;TL:DR: 10&#x2F;10, no notes. &lt;em&gt;the best&lt;&#x2F;em&gt; live I&#x27;ve ever been to. Changed my life, and woke me up from and endless dream. It was everything I could&#x27;ve ever asked for, any regrets I had have been cured, and I wish I could live in those blissful moments forever. My heart floats like a feather without a care in the world after this.&lt;&#x2F;p&gt;
+&lt;p&gt;
+
+
+
+&lt;img alt=&quot;First row view from my seat on Day 1&quot; title=&quot;First row view from my seat on Day 1&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;wonderful-starlines.4b15a11cbfddbef0.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;wonderful-starlines.e6ca913d9f48b326.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;wonderful-starlines.4b15a11cbfddbef0.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;wonderful-starlines.8c0e660c3433efd3.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+
+
+
+
+
+&lt;img alt=&quot;First row view from my seat on Day 1, with my Kanon kuripan&quot; title=&quot;First row view from my seat on Day 1, with my Kanon kuripan&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;wonderful-starlines-kanon.84ffdbc32728917c.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;wonderful-starlines-kanon.9e6301ea61f5e78c.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;wonderful-starlines-kanon.84ffdbc32728917c.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;wonderful-starlines-kanon.d8b95525951751b0.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;liella-special-lovelive-connect-the-stars&quot;&gt;Liella! Special LoveLive! &lt;em&gt;~Connect the Stars~&lt;&#x2F;em&gt;
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: liella-special-lovelive-connect-the-stars&quot; href=&quot;#liella-special-lovelive-connect-the-stars&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Date: 2025.08.11&lt;br &#x2F;&gt;
+Venue: Ariake Arena, Tokyo&lt;br &#x2F;&gt;
+&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;ll-fans.jp&#x2F;data&#x2F;event&#x2F;266&quot;&gt;Setlist&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;433452&quot;&gt;EventerNote&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;An 11-member Special Live where all of Liella! could reunite after &lt;em&gt;Wonderful Starlines&lt;&#x2F;em&gt;! Since canonically the second- and third-generation members created &lt;em&gt;Wonderful Starlines&lt;&#x2F;em&gt; for the original five to make up for their lives happening during the pandemic, &lt;em&gt;Connect the Stars&lt;&#x2F;em&gt; was their chance to not only sing &lt;em&gt;with&lt;&#x2F;em&gt; their senpais but show just how much they&#x27;ve grown themselves! We got subunit songs, Sunny Passion performed their songs and joined in with Liella!, the second- and third-gen members performed their own highlight reel stunning us all, I got to see &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=eFe-qDN11wc&quot;&gt;Aspire&lt;&#x2F;a&gt; for the first time, and we got an announcement for Liella! 7th Live! All in all an amazing live, one for the history books. A solid 8.5&#x2F;10.&lt;&#x2F;p&gt;
+&lt;p&gt;If I have time, I might write a full event report for this one too once I have time to flesh out my notes and re-watch the live stream!&lt;&#x2F;p&gt;
+&lt;p&gt;
+
+
+
+&lt;img alt=&quot;The logo for Connect the Stars inside the venue&quot; title=&quot;The logo for Connect the Stars inside the venue&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;connect-the-stars-logo.522bed6666629633.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;connect-the-stars-logo.9072dca025402f68.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;connect-the-stars-logo.522bed6666629633.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;connect-the-stars-logo.8972ec604d2cef32.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+
+
+
+
+
+&lt;img alt=&quot;Outside of the venue&quot; title=&quot;Outside of the venue&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;connect-the-stars-ariake.a8fbdab059fca486.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;connect-the-stars-ariake.cc93f3844e8927d7.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;connect-the-stars-ariake.a8fbdab059fca486.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;connect-the-stars-ariake.0a35093a870725f3.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;u-next-music-fes-lovelive-series-expo-2025-stage-right-now&quot;&gt;U-Next Music Fes LoveLive! Series EXPO 2025 STAGE ~Right now!~
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: u-next-music-fes-lovelive-series-expo-2025-stage-right-now&quot; href=&quot;#u-next-music-fes-lovelive-series-expo-2025-stage-right-now&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Date: 2025.08.14&lt;br &#x2F;&gt;
+Venue: EXPO ARENA Matsuri, Osaka World Expo&lt;br &#x2F;&gt;
+&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;ll-fans.jp&#x2F;data&#x2F;event&#x2F;252&quot;&gt;Setlist&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;425156&quot;&gt;EventerNote&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;LoveLive! had its own dedicated concert at the Osaka World Expo! Members from every group were present (three members of μ&#x27;s, Aqours with their &quot;subunit&quot; YYY, four members of Nijigasaki, Liella! with their subunit CatChu!, Hasunosora, and Bluebird&#x2F;Ikizurai-bu), and sang a few songs each! Aqours summoned a massive thunderstorm that struck the expo near the end of their set, delaying the performance for at least 15-20 minutes as the skies erupted into a torrential downpour. By the time it was CatChu!&#x27;s turn, the sky shifted to a beautiful sunset. We also got a collaboration version of &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=QIr3O9Di_hU&quot;&gt;AiScream&lt;&#x2F;a&gt; with a member from each group joining in! (it&#x27;s the link)&lt;&#x2F;p&gt;
+&lt;p&gt;It was an emotional rollercoaster because of the weather, but I was amazed seeing LL! on such a grand stage! They all brought their A-game and were keen to show everyone just what LoveLive! is made of! I jumped so hard for CatChu! I hurt my leg again while making the people around me giggle as I taught them what it means to cheer for CatChu! during &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=nP1VSBZWDKA&quot;&gt;全力ライオット&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;I jumped so high for CatChu! that my subsequent jumps were late because I took too long to fall back to earth. An easy 8&#x2F;10. Maybe even 8.5&#x2F;10.&lt;&#x2F;p&gt;
+&lt;p&gt;
+
+
+
+&lt;img alt=&quot;Banner showing all the LoveLive! groups performing&quot; title=&quot;Banner showing all the LoveLive! groups performing&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;unext-banner.37cf234b7569f2a7.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;unext-banner.215674de9b74c2b0.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;unext-banner.37cf234b7569f2a7.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;unext-banner.76600340fb3cdd34.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+
+
+
+
+
+&lt;img alt=&quot;Nighttime view of the stage&quot; title=&quot;Nighttime view of the stage&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;unext-stage.9bd60a820c2ae858.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;unext-stage.e63afe4a9c6ccdfb.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;unext-stage.9bd60a820c2ae858.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;unext-stage.0dda5391571ecd0a.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ikiduraibu-1st-single-what-is-my-life-free-live-event&quot;&gt;いきづらい部！ 1st Single「What is my LIFE?」 Free Live &amp;amp; Event
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: ikiduraibu-1st-single-what-is-my-life-free-live-event&quot; href=&quot;#ikiduraibu-1st-single-what-is-my-life-free-live-event&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Date: 2025.08.15&lt;br &#x2F;&gt;
+Venue: Abeno Q&#x27;s Mall Outdoor Stage, Osaka&lt;br &#x2F;&gt;
+&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;433880&quot;&gt;EventerNote&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It was crazy hot out, but I managed to find a spot to watch after arriving only an hour before show start by squeezing in with some friends. I didn&#x27;t have a great view, but I had a view. Can we stop doing lives outside in the middle of summer in a concrete box? Thanks.&lt;&#x2F;p&gt;
+&lt;p&gt;Fun, but I had a far better time (and view) watching the same songs performed at the expo the day before. Would go again though. 5&#x2F;10.&lt;&#x2F;p&gt;
+&lt;p&gt;Akira&#x27;s seiyuu is super cute.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;inami-anju-live-tour-2025-yummy-yummy-feast&quot;&gt;Inami Anju Live Tour 2025 「Yummy! Yummy! FEAST」
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: inami-anju-live-tour-2025-yummy-yummy-feast&quot; href=&quot;#inami-anju-live-tour-2025-yummy-yummy-feast&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Date: 2025.08.17&lt;br &#x2F;&gt;
+Venue: Sendai Rensa&lt;br &#x2F;&gt;
+&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;422784&quot;&gt;EventerNote&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+
+
+
+
+&lt;img alt=&quot;Venue sign showing Anchan&amp;#x27;s live&quot; title=&quot;Venue sign showing Anchan&amp;#x27;s live&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;anchan-live.af4fba8807769634.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;anchan-live.32c02951a9cf3425.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;anchan-live.af4fba8807769634.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;anchan-live.f0ae9557c6b2a968.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;p&gt;Anchan released her first full album &lt;em&gt;&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;playlist?list=OLAK5uy_ktMNwd4KBFvAwi8nAwvPxAMPJjHX29qAg&quot;&gt;Fiesta&lt;&#x2F;a&gt;&lt;&#x2F;em&gt; and this was the second stop on her summer live tour celebrating the album&#x27;s release! A super small venue, no more than 400 seats (probably less). Her first time performing in Sendai, and she sold out the venue! Because it was so intimate, she made sure to smile and make eye contact with everyone at least once, and give out lots of waves and hearts to everyone!&lt;&#x2F;p&gt;
+&lt;p&gt;Where do I even begin? She is so incredibly talented. She can, and does, sing every genre of music from rap to reggae to ballads and rock songs. She does it all flawlessly, and looks absolutely gorgeous doing it to boot.&lt;&#x2F;p&gt;
+&lt;p&gt;Spoilers for those of you going later in the tour, SKIP THIS PARAGRAPH. I couldn&#x27;t be happier seeing her perform Ready Fighter! I think it&#x27;s my new favorite song of hers. During the NPNL &quot;Painful Remix&quot;, she grabbed a golden megaphone and rapped through it into the microphone. I damn near fell to the floor at that sight. She couldn&#x27;t be cooler if she was in Antartica. She also sang LOVE DON!!! for the first time this tour, and made sure we sang a lot together with her which made her incredibly happy!&lt;&#x2F;p&gt;
+&lt;p&gt;Everything a live with Anchan should be. Fun, powerful, emotional, packed with energy, and full of the biggest smiles anyone could muster. At least a 9&#x2F;10. I wish I could go to the Tokyo sessions.&lt;&#x2F;p&gt;
+&lt;p&gt;Also, I ran into the venue less than 5 minutes before the live started, and stopped at the CD sales table to buy a single CD since they still had the live-venue exclusive bonus. I won the lottery for a signed, personalized shikishi! It&#x27;s my second signed item from her for Fiesta, and I couldn&#x27;t feel luckier!&lt;&#x2F;p&gt;
+
+
+
+
+&lt;img alt=&quot;My Anchan itabag, with two hand-signed releases of Fiesta&quot; title=&quot;My Anchan itabag, with two hand-signed releases of Fiesta&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;anchan-sign.756752e39d9723e1.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;anchan-sign.ca74de461003b3e2.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;anchan-sign.756752e39d9723e1.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;anchan-sign.df0c93a624b1a3b6.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;h2 id=&quot;aya-emori-2nd-ep-always-with-you-release-event-vol-2&quot;&gt;Aya Emori 2nd EP『Always with you』 Release Event vol.2
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: aya-emori-2nd-ep-always-with-you-release-event-vol-2&quot; href=&quot;#aya-emori-2nd-ep-always-with-you-release-event-vol-2&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Date: 2025.08.19&lt;br &#x2F;&gt;
+Venue: KAMEIDO CLOCK Mall Stage, Tokyo&lt;br &#x2F;&gt;
+&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.eventernote.com&#x2F;events&#x2F;439341&quot;&gt;EventerNote&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+
+
+
+
+&lt;img alt=&quot;Stage for Emori Aya&amp;#x27;s Free Live&quot; title=&quot;Stage for Emori Aya&amp;#x27;s Free Live&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;emorin-handover.f08bc7916f31abe9.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;emorin-handover.33225bd4ec9293ae.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;emorin-handover.f08bc7916f31abe9.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;emorin-handover.07d9efb8dc7ce447.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;p&gt;I nearly arrived too late to buy a CD for a priority viewing area ticket + 1:1 meeting ticket, but managed to make it on time. I had to buy tickets for several people running even later than me, so even though I pulled the 5th entry ticket (you enter the area by number, I got 5th), I had to wait around for them to arrive. I still had a great view, there were probably 50 people in the priority area overall.&lt;&#x2F;p&gt;
+&lt;p&gt;Emorin came out and did a sound check to &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=k2bjX0ptSI8&quot;&gt;フラフィナナ&lt;&#x2F;a&gt; which was super cute! She also had us practice our clapping to the off-vocal of &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=94j9yovgMjc&quot;&gt;Eureka!&lt;&#x2F;a&gt;. She sang Eureka! for the mini live itself, which was such a cute and fun song! Emorin really does have an infectious smile, I couldn&#x27;t take my eyes off her and she sang and clapped and laughed with everyone on stage.&lt;&#x2F;p&gt;
+&lt;p&gt;Afterwards, I participated in the 1:1 talk session with Emorin! Since I only bought a single CD I was only able to talk to her for 5 seconds, but that was more than enough. I was introduced by a friend and huge fan of Emorin&#x27;s, and she looked so happy that I had come from California to see her! I thanked her for today, and told her it was a lot of fun. She thanked me repeatedly, having a lot of fun saying my name (lol). She&#x27;s so dang cute.&lt;&#x2F;p&gt;
+&lt;p&gt;Thankfully, this venue was air conditioned! I&#x27;m looking at you, Ikizurai-bu. After everyone had finished she thanked everyone for coming and glanced at the Starbucks opposite the stage, remaking how much she wanted some. Obviously, we went to Starbucks after. 7.5&#x2F;10 at least.&lt;&#x2F;p&gt;
+
+
+
+
+&lt;img alt=&quot;Starbucks after the live&quot; title=&quot;Starbucks after the live&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;emorin-starbucks.d9f011c562cad506.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;emorin-starbucks.a6bfbe303350a104.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;emorin-starbucks.d9f011c562cad506.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;emorin-starbucks.21bcf8d2fc2c1f8c.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;h2 id=&quot;end&quot;&gt;End
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: end&quot; href=&quot;#end&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;I don&#x27;t want this live rush to end. I will make sure I never lose these amazing feelings.&lt;&#x2F;p&gt;
+&lt;p&gt;As for the format, I&#x27;m not sure I&#x27;m going to keep the scores around going forward unless something really warrants it (like Wonderful Starlines.) I don&#x27;t think it&#x27;s fair to rate events of drastically different calibers like that, it&#x27;s just something I came up with while writing. We&#x27;ll see!&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Updates are still slow</title>
+        <published>2025-08-18T00:00:00+00:00</published>
+        <updated>2025-08-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/2025-slow-updates/"/>
+        <id>https://mikansoro.org/blog/2025-slow-updates/</id>
+        
+        <summary type="html">&lt;p&gt;I haven&#x27;t forgotten about this blog, I&#x27;ve just been slow.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>A Journey Through Time: Revisiting Aqours&#x27; Past Venues</title>
+        <published>2025-06-08T00:00:00+00:00</published>
+        <updated>2025-06-08T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/aqours-venue-pilgrimage/"/>
+        <id>https://mikansoro.org/blog/aqours-venue-pilgrimage/</id>
+        
+        <summary type="html">&lt;p&gt;Many years ago, I promised myself that before Aqours&#x27; final (or Finale) live, I would travel to each venue that I&#x27;d seen then perform in over the years one more time as a &quot;pilgrimage&quot; of sorts.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Hi Again: 2025 Edition</title>
+        <published>2025-06-07T00:00:00+00:00</published>
+        <updated>2025-06-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/2025-hi-again/"/>
+        <id>https://mikansoro.org/blog/2025-hi-again/</id>
+        
+        <content type="html" xml:base="https://mikansoro.org/blog/2025-hi-again/">&lt;p&gt;I realized I haven&#x27;t posted anything on my blog in over 6 months. I&#x27;m not dead, I have ideas for posts that I&#x27;m working on. I plan to find time to write more in the second half of the year.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ve been writing this blog in my editor (emacs), but I might switch to integrating my blog content with &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;obsidian.md&#x2F;&quot;&gt;obsidian&lt;&#x2F;a&gt;. I&#x27;ve been using obsidian for my notes, and so far I&#x27;ve been really happy with it.&lt;&#x2F;p&gt;
+&lt;p&gt;I might update the site theme too soon and maybe (finally) add multilingual support for some pages. TBD.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>To those upset about the venue for Aqours Finale Live</title>
+        <published>2024-11-21T00:00:00+00:00</published>
+        <updated>2024-11-21T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/open-letter-aqours-finale-venue/"/>
+        <id>https://mikansoro.org/blog/open-letter-aqours-finale-venue/</id>
+        
+        <summary type="html">&lt;p&gt;Aqours will be performing at Belluna Dome on June 21st and 22nd for their Finale LoveLive!. This will be their last performance as a group of nine.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Sayuri Date Has Released Her First Original Songs!</title>
+        <published>2024-09-10T00:00:00+00:00</published>
+        <updated>2024-09-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/sayuri-date-first-song/"/>
+        <id>https://mikansoro.org/blog/sayuri-date-first-song/</id>
+        
+        <summary type="html">&lt;p&gt;Sayuri Date has released her first original songs today as part of the run up to her birthday event on September 30th!&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Random One-Liners for Fixing Bulk-Generated Hosts</title>
+        <published>2024-08-31T00:00:00+00:00</published>
+        <updated>2024-08-31T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/cloudinit-host-rename-oneliner/"/>
+        <id>https://mikansoro.org/blog/cloudinit-host-rename-oneliner/</id>
+        
+        <summary type="html">&lt;p&gt;Hacky one-liner for bulk renaming hosts. Enjoy.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Event Report: AnimeNYC 2024</title>
+        <published>2024-08-29T00:00:00+00:00</published>
+        <updated>2024-08-29T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/event-report-anyc-2024/"/>
+        <id>https://mikansoro.org/blog/event-report-anyc-2024/</id>
+        
+        <summary type="html">&lt;p&gt;My event report for AnimeNYC 2024, focusing largely on my time with CatChu!&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Coin Lockers and Where to Find Them</title>
+        <published>2024-07-31T00:00:00+00:00</published>
+        <updated>2024-07-31T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/coin-lockers/"/>
+        <id>https://mikansoro.org/blog/coin-lockers/</id>
+        
+        <summary type="html">&lt;p&gt;Coin lockers are a near-ubiquitous oasis within Japanese cities and train stations for the multi-bag traveler.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Reflecting on 9 Years with Aqours</title>
+        <published>2024-06-30T00:00:00+00:00</published>
+        <updated>2024-06-30T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/aqours-9th-anniversary/"/>
+        <id>https://mikansoro.org/blog/aqours-9th-anniversary/</id>
+        
+        <summary type="html">&lt;p&gt;Today marked the ninth anniversary of the creation of Aqours, the seiyuu idol group from the anime Love Live! Sunshine!! Each anniversary, Aqours would make announcements about their upcoming projects and release a new song as part of their fanclub (Aqours Club). It had become routine. This year seemed to be no different.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Creating a Debian Cloud-Init Template in Xen Orchestra</title>
+        <published>2024-06-23T00:00:00+00:00</published>
+        <updated>2024-06-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/debian-cloud-init-xen-orchestra/"/>
+        <id>https://mikansoro.org/blog/debian-cloud-init-xen-orchestra/</id>
+        
+        <summary type="html">&lt;p&gt;Xen Orchestra (the manager for my XCP-NG based hypervisors) supports cloud-init for creation-time configuration of virtual machines. This guide walks through creating a cloud-init ready VM Template for Xen Orchestra using Debian 12.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Proxying my Homelab (Part 1) - Options, Options, Options</title>
+        <published>2024-06-13T00:00:00+00:00</published>
+        <updated>2024-06-13T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/proxying-my-homelab/"/>
+        <id>https://mikansoro.org/blog/proxying-my-homelab/</id>
+        
+        <summary type="html">&lt;p&gt;Discussing the myriad of options for proxying public internet traffic into a homelab.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Goodbye Foursquare</title>
+        <published>2024-05-23T00:00:00+00:00</published>
+        <updated>2024-05-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/goodbye-foursquare/"/>
+        <id>https://mikansoro.org/blog/goodbye-foursquare/</id>
+        
+        <summary type="html">&lt;p&gt;I didn&#x27;t think I&#x27;d be saying this today but, goodbye Foursquare. As of 8:00-ish this morning PDT, my time at Foursquare came to an abrupt end.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Bromide and Postcard Paper Sizes</title>
+        <published>2024-05-22T00:00:00+00:00</published>
+        <updated>2024-05-22T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/bromide-paper-sizes/"/>
+        <id>https://mikansoro.org/blog/bromide-paper-sizes/</id>
+        
+        <summary type="html">&lt;p&gt;Here&#x27;s a quick reference for how typical Japanese bromide sizes relate to international photo paper sizes in different regions.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Manual Fanspeed Control through IPMI</title>
+        <published>2024-04-27T00:00:00+00:00</published>
+        <updated>2024-04-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/ipmi-fan-control/"/>
+        <id>https://mikansoro.org/blog/ipmi-fan-control/</id>
+        
+        <content type="html" xml:base="https://mikansoro.org/blog/ipmi-fan-control/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;By default, enterprise compute and networking gear from large vendors (Dell, Supermicro, HPE, Cisco, etc) use dynamic fanspeed controls based on system temperature to ensure their vital components remain at a safe operating temperature.
+That&#x27;s all well and good in the datacenter space where increased cooling capacity far outweighs an increase in noise.
+Likewise, sufficient cooling potential is provided by the ambient temperature delta between the cold and hot aisles, letting the BMC simply ramp fan speeds up as users push the hardware ever closer to the redline.&lt;&#x2F;p&gt;
+&lt;p&gt;In a homelab though, the calculus changes.&lt;&#x2F;p&gt;
+&lt;p&gt;Those fortunate enough to own a basement—one that doesn&#x27;t flood when it rains—can care less when the natural cooling properties of a subterranean room plus decent sound isolation keep their servers running happily as they were designed.
+For the rest of us who wish to take advantage of enterprise-grade gear but live in a space-restricted dwelling, we must trade some cooling performance for a reduction in noise to stay sane.&lt;&#x2F;p&gt;
+&lt;p&gt;In my lab, I regularly run my server fans at 16-20% their maximum operating speed.
+I&#x27;m rarely stressing my systems above 15% utilization under normal operation for any significant period, and this range provides a workable cooling-to-noise ratio such that I don&#x27;t feel like my ears are going to start bleeding when I open my server closet.&lt;&#x2F;p&gt;
+&lt;p&gt;But enough blabber. Let&#x27;s talk solutions.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ll update this post with more vendors as I come across them, but as my lab is largely composed of Supermicro gear due to their less-uptight nature around vendor-specific hardware (&lt;em&gt;cough cough HPE&lt;&#x2F;em&gt;), updates will likely be few and far between.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ipmitool&quot;&gt;ipmitool
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: ipmitool&quot; href=&quot;#ipmitool&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;ipmitool&lt;&#x2F;code&gt; is a command-line tool for interacting with both the host-local and remote IPMI BMCs. It&#x27;s largely used by sysadmins to administer low-level server function across a fleet, but it&#x27;s a good back-pocket tool for homelabbers too. In the case of making servers quiet, ipmitool allows for bypassing the lack of proper fanspeed controls in IPMI management web UIs by interfacing directly with the BMC.&lt;&#x2F;p&gt;
+&lt;p&gt;Every fan controller implementation is a bit different, so the ultimate source of information for which commands work on what platform would be the vendor&#x27;s specific documentation.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;supermicro-ipmi&quot;&gt;Supermicro IPMI
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: supermicro-ipmi&quot; href=&quot;#supermicro-ipmi&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h3&gt;
+&lt;p&gt;To use ipmitool to connect to a remote Supermicro IPMI interface, run &lt;code&gt;ipmitool&lt;&#x2F;code&gt; with the following flags. &lt;code&gt;-P&lt;&#x2F;code&gt; is optional, and an interactive password prompt will appear if it is ommitted.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6F42C1, #B392F0);&quot;&gt;ipmitool&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;I&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; lan&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;H&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_IP_ADDR&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;U&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_USER&lt;&#x2F;span&gt;&lt;span&gt; [-P&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_PASS&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;comman&lt;&#x2F;span&gt;&lt;span&gt;d&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Supermicro fan controls consist of two zones, &quot;system&quot; and &quot;peripheral&quot;. System fans are fans identified with a number (&lt;code&gt;FAN0&lt;&#x2F;code&gt;), and peripheral fans (like hot-swappable power supplies) are identified by letter (&lt;code&gt;FANA&lt;&#x2F;code&gt;).
+Supermicro provides four fan profiles to users: &quot;Standard&quot;, &quot;Full&quot;, &quot;Optimal&quot;, and &quot;Heavy IO&quot;. The definitions of these zones are provided below, but they come from &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;forums.servethehome.com&#x2F;index.php?resources&#x2F;supermicro-x9-x10-x11-fan-speed-control.20&#x2F;&quot;&gt;this great ServeTheHome post&lt;&#x2F;a&gt; about controlling fans on the Supermicro x9-x11 platforms.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Standard: BMC control of both fan zones, with CPU zone based on CPU temp (target speed 50%) and Peripheral zone based on PCH temp (target speed 50%)&lt;&#x2F;li&gt;
+&lt;li&gt;Optimal: BMC control of the CPU zone (target speed 30%), with Peripheral zone fixed at low speed (fixed ~30%)&lt;&#x2F;li&gt;
+&lt;li&gt;Full: all fans running at 100%&lt;&#x2F;li&gt;
+&lt;li&gt;Heavy IO: BMC control of CPU zone (target speed 50%), Peripheral zone fixed at 75%&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;To manually set the fan speed to a fixed target, the fans must be set to use the &quot;Full&quot; profile. Other profiles will ignore the manual target speed commands we issue to the BMC.&lt;&#x2F;p&gt;
+&lt;blockquote class=&quot;markdown-alert-note&quot;&gt;
+&lt;p&gt;The post from ServeTheHome omits an &lt;code&gt;0x01&lt;&#x2F;code&gt; value from their raw commands, before the configurable values highlighted in my command blocks. These are the commands I use on my Supermicro x10-based &lt;code&gt;SuperServer 6028U-TR4T+&lt;&#x2F;code&gt; systems and 45Drives Storinators. I&#x27;ll update this post in the future with more information on this extra magic number.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;All of the fan controls here use &quot;raw&quot; ipmi commands with seemingly magic numbers. For instance, here&#x27;s the command to set the system to use the &quot;Full&quot; fan profile:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; set the system to use the &amp;quot;Full&amp;quot; fan profile&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; [args] are the connection arguments listed above&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6F42C1, #B392F0);&quot;&gt;ipmitool&lt;&#x2F;span&gt;&lt;span&gt; [args&lt;&#x2F;span&gt;&lt;span&gt;] raw 0x30 0x45 0x01 0x01&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;                                     ^ Fan profile value&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The final hex value in the command above is the fan profile for the system to use.
+&lt;code&gt;0x01&lt;&#x2F;code&gt; designates the &quot;Full&quot; profile.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Standard: 0&lt;&#x2F;li&gt;
+&lt;li&gt;Full: 1&lt;&#x2F;li&gt;
+&lt;li&gt;Optimal: 2&lt;&#x2F;li&gt;
+&lt;li&gt;Heavy IO: 4&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Once the fans are set to &quot;Full&quot;, each fan group&#x27;s PWM duty cycle can be set to a percentage value of 0-100%, using the hex values &lt;code&gt;0x00&lt;&#x2F;code&gt; to &lt;code&gt;0x64&lt;&#x2F;code&gt;.
+Time for more magic numbers.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;                                          v &amp;#39;0x00&amp;#39; for the &amp;quot;System&amp;quot; fan group, &amp;quot;0x01&amp;quot; for the &amp;quot;Peripheral&amp;quot; group&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6F42C1, #B392F0);&quot;&gt;ipmitool&lt;&#x2F;span&gt;&lt;span&gt; [args&lt;&#x2F;span&gt;&lt;span&gt;] raw 0x30 0x70 0x66 0x01 0x00 0x16&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;                                              ^ PWM duty cycle, 0x00 (0%) - 0x64 (100%)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;dell-idrac&quot;&gt;Dell iDRAC
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: dell-idrac&quot; href=&quot;#dell-idrac&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h3&gt;
+&lt;p&gt;To use ipmitool to connect to a remote Dell iDRAC interface, run &lt;code&gt;ipmitool&lt;&#x2F;code&gt; with the following flags. &lt;code&gt;-P&lt;&#x2F;code&gt; is optional, and an interactive password prompt will appear if it is ommitted.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;IPMI_EK&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; #&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; default idrac encryption key&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6F42C1, #B392F0);&quot;&gt;ipmitool&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;I&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt; lanplus&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;H&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_IP_ADDR&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;U&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_USER&lt;&#x2F;span&gt;&lt;span&gt; [-P&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_PASS&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt; -&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#005CC5, #79B8FF);&quot;&gt;y&lt;&#x2F;span&gt;&lt;span&gt; $&lt;&#x2F;span&gt;&lt;span&gt;IPMI_EK&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt; &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#032F62, #9ECBFF);&quot;&gt;comman&lt;&#x2F;span&gt;&lt;span&gt;d&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#D73A49, #F97583);&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Similar to the Supermicro section above, we can set a fixed target PWM speed percentage through issuing &quot;raw&quot; commands to our BMC. It&#x27;s the same two-step process, first setting the fans to their &quot;Full&quot; profile, and then adjusting the PWM duty cycle to our desired value.&lt;&#x2F;p&gt;
+&lt;blockquote class=&quot;markdown-alert-note&quot;&gt;
+&lt;p&gt;These are the commands to control the fans on a Dell r710. Subsequent versions of Dell R-series server iDRACs may have different values. Consult your system&#x27;s documentation for a full list of options.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; Set fan profile&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6F42C1, #B392F0);&quot;&gt;ipmitool&lt;&#x2F;span&gt;&lt;span&gt; [args&lt;&#x2F;span&gt;&lt;span&gt;] raw 0x30 0x30 0x01 0x00&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;                                     ^ Fan Profile selector. 0x00 == &amp;quot;Full&amp;quot;, 0x01 == &amp;quot;Optimal&#x2F;Automatic&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Setting the fan percentage is similar to the Supermicro example, where we pass a percentage value to lock the fans to a particular speed. However, there are no separate zones, and at the time of writing I don&#x27;t know the actual percentage curve. &lt;code&gt;0x08&lt;&#x2F;code&gt; - &lt;code&gt;0x10&lt;&#x2F;code&gt; are reasonable for sitting in the same room while offering acceptable cooling performance in environments where the system isn&#x27;t under heavy stress.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt; Set fan percentage&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6F42C1, #B392F0);&quot;&gt;ipmitool&lt;&#x2F;span&gt;&lt;span&gt; [args&lt;&#x2F;span&gt;&lt;span&gt;] raw 0x30 0x30 0x02 0xff 0xYY&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color: light-dark(#6A737D, #6A737D);&quot;&gt;                                         ^ Speed selector value&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;forums.servethehome.com&#x2F;index.php?threads&#x2F;r710-and-probably-other-11th-gen-dell-servers-fan-controller-shell-script.17284&#x2F;post-197102&quot;&gt;ServeTheHome thread&lt;&#x2F;a&gt; has some further discussion on the topic for 11th Generation Dell servers.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Penlight Color Values for Liella! and Aqours (King Blade x10V)</title>
+        <published>2024-04-13T00:00:00+00:00</published>
+        <updated>2025-10-30T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/lovelive-penlight-colors/"/>
+        <id>https://mikansoro.org/blog/lovelive-penlight-colors/</id>
+        
+        <summary type="html">&lt;p&gt;I figured I&#x27;d post the values I use to mimic Liella! and Aqours penlights using the KingBlade X10v Bluetooth programmable penlight.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>AWS IAM Role Chaining using IAM Roles for Service Accounts inside Kubernetes</title>
+        <published>2024-04-12T00:00:00+00:00</published>
+        <updated>2024-04-12T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/aws-role-chaining-irsa/"/>
+        <id>https://mikansoro.org/blog/aws-role-chaining-irsa/</id>
+        
+        <summary type="html">&lt;p&gt;Today, we&#x27;re taking a look at using IAM roles inside of AWS EKS, leveraging the combined power of IAM Roles for Service Accounts (IRSA) and role chaining inside of AWS config files.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Tax-Free Shopping and the Japan Trusted Travel Program (TTP)</title>
+        <published>2024-02-18T00:00:00+00:00</published>
+        <updated>2024-05-21T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/japan-taxfree-ttp/"/>
+        <id>https://mikansoro.org/blog/japan-taxfree-ttp/</id>
+        
+        <summary type="html">&lt;p&gt;Japan lets foreigners shop tax free at lots of stores, using the QR-code entry visa stamp in their passport. What most stores don&#x27;t know how to handle however, is a Japan Trusted Traveler Program card.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Flying the new Delta Airlines A330-900</title>
+        <published>2024-01-18T00:00:00+00:00</published>
+        <updated>2024-01-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/flying-delta-a339-neo/"/>
+        <id>https://mikansoro.org/blog/flying-delta-a339-neo/</id>
+        
+        <summary type="html">&lt;p&gt;A few things I noticed while flying one of the newest Delta A330-900s.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Liella! appears on Weekly 99 Music, performs シェキラ☆☆☆!</title>
+        <published>2024-01-17T00:00:00+00:00</published>
+        <updated>2024-01-17T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/liella-99music-shekira/"/>
+        <id>https://mikansoro.org/blog/liella-99music-shekira/</id>
+        
+        <summary type="html">&lt;p&gt;Liella! was on Weekly 99 Music on FujiTV tonight, including both an interview from one of their costume designers and a performance of their newest single, シェキラ☆☆☆.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>About this blog (a &#x27;first post&#x27; of sorts)</title>
+        <published>2024-01-13T00:00:00+00:00</published>
+        <updated>2026-08-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/first-post/"/>
+        <id>https://mikansoro.org/blog/first-post/</id>
+        
+        <summary type="html">&lt;p&gt;The first post on this blog (sort of). Part FAQ, part intro, part ramble.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Ijigen Fes 2023</title>
+        <published>2023-12-09T00:00:00+00:00</published>
+        <updated>2026-08-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/gallery/tokyo-dome-ijigen-fes/"/>
+        <id>https://mikansoro.org/gallery/tokyo-dome-ijigen-fes/</id>
+        
+        <content type="html" xml:base="https://mikansoro.org/gallery/tokyo-dome-ijigen-fes/">&lt;p&gt;Some photos taken around the codeLove Live! x Idolmaster cross-generational music festival (&quot;Ijigen Fes&quot;) in December 2023.&lt;&#x2F;p&gt;
+&lt;p&gt;I love taking fun or interesting photos of my plushes. They&#x27;re cute subjects that bring a bit of life into an otherwise ordinary landscape, food shot, or still life. My friends and I share them with each other, and many fans post them to social media as a way of documenting their travels.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ll be posting many more over time, but this one of Chika and Kanon sitting in front of the Tokyo Dome sign is still one of my favorites.&lt;&#x2F;p&gt;
+
+
+
+
+&lt;img alt=&quot;Chika and Kanon nesoberi&amp;#x27;s in front of Tokyo Dome.&quot; title=&quot;Chika and Kanon nesoberi&amp;#x27;s in front of Tokyo Dome.&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;20231209-A7403747.e87431f910eb33a4.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;20231209-A7403747.5a417e9f3ff3ae05.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;20231209-A7403747.e87431f910eb33a4.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;20231209-A7403747.9136da6983f41be0.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+&lt;p&gt;In lieu of the traditional flower stands typically sent by fans and businesses to show support to the artists, the organizers accepted designs for custom nobori (a type of banner&#x2F;flag). Many designers accepted donations in order to help offset the high cost of printing and payment for the artists, making them a collaborative effort. The promenade surrounding the Dome was dotted with hundreds of colorful, detailed depictions of love for our idols, gently fluttering in the breeze.&lt;&#x2F;p&gt;
+
+
+
+
+&lt;img alt=&quot;A nobori depicting a crying Mei-chan from Liella! holding penlights.&quot; title=&quot;A nobori depicting a crying Mei-chan from Liella! holding penlights.&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;20231209-A7403709.720ca799e6e38086.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;20231209-A7403709.11b1b360dd702c08.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;20231209-A7403709.720ca799e6e38086.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;20231209-A7403709.6b3653b160c917e1.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+
+
+
+
+&lt;img alt=&quot;A nobori depicting Kanon-chan and Sayurin from Liella! against a blue sky, surrounding the concert logo.&quot; title=&quot;A nobori depicting Kanon-chan and Sayurin from Liella! against a blue sky, surrounding the concert logo.&quot; src=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;20231209-A7403657.79d1173ba71fd52d.jpg&quot; srcset=&quot;https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;20231209-A7403657.dcad1a0781b92049.jpg 512w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;20231209-A7403657.79d1173ba71fd52d.jpg 1024w, https:&#x2F;&#x2F;mikansoro.org&#x2F;processed_images&#x2F;20231209-A7403657.ff16d9ee5e37a3c4.jpg 2048w&quot; class=&quot;&quot; &#x2F;&gt;
+
+</content>
+        
+    </entry>
+</feed>
