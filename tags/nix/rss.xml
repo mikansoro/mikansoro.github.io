@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>mikansoro.org - nix</title>
+      <link>https://mikansoro.org</link>
+      <description>Michael&#x27;s small corner of the internet.</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mikansoro.org/tags/nix/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sat, 05 Sep 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>NixOS anywhere with nixos-anywhere</title>
+          <pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://mikansoro.org/blog/nixos-anywhere/</link>
+          <guid>https://mikansoro.org/blog/nixos-anywhere/</guid>
+          <description xml:base="https://mikansoro.org/blog/nixos-anywhere/">&lt;p&gt;&lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nix-community&#x2F;nixos-anywhere&quot;&gt;nixos-anywhere&lt;&#x2F;a&gt; is an ssh-based remote installation tool for nixos, capable of installing a pre-configured NixOS system unattended in a matter of minutes. It can install to virutal machines, dedicated cloud hosts, or even local physical servers as long as they&#x27;re reachable over ssh. If the remote machine has an operating system already it will launch its own NixOS installer with &lt;code&gt;kexec&lt;&#x2F;code&gt; automatically. It&#x27;ll even partition the drives for you.&lt;&#x2F;p&gt;
+&lt;p&gt;Simply put, it&#x27;s awesome.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ve been deploying my systems with nixos-anywhere for a few years now and frankly I don&#x27;t think it gets enough love. My home servers, laptops, desktop, media PC, and even my cloud VPSs run nixos, all installed through nixos-anywhere from one of my existing systems.&lt;&#x2F;p&gt;
+&lt;p&gt;I can pre-configure a new virtual machine with the containers, applications, and config files it&#x27;ll need inside my homelab monorepo and deploy it with a single command. No cloud-init, no ansible playbooks, and no manual operations. New laptop? Boot up a NixOS install iso &amp;amp; run the install command. Within a few minutes I&#x27;m at the login prompt of my new laptop, ready to go.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;m going to highlight a couple of its features that I find super useful, then provide an example.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;disk-partitions&quot;&gt;Disk Partitions
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: disk-partitions&quot; href=&quot;#disk-partitions&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Nixos-anywhere integrates directly with &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nix-community&#x2F;disko&quot;&gt;disko&lt;&#x2F;a&gt;, another nix-community pacakage which brings declarative disk configuration to nixos. Despite everything in NixOS being declarative, the official NixOS installation instructions require users to manually configure and partition their disks, then they get listed in the generated hardware configuration for the system.&lt;&#x2F;p&gt;
+&lt;p&gt;For obvious reasons, that doesn&#x27;t jive with the Nix Way™ of living; the whole world should be declarative! Disko fills that gap by allowing users to define their disks and partitions in nix language and apply that configuration at install time.&lt;&#x2F;p&gt;
+&lt;p&gt;Nixos-anywhere will automatically detect a disko-based configuration and repartition the target system to match. No declaration needed.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;matching-machine-hardware&quot;&gt;Matching Machine Hardware
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: matching-machine-hardware&quot; href=&quot;#matching-machine-hardware&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;If you&#x27;ve installed a NixOS system before, you&#x27;re likely familiar with &lt;code&gt;nixos-generate-config&lt;&#x2F;code&gt; and it&#x27;s &lt;code&gt;hardware-configuration.nix&lt;&#x2F;code&gt; output. This file declares kernel modules, capabilities, boot configurations and when used without disko, disk partitions and layout so the correct options are set for the underlying hardware. Incredibly important, but annoying to generate yourself when trying to install on a new system with different hardware (or unknown hardware, like a VPS).&lt;&#x2F;p&gt;
+&lt;p&gt;It handles that for you too (shock!)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;--generate-hardware-config nixos-generate-config .&#x2F;path&#x2F;to&#x2F;hardware.nix&lt;&#x2F;code&gt; instructs nixos-anywhere to run nixos-generate-config during the install process, save its output at the provided path, &lt;em&gt;stage it in git so nix flake evaluation works properly&lt;&#x2F;em&gt;, and proceed with the installation. It&#x27;s a lifesaver.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;deploying-an-example-host&quot;&gt;Deploying an Example Host
+&lt;a class=&quot;anchor&quot; aria-label=&quot;Anchor link for: deploying-an-example-host&quot; href=&quot;#deploying-an-example-host&quot;&gt;#&lt;&#x2F;a&gt;
+
+&lt;&#x2F;h2&gt;
+&lt;p&gt;I&#x27;ve created a &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mikansoro&#x2F;nix-monorepo-public-example&quot;&gt;public-facing example&lt;&#x2F;a&gt; of my nix monorepo to illustrate how I manage my hosts. Though its intentionally slimmed down it&#x27;s fully functional, and the hosts are capable of deploying with nixos-anywhere.&lt;&#x2F;p&gt;
+&lt;p&gt;In the video below, I use nixos-anywhere in the example monorepo to deploy NixOS to a DigitalOcean droplet running Debian 13. nixos-anywhere kexec&#x27;d into a NixOS installer, partitioned the drive and reinstalled the operating system all on its own (after some network variable-filling in the nix config by yours truly.)&lt;&#x2F;p&gt;
+
+
+
+
+
+
+
+
+&lt;div class=&quot;vid&quot;&gt;
+&lt;video loading=&quot;lazy&quot; preload=&quot;none&quot; autoplay muted loop controls playsinline&gt;
+  &lt;source src=&quot;nixos-anywhere.webm&quot; type=&quot;video&#x2F;webm&quot;&gt;
+  &lt;p&gt;Your browser does not support embedded video. You can download the video &lt;a href=&quot;nixos-anywhere.webm&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;video&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;Recording scripts and methodology can be found &lt;a rel=&quot;nofollow noreferrer external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mikansoro&#x2F;nix-monorepo-public-example&#x2F;tree&#x2F;main&#x2F;examples&#x2F;nixos-anywhere&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ll be re-using the example monorepo in the future when I talk about how I&#x27;ve (re-)built my home server fleet on nixos, and how I used NixOS to deploy &lt;em&gt;and&lt;&#x2F;em&gt; replace kubernetes in my home.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

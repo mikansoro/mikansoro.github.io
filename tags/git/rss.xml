@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>mikansoro.org - git</title>
+      <link>https://mikansoro.org</link>
+      <description>Michael&#x27;s small corner of the internet.</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mikansoro.org/tags/git/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Wed, 18 Feb 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Rolling back time remotely with git reflog</title>
+          <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://mikansoro.org/blog/git-remote-reflog/</link>
+          <guid>https://mikansoro.org/blog/git-remote-reflog/</guid>
+          <description xml:base="https://mikansoro.org/blog/git-remote-reflog/">&lt;p&gt;Git&#x27;s reflog is a magic time machine, and you can use it to reset to points only available on the remote server as well as the local repository.&lt;&#x2F;p&gt;</description>
+      </item>
+    </channel>
+</rss>

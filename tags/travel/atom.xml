@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>mikansoro.org - travel</title>
+    <subtitle>Michael&#x27;s small corner of the internet.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mikansoro.org/tags/travel/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mikansoro.org"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-07-31T00:00:00+00:00</updated>
+    <id>https://mikansoro.org/tags/travel/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Coin Lockers and Where to Find Them</title>
+        <published>2024-07-31T00:00:00+00:00</published>
+        <updated>2024-07-31T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/coin-lockers/"/>
+        <id>https://mikansoro.org/blog/coin-lockers/</id>
+        
+        <summary type="html">&lt;p&gt;Coin lockers are a near-ubiquitous oasis within Japanese cities and train stations for the multi-bag traveler.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Tax-Free Shopping and the Japan Trusted Travel Program (TTP)</title>
+        <published>2024-02-18T00:00:00+00:00</published>
+        <updated>2024-05-21T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/japan-taxfree-ttp/"/>
+        <id>https://mikansoro.org/blog/japan-taxfree-ttp/</id>
+        
+        <summary type="html">&lt;p&gt;Japan lets foreigners shop tax free at lots of stores, using the QR-code entry visa stamp in their passport. What most stores don&#x27;t know how to handle however, is a Japan Trusted Traveler Program card.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Flying the new Delta Airlines A330-900</title>
+        <published>2024-01-18T00:00:00+00:00</published>
+        <updated>2024-01-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/flying-delta-a339-neo/"/>
+        <id>https://mikansoro.org/blog/flying-delta-a339-neo/</id>
+        
+        <summary type="html">&lt;p&gt;A few things I noticed while flying one of the newest Delta A330-900s.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

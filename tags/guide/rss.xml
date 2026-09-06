@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>mikansoro.org - guide</title>
+      <link>https://mikansoro.org</link>
+      <description>Michael&#x27;s small corner of the internet.</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mikansoro.org/tags/guide/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Thu, 08 Jan 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>A Guide to Donating to Japanese Flowerstands</title>
+          <pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://mikansoro.org/blog/donating-to-japanese-flowerstands/</link>
+          <guid>https://mikansoro.org/blog/donating-to-japanese-flowerstands/</guid>
+          <description xml:base="https://mikansoro.org/blog/donating-to-japanese-flowerstands/">&lt;p&gt;A guide on donating to flower stand projects in Japan.&lt;&#x2F;p&gt;</description>
+      </item>
+    </channel>
+</rss>

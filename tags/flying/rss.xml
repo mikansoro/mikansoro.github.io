@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>mikansoro.org - flying</title>
+      <link>https://mikansoro.org</link>
+      <description>Michael&#x27;s small corner of the internet.</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mikansoro.org/tags/flying/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Thu, 18 Jan 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Flying the new Delta Airlines A330-900</title>
+          <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://mikansoro.org/blog/flying-delta-a339-neo/</link>
+          <guid>https://mikansoro.org/blog/flying-delta-a339-neo/</guid>
+          <description xml:base="https://mikansoro.org/blog/flying-delta-a339-neo/">&lt;p&gt;A few things I noticed while flying one of the newest Delta A330-900s.&lt;&#x2F;p&gt;</description>
+      </item>
+    </channel>
+</rss>

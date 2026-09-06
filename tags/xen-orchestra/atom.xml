@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>mikansoro.org - xen-orchestra</title>
+    <subtitle>Michael&#x27;s small corner of the internet.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mikansoro.org/tags/xen-orchestra/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mikansoro.org"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-06-23T00:00:00+00:00</updated>
+    <id>https://mikansoro.org/tags/xen-orchestra/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Creating a Debian Cloud-Init Template in Xen Orchestra</title>
+        <published>2024-06-23T00:00:00+00:00</published>
+        <updated>2024-06-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mikansoro.org/blog/debian-cloud-init-xen-orchestra/"/>
+        <id>https://mikansoro.org/blog/debian-cloud-init-xen-orchestra/</id>
+        
+        <summary type="html">&lt;p&gt;Xen Orchestra (the manager for my XCP-NG based hypervisors) supports cloud-init for creation-time configuration of virtual machines. This guide walks through creating a cloud-init ready VM Template for Xen Orchestra using Debian 12.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>
